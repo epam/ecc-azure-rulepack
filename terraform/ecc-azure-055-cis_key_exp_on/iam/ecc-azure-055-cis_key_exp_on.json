@@ -1,0 +1,21 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-055-cis_key_exp_on",
+        "description": "Requires RBAC permissions model for Azure Key Vault",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.KeyVault/vaults/read"
+                ],
+                "notActions": [],
+                "dataActions": [
+                    "Microsoft.KeyVault/vaults/keys/read"
+                ],
+                "notDataActions": []
+            }
+        ]
+    }
+}

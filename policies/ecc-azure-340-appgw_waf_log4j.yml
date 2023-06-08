@@ -1,0 +1,25 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-340-appgw_waf_log4j
+    description: |
+      Application Gateway without Log4j WAF rule enabled or applied Ruleset version 3.0 or above
+    resource: azure.application-gateway
+    filters:
+      - type: value
+        key: properties.webApplicationFirewallConfiguration.enabled
+        value: true
+      - or:
+          - not:
+              - type: value
+                key: properties.webApplicationFirewallConfiguration.ruleSetVersion
+                value: 3.+
+                op: regex
+          - type: value
+            key: properties.webApplicationFirewallConfiguration.disabledRuleGroups[?ruleGroupName == 'Known-CVEs'].rules[]
+            op: contains
+            value: 800100

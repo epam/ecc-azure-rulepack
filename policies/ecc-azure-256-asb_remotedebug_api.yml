@@ -1,0 +1,19 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-256-asb_remotedebug_api
+    description: |
+      API app with Remote debugging enabled
+    resource: azure.webapp
+    filters:
+      - type: value
+        key: kind
+        value: .+\,api
+        op: regex
+      - type: configuration
+        key: remoteDebuggingEnabled
+        value: true

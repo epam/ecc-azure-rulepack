@@ -1,0 +1,21 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-159-asb_sa_restrict_net_access_vnet_rules
+    description: |
+      Storage accounts without virtual network IP rules
+    resource: azure.storage
+    filters:
+      - type: value
+        key: tags."ms-resource-usage"
+        value: azure-cloud-shell
+        op: ne
+      - not:
+          - type: value
+            key: length(properties.networkAcls.ipRules[?contains(keys(@), 'action')])
+            value: 0
+            op: gt

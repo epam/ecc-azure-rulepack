@@ -1,0 +1,23 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+# Policy only checks ADE as disks encryption option
+policies:
+  - name: ecc-azure-197-asb_vm_disk_encryption_on
+    description: |
+      Virtual machine without Azure Disk Encryption configured
+    resource: azure.vm
+    filters:
+      - not:
+          - or:
+              - type: value
+                key: resources[].id
+                value: \/.+\/virtualMachines\/.+\/extensions\/AzureDiskEncryption
+                op: regex
+              - type: value
+                key: resources[].id
+                value: \/.+\/virtualMachines\/.+\/extensions\/AzureDiskEncryptionForLinux
+                op: regex

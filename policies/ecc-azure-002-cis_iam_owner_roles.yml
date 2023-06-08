@@ -1,0 +1,35 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-002-cis_iam_owner_roles
+    description: |
+      Custom role with Owner privileges on a subscription scope is created
+    resource: azure.roledefinition
+    filters:
+      - type: value
+        key: properties.type
+        value: "CustomRole"
+        op: eq
+      - type: value
+        key: properties.permissions[].actions[]
+        value: "*"
+        op: contains
+      - and:
+          - or:
+              - type: value
+                key: properties.assignableScopes
+                value: "/"
+                op: contains
+              - type: value
+                key: properties.assignableScopes[]
+                value: \/subscriptions\/.+?
+                op: regex
+      - not:
+          - type: value
+            key: properties.assignableScopes[]
+            value: \/subscriptions\/.+?\/.+
+            op: regex

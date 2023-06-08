@@ -1,0 +1,50 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-234-asb_guest_extension_mi
+    description: |
+      Virtual machine with Guest Configuration extension installed without utilizing Managed Identity (SystemAssigned)
+    resource: azure.vm
+    filters:
+      - or:
+          - and:
+              - type: value
+                key: properties.storageProfile.osDisk.osType
+                value: Windows
+              - type: vm-extensions
+                op: in
+                key: "[].properties.type"
+                value: ConfigurationforWindows
+                value_type: swap
+              - type: vm-extensions
+                op: in
+                key: "[].properties.provisioningState"
+                value: Succeeded
+                value_type: swap
+          - and:
+              - type: value
+                key: properties.storageProfile.osDisk.osType
+                value: Linux
+              - type: vm-extensions
+                op: in
+                key: "[].properties.type"
+                value: ConfigurationForLinux
+                value_type: swap
+              - type: vm-extensions
+                op: in
+                key: "[].properties.provisioningState"
+                value: Succeeded
+                value_type: swap
+      - and:
+          - not:
+              - or:
+                  - type: value
+                    key: identity.type
+                    value: SystemAssigned
+                  - type: value
+                    key: identity.type
+                    value: SystemAssigned, UserAssigned

@@ -1,0 +1,16 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-296-sql_avoid_local_admin_name
+    description: |
+      Name like 'Admin' for an Azure SQL Server Administrator account is found
+    resource: azure.sqlserver
+    filters:
+      - type: value
+        key: properties.administratorLogin
+        value: .+\W*admin\W*|\W*admin\W*.+|^[Aa][Dd][Mm][Ii][Nn]$|^[Aa][Dd][Mm][Ii][Nn][Ii][Ss][Tt][Rr][Aa][Tt][Oo][Rr]$
+        op: regex

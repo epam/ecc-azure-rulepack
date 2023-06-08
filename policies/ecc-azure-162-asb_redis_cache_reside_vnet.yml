@@ -1,0 +1,21 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-162-asb_redis_cache_reside_vnet
+    description: |
+      Redis cache that does not reside in a subnet
+    resource: azure.redis
+    filters:
+      - type: value
+        key: properties.subnetId
+        value: absent
+      - or:
+          - not:
+              - type: value
+                key: properties.subnetId
+                value: \/.+\/virtualNetworks\/.+\/subnets\/.+
+                op: regex
