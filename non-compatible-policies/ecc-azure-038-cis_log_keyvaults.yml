@@ -1,0 +1,23 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+# Number of retention days can be manually defined according to the Customer's compliance policy
+policies:
+  - name: ecc-azure-038-cis_log_keyvaults
+    description: |
+      Key Vault with logging and retention policy disabled
+    resource: azure.keyvault-by-subscription
+    filters:
+      - or:
+          - type: diagnostic-settings
+            enabled: false
+          - and:
+              - type: diagnostic-settings
+                key: storage_account_id
+                value: present
+              - type: diagnostic-settings
+                key: length(logs[?category == 'AuditEvent' && enabled == `true` && retention_policy.days > `0` && retention_policy.enabled == `true`])
+                value: 0

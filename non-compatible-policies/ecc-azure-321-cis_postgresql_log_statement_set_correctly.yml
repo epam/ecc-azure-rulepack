@@ -1,0 +1,16 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-321-cis_postgresql_log_statement_set_correctly
+    description: |
+      PostgreSQL instance with server parameter 'log_statement' set incorrectly
+    resource: azure.postgresql-server
+    filters:
+      - not:
+          - type: server-configuration
+            property: log_statement
+            value: "ddl"

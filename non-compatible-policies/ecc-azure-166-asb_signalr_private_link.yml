@@ -1,0 +1,17 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-166-asb_signalr_private_link
+    description: |
+      SignalR service without Private Endpoint connection configured
+    resource: azure.signalr
+    filters:
+      - not:
+          - type: value
+            key: properties.privateEndpointConnections[].properties.privateLinkServiceConnectionState.status
+            value: Approved
+            op: contains

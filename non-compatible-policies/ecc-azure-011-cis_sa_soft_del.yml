@@ -1,0 +1,23 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-011-cis_sa_soft_del
+    description: |
+      Soft delete for Azure Storage Blobs is disabled
+    resource: azure.storage
+    filters:
+      - type: value
+        key: tags."ms-resource-usage"
+        value: azure-cloud-shell
+        op: ne
+      - type: storage-diagnostic-settings
+        storage-type: blob
+        mode: and
+        conditions:
+          - key: delete_retention_policy.enabled
+            op: eq
+            value: false

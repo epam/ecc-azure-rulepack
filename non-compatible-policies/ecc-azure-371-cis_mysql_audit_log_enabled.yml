@@ -1,0 +1,19 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-371-cis_mysql_audit_log_enabled
+    description: |
+      MySQL instance with server setting "audit_log_enabled" set to "off"
+    resource: azure.mysql-server
+    filters:
+      - or:
+          - type: server-parameters
+            property: audit_log_enabled
+            value: "off"
+          - type: server-parameters
+            property: audit_log_enabled
+            value: "off"

@@ -1,0 +1,17 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-355-ml_min_cluster_nodes
+    description: |
+      Azure Machine Learning Compute cluster have minNodeCount property not equal to 0
+    resource: azure.machine-learning-workspace
+    filters:
+      - not:
+          - type: compute
+            key: min_node_count
+            value: 0
+            op: eq

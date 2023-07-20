@@ -1,0 +1,19 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-350-mysql_slow_query_log_permissions
+    description: |
+      MySQL instance with server parameter 'slow_query_log' disabled
+    resource: azure.mysql-server
+    filters:
+      - or:
+          - type: server-parameters
+            property: slow_query_log
+            value: "off"
+          - type: server-parameters
+            property: slow_query_log
+            value: "OFF"

@@ -1,0 +1,17 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-052-cis_net_udp
+    description: |
+      Network Security Group with inbound rule that allows UDP traffic from the Internet
+    resource: azure.networksecuritygroup
+    filters:
+      - type: ingress
+        match: any
+        access: 'Allow'
+        ipProtocol: 'UDP'
+        sourceAddress: ['*', 'Internet', '0.0.0.0/0']
