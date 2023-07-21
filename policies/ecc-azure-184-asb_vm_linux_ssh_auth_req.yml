@@ -1,0 +1,50 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-184-asb_vm_linux_ssh_auth_req
+    description: |
+      Linux virtual machine without SSH authentication method as primary configured (Allows password authentication)
+    resource: azure.vm
+    filters:
+      - type: value
+        key: properties.storageProfile.osDisk.osType
+        value: Linux
+      - type: value
+        key: properties.osProfile.linuxConfiguration.disablePasswordAuthentication
+        value: false
+      - and:
+          - or:
+              - type: value
+                key: properties.storageProfile.imageReference.publisher
+                value: OpenLogic
+              - type: value
+                key: properties.storageProfile.imageReference.publisher
+                value: RedHat
+              - type: value
+                key: properties.storageProfile.imageReference.publisher
+                value: credativ
+              - type: value
+                key: properties.storageProfile.imageReference.publisher
+                value: Suse
+              - type: value
+                key: properties.storageProfile.imageReference.publisher
+                value: Canonical
+              - type: value
+                key: properties.storageProfile.imageReference.publisher
+                value: microsoft-dsvm
+              - type: value
+                key: properties.storageProfile.imageReference.publisher
+                value: cloudera
+              - type: value
+                key: properties.storageProfile.imageReference.publisher
+                value: microsoft-ads
+              - type: value
+                key: properties.storageProfile.imageReference.publisher
+                value: center-for-internet-security-inc
+              - type: value
+                key: properties.storageProfile.imageReference.publisher
+                value: Oracle

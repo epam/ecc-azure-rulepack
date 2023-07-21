@@ -1,0 +1,21 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-232-asb_vmss_wo_mma",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/virtualMachines/read",
+                    "Microsoft.Compute/virtualMachines/extensions/read",
+                    "Microsoft.Security/assessments/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}

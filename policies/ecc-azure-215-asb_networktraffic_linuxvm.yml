@@ -1,0 +1,27 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-215-asb_networktraffic_linuxvm
+    description: |
+      Linux virtual machines without Dependency Agent installed
+    resource: azure.vm
+    filters:
+      - type: value
+        key: properties.storageProfile.osDisk.osType
+        value: Linux
+        op: eq
+      - not:
+          - type: vm-extensions
+            op: in
+            key: "[].properties.type"
+            value: DependencyAgentLinux
+            value_type: swap
+          - type: vm-extensions
+            op: in
+            key: "[].properties.provisioningState"
+            value: Succeeded
+            value_type: swap

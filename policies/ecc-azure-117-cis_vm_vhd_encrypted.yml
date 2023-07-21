@@ -1,0 +1,33 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-117-cis_vm_vhd_encrypted
+    description: |
+      [Legacy] Virtual machine utilizes unmanaged disks without encryption
+    resource: azure.vm
+    filters:
+      - or:
+          - and:
+              - type: value
+                key: properties.storageProfile.osDisk.vhd.uri
+                value: .+
+                op: regex
+              - not:
+                  - type: value
+                    key: resources[].id
+                    value: ".+AzureDiskEncryption"
+                    op: regex
+          - and:
+              - type: value
+                key: properties.storageProfile.dataDisk.vhd.uri
+                value: .+
+                op: regex
+              - not:
+                  - type: value
+                    key: resources[].id
+                    value: ".+AzureDiskEncryption"
+                    op: regex

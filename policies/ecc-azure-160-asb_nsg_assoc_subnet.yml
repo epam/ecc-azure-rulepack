@@ -1,0 +1,21 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-160-asb_nsg_assoc_subnet
+    description: |
+      Virtual network with network security groups not assigned to subnets
+    resource: azure.vnet
+    filters:
+      - type: value
+        key: properties.subnets
+        value: []
+        op: ne
+      - not:
+          - type: value
+            key: properties.subnets[].properties.networkSecurityGroup.id
+            value: \/.+\/networkSecurityGroups\/.+
+            op: regex

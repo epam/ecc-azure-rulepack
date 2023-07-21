@@ -1,0 +1,16 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-336-vmss_encryption_at_host
+    description: |
+      Virtual machine scale sets without EncryptionAtHost enabled
+    resource: azure.vmss
+    filters:
+      - not:
+          - type: value
+            key: properties.virtualMachineProfile.securityProfile.encryptionAtHost
+            value: true

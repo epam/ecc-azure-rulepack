@@ -1,0 +1,21 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-206-asb_service_fabric_property
+    description: |
+      Service Fabric cluster without configured ClusterProtectionLevel property set to EncryptAndSign
+    resource: azure.service-fabric-cluster
+    filters:
+      - not:
+          - type: value
+            key: properties.fabricSettings[?name=='Security'].parameters[].name
+            value: ClusterProtectionLevel
+            op: contains
+          - type: value
+            key: properties.fabricSettings[?name=='Security'].parameters[].value
+            value: EncryptAndSign
+            op: contains

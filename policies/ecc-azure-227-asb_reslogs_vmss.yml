@@ -1,0 +1,26 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-227-asb_reslogs_vmss
+    description: |
+      Virtual machine scale sets without LinuxDiagnostic or IaaSDiangostics extension installed
+    resource: azure.vmss
+    filters:
+      - not:
+          - type: value
+            key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.publisher
+            value: Microsoft\.Azure\.Diagnostics
+            op: regex
+          - or:
+              - type: value
+                key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
+                value: LinuxDiagnostic
+                op: regex
+              - type: value
+                key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
+                value: IaaSDiagnostics
+                op: regex

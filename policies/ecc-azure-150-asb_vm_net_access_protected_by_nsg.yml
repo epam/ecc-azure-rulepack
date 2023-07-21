@@ -1,0 +1,24 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-150-asb_vm_net_access_protected_by_nsg
+    description: |
+      Primary virtual machine network interface with public ip assigned without Network Security Group assignment
+    resource: azure.networkinterface
+    filters:
+      - type: value
+        key: properties.ipConfigurations[?primary == `true`].publicIPAddress.id
+        value: present
+      - type: value
+        key: properties.virtualMachine.id
+        value: \/.+\/virtualMachines\/.+
+        op: regex
+      - not:
+          - type: value
+            key: properties.networkSecurityGroup.id
+            value: \/.+\/networkSecurityGroups\/.+
+            op: regex

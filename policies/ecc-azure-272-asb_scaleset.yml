@@ -1,0 +1,46 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-272-asb_scaleset
+    description: |
+      Virtual machine scale sets without endpoint protection installed
+    resource: azure.vmss
+    filters:
+      - not:
+          - or:
+              - type: value
+                key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
+                value: "IaaSAntimalware"
+                op: regex
+              - type: value
+                key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
+                value: "TrendMicroDSA.*"
+                op: regex
+              - type: value
+                key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
+                value: "McAfeeEndpointSecurity"
+                op: regex
+              - type: value
+                key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
+                value: "SymantecEndpointProtection"
+                op: regex
+              - type: value
+                key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
+                value: "SCWPAgentFor.+"
+                op: regex
+              - type: value
+                key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
+                value: "PortalProtectExtension"
+                op: regex
+              - type: value
+                key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
+                value: "FileSecurity"
+                op: regex
+              - type: value
+                key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
+                value: "KSWS"
+                op: regex

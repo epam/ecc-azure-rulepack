@@ -1,0 +1,16 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-287-aks_azure_cni_networking
+    description: |
+      Azure CNI Networking is disabled
+    resource: azure.aks
+    filters:
+      - not:
+          - type: value
+            key: properties.networkProfile.networkPlugin
+            value: azure
