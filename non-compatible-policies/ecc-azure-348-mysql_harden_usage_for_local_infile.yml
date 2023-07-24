@@ -1,0 +1,19 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-348-mysql_harden_usage_for_local_infile
+    description: |
+      MySQL instance with server parameter 'local_infile' enabled
+    resource: azure.mysql-server
+    filters:
+      - or:
+          - type: server-parameters
+            property: local_infile
+            value: "on"
+          - type: server-parameters
+            property: local_infile
+            value: "ON"

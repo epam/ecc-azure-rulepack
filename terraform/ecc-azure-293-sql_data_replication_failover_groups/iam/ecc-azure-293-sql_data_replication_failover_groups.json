@@ -1,0 +1,21 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-293-sql_data_replication_failover_groups",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Sql/servers/read",
+                    "Microsoft.Sql/servers/databases/read",
+                    "Microsoft.Sql/locations/instanceFailoverGroups/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}

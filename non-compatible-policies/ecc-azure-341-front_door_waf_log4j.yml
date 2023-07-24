@@ -1,0 +1,20 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-341-front_door_waf_log4j
+    description: |
+      Azure Front Door without Log4j WAF rule enabled
+    resource: azure.front-door
+    filters:
+      - type: web-application-firewall-policies
+        key: managed_rules.managed_rule_sets[0].rule_group_overrides[0].rules[0].rule_id
+        value: '944240'
+        op: eq
+      - type: web-application-firewall-policies
+        key: managed_rules.managed_rule_sets[0].rule_group_overrides[0].rules[0].enabled_state
+        value: 'Disabled'
+        op: eq

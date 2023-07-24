@@ -1,0 +1,23 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-015-cis_db_auditing_90d
+    description: |
+      Azure SQL Database Auditing retention policy set to less than 90 days
+    resource: azure.sql-auditing-settings
+    filters:
+      - type: value
+        key: properties.retentionDays
+        op: lt
+        value_type: integer
+        value: 90
+      - not:
+          - type: value
+            key: properties.retentionDays
+            op: eq
+            value_type: integer
+            value: 0

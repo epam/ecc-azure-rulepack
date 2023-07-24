@@ -1,0 +1,20 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-196-asb_sql_managed_instance_atp",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Sql/managedInstances/read",
+                    "Microsoft.Sql/managedInstances/securityAlertPolicies/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}

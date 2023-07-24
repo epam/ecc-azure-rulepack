@@ -1,0 +1,16 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-007-cis_sec_owners_email_notifications
+    description: |
+      Notification alerts to admins or subscription owners are disabled in Microsoft Defender for Cloud
+    resource: azure.security-contacts
+    filters:
+      - type: value
+        key: properties.alertsToAdmins
+        value: "Off"
+        op: eq

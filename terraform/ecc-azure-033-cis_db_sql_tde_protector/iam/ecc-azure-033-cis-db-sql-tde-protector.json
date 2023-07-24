@@ -1,0 +1,20 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-033-cis-db-sql-tde-protector",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Sql/servers/read",
+                    "Microsoft.Sql/servers/encryptionProtector/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}

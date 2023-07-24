@@ -1,0 +1,21 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-341-front_door_waf_log4j",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Network/frontDoors/read",
+                    "Microsoft.Network/frontDoorWebApplicationFirewallPolicies/read",
+                    "Microsoft.Network/frontDoorWebApplicationFirewallManagedRuleSets/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}

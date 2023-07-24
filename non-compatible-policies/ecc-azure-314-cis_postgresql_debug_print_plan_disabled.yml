@@ -1,0 +1,19 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-314-cis_postgresql_debug_print_plan_disabled
+    description: |
+      PostgreSQL instance with server parameter 'debug_print_plan' enabled
+    resource: azure.postgresql-server
+    filters:
+      - or:
+          - type: server-configuration
+            property: debug_print_plan
+            value: "on"
+          - type: server-configuration
+            property: debug_print_plan
+            value: "ON"

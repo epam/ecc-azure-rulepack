@@ -1,0 +1,29 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-110-cis_sa_logging_table
+    description: |
+      Storage account without logging enabled for Tables
+    resource: azure.storage
+    filters:
+      - type: value
+        key: tags."ms-resource-usage"
+        value: azure-cloud-shell
+        op: ne
+      - type: storage-diagnostic-settings
+        storage-type: table
+        mode: or
+        conditions:
+          - key: logging.read
+            value: false
+            op: eq
+          - key: logging.write
+            value: false
+            op: eq
+          - key: logging.delete
+            value: false
+            op: eq

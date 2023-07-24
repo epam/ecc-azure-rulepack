@@ -1,0 +1,19 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+# Number of retention days can be manually defined according to the Customer's compliance policy
+policies:
+  - name: ecc-azure-225-asb_reslogs_search
+    description: |
+      Azure Search with logging and retention policy disabled
+    resource: azure.search
+    filters:
+      - or:
+          - type: diagnostic-settings
+            enabled: false
+          - type: diagnostic-settings
+            key: length(logs[?category == 'OperationLogs' && enabled == `true` && retention_policy.enabled == `true` && retention_policy.days > `0`])
+            value: 0

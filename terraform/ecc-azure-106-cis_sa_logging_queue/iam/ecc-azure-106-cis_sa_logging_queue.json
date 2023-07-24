@@ -1,0 +1,21 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-106-cis_sa_logging_queue",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Storage/storageAccounts/read",
+                    "Microsoft.Storage/storageAccounts/queueServices/read",
+                    "Microsoft.Storage/storageAccounts/queueServices/queues/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}

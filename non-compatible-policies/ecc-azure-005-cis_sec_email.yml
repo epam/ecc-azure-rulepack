@@ -1,0 +1,19 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-005-cis_sec_email
+    description: |
+      'Additional email addresses' is not configured in Microsoft Defender for Cloud
+    resource: azure.security-contacts
+    filters:
+      - or:
+          - type: value
+            key: properties.emails
+            value: null
+          - type: value
+            key: properties.emails
+            value: ""

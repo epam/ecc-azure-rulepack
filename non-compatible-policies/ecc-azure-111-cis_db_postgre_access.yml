@@ -1,0 +1,20 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-111-cis_db_postgre_access
+    description: |
+      PostgreSQL Database Server with 'Allow access to Azure services' enabled
+    resource: azure.postgresql-server
+    filters:
+      - or:
+          - type: firewall-bypass
+            mode: equal
+            list:
+              - AzureServices
+          - type: firewall-rules
+            include:
+              - '0.0.0.0'
