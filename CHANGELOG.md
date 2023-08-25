@@ -1,8 +1,7 @@
 # Changelog
-All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
-  
-## [1.0] - 2023-06-08 
+## [v1.0] - 2023-17-08
+### :open_file_folder: Initial version
 
-- Initial version.
+
+[v1.0]: https://github.com/epam/ecc-gcp-rulepack/compare/Init...v1.0
