@@ -13,3 +13,4 @@ policies:
       - not:
           - type: resource-lock
             lock-type: CanNotDelete
+    comment: '0247092000'

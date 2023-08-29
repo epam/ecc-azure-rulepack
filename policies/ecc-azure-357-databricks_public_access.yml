@@ -13,3 +13,4 @@ policies:
       - type: value
         key: properties.parameters.enableNoPublicIp.value
         value: false
+    comment: '0240052000'

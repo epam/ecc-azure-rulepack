@@ -16,3 +16,4 @@ policies:
         ports: '139'
         ipProtocol: 'TCP'
         sourceAddress: ['*', 'Internet', '0.0.0.0/0']
+    comment: '0242022000'

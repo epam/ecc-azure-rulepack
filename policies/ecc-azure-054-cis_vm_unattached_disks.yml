@@ -18,3 +18,4 @@ policies:
             key: properties.encryption.type
             op: in
             value: [EncryptionAtRestWithPlatformKey, EncryptionAtRestWithPlatformAndCustomerKeys]
+    comment: '0243031500'

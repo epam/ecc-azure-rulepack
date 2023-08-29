@@ -14,3 +14,4 @@ policies:
         key: properties.publicNetworkAccess
         value: Disabled
         op: ne
+    comment: '0240020000'

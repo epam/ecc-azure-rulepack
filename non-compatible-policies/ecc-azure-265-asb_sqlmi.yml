@@ -13,3 +13,4 @@ policies:
       - type: vulnerability-assessments
         key: recurring_scans.is_enabled
         value: false
+    comment: '0221060000'

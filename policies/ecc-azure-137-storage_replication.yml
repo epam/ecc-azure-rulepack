@@ -14,3 +14,4 @@ policies:
           - type: value
             key: properties.statusOfSecondary
             value: available
+    comment: '0250042000'

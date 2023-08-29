@@ -23,3 +23,4 @@ policies:
             key: properties.webApplicationFirewallConfiguration.disabledRuleGroups[?ruleGroupName == 'Known-CVEs'].rules[]
             op: contains
             value: 800100
+    comment: '0223022000'

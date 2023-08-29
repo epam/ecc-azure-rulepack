@@ -13,3 +13,4 @@ policies:
       - type: sql-server-security-alert-policies
         key: state
         value: Disabled
+    comment: '0232061500'

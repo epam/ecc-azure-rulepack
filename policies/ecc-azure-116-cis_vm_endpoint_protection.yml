@@ -13,3 +13,4 @@ policies:
       - type: vm-extensions
         key: length([?(properties.type == 'IaaSAntimalware' || properties.type == 'McAfeeEndpointSecurity' || properties.type == 'TrendMicroDSA' || properties.type == 'TrendMicroDSALinux' || properties.type == 'SymantecEndpointProtection' || properties.type == 'SCWPAgentForLinux' || properties.type == 'SCWPAgentForWindows' || properties.type == 'PortalProtectExtension' || properties.type == 'FileSecurity') && properties.provisioningState == 'Succeeded'])
         value: 0
+    comment: '0224031400'

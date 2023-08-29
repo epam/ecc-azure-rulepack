@@ -18,3 +18,4 @@ policies:
           - type: value
             key: properties.encryption.requireInfrastructureEncryption
             value: true
+    comment: '0243041500'

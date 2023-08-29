@@ -24,3 +24,4 @@ policies:
                 key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
                 value: IaaSDiagnostics
                 op: regex
+    comment: '0219030000'

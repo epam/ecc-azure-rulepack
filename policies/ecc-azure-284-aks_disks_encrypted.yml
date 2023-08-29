@@ -17,3 +17,4 @@ policies:
           - type: value
             key: properties.diskEncryptionSetID
             value: ""
+    comment: '0244072000'

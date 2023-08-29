@@ -40,3 +40,4 @@ policies:
                     key: "[].properties.provisioningState"
                     value: Succeeded
                     value_type: swap
+    comment: '0232030000'

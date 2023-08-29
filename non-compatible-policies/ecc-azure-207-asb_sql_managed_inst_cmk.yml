@@ -13,3 +13,4 @@ policies:
       - type: encryption-protector
         key: kind
         value: servicemanaged
+    comment: '0243060000'

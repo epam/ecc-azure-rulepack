@@ -16,3 +16,4 @@ policies:
           - type: diagnostic-settings
             key: length(logs[?category == 'AppServiceHTTPLogs' && enabled == `true`])
             value: 0
+    comment: '0219011500'

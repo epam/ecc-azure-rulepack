@@ -20,3 +20,4 @@ policies:
                 key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
                 value: OmsAgentForLinux
                 op: contains
+    comment: '0232030000'

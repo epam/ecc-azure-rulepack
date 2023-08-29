@@ -14,3 +14,4 @@ policies:
           - type: value
             key: properties.encryption.status
             value: Enabled
+    comment: '0243090000'

@@ -17,3 +17,4 @@ policies:
           - type: diagnostic-settings
             key: length(logs[?(category == 'Connections' || category == 'DeviceTelemetry' || category == 'C2DCommands' || category == 'DeviceIdentityOperations' || category == 'FileUploadOperations' || category == 'Routes' || category == 'D2CTwinOperations' || category == 'C2DTwinOperations' || category == 'TwinQueries' || category == 'JobsOperations' || category == 'DirectMethods' || category == 'DistributedTracing' || category == 'Configurations' || category == 'DeviceStreams') && enabled == `true` && retention_policy.enabled == `true` && retention_policy.days > `0`])
             value: 0
+    comment: '0219010000'

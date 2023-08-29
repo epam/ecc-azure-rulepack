@@ -17,3 +17,4 @@ policies:
           - type: server-parameters
             property: slow_query_log
             value: "OFF"
+    comment: '0219061800'

@@ -19,3 +19,4 @@ policies:
       - type: value
         key: properties.azureActiveDirectory.clientApplication
         value: absent
+    comment: '0223000000'

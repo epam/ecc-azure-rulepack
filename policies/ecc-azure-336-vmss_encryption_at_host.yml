@@ -14,3 +14,4 @@ policies:
           - type: value
             key: properties.virtualMachineProfile.securityProfile.encryptionAtHost
             value: true
+    comment: '0243032000'
