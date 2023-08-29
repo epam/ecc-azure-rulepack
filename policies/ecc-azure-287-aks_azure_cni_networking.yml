@@ -14,3 +14,4 @@ policies:
           - type: value
             key: properties.networkProfile.networkPlugin
             value: azure
+    comment: '0220072000'

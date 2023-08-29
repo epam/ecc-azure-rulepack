@@ -24,3 +24,4 @@ policies:
                 key: properties.virtualNetworkType
                 value: 'External'
                 op: eq
+    comment: '0240020000'

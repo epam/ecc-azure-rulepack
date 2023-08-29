@@ -19,3 +19,4 @@ policies:
                 key: properties.subnetId
                 value: \/.+\/virtualNetworks\/.+\/subnets\/.+
                 op: regex
+    comment: '0241060000'

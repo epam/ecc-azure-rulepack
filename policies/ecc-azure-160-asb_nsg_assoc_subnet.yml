@@ -19,3 +19,4 @@ policies:
             key: properties.subnets[].properties.networkSecurityGroup.id
             value: \/.+\/networkSecurityGroups\/.+
             op: regex
+    comment: '0242020000'

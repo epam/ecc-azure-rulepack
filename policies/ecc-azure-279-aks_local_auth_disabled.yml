@@ -13,3 +13,4 @@ policies:
       - type: value
         key: properties.disableLocalAccounts
         value: false
+    comment: '0233072000'

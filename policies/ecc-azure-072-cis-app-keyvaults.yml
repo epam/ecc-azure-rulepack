@@ -18,3 +18,4 @@ policies:
             key: properties.keyVaultReferenceIdentity
             value: .+\/Microsoft.ManagedIdentity\/userAssignedIdentities\/.+
             op: regex
+    comment: '0248171500'

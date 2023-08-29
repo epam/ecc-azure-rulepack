@@ -13,3 +13,4 @@ policies:
       - type: value
         key: properties.infrastructureEncryption
         value: Disabled
+    comment: '0243062000'

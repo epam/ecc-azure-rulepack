@@ -18,3 +18,4 @@ policies:
           - type: value
             key: properties.networkProfile.networkPolicy
             value: absent
+    comment: '0223072000'

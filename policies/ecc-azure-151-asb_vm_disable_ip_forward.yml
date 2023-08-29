@@ -18,3 +18,4 @@ policies:
           - type: value
             key: properties.enableIPForwarding
             value: true
+    comment: '0224030000'

@@ -22,3 +22,4 @@ policies:
             key: properties.networkSecurityGroup.id
             value: \/.+\/networkSecurityGroups\/.+
             op: regex
+    comment: '0240030000'

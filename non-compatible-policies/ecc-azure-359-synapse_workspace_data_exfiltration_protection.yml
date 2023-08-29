@@ -13,3 +13,4 @@ policies:
           - type: value
             key: properties.managedVirtualNetworkSettings.preventDataExfiltration
             value: true
+    comment: '0223052000'

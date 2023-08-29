@@ -13,3 +13,4 @@ policies:
       - type: value
         key: properties.encryption.keySource
         value: Microsoft.Batch
+    comment: '0243092000'

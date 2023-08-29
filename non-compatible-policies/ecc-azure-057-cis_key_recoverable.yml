@@ -19,3 +19,4 @@ policies:
             key: properties.enablePurgeProtection
             value: true
             op: ne
+    comment: '0249101500'

@@ -13,3 +13,4 @@ policies:
       - type: value
         key: properties.disableKeyBasedMetadataWriteAccess
         value: true
+    comment: '0233062000'

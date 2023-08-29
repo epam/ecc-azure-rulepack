@@ -14,3 +14,4 @@ policies:
           - type: value
             key: properties.minimalTlsVersion
             value: TLS1_2
+    comment: '0221062000'

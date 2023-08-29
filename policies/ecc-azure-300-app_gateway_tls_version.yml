@@ -14,3 +14,4 @@ policies:
           - type: value
             key: properties.sslPolicy.minProtocolVersion
             value: TLSv1_2
+    comment: '0223022000'

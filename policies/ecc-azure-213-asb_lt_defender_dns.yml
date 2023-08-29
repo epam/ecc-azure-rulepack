@@ -19,3 +19,4 @@ policies:
             key: properties.pricingTier
             value: "Standard"
             op: eq
+    comment: '0232180000'
