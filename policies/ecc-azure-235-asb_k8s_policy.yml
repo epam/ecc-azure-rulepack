@@ -13,3 +13,4 @@ policies:
       - type: value
         key: properties.addonProfiles.azurepolicy.enabled
         value: false
+    comment: '0223070000'

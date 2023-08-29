@@ -13,3 +13,4 @@ policies:
       - type: value
         key: length(properties.privateEndpointConnections)
         value: 0
+    comment: '0240080000'

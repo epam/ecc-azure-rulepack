@@ -48,3 +48,4 @@ policies:
               - type: value
                 key: properties.storageProfile.imageReference.publisher
                 value: Oracle
+    comment: '0234030000'

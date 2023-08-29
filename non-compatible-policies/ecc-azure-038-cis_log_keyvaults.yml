@@ -21,3 +21,4 @@ policies:
               - type: diagnostic-settings
                 key: length(logs[?category == 'AuditEvent' && enabled == `true` && retention_policy.days > `0` && retention_policy.enabled == `true`])
                 value: 0
+    comment: '0219101500'

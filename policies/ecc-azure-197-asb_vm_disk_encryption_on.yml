@@ -21,3 +21,4 @@ policies:
                 key: resources[].id
                 value: \/.+\/virtualMachines\/.+\/extensions\/AzureDiskEncryptionForLinux
                 op: regex
+    comment: '0243030000'

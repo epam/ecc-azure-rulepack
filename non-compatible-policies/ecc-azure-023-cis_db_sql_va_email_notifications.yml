@@ -12,3 +12,4 @@ policies:
       - type: vulnerability-assessments
         property: recurringScans.emailSubscriptionAdmins
         value: false
+    comment: '0216061500'

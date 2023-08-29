@@ -14,3 +14,4 @@ policies:
         - type: azure-ad-administrators
           key: azureADOnlyAuthentication
           value: true
+    comment: '0234061500'

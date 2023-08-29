@@ -14,3 +14,4 @@ policies:
         key: length(failover_groups)
         op: eq
         value: 0
+    comment: '0249062000'

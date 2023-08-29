@@ -18,3 +18,4 @@ policies:
         key: properties.pricingTier
         value: Standard
         op: ne
+    comment: '0232180000'

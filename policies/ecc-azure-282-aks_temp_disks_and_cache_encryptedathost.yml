@@ -22,3 +22,4 @@ policies:
           - type: value
             key: properties.agentPoolProfiles[].enableEncryptionAtHost
             value: absent
+    comment: '0244072000'

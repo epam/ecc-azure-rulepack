@@ -14,3 +14,4 @@ policies:
           - type: value
             key: properties.minimalTlsVersion
             value: '1.2'
+    comment: '0221062000'

@@ -19,3 +19,4 @@ policies:
             key: length(properties.networkAcls.ipRules[?contains(keys(@), 'action')])
             value: 0
             op: gt
+    comment: '0240040000'

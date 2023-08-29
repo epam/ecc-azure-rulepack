@@ -13,3 +13,4 @@ policies:
       - not:
           - type: backup-status
             protection-status: Protected
+    comment: '0249030000'

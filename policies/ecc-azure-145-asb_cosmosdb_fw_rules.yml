@@ -16,3 +16,4 @@ policies:
       - type: value
         key: properties.ipRules
         value: []
+    comment: '0224060000'
