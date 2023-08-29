@@ -18,3 +18,4 @@ policies:
             key: properties.networkProfile.serviceRuntimeSubnetId
             value: \/.+\/virtualNetworks\/.+\/subnets\/.+
             op: regex
+    comment: '0224020000'

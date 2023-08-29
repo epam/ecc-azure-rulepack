@@ -13,3 +13,4 @@ policies:
       - type: value
         key: properties.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication
         value: false
+    comment: '0223032000'

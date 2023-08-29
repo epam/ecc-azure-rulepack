@@ -15,3 +15,4 @@ policies:
             key: properties.availabilitySet.id
             value: .+
             op: regex
+    comment: '0250032000'

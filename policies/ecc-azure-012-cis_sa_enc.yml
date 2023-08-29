@@ -18,3 +18,4 @@ policies:
         key: properties.encryption.keySource
         op: eq
         value: Microsoft.Storage
+    comment: '0243041500'

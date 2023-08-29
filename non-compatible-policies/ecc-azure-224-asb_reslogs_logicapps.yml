@@ -17,3 +17,4 @@ policies:
           - type: diagnostic-settings
             key: length(logs[?category == 'WorkflowRuntime' && enabled == `true` && retention_policy.enabled == `true` && retention_policy.days > `0`])
             value: 0
+    comment: '0219010000'

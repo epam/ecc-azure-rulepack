@@ -13,3 +13,4 @@ policies:
           - type: value
             key: properties.managedVirtualNetwork
             value: default
+    comment: '0241052000'

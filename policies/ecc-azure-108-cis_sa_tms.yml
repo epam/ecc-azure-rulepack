@@ -18,3 +18,4 @@ policies:
         key: properties.networkAcls.bypass
         op: ne
         value: AzureServices
+    comment: '0233041500'

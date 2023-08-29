@@ -18,3 +18,4 @@ policies:
             key: login
             value: ^[Aa][Dd][Mm][Ii][Nn]$|^[Aa][Dd][Mm][Ii][Nn][Ii][Ss][Tt][Rr][Aa][Tt][Oo][Rr]$
             op: regex
+    comment: '0223062000'

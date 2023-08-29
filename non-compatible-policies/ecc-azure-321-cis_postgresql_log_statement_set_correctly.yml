@@ -14,3 +14,4 @@ policies:
           - type: server-configuration
             property: log_statement
             value: "ddl"
+    comment: '0219061910'

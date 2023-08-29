@@ -15,3 +15,4 @@ policies:
       - type: value
         key: properties.status.cause
         value: VaScannerNotInstalled
+    comment: '0223032000'

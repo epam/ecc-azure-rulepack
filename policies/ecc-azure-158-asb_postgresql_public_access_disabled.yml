@@ -17,3 +17,4 @@ policies:
           - type: value
             key: properties.publicNetworkAccess
             value: null
+    comment: '0240060000'

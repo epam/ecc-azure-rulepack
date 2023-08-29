@@ -17,3 +17,4 @@ policies:
           - type: server-parameters
             property: local_infile
             value: "ON"
+    comment: '0220061800'

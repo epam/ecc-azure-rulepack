@@ -18,3 +18,4 @@ policies:
             key: properties.publicAccess
             value: Container
       - storage-single-log-profile
+    comment: '0240011500'

@@ -21,3 +21,4 @@ policies:
           - type: value
             key: properties.networkRuleSet.defaultAction
             value: ""
+    comment: '0224080000'

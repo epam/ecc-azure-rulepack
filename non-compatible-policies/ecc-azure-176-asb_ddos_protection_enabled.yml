@@ -19,3 +19,4 @@ policies:
             key: properties.ddosProtectionPlan.id
             value: \/.+\/ddosProtectionPlans\/.+
             op: regex
+    comment: '0232020000'
