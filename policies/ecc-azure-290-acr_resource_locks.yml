@@ -12,3 +12,4 @@ policies:
     filters:
       - type: resource-lock
         lock-type: Absent
+    comment: '0247082000'

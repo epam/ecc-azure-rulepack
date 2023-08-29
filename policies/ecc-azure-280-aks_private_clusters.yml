@@ -13,3 +13,4 @@ policies:
       - type: value
         key: properties.apiServerAccessProfile.enablePrivateCluster
         value: false
+    comment: '0239072000'

@@ -18,3 +18,4 @@ policies:
         key: cors.allowedOrigins
         value: '*'
         op: contains
+    comment: '0222170000'

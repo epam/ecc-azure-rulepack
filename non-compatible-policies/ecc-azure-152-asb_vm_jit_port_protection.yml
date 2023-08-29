@@ -11,3 +11,4 @@ policies:
     resource: azure.vm
     filters:
       - type: security-jit-policy
+    comment: '0224030000'

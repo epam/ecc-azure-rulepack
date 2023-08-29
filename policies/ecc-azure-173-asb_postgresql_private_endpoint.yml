@@ -22,3 +22,4 @@ policies:
                 key: properties.privateEndpointConnections[].properties.privateLinkServiceConnectionState.status
                 value: Approved
                 op: contains
+    comment: '0240060000'

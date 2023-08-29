@@ -17,3 +17,4 @@ policies:
           - type: server-configuration
             property: logging_collector
             value: "OFF"
+    comment: '0219061900'

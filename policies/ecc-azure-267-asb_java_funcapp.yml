@@ -21,3 +21,4 @@ policies:
           - type: configuration
             key: windowsFxVersion
             value: "Java|8"
+    comment: '0221170000'

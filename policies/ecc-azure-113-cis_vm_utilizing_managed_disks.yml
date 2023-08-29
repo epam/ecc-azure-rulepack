@@ -19,3 +19,4 @@ policies:
             key: properties.storageProfile.dataDisk.vhd.uri
             value: .+
             op: regex
+    comment: '0243031500'

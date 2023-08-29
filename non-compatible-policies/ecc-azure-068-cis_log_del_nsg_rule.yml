@@ -24,3 +24,4 @@ policies:
                     key: alerts[].scopes[]
                     value: ^\/[a-z]{13}\/[a-z0-9A-Z]{8}\-[a-z0-9A-Z]{4}\-[a-z0-9A-Z]{4}\-[a-z0-9A-Z]{4}\-[a-z0-9A-Z]{12}$
                     op: regex
+    comment: '0216011500'

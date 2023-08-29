@@ -17,3 +17,4 @@ policies:
           - type: value
             key: properties.pricingTier
             value: Standard
+    comment: '0232181500'

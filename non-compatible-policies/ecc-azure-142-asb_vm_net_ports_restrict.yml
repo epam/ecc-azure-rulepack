@@ -25,3 +25,4 @@ policies:
             key: properties.networkInterfaces[].id
             value: \/subscriptions.+\/networkInterfaces\/.+
             op: regex
+    comment: '0242020000'

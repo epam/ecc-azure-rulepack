@@ -17,3 +17,4 @@ policies:
           - type: value
             key: properties.encryption.keySource
             value: Microsoft.KeyVault
+    comment: '0243090000'

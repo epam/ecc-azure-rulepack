@@ -13,3 +13,4 @@ policies:
       - type: value
         key: properties.repoConfiguration
         value: absent
+    comment: '0220052000'

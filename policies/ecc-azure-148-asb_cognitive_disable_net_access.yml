@@ -14,3 +14,4 @@ policies:
         key: properties.networkAcls.defaultAction
         value: Deny
         op: ne
+    comment: '0224020000'

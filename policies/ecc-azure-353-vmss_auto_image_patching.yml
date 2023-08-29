@@ -14,3 +14,4 @@ policies:
           - type: value
             key: properties.upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade
             value: true
+    comment: '0221032000'

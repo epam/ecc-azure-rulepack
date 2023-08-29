@@ -18,3 +18,4 @@ policies:
               - type: server-parameters
                 property: audit_log_events
                 value: "CONNECTION"
+    comment: '0219061400'

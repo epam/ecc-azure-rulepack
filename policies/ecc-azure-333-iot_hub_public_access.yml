@@ -13,3 +13,4 @@ policies:
       - type: value
         key: properties.publicNetworkAccess
         value: Enabled
+    comment: '0240022000'

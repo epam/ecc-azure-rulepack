@@ -44,3 +44,4 @@ policies:
                 key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
                 value: "KSWS"
                 op: regex
+    comment: '0223030000'
