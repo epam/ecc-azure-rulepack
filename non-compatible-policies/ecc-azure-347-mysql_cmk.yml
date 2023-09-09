@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-347-mysql_cmk
+    comment: '020043062000'
     description: |
       MySQL instance without CMK encryption configured
     resource: azure.mysql-server
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.byokEnforcement
         value: Disabled
-    comment: '0243062000'

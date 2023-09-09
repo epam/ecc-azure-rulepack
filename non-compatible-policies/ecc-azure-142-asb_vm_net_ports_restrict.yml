@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-142-asb_vm_net_ports_restrict
+    comment: '020042020000'
     description: |
       Network Security Group assigned to network interface or subnet with inbound rule that allows all traffic from the Internet
     resource: azure.networksecuritygroup
@@ -25,4 +26,3 @@ policies:
             key: properties.networkInterfaces[].id
             value: \/subscriptions.+\/networkInterfaces\/.+
             op: regex
-    comment: '0242020000'

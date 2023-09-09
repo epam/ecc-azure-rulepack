@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-020-cis_db_sql_va
+    comment: '020016061500'
     description: |
       Azure SQL Vulnerability Assesment is disabled or storage account property is not configured
     resource: azure.sql-server
@@ -13,4 +14,3 @@ policies:
       - type: vulnerability-assessments
         property: storageContainerPath
         value: null
-    comment: '0216061500'

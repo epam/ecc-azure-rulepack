@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-318-cis_postgresql_log_line_prefix_set_correctly
+    comment: '020019061900'
     description: |
       PostgreSQL instance with server parameter 'log_line_prefix' set incorrectly
     resource: azure.postgresql-server
@@ -14,4 +15,3 @@ policies:
           - type: server-configuration
             property: log_line_prefix
             value: "%m [%p]: [%l-1], db=%d,user=%u,app=%a,client=%h,"
-    comment: '0219061900'

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-163-asb_eg_domains_private_link
+    comment: '020041020000'
     description: |
       Event Grid Domains service without Private Endpoint connection configured
     resource: azure.event-grid-domain
@@ -15,4 +16,3 @@ policies:
             key: properties.privateEndpointConnections[].properties.privateLinkServiceConnectionState.status
             value: Approved
             op: contains
-    comment: '0240020000'

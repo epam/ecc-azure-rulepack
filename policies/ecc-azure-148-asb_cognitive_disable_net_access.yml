@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-148-asb_cognitive_disable_net_access
+    comment: '020040020000'
     description: |
       Cognitive service with defaultAction set to "Allow"
     resource: azure.cognitiveservice
@@ -14,4 +15,3 @@ policies:
         key: properties.networkAcls.defaultAction
         value: Deny
         op: ne
-    comment: '0224020000'

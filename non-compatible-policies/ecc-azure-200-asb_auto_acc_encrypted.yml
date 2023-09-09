@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-200-asb_auto_acc_encrypted
+    comment: '020043090000'
     description: |
       Automation account with unencrypted variable
     resource: azure.automation-account
@@ -14,4 +15,3 @@ policies:
         key: is_encrypted
         value: false
         op: eq
-    comment: '0243090000'

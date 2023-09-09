@@ -7,6 +7,7 @@
 # Policy only checks ADE as disks encryption option
 policies:
   - name: ecc-azure-197-asb_vm_disk_encryption_on
+    comment: '020043030000'
     description: |
       Virtual machine without Azure Disk Encryption configured
     resource: azure.vm
@@ -21,4 +22,3 @@ policies:
                 key: resources[].id
                 value: \/.+\/virtualMachines\/.+\/extensions\/AzureDiskEncryptionForLinux
                 op: regex
-    comment: '0243030000'

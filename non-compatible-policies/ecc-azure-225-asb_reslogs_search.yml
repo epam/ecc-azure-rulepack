@@ -7,6 +7,7 @@
 # Number of retention days can be manually defined according to the Customer's compliance policy
 policies:
   - name: ecc-azure-225-asb_reslogs_search
+    comment: '020019010000'
     description: |
       Azure Search with logging and retention policy disabled
     resource: azure.search
@@ -17,4 +18,3 @@ policies:
           - type: diagnostic-settings
             key: length(logs[?category == 'OperationLogs' && enabled == `true` && retention_policy.enabled == `true` && retention_policy.days > `0`])
             value: 0
-    comment: '0219010000'

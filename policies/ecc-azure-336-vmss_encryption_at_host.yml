@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-336-vmss_encryption_at_host
+    comment: '020043032000'
     description: |
       Virtual machine scale sets without EncryptionAtHost enabled
     resource: azure.vmss
@@ -14,4 +15,3 @@ policies:
           - type: value
             key: properties.virtualMachineProfile.securityProfile.encryptionAtHost
             value: true
-    comment: '0243032000'

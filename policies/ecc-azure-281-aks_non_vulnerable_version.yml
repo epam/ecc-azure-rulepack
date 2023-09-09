@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-281-aks_non_vulnerable_version
+    comment: '020021072000'
     description: |
       Kubernetes cluster that utilizes one of the vulnerable k8s versions
     resource: azure.aks
@@ -80,4 +81,3 @@ policies:
               - 1.13.2
               - 1.13.1
               - 1.13.0
-    comment: '0221072000'

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-162-asb_redis_cache_reside_vnet
+    comment: '020041060000'
     description: |
       Redis cache that does not reside in a subnet
     resource: azure.redis
@@ -19,4 +20,3 @@ policies:
                 key: properties.subnetId
                 value: \/.+\/virtualNetworks\/.+\/subnets\/.+
                 op: regex
-    comment: '0241060000'

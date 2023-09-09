@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-356-api_mgmt_client_cert
+    comment: '020029090000'
     description: |
       API Managment service without configured client certificates
     resource: azure.api-management
@@ -15,4 +16,3 @@ policies:
             key: count
             value: 1
             op: gte
-    comment: '0229090000'

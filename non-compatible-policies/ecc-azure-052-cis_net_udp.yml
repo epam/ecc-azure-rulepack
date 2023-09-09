@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-052-cis_net_udp
+    comment: '020042021500'
     description: |
       Network Security Group with inbound rule that allows UDP traffic from the Internet
     resource: azure.networksecuritygroup
@@ -15,4 +16,3 @@ policies:
         access: 'Allow'
         ipProtocol: 'UDP'
         sourceAddress: ['*', 'Internet', '0.0.0.0/0']
-    comment: '0242021500'

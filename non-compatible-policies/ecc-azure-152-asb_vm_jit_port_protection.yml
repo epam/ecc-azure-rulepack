@@ -6,9 +6,9 @@
 
 policies:
   - name: ecc-azure-152-asb_vm_jit_port_protection
+    comment: '020033030000'
     description: |
       VM without JIT policy enabled for SSH or RDP ports
     resource: azure.vm
     filters:
       - type: security-jit-policy
-    comment: '0224030000'

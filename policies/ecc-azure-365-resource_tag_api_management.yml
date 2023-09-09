@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-365-resource_tag_api_management
+    comment: '020010092000'
     description: |
       API Management without tags
     resource: azure.api-management
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: tags
         value: empty
-    comment: '0210092000'

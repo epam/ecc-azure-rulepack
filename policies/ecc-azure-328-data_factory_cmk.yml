@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-328-data_factory_cmk
+    comment: '020043052000'
     description: |
       Azure data factories are not encrypted with a customer-managed key
     resource: azure.datafactory
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.encryption
         value: absent
-    comment: '0243052000'

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-207-asb_sql_managed_inst_cmk
+    comment: '020043060000'
     description: |
       SQL managed instance without CMK encryption configured
     resource: azure.sql-managed-instance
@@ -13,4 +14,3 @@ policies:
       - type: encryption-protector
         key: kind
         value: servicemanaged
-    comment: '0243060000'

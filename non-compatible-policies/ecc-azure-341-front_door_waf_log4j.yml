@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-341-front_door_waf_log4j
+    comment: '020027022000'
     description: |
       Azure Front Door without Log4j WAF rule enabled
     resource: azure.front-door
@@ -18,4 +19,3 @@ policies:
         key: managed_rules.managed_rule_sets[0].rule_group_overrides[0].rules[0].enabled_state
         value: 'Disabled'
         op: eq
-    comment: '0223022000'

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-203-asb_postgresql_encrypt_cmk
+    comment: '020043060000'
     description: |
       PostgreSQL instance without CMK encryption configured
     resource: azure.postgresql-server
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.byokEnforcement
         value: Disabled
-    comment: '0243060000'

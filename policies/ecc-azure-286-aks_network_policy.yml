@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-286-aks_network_policy
+    comment: '020023072000'
     description: |
       A network policy is not in place to secure traffic between pods
     resource: azure.aks
@@ -18,4 +19,3 @@ policies:
           - type: value
             key: properties.networkProfile.networkPolicy
             value: absent
-    comment: '0223072000'

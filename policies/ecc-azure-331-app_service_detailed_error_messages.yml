@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-331-app_service_detailed_error_messages
+    comment: '020019172000'
     description: |
       App service with disabled detailed logging of error messages
     resource: azure.webapp
@@ -17,4 +18,3 @@ policies:
       - type: configuration
         key: detailedErrorLoggingEnabled
         value: false
-    comment: '0219172000'

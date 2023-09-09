@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-159-asb_sa_restrict_net_access_vnet_rules
+    comment: '020041040000'
     description: |
       Storage accounts without virtual network IP rules
     resource: azure.storage
@@ -19,4 +20,3 @@ policies:
             key: length(properties.networkAcls.ipRules[?contains(keys(@), 'action')])
             value: 0
             op: gt
-    comment: '0240040000'
