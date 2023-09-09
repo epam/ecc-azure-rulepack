@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-150-asb_vm_net_access_protected_by_nsg
+    comment: '020042030000'
     description: |
       Primary virtual machine network interface with public ip assigned without Network Security Group assignment
     resource: azure.networkinterface
@@ -22,4 +23,3 @@ policies:
             key: properties.networkSecurityGroup.id
             value: \/.+\/networkSecurityGroups\/.+
             op: regex
-    comment: '0240030000'

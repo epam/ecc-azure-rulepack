@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-137-storage_replication
+    comment: '020050042000'
     description: |
       Storage account without replication enabled
     resource: azure.storage
@@ -14,4 +15,3 @@ policies:
           - type: value
             key: properties.statusOfSecondary
             value: available
-    comment: '0250042000'

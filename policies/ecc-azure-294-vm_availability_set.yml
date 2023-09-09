@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-294-vm_availability_set
+    comment: '020050032000'
     description: |
       Azure Virtual Machine is not assigned to an availability set
     resource: azure.vm
@@ -15,4 +16,3 @@ policies:
             key: properties.availabilitySet.id
             value: .+
             op: regex
-    comment: '0250032000'

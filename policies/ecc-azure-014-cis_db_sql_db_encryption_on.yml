@@ -6,10 +6,10 @@
 
 policies:
   - name: ecc-azure-014-cis_db_sql_db_encryption_on
+    comment: '020043061500'
     description: |
       Transparent Data Encryption is disabled on SQL Database
     resource: azure.sql-database
     filters:
       - type: transparent-data-encryption
         enabled: false
-    comment: '0243061500'

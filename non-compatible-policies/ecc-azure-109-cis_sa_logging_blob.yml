@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-109-cis_sa_logging_blob
+    comment: '020019041500'
     description: |
       Storage account without logging enabled for Blobs
     resource: azure.storage
@@ -27,4 +28,3 @@ policies:
           - key: logging.delete
             value: false
             op: eq
-    comment: '0219041500'

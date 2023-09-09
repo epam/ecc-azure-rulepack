@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-174-asb_sa_private_link
+    comment: '020041040000'
     description: |
       Storage Account without Private Endpoint connection configured
     resource: azure.storage
@@ -26,4 +27,3 @@ policies:
                 key: properties.privateEndpointConnections[].properties.privateLinkServiceConnectionState.status
                 value: Approved
                 op: contains
-    comment: '0240040000'

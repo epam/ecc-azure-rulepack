@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-213-asb_lt_defender_dns
+    comment: '020032180000'
     description: |
       Azure Defender for DNS is set to "Off"
     resource: azure.defender-pricing
@@ -19,4 +20,3 @@ policies:
             key: properties.pricingTier
             value: "Standard"
             op: eq
-    comment: '0232180000'

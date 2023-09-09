@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-378-cis_nsg_flow_log_analytics
+    comment: '020019021500'
     description: |
       Network Security Group Flow Log Analytics disabled
     resource: azure.networksecuritygroup
@@ -14,4 +15,3 @@ policies:
           - type: flow-analytics-logging
             key: enabled
             value: true
-    comment: '0232021500'

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-166-asb_signalr_private_link
+    comment: '020041020000'
     description: |
       SignalR service without Private Endpoint connection configured
     resource: azure.signalr
@@ -15,4 +16,3 @@ policies:
             key: properties.privateEndpointConnections[].properties.privateLinkServiceConnectionState.status
             value: Approved
             op: contains
-    comment: '0240020000'

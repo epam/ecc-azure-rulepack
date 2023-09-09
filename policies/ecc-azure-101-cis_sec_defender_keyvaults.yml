@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-101-cis_sec_defender_keyvaults
+    comment: '020016181500'
     description: |
       Azure Defender for Key Vault is set to "Off"
     resource: azure.defender-pricing
@@ -17,4 +18,3 @@ policies:
           - type: value
             key: properties.pricingTier
             value: Standard
-    comment: '0216181500'

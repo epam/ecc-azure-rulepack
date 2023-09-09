@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-069-cis_app_last_java
+    comment: '020021171500'
     description: |
       App Service with outdated Java version
     resource: azure.webapp
@@ -26,4 +27,3 @@ policies:
           - type: configuration
             key: javaVersion
             value: "1.8"
-    comment: '0221171500'

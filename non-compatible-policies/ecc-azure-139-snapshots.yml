@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-139-snapshots
+    comment: '020049032000'
     description: |
       Disk without recent snapshots taken in the last 14 days
     resource: azure.disk
@@ -14,4 +15,3 @@ policies:
           - type: snapshots
             exist: true
             max-age: 14
-    comment: '0249032000'

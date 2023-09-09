@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-204-asb_cognitive_sa_encrypt_cmk
+    comment: '020043090000'
     description: |
       Cognitive Services without CMK encryption configured
     resource: azure.cognitiveservice
@@ -17,4 +18,3 @@ policies:
           - type: value
             key: properties.encryption.keySource
             value: Microsoft.KeyVault
-    comment: '0243090000'

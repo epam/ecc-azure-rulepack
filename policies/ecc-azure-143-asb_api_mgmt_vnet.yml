@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-143-asb_api_mgmt_vnet
+    comment: '020041020000'
     description: |
       API Management service without virtual network configured
     resource: azure.api-management
@@ -24,4 +25,3 @@ policies:
                 key: properties.virtualNetworkType
                 value: 'External'
                 op: eq
-    comment: '0240020000'

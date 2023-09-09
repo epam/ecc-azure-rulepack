@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-151-asb_vm_disable_ip_forward
+    comment: '020024030000'
     description: |
       Virtual machine network interface with IP Forwarding enabled
     resource: azure.networkinterface
@@ -18,4 +19,3 @@ policies:
           - type: value
             key: properties.enableIPForwarding
             value: true
-    comment: '0224030000'

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-289-acr_admin_user_disabled
+    comment: '020035082000'
     description: |
       Admin user is enabled for Container Registry
     resource: azure.container-registry
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.adminUserEnabled
         value: true
-    comment: '0223082000'

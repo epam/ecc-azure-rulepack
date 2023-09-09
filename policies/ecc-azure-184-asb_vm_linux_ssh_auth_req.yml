@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-184-asb_vm_linux_ssh_auth_req
+    comment: '020034030000'
     description: |
       Linux virtual machine without SSH authentication method as primary configured (Allows password authentication)
     resource: azure.vm
@@ -48,4 +49,3 @@ policies:
               - type: value
                 key: properties.storageProfile.imageReference.publisher
                 value: Oracle
-    comment: '0234030000'

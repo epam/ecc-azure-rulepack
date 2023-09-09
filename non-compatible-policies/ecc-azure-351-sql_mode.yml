@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-351-sql_mode
+    comment: '020020061800'
     description: |
       MySQL instance without sql_mode parameter set to "STRICT_ALL_TABLES" value
     resource: azure.mysql-server
@@ -14,4 +15,3 @@ policies:
           - type: server-parameters
             property: sql_mode
             value: "STRICT_ALL_TABLES,ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
-    comment: '0220061800'

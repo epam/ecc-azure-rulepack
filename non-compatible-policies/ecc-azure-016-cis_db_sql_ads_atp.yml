@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-016-cis_db_sql_ads_atp
+    comment: '020032061500'
     description: |
       Advanced Threat Protection is disabled on SQL server
     resource: azure.sql-server
@@ -13,4 +14,3 @@ policies:
       - type: sql-server-security-alert-policies
         key: state
         value: Disabled
-    comment: '0232061500'

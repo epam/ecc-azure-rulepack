@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-132-vm_wo_del_lock
+    comment: '020047092000'
     description: |
       Instance without deletion protection
     resource: azure.vm
@@ -13,4 +14,3 @@ policies:
       - not:
           - type: resource-lock
             lock-type: CanNotDelete
-    comment: '0247092000'

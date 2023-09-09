@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-325-data_explorer_disc_encryption
+    comment: '020043052000'
     description: |
       Azure Kusto cluster without disk encryption
     resource: azure.kusto
@@ -14,4 +15,3 @@ policies:
           - type: value
             key: properties.enableDiskEncryption
             value: true
-    comment: '0243052000'

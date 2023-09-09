@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-345-mysql_infrastructure_encryption
+    comment: '020043062000'
     description: |
       MySQL instance with disabled Infrastructure double encryption
     resource: azure.mysql-server
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.infrastructureEncryption
         value: Disabled
-    comment: '0243062000'

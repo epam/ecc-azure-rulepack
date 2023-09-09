@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-161-asb_appconfig_private_link
+    comment: '020041020000'
     description: |
       App Configuration service without Private Endpoint connection configured
     resource: azure.app-configuration
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.privateEndpointConnections
         value: absent
-    comment: '0240020000'

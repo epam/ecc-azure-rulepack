@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-170-asb_keyvault_private_endpoint
+    comment: '020041100000'
     description: |
       Key Vault without Private Endpoint connection configured
     resource: azure.keyvault-by-subscription
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.privateEndpointConnections
         value: absent
-    comment: '0240100000'

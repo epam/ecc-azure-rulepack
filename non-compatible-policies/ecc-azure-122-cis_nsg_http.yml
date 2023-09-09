@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-122-cis_nsg_http
+    comment: '020042021500'
     description: |
       Network Security Group with inbound rule that allows HTTP traffic from the Internet
     resource: azure.networksecuritygroup
@@ -16,4 +17,3 @@ policies:
         ports: '80'
         ipProtocol: 'TCP'
         sourceAddress: ['*', 'Internet', '0.0.0.0/0']
-    comment: '0242021500'

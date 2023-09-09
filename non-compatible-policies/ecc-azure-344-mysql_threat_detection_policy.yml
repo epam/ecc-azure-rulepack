@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-344-mysql_threat_detection_policy
+    comment: '020032062000'
     description: |
       Advanced Threat Protection is disabled on MySQL server
     resource: azure.mysql-server
@@ -13,4 +14,3 @@ policies:
       - type: mysql-server-security-alert-policies-filter
         key: state
         value: Disabled
-    comment: '0232062000'

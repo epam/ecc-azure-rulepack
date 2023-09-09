@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-232-asb_vmss_wo_mma
+    comment: '020019030000'
     description: |
       Virtual machine scale sets without MicrosoftMonitoringAgent or OmsAgentForLinux extension installed
     resource: azure.vmss
@@ -20,4 +21,3 @@ policies:
                 key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
                 value: OmsAgentForLinux
                 op: contains
-    comment: '0232030000'

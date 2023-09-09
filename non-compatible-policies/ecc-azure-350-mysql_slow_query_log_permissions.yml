@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-350-mysql_slow_query_log_permissions
+    comment: '020019061800'
     description: |
       MySQL instance with server parameter 'slow_query_log' disabled
     resource: azure.mysql-server
@@ -17,4 +18,3 @@ policies:
           - type: server-parameters
             property: slow_query_log
             value: "OFF"
-    comment: '0219061800'

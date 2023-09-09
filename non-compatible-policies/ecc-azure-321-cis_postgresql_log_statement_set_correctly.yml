@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-321-cis_postgresql_log_statement_set_correctly
+    comment: '020019061910'
     description: |
       PostgreSQL instance with server parameter 'log_statement' set incorrectly
     resource: azure.postgresql-server
@@ -14,4 +15,3 @@ policies:
           - type: server-configuration
             property: log_statement
             value: "ddl"
-    comment: '0219061910'

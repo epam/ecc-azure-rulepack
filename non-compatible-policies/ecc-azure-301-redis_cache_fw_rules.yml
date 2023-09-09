@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-301-redis_cache_fw_rules
+    comment: '020042062000'
     description: |
       Redis Cache without exposed to the public Internet
     resource: azure.redis
@@ -18,4 +19,3 @@ policies:
         key: 'end_ip'
         op: eq
         value: 0.0.0.0
-    comment: '0239062000'

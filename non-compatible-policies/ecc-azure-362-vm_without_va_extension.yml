@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-362-vm_without_va_extension
+    comment: '020023032000'
     description: Azure Virtual Machines without Vulnerabulity Assessment solution
     resource: azure.security-assessments
     filters:
@@ -15,4 +16,3 @@ policies:
       - type: value
         key: properties.status.cause
         value: VaScannerNotInstalled
-    comment: '0223032000'

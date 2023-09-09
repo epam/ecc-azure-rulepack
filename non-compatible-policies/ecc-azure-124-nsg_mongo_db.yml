@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-124-nsg_mongo_db
+    comment: '020042022000'
     description: |
       Network Security Group with inbound rule that allows MySQL traffic from the Internet
     resource: azure.networksecuritygroup
@@ -16,4 +17,3 @@ policies:
         ports: '27017'
         ipProtocol: 'TCP'
         sourceAddress: ['*', 'Internet', '0.0.0.0/0']
-    comment: '0242022000'

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-278-asb_geo_postgresql
+    comment: '020050060000'
     description: |
       PostgreSQL instance without Geo-redundant backup
     resource: azure.postgresql-server
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.storageProfile.geoRedundantBackup
         value: Disabled
-    comment: '0249060000'

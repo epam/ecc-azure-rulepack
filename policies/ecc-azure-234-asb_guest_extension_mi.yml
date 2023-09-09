@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-234-asb_guest_extension_mi
+    comment: '020023030000'
     description: |
       Virtual machine with Guest Configuration extension installed without utilizing Managed Identity (SystemAssigned)
     resource: azure.vm
@@ -48,4 +49,3 @@ policies:
                   - type: value
                     key: identity.type
                     value: SystemAssigned, UserAssigned
-    comment: '0223030000'
