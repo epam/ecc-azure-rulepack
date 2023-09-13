@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-013-cis_db_auditing_on
+    comment: '020019061500'
     description: |
       Azure SQL Database Auditing is set to "Off"
     resource: azure.sql-auditing-settings
@@ -14,4 +15,3 @@ policies:
         key: properties.state
         op: ne
         value: Enabled
-    comment: '0219061500'

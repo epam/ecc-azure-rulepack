@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-008-cis_sa_sec_transfer_req
+    comment: '020044041500'
     description: |
       Storage account that allows http traffic
     resource: azure.storage
@@ -17,4 +18,3 @@ policies:
         key: tags."ms-resource-usage"
         value: azure-cloud-shell
         op: ne
-    comment: '0244041500'

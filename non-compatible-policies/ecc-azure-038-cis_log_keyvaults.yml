@@ -7,6 +7,7 @@
 # Number of retention days can be manually defined according to the Customer's compliance policy
 policies:
   - name: ecc-azure-038-cis_log_keyvaults
+    comment: '020019101500'
     description: |
       Key Vault with logging and retention policy disabled
     resource: azure.keyvault-by-subscription
@@ -21,4 +22,3 @@ policies:
               - type: diagnostic-settings
                 key: length(logs[?category == 'AuditEvent' && enabled == `true` && retention_policy.days > `0` && retention_policy.enabled == `true`])
                 value: 0
-    comment: '0219101500'

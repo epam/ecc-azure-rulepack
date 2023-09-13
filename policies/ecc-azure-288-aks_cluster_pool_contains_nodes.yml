@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-288-aks_cluster_pool_contains_nodes
+    comment: '020050072000'
     description: |
       Cluster Pool contains less than 3 Nodes
     resource: azure.aks
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: length(properties.agentPoolProfiles[?count < `3`])
         value: 1
-    comment: '0250072000'

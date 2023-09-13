@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-179-asb_app_service_managed_identity
+    comment: '020033170000'
     description: |
       API app without Managed identity configured (both SystemAssigned and UserAssigned)
     resource: azure.webapp
@@ -21,4 +22,3 @@ policies:
       - type: value
         key: identity
         value: absent
-    comment: '0223170000'

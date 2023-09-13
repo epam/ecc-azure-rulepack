@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-311-cis_postgresql_logging_collector
+    comment: '020019061900'
     description: |
       PostgreSQL instance with server parameter 'logging collector' disabled
     resource: azure.postgresql-server
@@ -17,4 +18,3 @@ policies:
           - type: server-configuration
             property: logging_collector
             value: "OFF"
-    comment: '0219061900'

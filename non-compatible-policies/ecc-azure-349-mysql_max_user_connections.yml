@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-349-mysql_max_user_connections
+    comment: '020020061810'
     description: |
       MySQL instance without server setting "max_user_connections" limits
     resource: azure.mysql-server
@@ -13,4 +14,3 @@ policies:
       - type: server-parameters
         property: max_user_connections
         value: 0
-    comment: '0220061810'

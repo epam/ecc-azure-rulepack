@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-205-asb_acs_ecnrypted_cmk
+    comment: '020043080000'
     description: |
       Container Registry without CMK encryption configured
     resource: azure.container-registry
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.encryption.status
         value: disabled
-    comment: '0243080000'

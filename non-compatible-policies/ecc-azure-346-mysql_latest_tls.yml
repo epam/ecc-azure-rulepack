@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-346-mysql_latest_tls
+    comment: '020021062000'
     description: |
       MySQL instance with vulnerable and outdated TLS version
     resource: azure.mysql-server
@@ -14,4 +15,3 @@ policies:
           - type: value
             key: properties.minimalTlsVersion
             value: TLS1_2
-    comment: '0221062000'

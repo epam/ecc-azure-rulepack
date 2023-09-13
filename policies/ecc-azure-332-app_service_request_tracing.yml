@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-332-app_service_request_tracing
+    comment: '020019172000'
     description: |
       App service without configured failed requests tracings
     resource: azure.webapp
@@ -17,4 +18,3 @@ policies:
       - type: configuration
         key: requestTracingEnabled
         value: false
-    comment: '0219172000'

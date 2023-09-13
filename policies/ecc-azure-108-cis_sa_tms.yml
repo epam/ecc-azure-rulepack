@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-108-cis_sa_tms
+    comment: '020033041500'
     description: |
       Storage account without access from/to "Trusted Microsoft Services"
     resource: azure.storage
@@ -18,4 +19,3 @@ policies:
         key: properties.networkAcls.bypass
         op: ne
         value: AzureServices
-    comment: '0233041500'

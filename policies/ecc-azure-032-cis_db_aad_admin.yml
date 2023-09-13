@@ -6,12 +6,12 @@
 
 policies:
   - name: ecc-azure-032-cis_db_aad_admin
+    comment: '020035061500'
     description: |
       Azure Active Directory admin is not configured for Azure SQL
     resource: azure.sql-server
     filters:
       - not:
-        - type: azure-ad-administrators
-          key: azureADOnlyAuthentication
-          value: true
-    comment: '0234061500'
+          - type: azure-ad-administrators
+            key: azureADOnlyAuthentication
+            value: true

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-342-mssql_latest_tls
+    comment: '020021062000'
     description: |
       Azure SQL instance with vulnerable and outdated TLS version
     resource: azure.sql-server
@@ -14,4 +15,3 @@ policies:
           - type: value
             key: properties.minimalTlsVersion
             value: '1.2'
-    comment: '0221062000'

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-287-aks_azure_cni_networking
+    comment: '020020072000'
     description: |
       Azure CNI Networking is disabled
     resource: azure.aks
@@ -14,4 +15,3 @@ policies:
           - type: value
             key: properties.networkProfile.networkPlugin
             value: azure
-    comment: '0220072000'

@@ -6,8 +6,9 @@
 
 policies:
   - name: ecc-azure-291-storage_accounts_regions
+    comment: '020020042000'
     description: |
-          Storage Accounts outside Europe
+      Storage Accounts outside Europe
     resource: azure.storage
     filters:
       - type: value
@@ -15,22 +16,21 @@ policies:
         value: azure-cloud-shell
         op: ne
       - not:
-        - or:
-          - type: value
-            key: location
-            value: northeurope
-          - type: value
-            key: location
-            value: westeurope
-        - and:
           - or:
-            - type: value
-              key: secondaryLocation
-              value: westeurope
-            - type: value
-              key: secondaryLocation
-              value: northeurope
-            - type: value
-              key: secondaryLocation
-              value: empty
-    comment: '0220042000'
+              - type: value
+                key: location
+                value: northeurope
+              - type: value
+                key: location
+                value: westeurope
+          - and:
+              - or:
+                  - type: value
+                    key: secondaryLocation
+                    value: westeurope
+                  - type: value
+                    key: secondaryLocation
+                    value: northeurope
+                  - type: value
+                    key: secondaryLocation
+                    value: empty

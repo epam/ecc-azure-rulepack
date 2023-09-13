@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-036-cis_log_storage_cont_access
+    comment: '020040011500'
     description: |
       Storage container that stores activity logs where public access level set to "Blob" or "Container"
     resource: azure.storage-container
@@ -18,4 +19,3 @@ policies:
             key: properties.publicAccess
             value: Container
       - storage-single-log-profile
-    comment: '0240011500'

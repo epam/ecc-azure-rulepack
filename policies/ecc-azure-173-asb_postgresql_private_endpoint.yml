@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-173-asb_postgresql_private_endpoint
+    comment: '020041060000'
     description: |
       PostgreSQL instance without Private Endpoint connection configured
     resource: azure.postgresql-server
@@ -22,4 +23,3 @@ policies:
                 key: properties.privateEndpointConnections[].properties.privateLinkServiceConnectionState.status
                 value: Approved
                 op: contains
-    comment: '0240060000'

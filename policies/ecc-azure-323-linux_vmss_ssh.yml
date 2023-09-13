@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-323-linux_vmss_ssh
+    comment: '020034032000'
     description: |
       Azure Linux virtual machines scale set doesn't use an SSH key
     resource: azure.vmss
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication
         value: false
-    comment: '0223032000'

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-128-nsg_pop3
+    comment: '020042022000'
     description: |
       Network Security Group with inbound rule that allows POP3 traffic from the Internet
     resource: azure.networksecuritygroup
@@ -16,4 +17,3 @@ policies:
         ports: '110'
         ipProtocol: 'TCP'
         sourceAddress: ['*', 'Internet', '0.0.0.0/0']
-    comment: '0242022000'

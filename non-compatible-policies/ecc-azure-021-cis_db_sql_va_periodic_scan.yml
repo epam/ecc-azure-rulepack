@@ -6,10 +6,10 @@
 
 policies:
   - name: ecc-azure-021-cis_db_sql_va_periodic_scan
+    comment: '020016061500'
     description: Azure SQL Vulnerability Assesment Reccuring Scans is disabled
     resource: azure.sql-server
     filters:
       - type: vulnerability-assessments
         property: recurringScans.isEnabled
         value: false
-    comment: '0216061500'

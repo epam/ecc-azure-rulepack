@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-054-cis_vm_unattached_disks
+    comment: '020043031500'
     description: |
       Unattached managed disks not encrypted with Customer Managed Key
     resource: azure.disk
@@ -18,4 +19,3 @@ policies:
             key: properties.encryption.type
             op: in
             value: [EncryptionAtRestWithPlatformKey, EncryptionAtRestWithPlatformAndCustomerKeys]
-    comment: '0243031500'

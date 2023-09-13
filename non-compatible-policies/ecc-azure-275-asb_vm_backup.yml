@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-275-asb_vm_backup
+    comment: '020049030000'
     description: |
       Virtual machine without Backup configured
     resource: azure.vm
@@ -13,4 +14,3 @@ policies:
       - not:
           - type: backup-status
             protection-status: Protected
-    comment: '0249030000'

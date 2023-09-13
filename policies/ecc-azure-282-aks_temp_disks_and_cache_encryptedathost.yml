@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-282-aks_temp_disks_and_cache_encryptedathost
+    comment: '020043072000'
     description: |
       Kubernetes cluster without EncryptionAtHost enabled
     resource: azure.aks
@@ -22,4 +23,3 @@ policies:
           - type: value
             key: properties.agentPoolProfiles[].enableEncryptionAtHost
             value: absent
-    comment: '0244072000'

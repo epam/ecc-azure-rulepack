@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-059-cis_app_auth_set
+    comment: '020033171500'
     description: |
       App Service without App Service Authentication enabled
     resource: azure.webapp-auth-settings
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.enabled
         value: false
-    comment: '0233171500'

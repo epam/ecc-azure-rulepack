@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-006-cis_sec_high_sev_notifications
+    comment: '020016181500'
     description: |
       Notification alerts are disabled in Security Center (Microsoft Defender for Cloud)
     resource: azure.security-contacts
@@ -14,4 +15,3 @@ policies:
         key: properties.alertNotifications
         value: "Off"
         op: eq
-    comment: '0216181500'

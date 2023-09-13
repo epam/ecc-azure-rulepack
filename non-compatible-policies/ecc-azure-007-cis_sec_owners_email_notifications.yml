@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-007-cis_sec_owners_email_notifications
+    comment: '020016181500'
     description: |
       Notification alerts to admins or subscription owners are disabled in Microsoft Defender for Cloud
     resource: azure.security-contacts
@@ -14,4 +15,3 @@ policies:
         key: properties.alertsToAdmins
         value: "Off"
         op: eq
-    comment: '0216181500'

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-265-asb_sqlmi
+    comment: '020032060000'
     description: |
       Azure SQL Vulnerability assessment is disabled for a managed instance
     resource: azure.sql-managed-instance
@@ -13,4 +14,3 @@ policies:
       - type: vulnerability-assessments
         key: recurring_scans.is_enabled
         value: false
-    comment: '0221060000'

@@ -6,6 +6,7 @@
 
 policies:
   - name: ecc-azure-279-aks_local_auth_disabled
+    comment: '020033072000'
     description: |
       Kubernetes cluster with local authentication methods enabled
     resource: azure.aks
@@ -13,4 +14,3 @@ policies:
       - type: value
         key: properties.disableLocalAccounts
         value: false
-    comment: '0233072000'
