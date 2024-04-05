@@ -11,6 +11,6 @@ policies:
       Azure SQL Vulnerability Assesment is disabled or storage account property is not configured
     resource: azure.sql-server
     filters:
-      - type: vulnerability-assessments
-        property: storageContainerPath
-        value: null
+      - type: vulnerability-assessment
+        key: storageContainerPath
+        value: absent
