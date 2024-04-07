@@ -9,12 +9,12 @@ policies:
     comment: '020016181500'
     description: |
       'Additional email addresses' is not configured in Microsoft Defender for Cloud
-    resource: azure.security-contacts
+    resource: azure.defender-contact
     filters:
       - or:
           - type: value
-            key: properties.emails
-            value: null
+            key: properties.emails  # todo does such key really can be?
+            value: absent
           - type: value
             key: properties.emails
-            value: ""
+            value: empty

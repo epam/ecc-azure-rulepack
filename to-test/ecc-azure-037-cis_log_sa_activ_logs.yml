@@ -18,5 +18,3 @@ policies:
       - type: value
         key: properties.encryption.keyvaultproperties.keyvaulturi
         value: null
-      - and:
-          - single-log-profile

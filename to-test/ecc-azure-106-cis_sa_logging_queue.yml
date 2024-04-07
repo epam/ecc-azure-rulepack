@@ -15,16 +15,19 @@ policies:
         key: tags."ms-resource-usage"
         value: azure-cloud-shell
         op: ne
-      - type: storage-diagnostic-settings
-        storage-type: queue
-        mode: or
-        conditions:
-          - key: logging.read
-            value: false
+      - or:
+          - type: storage-diagnostic-settings
+            storage-type: queue
+            key: logging.read
             op: eq
-          - key: logging.write
-            value: false
+            value: False
+          - type: storage-diagnostic-settings
+            storage-type: queue
+            key: logging.write
             op: eq
-          - key: logging.delete
-            value: false
+            value: False
+          - type: storage-diagnostic-settings
+            storage-type: queue
+            key: logging.delete
             op: eq
+            value: False

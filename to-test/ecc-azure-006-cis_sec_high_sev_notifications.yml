@@ -5,13 +5,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-013-cis_db_auditing_on
-    comment: '020019061500'
+  - name: ecc-azure-006-cis_sec_high_sev_notifications
+    comment: '020016181500'
     description: |
-      Azure SQL Database Auditing is set to "Off"
-    resource: azure.sql-auditing-settings
+      Notification alerts are disabled in Security Center (Microsoft Defender for Cloud)
+    resource: azure.defender-contact
     filters:
       - type: value
-        key: properties.state
-        op: ne
-        value: Enabled
+        key: properties.alertNotifications
+        value: "Off"

@@ -11,7 +11,4 @@ policies:
       Network Security Group Flow Log Analytics disabled
     resource: azure.networksecuritygroup
     filters:
-      - not:
-          - type: flow-analytics-logging
-            key: enabled
-            value: true
+      - "properties.flowLogs": "absent"
