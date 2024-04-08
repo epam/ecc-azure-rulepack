@@ -18,3 +18,4 @@ policies:
           - type: value
             key: properties.publicAccess
             value: Container
+    # single-log-profile

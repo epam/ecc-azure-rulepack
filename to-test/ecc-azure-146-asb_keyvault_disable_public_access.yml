@@ -5,14 +5,13 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-356-api_mgmt_client_cert
-    comment: '020029090000'
+  - name: ecc-azure-146-asb_keyvault_disable_public_access
+    comment: '020040100000'
     description: |
-      API Managment service without configured client certificates
-    resource: azure.api-management
+      Key Vault with enabled public access
+    resource: azure.keyvault
     filters:
       - not:
-          - type: certificate
-            key: count
-            value: 1
-            op: gte
+          - type: value
+            key: properties.networkAcls.defaultAction
+            value: Deny

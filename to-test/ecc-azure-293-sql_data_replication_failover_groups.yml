@@ -11,7 +11,6 @@ policies:
       Azure SQL Server data replication with Fail Over groups
     resource: azure.sql-server
     filters:
-      - type: failover-group-filter
-        key: length(failover_groups)
-        op: eq
-        value: 0
+      - type: failover-group
+        count: 0
+        count_op: eq

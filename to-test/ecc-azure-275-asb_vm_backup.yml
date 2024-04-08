@@ -5,12 +5,13 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-170-asb_keyvault_private_endpoint
-    comment: '020041100000'
+  - name: ecc-azure-275-asb_vm_backup
+    comment: '020049030000'
     description: |
-      Key Vault without Private Endpoint connection configured
-    resource: azure.keyvault-by-subscription
+      Virtual machine without Backup configured
+    resource: azure.vm
     filters:
-      - type: value
-        key: properties.privateEndpointConnections
-        value: absent
+      - type: backup-status
+        key: protectionStatus
+        value: Protected
+        op: ne
