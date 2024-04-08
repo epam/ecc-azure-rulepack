@@ -5,11 +5,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-023-cis_db_sql_va_email_notifications
+  - name: ecc-azure-021-cis_db_sql_va_periodic_scan
     comment: '020016061500'
-    description: Azure SQL Vulnerability Assesment emailing to admins and subscription owners is not configured
+    description: |
+      Azure SQL Vulnerability Assesment Reccuring Scans is disabled
     resource: azure.sql-server
     filters:
-      - type: vulnerability-assessments
-        property: recurringScans.emailSubscriptionAdmins
+      - type: vulnerability-assessment
+        key: recurringScans.isEnabled
         value: false
