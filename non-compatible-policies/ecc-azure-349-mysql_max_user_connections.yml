@@ -9,8 +9,9 @@ policies:
     comment: '020020061810'
     description: |
       MySQL instance without server setting "max_user_connections" limits
-    resource: azure.mysql-server
+    resource: azure.mysql
     filters:
-      - type: server-parameters
-        property: max_user_connections
+      - type: server-configuration
+        name: max_user_connections
+        key: value
         value: 0
