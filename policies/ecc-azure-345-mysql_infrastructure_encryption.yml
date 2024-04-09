@@ -9,7 +9,7 @@ policies:
     comment: '020043062000'
     description: |
       MySQL instance with disabled Infrastructure double encryption
-    resource: azure.mysql-server
+    resource: azure.mysql
     filters:
       - type: value
         key: properties.infrastructureEncryption
