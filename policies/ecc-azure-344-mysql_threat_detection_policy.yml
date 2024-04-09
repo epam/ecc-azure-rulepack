@@ -9,8 +9,8 @@ policies:
     comment: '020032062000'
     description: |
       Advanced Threat Protection is disabled on MySQL server
-    resource: azure.mysql-server
+    resource: azure.mysql
     filters:
-      - type: mysql-server-security-alert-policies-filter
+      - type: security-alert-policy
         key: state
         value: Disabled
