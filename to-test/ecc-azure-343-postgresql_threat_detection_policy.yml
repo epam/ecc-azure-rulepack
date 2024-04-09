@@ -5,13 +5,14 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-317-cis_postgresql_log_error_verbosity_set_correctly
-    comment: '020019061910'
+  - name: ecc-azure-343-postgresql_threat_detection_policy
+    comment: '020032062000'
     description: |
-      PostgreSQL instance without server parameter 'log_error_verbosity' set to VERBOSE
+      Advanced Threat Protection is disabled on PostgreSQL server
     resource: azure.postgresql-server
     filters:
-      - not:
-          - type: server-configuration
-            property: log_error_verbosity
-            value: "verbose"
+      - type: security-alert-policies
+        attrs:
+          - type: value
+            key: properties.state
+            value: Disabled

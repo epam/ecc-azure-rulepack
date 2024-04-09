@@ -5,16 +5,18 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-026-cis_db_postgresql_log_checkpoints
+  - name: ecc-azure-027-cis_db_postgresql_log_connections
     comment: '020019061500'
     description: |
-      PostgreSQL instance with server parameter 'log_checkpoints' disabled
+      PostgreSQL instance with server parameter 'log_connections' disabled
     resource: azure.postgresql-server
     filters:
-      - or:
-          - type: server-configuration
-            property: log_checkpoints
+      - type: server-configurations
+        attrs:
+          - type: value
+            key: name
+            value: log_connections
+          - type: value
+            key: properties.value
             value: "off"
-          - type: server-configuration
-            property: log_checkpoints
-            value: "OFF"
+            value_type: normalize

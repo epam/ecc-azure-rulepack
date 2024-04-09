@@ -11,10 +11,12 @@ policies:
       PostgreSQL instance with server parameter 'logging collector' disabled
     resource: azure.postgresql-server
     filters:
-      - or:
-          - type: server-configuration
-            property: logging_collector
+      - type: server-configurations
+        attrs:
+          - type: value
+            key: name
+            value: logging_collector
+          - type: value
+            key: properties.value
             value: "off"
-          - type: server-configuration
-            property: logging_collector
-            value: "OFF"
+            value_type: normalize
