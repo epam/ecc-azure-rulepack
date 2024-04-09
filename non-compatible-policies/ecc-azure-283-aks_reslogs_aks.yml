@@ -13,7 +13,8 @@ policies:
     filters:
       - or:
           - type: diagnostic-settings
-            enabled: false
-          - type: diagnostic-settings
             key: length(logs[?(category == 'kube-apiserver' || category == 'kube-audit' || category == 'kube-audit-admin' || category == 'kube-controller-manager' || category == 'kube-scheduler' || category == 'cluster-autoscaler' || category == 'cloud-controller-manager' || category == 'guard') && enabled == `true` && retention_policy.enabled == `true` && retention_policy.days > `0`])
             value: 0
+          - type: diagnostic-settings
+            key: logs
+            value: absent
