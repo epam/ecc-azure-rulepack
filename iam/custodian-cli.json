@@ -38,6 +38,8 @@
         "Microsoft.DBforMySQL/servers/read",
         "Microsoft.DBforMySQL/servers/configurations/read",
         "Microsoft.DBforMySQL/servers/securityAlertPolicies/read",
+        "Microsoft.DBforMySQL/flexibleServers/read",
+        "Microsoft.DBforMySQL/flexibleServers/configurations/read",
         "Microsoft.DBforMariaDB/servers/read",
         "Microsoft.Devices/iotHubs/Read",
         "Microsoft.Devices/IotHubs/diagnosticSettings/read",
