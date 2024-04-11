@@ -9,12 +9,8 @@ policies:
     comment: '020040060000'
     description: |
       MySQL instance with public access enabled
-    resource: azure.mysql-server
+    resource: azure.mysql-flexibleserver
     filters:
       - type: value
         key: properties.publicNetworkAccess
         value: Enabled
-      - not:
-          - type: value
-            key: properties.publicNetworkAccess
-            value: null
