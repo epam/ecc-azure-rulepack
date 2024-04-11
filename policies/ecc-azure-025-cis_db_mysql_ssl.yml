@@ -9,8 +9,11 @@ policies:
     comment: '020044061500'
     description: |
       SSL connection is disabled on MySQL servers
-    resource: azure.mysql-server
+    resource: azure.mysql-flexibleserver
     filters:
-      - type: value
-        key: properties.sslEnforcement
-        value: Disabled
+      - type: server-parameter
+        name: require_secure_transport
+        key: value
+        op: eq
+        value: "OFF"
+
