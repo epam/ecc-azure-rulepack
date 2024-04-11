@@ -9,7 +9,7 @@ policies:
     comment: '020043062000'
     description: |
       MySQL instance without CMK encryption configured
-    resource: azure.mysql-server
+    resource: azure.mysql-flexibleserver
     filters:
       - type: value
         key: properties.byokEnforcement

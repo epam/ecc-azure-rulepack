@@ -8,7 +8,7 @@
         "permissions": [
             {
                 "actions": [
-                    "Microsoft.DBforMySQL/servers/read"
+                    "Microsoft.DBforMySQL/flexibleServers/read"
                 ],
                 "notActions": [],
                 "dataActions": [],
