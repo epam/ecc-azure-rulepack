@@ -9,9 +9,10 @@ policies:
     comment: '020021062000'
     description: |
       MySQL instance with vulnerable and outdated TLS version
-    resource: azure.mysql-server
+    resource: azure.mysql-flexibleserver
     filters:
-      - not:
-          - type: value
-            key: properties.minimalTlsVersion
-            value: TLS1_2
+      - type: server-parameter
+        name: tls_version
+        key: value
+        op: ne
+        value: "TLSv1.2"

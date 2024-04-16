@@ -1,5 +1,6 @@
 resource "random_password" "this" {
   length           = 16
+  number           = true
   special          = true
   override_special = "_%@"
 }
