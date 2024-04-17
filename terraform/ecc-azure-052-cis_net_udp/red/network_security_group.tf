@@ -8,7 +8,7 @@ resource "azurerm_network_security_group" "this" {
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
-    protocol                   = "UDP"
+    protocol                   = "Udp"
     source_port_range          = "*"
     destination_port_range     = "*"
     source_address_prefix      = "*"

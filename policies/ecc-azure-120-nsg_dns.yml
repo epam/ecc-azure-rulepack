@@ -11,9 +11,23 @@ policies:
       Network Security Group with inbound rule that allows DNS traffic from the Internet
     resource: azure.networksecuritygroup
     filters:
-      - type: ingress
-        match: any
-        access: 'Allow'
-        ports: '53'
-        ipProtocol: 'TCP'
-        sourceAddress: ['*', 'Internet', '0.0.0.0/0']
+      - or:
+        - type: ingress
+          match: any
+          access: 'Allow'
+          ports: '53'
+          ipProtocol: 'TCP'
+          source: '*'
+        - type: ingress
+          match: any
+          access: 'Allow'
+          ports: '53'
+          ipProtocol: 'TCP'
+          source: 'Internet'
+        - type: ingress
+          match: any
+          access: 'Allow'
+          ports: '53'
+          ipProtocol: 'TCP'
+          source: '0.0.0.0/0'
+

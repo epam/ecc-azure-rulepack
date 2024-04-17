@@ -1,0 +1,42 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-142-asb_vm_net_ports_restrict
+    comment: '020042020000'
+    description: |
+      Network Security Group assigned to network interface or subnet with inbound rule that allows all traffic from the Internet
+    resource: azure.networksecuritygroup
+    filters:
+      - or:
+        - type: ingress
+          match: all
+          access: 'Allow'
+          ports: '0-65535'
+          ipProtocol: '*'
+          source: '*'
+        - type: ingress
+          match: all
+          access: 'Allow'
+          ports: '0-65535'
+          ipProtocol: '*'
+          source: Internet'
+        - type: ingress
+          match: all
+          access: 'Allow'
+          ports: '0-65535'
+          ipProtocol: '*'
+          source: '0.0.0.0/0'     
+      - or:
+        - type: value
+          key: properties.subnets[0].id
+          op: regex
+          value: \/subscriptions.+\/subnets\/.+  
+        - type: value
+          key: properties.networkInterfaces[0].id
+          op: regex
+          value: \/subscriptions.+\/networkInterfaces\/.+
+          
