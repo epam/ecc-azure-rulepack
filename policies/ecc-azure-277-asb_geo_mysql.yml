@@ -9,8 +9,8 @@ policies:
     comment: '020050060000'
     description: |
       MySQL instance without Geo-redundant backup
-    resource: azure.mysql-server
+    resource: azure.mysql-flexibleserver
     filters:
       - type: value
-        key: properties.storageProfile.geoRedundantBackup
+        key: properties.backup.geoRedundantBackup
         value: Disabled
