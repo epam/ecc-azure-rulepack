@@ -12,5 +12,5 @@ policies:
     resource: azure.mysql-flexibleserver
     filters:
       - type: value
-        key: properties.byokEnforcement
-        value: Disabled
+        key: properties.dataEncryption
+        value: present
