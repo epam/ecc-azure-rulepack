@@ -11,11 +11,11 @@ policies:
       Azure Front Door without Log4j WAF rule enabled
     resource: azure.front-door
     filters:
-      - type: web-application-firewall-policies
-        key: managed_rules.managed_rule_sets[0].rule_group_overrides[0].rules[0].rule_id
-        value: '944240'
-        op: eq
-      - type: web-application-firewall-policies
-        key: managed_rules.managed_rule_sets[0].rule_group_overrides[0].rules[0].enabled_state
-        value: 'Disabled'
-        op: eq
+      - type: firewall-policy
+        attrs:
+          - type: value
+            key: properties.managedRules.managedRuleSets[].ruleGroupOverrides[].rules[].ruleId  # todo old rule version had [0] instead []
+            value: '944240'
+          - type: value
+            key: properties.managedRules.managedRuleSets[].ruleGroupOverrides[].rules[].enabledState
+            value: Disabled

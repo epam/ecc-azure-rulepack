@@ -11,7 +11,8 @@ policies:
       Automation account with unencrypted variable
     resource: azure.automation-account
     filters:
-      - type: variable-value
-        key: is_encrypted
-        value: false
-        op: eq
+      - type: variable
+        attrs:
+          - type: value
+            key: properties.isEncrypted
+            value: false

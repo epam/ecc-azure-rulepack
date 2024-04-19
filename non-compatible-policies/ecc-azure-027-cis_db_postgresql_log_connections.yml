@@ -11,10 +11,12 @@ policies:
       PostgreSQL instance with server parameter 'log_connections' disabled
     resource: azure.postgresql-server
     filters:
-      - or:
-          - type: server-configuration
-            property: log_connections
+      - type: server-configurations
+        attrs:
+          - type: value
+            key: name
+            value: log_connections
+          - type: value
+            key: properties.value
             value: "off"
-          - type: server-configuration
-            property: log_connections
-            value: "OFF"
+            value_type: normalize

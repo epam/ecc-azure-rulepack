@@ -9,7 +9,7 @@ policies:
     comment: '020041100000'
     description: |
       Key Vault without Private Endpoint connection configured
-    resource: azure.keyvault-by-subscription
+    resource: azure.keyvault
     filters:
       - type: value
         key: properties.privateEndpointConnections

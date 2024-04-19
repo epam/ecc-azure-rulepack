@@ -15,15 +15,10 @@ policies:
         key: tags."ms-resource-usage"
         value: azure-cloud-shell
         op: ne
-      - not:
-          - type: activity-log
-            mode: and
-            conditions:
-              - key: operationName.value
-                value: Microsoft.Storage/storageAccounts/regenerateKey/action
-              - key: operationName.localizedValue
-                value: "Regenerate Storage Account Keys"
-              - key: status.localizedValue
-                value: Succeeded
-              - key: status.value
-                value: Succeeded
+      - or:
+          - type: value
+            key: properties.keyCreationTime.key1
+            value: ""  # todo put iso date filter with desired period (when keys are not considered "recently" generated)
+          - type: value
+            key: properties.keyCreationTime.key2
+            value: ""

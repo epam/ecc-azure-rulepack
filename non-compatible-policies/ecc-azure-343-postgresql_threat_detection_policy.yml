@@ -11,6 +11,8 @@ policies:
       Advanced Threat Protection is disabled on PostgreSQL server
     resource: azure.postgresql-server
     filters:
-      - type: server-security-alert-policies-filter
-        key: state
-        value: Disabled
+      - type: security-alert-policies
+        attrs:
+          - type: value
+            key: properties.state
+            value: Disabled

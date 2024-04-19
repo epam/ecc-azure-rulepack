@@ -11,6 +11,7 @@ policies:
       Virtual machine without Backup configured
     resource: azure.vm
     filters:
-      - not:
-          - type: backup-status
-            protection-status: Protected
+      - type: backup-status
+        key: protectionStatus
+        value: Protected
+        op: ne

@@ -13,7 +13,8 @@ policies:
     filters:
       - or:
           - type: diagnostic-settings
-            enabled: false
-          - type: diagnostic-settings
             key: length(logs[?category == 'AppServiceHTTPLogs' && enabled == `true`])
             value: 0
+          - type: diagnostic-settings
+            key: logs
+            value: absent

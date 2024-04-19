@@ -10,8 +10,8 @@ policies:
     comment: '020019101500'
     description: |
       Key Vault with logging and retention policy disabled
-    resource: azure.keyvault-by-subscription
-    filters:
+    resource: azure.keyvault
+    filters:  # todo seems like diagnostic-settings filter does not exist in custom-core, this rule should not work
       - or:
           - type: diagnostic-settings
             enabled: false

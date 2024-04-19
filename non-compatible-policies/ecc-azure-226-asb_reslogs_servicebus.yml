@@ -10,11 +10,12 @@ policies:
     comment: '020019010000'
     description: |
       Service Bus with logging and retention policy disabled
-    resource: azure.namespace
+    resource: azure.servicebus-namespace
     filters:
       - or:
           - type: diagnostic-settings
-            enabled: false
-          - type: diagnostic-settings
             key: length(logs[?(category == 'OperationalLogs' || category == 'VNetAndIPFilteringLogs') && enabled == `true` && retention_policy.enabled == `true` && retention_policy.days > `0`])
             value: 0
+          - type: diagnostic-settings
+            key: logs
+            value: absent

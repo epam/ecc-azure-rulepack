@@ -12,6 +12,11 @@ policies:
     resource: azure.postgresql-server
     filters:
       - not:
-          - type: server-configuration
-            property: log_min_messages
-            value: warning
+        - type: server-configurations
+          attrs:
+            - type: value
+              key: name
+              value: log_min_messages
+            - type: value
+              key: properties.value
+              value: warning

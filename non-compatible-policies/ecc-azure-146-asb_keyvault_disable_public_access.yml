@@ -9,7 +9,7 @@ policies:
     comment: '020040100000'
     description: |
       Key Vault with enabled public access
-    resource: azure.keyvault-by-subscription
+    resource: azure.keyvault
     filters:
       - not:
           - type: value

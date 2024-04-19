@@ -13,12 +13,9 @@ policies:
     filters:
       - type: value
         key: tags."ms-resource-usage"
-        value: azure-cloud-shell
+        value: "azure-cloud-shell"
         op: ne
       - type: storage-diagnostic-settings
         storage-type: blob
-        mode: and
-        conditions:
-          - key: delete_retention_policy.enabled
-            op: eq
-            value: false
+        key: DeleteRetentionPolicy.Enabled  # todo check camelcase
+        value: false

@@ -12,6 +12,11 @@ policies:
     resource: azure.postgresql-server
     filters:
       - not:
-          - type: server-configuration
-            property: log_line_prefix
-            value: "%m [%p]: [%l-1], db=%d,user=%u,app=%a,client=%h,"
+          - type: server-configurations
+            attrs:
+              - type: value
+                key: name
+                value: log_line_prefix
+              - type: value
+                key: properties.value
+                value: "%m [%p]: [%l-1], db=%d,user=%u,app=%a,client=%h,"

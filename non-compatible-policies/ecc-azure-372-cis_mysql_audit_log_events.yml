@@ -9,13 +9,11 @@ policies:
     comment: '020019061400'
     description: |
       MySQL instance with server setting "audit_log_events" set to "off"
-    resource: azure.mysql-server
+    resource: azure.mysql
     filters:
-      - not:
-          - or:
-              - type: server-parameters
-                property: audit_log_events
-                value: "connection"
-              - type: server-parameters
-                property: audit_log_events
-                value: "CONNECTION"
+      - type: server-configuration
+        name: audit_log_events
+        key: value
+        op: ne
+        value: 'connection'
+        value_type: normalize

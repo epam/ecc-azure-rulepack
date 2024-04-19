@@ -12,6 +12,11 @@ policies:
     resource: azure.postgresql-server
     filters:
       - not:
-          - type: server-configuration
-            property: log_min_error_statement
-            value: "error"
+          - type: server-configurations
+            attrs:
+              - type: value
+                key: name
+                value: log_min_error_statement
+              - type: value
+                key: properties.value
+                value: "error"

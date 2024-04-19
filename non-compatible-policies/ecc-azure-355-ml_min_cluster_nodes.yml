@@ -11,8 +11,8 @@ policies:
       Azure Machine Learning Compute cluster have minNodeCount property not equal to 0
     resource: azure.machine-learning-workspace
     filters:
-      - not:
-          - type: compute
-            key: min_node_count
+      - type: compute-instances
+        attrs:
+          - type: value
+            key: properties.properties.scaleSettings.minNodeCount  # todo wait for merge and check that such key really exists
             value: 0
-            op: eq
