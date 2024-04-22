@@ -9,12 +9,12 @@ policies:
     comment: '020019061500'
     description: |
       MySQL instance with server setting "audit_log_enabled" set to "off"
-    resource: azure.mysql-server
+    resource: azure.mysql-flexibleserver
     filters:
-      - or:
-          - type: server-parameters
-            property: audit_log_enabled
-            value: "off"
-          - type: server-parameters
-            property: audit_log_enabled
-            value: "off"
+      - type: server-parameter
+        name: audit_log_enabled
+        key: value
+        op: eq
+        value: "off"
+        value_type: normalize
+
