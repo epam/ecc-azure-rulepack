@@ -9,12 +9,12 @@ policies:
     comment: '020019061800'
     description: |
       MySQL instance with server parameter 'slow_query_log' disabled
-    resource: azure.mysql-server
-    filters:
-      - or:
-          - type: server-parameters
-            property: slow_query_log
-            value: "off"
-          - type: server-parameters
-            property: slow_query_log
-            value: "OFF"
+    resource: azure.mysql-flexibleserver
+    filters:      
+      - type: server-parameter
+        name: slow_query_log
+        key: value
+        op: eq
+        value: "off"
+        value_type: normalize
+
