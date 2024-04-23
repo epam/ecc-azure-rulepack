@@ -9,12 +9,11 @@ policies:
     comment: '020020061800'
     description: |
       MySQL instance with server parameter 'local_infile' enabled
-    resource: azure.mysql-server
+    resource: azure.mysql-flexibleserver
     filters:
-      - or:
-          - type: server-parameters
-            property: local_infile
-            value: "on"
-          - type: server-parameters
-            property: local_infile
-            value: "ON"
+      - type: server-parameter
+        name: local_infile
+        key: value
+        op: eq
+        value: "on"
+        value_type: normalize
