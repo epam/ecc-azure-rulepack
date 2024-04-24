@@ -6,18 +6,21 @@ resource "azurerm_key_vault" "this" {
   sku_name                 = "premium"
   purge_protection_enabled = true
 
-  access_policy {
+  tags = var.tags
+}
+
+resource "azurerm_key_vault_access_policy" "this" {
+    key_vault_id = azurerm_key_vault.this.id
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = data.azurerm_client_config.current.object_id
     key_permissions = [
       "Create",
       "Get",
       "Purge",
-      "Delete"
+      "Delete",
+      "GetRotationPolicy",
+      "SetRotationPolicy"
     ]
-  }
-
-  tags = var.tags
 }
 
 resource "azurerm_key_vault_key" "this" {
@@ -36,6 +39,6 @@ resource "azurerm_key_vault_key" "this" {
   ]
 
   depends_on = [
-    azurerm_key_vault.this
+    azurerm_key_vault.this, azurerm_key_vault_access_policy.this
   ]
 }

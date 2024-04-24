@@ -5,14 +5,13 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-355-ml_min_cluster_nodes
-    comment: '020003090000'
+  - name: ecc-azure-202-asb_azl_encrypt_cmk
+    comment: '020043090000'
     description: |
-      Azure Machine Learning Compute cluster have minNodeCount property not equal to 0
+      Machine Learning workspace without CMK encryption configured
     resource: azure.machine-learning-workspace
     filters:
       - not:
-          - type: compute
-            key: min_node_count
-            value: 0
-            op: eq
+          - type: value
+            key: properties.encryption.status
+            value: Enabled
