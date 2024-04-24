@@ -1,6 +1,6 @@
 {
     "properties": {
-        "roleName": "Custodian-ecc-azure-202-asb_AZL_encrypt_cmk",
+        "roleName": "Custodian-ecc-azure-202-asb_azl_encrypt_cmk",
         "description": "",
         "assignableScopes": [
             "/subscriptions/{subscription_id}"
