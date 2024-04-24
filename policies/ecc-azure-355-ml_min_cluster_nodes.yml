@@ -12,7 +12,8 @@ policies:
     resource: azure.machine-learning-workspace
     filters:
       - not:
-          - type: compute
-            key: min_node_count
-            value: 0
-            op: eq
+        - type: compute-instances
+          attrs:
+            - type: value
+              key: properties.properties.scaleSettings.minNodeCount
+              value: 0
