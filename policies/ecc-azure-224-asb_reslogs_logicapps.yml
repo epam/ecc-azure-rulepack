@@ -9,12 +9,17 @@ policies:
   - name: ecc-azure-224-asb_reslogs_logicapps
     comment: '020019010000'
     description: |
-      Logic Apps service with logging and retention policy disabled
+      Logic Apps service with logging disabled
     resource: azure.logic-app-workflow
     filters:
       - or:
+        - type: diagnostic-settings
+          key: logs
+          value: absent
+        - not:
           - type: diagnostic-settings
-            enabled: false
-          - type: diagnostic-settings
-            key: length(logs[?category == 'WorkflowRuntime' && enabled == `true` && retention_policy.enabled == `true` && retention_policy.days > `0`])
-            value: 0
+            key: logs[?category == 'WorkflowRuntime'][].enabled
+            value: true
+            op: in
+            value_type: swap
+
