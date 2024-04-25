@@ -9,7 +9,7 @@ policies:
     comment: '020041020000'
     description: |
       Spring Cloud service without runtime subnet configured
-    resource: azure.spring-cloud
+    resource: azure.spring-service-instance
     filters:
       - type: value
         key: sku.tier
