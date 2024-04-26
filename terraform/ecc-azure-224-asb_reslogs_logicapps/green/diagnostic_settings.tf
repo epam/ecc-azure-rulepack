@@ -3,14 +3,8 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   target_resource_id = azurerm_logic_app_workflow.this.id
   storage_account_id = azurerm_storage_account.this.id
 
-  log {
+  enabled_log {
     category = "WorkflowRuntime"
-    enabled  = true
-
-    retention_policy {
-      enabled = true
-      days    = 180
-    }
   }
 }
 
