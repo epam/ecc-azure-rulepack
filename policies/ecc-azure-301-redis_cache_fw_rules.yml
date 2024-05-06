@@ -11,11 +11,11 @@ policies:
       Redis Cache without exposed to the public Internet
     resource: azure.redis
     filters:
-      - type: redis-firewall-filter
-        key: 'start_ip'
-        op: eq
-        value: 0.0.0.0
-      - type: redis-firewall-filter
-        key: 'end_ip'
-        op: eq
-        value: 0.0.0.0
+      - type: firewall
+        attrs:
+          - type: value
+            key: properties.startIP
+            value: 0.0.0.0
+          - type: value
+            key: properties.endIP
+            value: 0.0.0.0
