@@ -9,16 +9,16 @@ policies:
   - name: ecc-azure-038-cis_log_keyvaults
     comment: '020019101500'
     description: |
-      Key Vault with logging and retention policy disabled
-    resource: azure.keyvault-by-subscription
+      Key Vault with logging disabled
+    resource: azure.keyvault
     filters:
       - or:
+        - type: diagnostic-settings
+          key: logs
+          value: absent
+        - not:
           - type: diagnostic-settings
-            enabled: false
-          - and:
-              - type: diagnostic-settings
-                key: storage_account_id
-                value: present
-              - type: diagnostic-settings
-                key: length(logs[?category == 'AuditEvent' && enabled == `true` && retention_policy.days > `0` && retention_policy.enabled == `true`])
-                value: 0
+            key: logs[?category == 'AuditEvent'][].enabled
+            value: true
+            op: in
+            value_type: swap
