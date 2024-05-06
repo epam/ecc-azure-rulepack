@@ -9,7 +9,7 @@ policies:
     comment: '020023101500'
     description: |
       Key vault without Soft Delete or Purge Protection enabled
-    resource: azure.keyvault-by-subscription
+    resource: azure.keyvault
     filters:
       - or:
           - type: value
