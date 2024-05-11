@@ -11,10 +11,9 @@ policies:
       PostgreSQL instance with server parameter 'debug_print_plan' enabled
     resource: azure.postgresql-server
     filters:
-      - or:
-          - type: server-configuration
-            property: debug_print_plan
-            value: "on"
-          - type: server-configuration
-            property: debug_print_plan
-            value: "ON"
+      - type: configuration-parameter
+        name: debug_print_plan
+        key: value
+        op: eq
+        value: "on"
+        value_type: normalize
