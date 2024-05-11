@@ -11,7 +11,9 @@ policies:
       PostgreSQL instance without server parameter 'log_min_messages' set to WARNING
     resource: azure.postgresql-server
     filters:
-      - not:
-          - type: server-configuration
-            property: log_min_messages
-            value: warning
+      - type: configuration-parameter
+        name: log_min_messages
+        key: value
+        op: ne
+        value: "warning"
+        value_type: normalize
