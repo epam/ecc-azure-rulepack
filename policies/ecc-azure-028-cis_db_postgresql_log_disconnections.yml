@@ -11,10 +11,9 @@ policies:
       PostgreSQL instance with server parameter 'log_disconnections' disabled
     resource: azure.postgresql-server
     filters:
-      - or:
-          - type: server-configuration
-            property: log_disconnections
-            value: "off"
-          - type: server-configuration
-            property: log_disconnections
-            value: "OFF"
+      - type: configuration-parameter
+        name: log_disconnections
+        key: value
+        op: eq
+        value: "off"
+        value_type: normalize
