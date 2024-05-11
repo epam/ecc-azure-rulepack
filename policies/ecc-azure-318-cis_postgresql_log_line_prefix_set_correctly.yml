@@ -11,7 +11,9 @@ policies:
       PostgreSQL instance with server parameter 'log_line_prefix' set incorrectly
     resource: azure.postgresql-server
     filters:
-      - not:
-          - type: server-configuration
-            property: log_line_prefix
-            value: "%m [%p]: [%l-1], db=%d,user=%u,app=%a,client=%h,"
+      - type: configuration-parameter
+        name: log_line_prefix
+        key: value
+        op: ne
+        value: "%m [%p]: [%l-1], db=%d,user=%u,app=%a,client=%h,"
+        value_type: normalize
