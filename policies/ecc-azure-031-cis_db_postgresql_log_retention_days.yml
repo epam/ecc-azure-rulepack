@@ -11,7 +11,8 @@ policies:
       PostgreSQL instance with server parameter 'log_retention_days' is set to less than 4 days
     resource: azure.postgresql-server
     filters:
-      - type: server-configuration
-        property: log_retention_days
-        value: 4
+      - type: configuration-parameter
+        name: log_retention_days
+        key: value
         op: lt
+        value: "4"
