@@ -11,7 +11,9 @@ policies:
       PostgreSQL instance without server parameter 'log_min_error_statement' set to ERROR
     resource: azure.postgresql-server
     filters:
-      - not:
-          - type: server-configuration
-            property: log_min_error_statement
-            value: "error"
+      - type: configuration-parameter
+        name: log_min_error_statement
+        key: value
+        op: ne
+        value: "error"
+        value_type: normalize
