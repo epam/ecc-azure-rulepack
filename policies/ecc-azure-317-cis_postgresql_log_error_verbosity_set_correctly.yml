@@ -11,7 +11,9 @@ policies:
       PostgreSQL instance without server parameter 'log_error_verbosity' set to VERBOSE
     resource: azure.postgresql-server
     filters:
-      - not:
-          - type: server-configuration
-            property: log_error_verbosity
-            value: "verbose"
+      - type: configuration-parameter
+        name: log_error_verbosity
+        key: value
+        op: ne
+        value: "verbose"
+        value_type: normalize
