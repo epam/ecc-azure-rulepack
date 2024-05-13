@@ -11,13 +11,7 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   target_resource_id = azurerm_iothub.this.id
   storage_account_id = azurerm_storage_account.this.id
 
-  log {
+  enabled_log {
     category = "Connections"
-    enabled  = true
-
-    retention_policy {
-      enabled = true
-      days    = 180
-    }
   }
 }

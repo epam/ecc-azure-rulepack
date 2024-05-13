@@ -4,7 +4,7 @@ resource "azurerm_iothub" "this" {
   location            = azurerm_resource_group.this.location
 
   sku {
-    name     = "F1"
+    name     = "S1"
     capacity = "1"
   }
 }
