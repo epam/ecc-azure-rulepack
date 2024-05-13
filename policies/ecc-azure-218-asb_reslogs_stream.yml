@@ -9,12 +9,16 @@ policies:
   - name: ecc-azure-218-asb_reslogs_stream
     comment: '020019010000'
     description: |
-      Azure Stream with logging and retention policy disabled
+      Azure Stream with logging disabled
     resource: azure.stream-job
     filters:
       - or:
           - type: diagnostic-settings
-            enabled: false
-          - type: diagnostic-settings
-            key: length(logs[?(category == 'Execution' || category == 'Authoring') && enabled == `true` && retention_policy.enabled == `true` && retention_policy.days > `0`])
-            value: 0
+            key: logs
+            value: absent
+          - not:
+            - type: diagnostic-settings
+              key: logs[?category == 'Execution' || category == 'Authoring'][].enabled
+              value: true
+              op: in
+              value_type: swap
