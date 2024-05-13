@@ -11,6 +11,8 @@ policies:
       Container Registry without Private Endpoint connection configured
     resource: azure.container-registry
     filters:
-      - type: value
-        key: length(properties.privateEndpointConnections)
-        value: 0
+      - not:
+          - type: value
+            key: properties.privateEndpointConnections[].properties.privateLinkServiceConnectionState.status
+            value: Approved
+            op: contains
