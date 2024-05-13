@@ -11,8 +11,5 @@ policies:
       API Managment service without configured client certificates
     resource: azure.api-management
     filters:
-      - not:
-          - type: certificate
-            key: count
-            value: 1
-            op: gte
+      - type: certificates
+        count: 0
