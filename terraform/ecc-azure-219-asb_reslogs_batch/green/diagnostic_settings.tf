@@ -11,13 +11,7 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   target_resource_id = azurerm_batch_account.this.id
   storage_account_id = azurerm_storage_account.this.id
 
-  log {
+  enabled_log {
     category = "ServiceLog"
-    enabled  = true
-
-    retention_policy {
-      enabled = true
-      days    = 180
-    }
   }
 }
