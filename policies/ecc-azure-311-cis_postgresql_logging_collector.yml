@@ -5,13 +5,15 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-318-cis_postgresql_log_line_prefix_set_correctly
+  - name: ecc-azure-311-cis_postgresql_logging_collector
     comment: '020019061900'
     description: |
-      PostgreSQL instance with server parameter 'log_line_prefix' set incorrectly
+      PostgreSQL instance with server parameter 'logging collector' disabled
     resource: azure.postgresql-server
     filters:
-      - not:
-          - type: server-configuration
-            property: log_line_prefix
-            value: "%m [%p]: [%l-1], db=%d,user=%u,app=%a,client=%h,"
+      - type: configuration-parameter
+        name: logging_collector
+        key: value
+        op: eq
+        value: "off"
+        value_type: normalize

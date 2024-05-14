@@ -1,0 +1,19 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-319-cis_postgresql_log_min_error_statement
+    comment: '020019061910'
+    description: |
+      PostgreSQL instance without server parameter 'log_min_error_statement' set to ERROR
+    resource: azure.postgresql-server
+    filters:
+      - type: configuration-parameter
+        name: log_min_error_statement
+        key: value
+        op: ne
+        value: "error"
+        value_type: normalize

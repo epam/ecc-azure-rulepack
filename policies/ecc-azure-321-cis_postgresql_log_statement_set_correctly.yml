@@ -5,13 +5,15 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-317-cis_postgresql_log_error_verbosity_set_correctly
+  - name: ecc-azure-321-cis_postgresql_log_statement_set_correctly
     comment: '020019061910'
     description: |
-      PostgreSQL instance without server parameter 'log_error_verbosity' set to VERBOSE
+      PostgreSQL instance with server parameter 'log_statement' set incorrectly
     resource: azure.postgresql-server
     filters:
-      - not:
-          - type: server-configuration
-            property: log_error_verbosity
-            value: "verbose"
+      - type: configuration-parameter
+        name: log_statement
+        key: value
+        op: ne
+        value: "ddl"
+        value_type: normalize

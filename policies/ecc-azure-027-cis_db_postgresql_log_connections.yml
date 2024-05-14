@@ -5,13 +5,15 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-319-cis_postgresql_log_min_error_statement
-    comment: '020019061910'
+  - name: ecc-azure-027-cis_db_postgresql_log_connections
+    comment: '020019061500'
     description: |
-      PostgreSQL instance without server parameter 'log_min_error_statement' set to ERROR
+      PostgreSQL instance with server parameter 'log_connections' disabled
     resource: azure.postgresql-server
     filters:
-      - not:
-          - type: server-configuration
-            property: log_min_error_statement
-            value: "error"
+      - type: configuration-parameter
+        name: log_connections
+        key: value
+        op: eq
+        value: "off"
+        value_type: normalize
