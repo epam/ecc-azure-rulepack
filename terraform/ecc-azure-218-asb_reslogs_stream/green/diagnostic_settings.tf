@@ -11,13 +11,7 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   target_resource_id = azurerm_stream_analytics_job.this.id
   storage_account_id = azurerm_storage_account.this.id
 
-  log {
-    category = "Execution"
-    enabled  = true
-
-    retention_policy {
-      enabled = true
-      days    = 180
-    }
+  enabled_log {
+    category = "Execution"    
   }
 }
