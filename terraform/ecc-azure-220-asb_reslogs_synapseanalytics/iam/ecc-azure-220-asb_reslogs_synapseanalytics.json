@@ -1,6 +1,6 @@
 {
     "properties": {
-        "roleName": "Custodian-ecc-azure-220-asb_reslogs_datalakeanalytics",
+        "roleName": "Custodian-ecc-azure-220-asb_reslogs_synapseanalytics",
         "description": "",
         "assignableScopes": [
             "/subscriptions/{subscription_id}"
@@ -8,7 +8,7 @@
         "permissions": [
             {
                 "actions": [
-                    "Microsoft.DataLakeAnalytics/accounts/read"
+                    "Microsoft.Synapse/workspaces/read"
                 ],
                 "notActions": [],
                 "dataActions": [],
