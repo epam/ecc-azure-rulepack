@@ -8,10 +8,9 @@ policies:
   - name: ecc-azure-293-sql_data_replication_failover_groups
     comment: '020050062000'
     description: |
-      Azure SQL Server data replication with Fail Over groups
+      Azure SQL Server data replication with Failover groups
     resource: azure.sql-server
     filters:
-      - type: failover-group-filter
-        key: length(failover_groups)
-        op: eq
-        value: 0
+      - type: failover-group
+        count: 0
+        count_op: eq
