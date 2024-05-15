@@ -15,7 +15,7 @@ resource "azurerm_key_vault_access_policy" "policy1" {
   object_id    = data.azurerm_client_config.current.object_id
 
   key_permissions = [
-    "Get", "List", "Create", "Delete", "Update", "Recover", "Purge"
+    "Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy", "SetRotationPolicy"
   ]
 
   lifecycle {
