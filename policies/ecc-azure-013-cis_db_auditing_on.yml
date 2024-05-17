@@ -9,9 +9,11 @@ policies:
     comment: '020019061500'
     description: |
       Azure SQL Database Auditing is set to "Off"
-    resource: azure.sql-auditing-settings
+    resource: azure.sql-server
     filters:
-      - type: value
-        key: properties.state
-        op: ne
-        value: Enabled
+      - type: auditing-policies
+        attrs:
+          - type: value
+            key: state
+            op: ne
+            value: Enabled
