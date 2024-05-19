@@ -9,7 +9,7 @@ policies:
     comment: '020016181500'
     description: |
       Notification alerts are disabled in Security Center (Microsoft Defender for Cloud)
-    resource: azure.security-contacts
+    resource: azure.defender-contact
     filters:
       - type: value
         key: properties.alertNotifications
