@@ -9,7 +9,7 @@ policies:
     comment: '020016181500'
     description: |
       Notification alerts to admins or subscription owners are disabled in Microsoft Defender for Cloud
-    resource: azure.security-contacts
+    resource: azure.defender-contact
     filters:
       - type: value
         key: properties.alertsToAdmins
