@@ -9,12 +9,15 @@ policies:
     comment: '020016181500'
     description: |
       'Additional email addresses' is not configured in Microsoft Defender for Cloud
-    resource: azure.security-contacts
+    resource: azure.defender-contact
     filters:
       - or:
           - type: value
-            key: properties.emails
+            key: properties.email
             value: null
+            op: eq
           - type: value
-            key: properties.emails
-            value: ""
+            key: properties.email
+            value: absent
+          
+
