@@ -1,0 +1,23 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-379-cis_appservice_http_logs
+    comment: '020019011500'
+    description: |
+      App Service with web requests logging disabled
+    resource: azure.webapp
+    filters:
+      - or:
+        - type: diagnostic-settings
+          key: logs
+          value: absent
+        - not:
+          - type: diagnostic-settings
+            key: logs[?category == 'AppServiceHTTPLogs' || category == 'AppServiceConsoleLogs' || category == 'AppServiceEnvironmentPlatformLogs' || category == 'AppServiceAuditLogs' || category == 'AppServiceFileAuditLogs' || category == 'AppServiceAppLogs' || category == 'AppServiceIPSecAuditLogs' || category == 'AppServicePlatformLogs' || category == 'AppServiceAntivirusScanAuditLogs '][].enabled
+            value: true
+            op: in
+            value_type: swap
