@@ -9,8 +9,9 @@ policies:
     comment: '020033171500'
     description: |
       App Service without App Service Authentication enabled
-    resource: azure.webapp-auth-settings
+    resource: azure.webapp
     filters:
-      - type: value
-        key: properties.enabled
-        value: false
+      - type: authentication
+        key: enabled
+        value: False
+        op: eq
