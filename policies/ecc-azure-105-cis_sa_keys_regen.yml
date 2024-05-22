@@ -15,15 +15,14 @@ policies:
         key: tags."ms-resource-usage"
         value: azure-cloud-shell
         op: ne
-      - not:
-          - type: activity-log
-            mode: and
-            conditions:
-              - key: operationName.value
-                value: Microsoft.Storage/storageAccounts/regenerateKey/action
-              - key: operationName.localizedValue
-                value: "Regenerate Storage Account Keys"
-              - key: status.localizedValue
-                value: Succeeded
-              - key: status.value
-                value: Succeeded
+      - or:
+        - type: value
+          key: properties.keyCreationTime.key1
+          value_type: age
+          op: gt
+          value: 90
+        - type: value
+          key: properties.keyCreationTime.key2
+          value_type: age
+          op: gt
+          value: 90
