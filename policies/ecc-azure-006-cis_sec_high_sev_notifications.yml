@@ -5,13 +5,13 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-007-cis_sec_owners_email_notifications
+  - name: ecc-azure-006-cis_sec_high_sev_notifications
     comment: '020016181500'
     description: |
-      Notification alerts to admins or subscription owners are disabled in Microsoft Defender for Cloud
-    resource: azure.security-contacts
+      Notification alerts are disabled in Security Center (Microsoft Defender for Cloud)
+    resource: azure.defender-contact
     filters:
       - type: value
-        key: properties.alertsToAdmins
+        key: properties.alertNotifications
         value: "Off"
         op: eq
