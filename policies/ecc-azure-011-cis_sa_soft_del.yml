@@ -17,8 +17,5 @@ policies:
         op: ne
       - type: storage-diagnostic-settings
         storage-type: blob
-        mode: and
-        conditions:
-          - key: delete_retention_policy.enabled
-            op: eq
-            value: false
+        key: delete_retention_policy.enabled
+        value: false
