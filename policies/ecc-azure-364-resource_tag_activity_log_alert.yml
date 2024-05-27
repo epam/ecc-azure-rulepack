@@ -9,7 +9,7 @@ policies:
     comment: '020010092000'
     description: |
       Activity Log Alert without tags
-    resource: azure.activity-log-alert
+    resource: azure.alert-logs
     filters:
       - type: value
         key: tags
