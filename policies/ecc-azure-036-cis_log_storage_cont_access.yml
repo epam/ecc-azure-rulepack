@@ -11,6 +11,9 @@ policies:
       Storage container that stores activity logs where public access level set to "Blob" or "Container"
     resource: azure.storage-container
     filters:
+      - type: value
+        key: name
+        value: insights-operational-logs
       - or:
           - type: value
             key: properties.publicAccess
@@ -18,4 +21,3 @@ policies:
           - type: value
             key: properties.publicAccess
             value: Container
-      - storage-single-log-profile
