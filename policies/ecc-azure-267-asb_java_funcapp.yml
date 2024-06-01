@@ -15,10 +15,11 @@ policies:
         key: kind
         value: functionapp*
         op: regex
-      - or:
-          - type: configuration
-            key: linuxFxVersion
-            value: "JAVA|8"
-          - type: configuration
-            key: windowsFxVersion
-            value: "Java|8"
+      - not:
+        - or:
+            - type: configuration
+              key: linuxFxVersion
+              value: "JAVA|17"
+            - type: configuration
+              key: javaVersion
+              value: "17"

@@ -8,10 +8,10 @@ policies:
   - name: ecc-azure-061-cis_app_last_tls
     comment: '020021171500'
     description: |
-      App Service that uses TLS version before 1.2
+      App Service that uses TLS version before 1.3
     resource: azure.webapp
     filters:
       - type: configuration
         key: minTlsVersion
-        value: '1.2'
+        value: '1.3'
         op: ne
