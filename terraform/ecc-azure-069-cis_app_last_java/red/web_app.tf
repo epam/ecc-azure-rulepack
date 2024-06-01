@@ -19,7 +19,7 @@ resource "azurerm_linux_web_app" "this" {
     application_stack {
       java_server         = "JAVA"
       java_server_version = "8"
-      java_version        = "jre8"
+      java_version        = "8"
     }
   }
 

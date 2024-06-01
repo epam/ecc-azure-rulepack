@@ -15,11 +15,16 @@ resource "azurerm_linux_web_app" "this" {
   service_plan_id     = azurerm_service_plan.this.id
   https_only          = true
 
-  site_config {
-    application_stack {
-      php_version = "8.2"
-    }
-  }
+  site_config {}
 
   tags = var.tags
+
+  provisioner "local-exec" {
+    command = "az webapp config set -g $resourceGroup  -n $resourceName --linux-fx-version 'PHP|8.3'"
+
+    environment = {
+      resourceGroup = azurerm_resource_group.this.name
+      resourceName = "app-${var.prefix}-green"
+    }
+  }
 }
