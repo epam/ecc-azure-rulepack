@@ -23,7 +23,8 @@ resource "azurerm_public_ip" "this" {
   name                = "${var.prefix}-red-pip"
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
+  sku                = "Standard"
 }
 
 #&nbsp;since these variables are re-used - a locals block makes this more maintainable

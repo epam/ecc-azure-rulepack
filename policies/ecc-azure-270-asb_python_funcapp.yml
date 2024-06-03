@@ -19,13 +19,7 @@ policies:
           - or:
               - type: configuration
                 key: linuxFxVersion
-                value: PYTHON|3.8
+                value: PYTHON|3.12
               - type: configuration
-                key: linuxFxVersion
-                value: PYTHON|3.9
-              - type: configuration
-                key: linuxFxVersion
-                value: PYTHON|3.10
-              - type: configuration
-                key: linuxFxVersion
-                value: PYTHON|3.11
+                key: pythonVersion
+                value: "3.12"

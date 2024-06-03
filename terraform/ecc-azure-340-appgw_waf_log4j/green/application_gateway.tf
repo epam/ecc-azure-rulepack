@@ -76,13 +76,15 @@ resource "azurerm_application_gateway" "this" {
     http_listener_name         = "${var.prefix}_http_listener_green"
     backend_address_pool_name  = "${var.prefix}_back_adr_pool_green"
     backend_http_settings_name = "${var.prefix}_back_http_set_green"
+    priority = 10
+
   }
 
   waf_configuration {
     enabled          = true
     firewall_mode    = "Detection"
     rule_set_type    = "OWASP"
-    rule_set_version = "3.0"
+    rule_set_version = "3.2"
 
   }
 

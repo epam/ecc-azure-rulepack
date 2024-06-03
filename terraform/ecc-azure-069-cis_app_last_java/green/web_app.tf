@@ -15,13 +15,16 @@ resource "azurerm_linux_web_app" "this" {
   service_plan_id     = azurerm_service_plan.this.id
   https_only          = true
   
-  site_config {
-    application_stack {
-      java_server         = "JAVA"
-      java_server_version = "17"
-      java_version        = "java17"
-    }
-  }
+  site_config {}
 
   tags = var.tags
+
+  provisioner "local-exec" {
+    command = "az webapp config set -g $resourceGroup  -n $resourceName --linux-fx-version 'JAVA|21-java21'"
+
+    environment = {
+      resourceGroup = azurerm_resource_group.this.name
+      resourceName = "app-${var.prefix}-green"
+    }
+  }
 }

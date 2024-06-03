@@ -14,9 +14,16 @@ resource "azurerm_linux_web_app" "this" {
   resource_group_name = azurerm_resource_group.this.name
   service_plan_id     = azurerm_service_plan.this.id
 
-  site_config {
-    minimum_tls_version = "1.2"
-  }
+  site_config {}
 
   tags = var.tags
+
+  provisioner "local-exec" {
+    command = "az webapp config set -g $resourceGroup  -n $resourceName --min-tls-version '1.3'"
+
+    environment = {
+      resourceGroup = azurerm_resource_group.this.name
+      resourceName = "app-${var.prefix}-green"
+    }
+  }
 }
