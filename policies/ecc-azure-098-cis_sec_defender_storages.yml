@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-098-cis_sec_defender_storages
-    comment: '020032181500'
+    comment: '020032182700'
     description: |
       Azure Defender for Storage is set to "Off"
     resource: azure.defender-pricing

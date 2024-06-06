@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-058-cis_aks_rbac
-    comment: '020033071300'
+    comment: '020033072800'
     description: |
       Kubernetes cluster without RBAC enabled
     resource: azure.aks

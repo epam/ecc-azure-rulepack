@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-060-cis_app_https
-    comment: '020044171500'
+    comment: '020044172700'
     description: |
       App Service that allows http traffic
     resource: azure.webapp

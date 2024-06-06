@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-010-cis_sa_net_defaultAction
-    comment: '020040041500'
+    comment: '020040042700'
     description: |
       Storage Account accepted connections from public network
     resource: azure.storage

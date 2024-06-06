@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-109-cis_sa_logging_blob
-    comment: '020019041500'
+    comment: '020019042700'
     description: |
       Storage account without logging enabled for Blobs
     resource: azure.storage

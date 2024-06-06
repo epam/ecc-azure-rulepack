@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-005-cis_sec_email
-    comment: '020016181500'
+    comment: '020016182700'
     description: |
       'Additional email addresses' is not configured in Microsoft Defender for Cloud
     resource: azure.defender-contact
