@@ -7,7 +7,7 @@
 # Number of retention days can be manually defined according to the Customer's compliance policy
 policies:
   - name: ecc-azure-038-cis_log_keyvaults
-    comment: '020019101500'
+    comment: '020019102700'
     description: |
       Key Vault with logging disabled
     resource: azure.keyvault

@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-057-cis_key_recoverable
-    comment: '020023101500'
+    comment: '020023102700'
     description: |
       Key vault without Soft Delete or Purge Protection enabled
     resource: azure.keyvault

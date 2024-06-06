@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-369-cis_sa_infrastructure_encryption
-    comment: '020043041500'
+    comment: '020043042700'
     description: |
       Storage Account without Infrastructure Encryption enabled
     resource: azure.storage

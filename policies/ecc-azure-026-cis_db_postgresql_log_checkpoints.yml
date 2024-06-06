@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-026-cis_db_postgresql_log_checkpoints
-    comment: '020019061500'
+    comment: '020019062700'
     description: |
       PostgreSQL instance with server parameter 'log_checkpoints' disabled
     resource: azure.postgresql-server
