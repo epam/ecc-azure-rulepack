@@ -8,16 +8,9 @@ policies:
   - name: ecc-azure-036-cis_log_storage_cont_access
     comment: '020040011500'
     description: |
-      Storage container that stores activity logs where public access level set to "Blob" or "Container"
-    resource: azure.storage-container
+      Monitor Log Profile has storage account that stores activity logs where allowed public access for containers.
+    resource: azure.monitor-log-profile
     filters:
-      - type: value
-        key: name
-        value: insights-operational-logs
-      - or:
-          - type: value
-            key: properties.publicAccess
-            value: Blob
-          - type: value
-            key: properties.publicAccess
-            value: Container
+        - type: monitor-storage
+          key: properties.allowBlobPublicAccess
+          value: true
