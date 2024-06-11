@@ -1,0 +1,20 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-412-cis_tpm_and_secure_boot
+    comment: '020023032700'
+    description: |
+      Azure virtual machine with Trusted Launch disabled
+    resource: azure.vm
+    filters:
+      - or:
+        - type: value
+          key: properties.securityProfile.uefiSettings.secureBootEnabled
+          value: absent
+        - type: value
+          key: properties.securityProfile.uefiSettings.vTpmEnabled
+          value: absent
