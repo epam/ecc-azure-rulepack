@@ -41,7 +41,7 @@ runs:
           tenant-id: ${{ inputs.tenant_id }}
           subscription-id: ${{ inputs.subscription_id }}
       
-      - name: 'Run Azure CLI commands'
+      - name: Run Azure CLI commands
         run: |
             az account show
     
