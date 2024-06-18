@@ -29,7 +29,7 @@ runs:
       with:
         role-to-assume: ${{ inputs.aws_assume_role }}
         role-session-name: ECC-RULEPACK-CI-${{ inputs.step }}-${{ steps.globals.outputs.cloud }}
-        role-duration-seconds: 93200 
+        role-duration-seconds: 43200 
         aws-region: ${{ env.AWS_DEFAULT_REGION }}
         mask-aws-account-id: true
 
