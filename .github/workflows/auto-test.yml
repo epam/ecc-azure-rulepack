@@ -111,3 +111,50 @@ jobs:
 
           echo "parallel_resources_to_scan=$parallel_resources_to_scan" >> "$GITHUB_OUTPUT"
           echo "not_parallel_resources_to_scan=$not_parallel_resources_to_scan" >> "$GITHUB_OUTPUT"
+
+  deploy_and_scan_parallel_resources:
+    runs-on: ubuntu-22.04
+    needs: [ deploy_common_resources, prepare_matrix_resources]
+    strategy:
+      max-parallel: 10
+      fail-fast: false
+      matrix:
+        compliance: ['green', 'red']
+        resource: ${{fromJson(needs.prepare_matrix_resources.outputs.parallel_resources_list)}}
+    env:
+      COMPLINCE: ${{ matrix.compliance }}
+      RESOURCE: ${{ matrix.resource }}
+      TF_VAR_remote_state_key: "azure/states/common_resources/${{ matrix.compliance }}.tfstate"
+      
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v4
+
+      - uses: ./.github/workflows/actions/set-up-cloud-creds
+        with:
+          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          step: common_${{ matrix.compliance }}
+      - uses: ./.github/workflows/actions/install-dependencies
+
+      - name: Deploy terraform resources
+        uses: ./.github/workflows/actions/tf-init-apply
+
+      - name: Custodian scan
+        uses: ./.github/workflows/actions/c7n-scan
+
+      - name: Destroy terraform resources
+        uses: ./.github/workflows/actions/tf-destroy
+        if: ${{ always() }}
+
+      - uses: ./.github/workflows/actions/publish-logs-to-s3
+        if: ${{ always() }}
+        with:
+          local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/logs"
+          remote_path: "logs"
+      - uses: ./.github/workflows/actions/publish-logs-to-s3
+        if: ${{ always() }}
+        with:
+          local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/output"
+          remote_path: "policy_output/${{ matrix.compliance }}"

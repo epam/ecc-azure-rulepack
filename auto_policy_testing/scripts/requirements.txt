@@ -1,0 +1,8 @@
+regex
+PyYAML>=6.0.1,!=6.0.0,!=5.4.0,!=5.4.1
+boto3
+requests
+botocore
+python-dateutil
+c7n @ git+https://github.com/cloud-custodian/cloud-custodian@main
+c7n-azure
