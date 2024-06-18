@@ -5,6 +5,13 @@ inputs:
     description: 'AWS: AWS IAM Role for which to fetch credentials.'
   step:
     description: 'ALL: CI step that assumes permissions, must be 1 or 2 words split by "_". Or color of infra [GREEN, RED]. Used to name role session.'
+  client_id:
+    description: 'for azure'
+  tenant_id:
+    description: 'for azure'
+  subscription_id:
+    description: 'for azure'
+
 
 
 runs:
@@ -30,9 +37,9 @@ runs:
       # if: github.repository == 'epam/ecc-azure-rulepack'
       uses: azure/login@v1
       with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-id: ${{ inputs.client_id }}
+          tenant-id: ${{ inputs.tenant_id }}
+          subscription-id: ${{ inputs.subscription_id }}
       
       - name: 'Run Azure CLI commands'
         run: |
