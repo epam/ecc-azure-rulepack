@@ -28,6 +28,6 @@ runs:
         echo "Terraform Validate..."
         terraform validate
         echo "Terraform Apply..."
-        terraform apply -auto-approve
+        terraform apply -auto-approve &> "${{ github.workspace }}/${AUTO_TEST_DIR}/logs/${RESOURCE}/${COMPLINCE}_up.txt"
         echo "Terraform State List..."
         terraform state list
