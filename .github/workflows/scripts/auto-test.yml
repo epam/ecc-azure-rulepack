@@ -26,6 +26,7 @@ env:
   AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
   AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
   AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  AZURE_SECRET_VALUE: ${{ secrets.AZURE_SECRET_VALUE }}
   default_resource_priority_list: '["storage"]'
 
 
@@ -36,6 +37,39 @@ permissions:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  deploy_common_resources:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        compliance: ['green', 'red']
+    
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v4
+      - uses: ./.github/workflows/actions/set-up-cloud-creds
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on

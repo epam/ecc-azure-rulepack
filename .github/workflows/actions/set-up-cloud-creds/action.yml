@@ -1,0 +1,25 @@
+name: "Setup cloud credentials"
+description: "Setup cloud credentials"
+
+runs:
+  using: "composite"
+  steps: 
+    - name: Set globals
+      id: globals
+      shell: bash
+      run: |
+        echo "cloud=$(echo "${{ github.repository }}" | cut -d'-' -f 2)" >> "${GITHUB_OUTPUT}"
+
+    - name: Authenticate with Azure
+      # if: github.repository == 'epam/ecc-azure-rulepack'
+      uses: azure/login@v1
+      with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      
+      - name: 'Run Azure CLI commands'
+        run: |
+            az account show
+    
+    - uses: hashicorp/setup-terraform@v3
