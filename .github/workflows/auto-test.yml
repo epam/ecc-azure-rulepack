@@ -80,3 +80,34 @@ jobs:
         with:
           local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/logs"
           remote_path: "logs"
+  
+  prepare_matrix_resources:
+    runs-on: ubuntu-22.04
+    needs: [ deploy_common_resources ]
+    outputs:
+      parallel_resources_list: ${{ steps.pass-resource-priority-list-to-matrix.outputs.parallel_resources_to_scan }}
+      not_parallel_resources_list: ${{ steps.pass-resource-priority-list-to-matrix.outputs.not_parallel_resources_to_scan }}
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v4
+      - id: pass-resource-priority-list-to-matrix
+        shell: bash
+        working-directory: ${{ env.AUTO_TEST_DIR }}/scripts
+        run: |
+          if [ "${{ inputs.resource_priority_list }}" != '' ]; then
+            resource_priority_list="${{ inputs.resource_priority_list }}"
+          else
+            resource_priority_list="$default_resource_priority_list"
+          fi
+
+          cloud=$(echo "${{ github.repository }}" | cut -d'-' -f 2)
+          not_parallel_resources="$(python -c "import exception_rules; print(exception_rules.$cloud.get('not-parallel',[]))")"
+          source resources_to_scan.sh
+          parallel_resources_to_scan="$(get_parallel_resources_to_scan "$not_parallel_resources" "$resource_priority_list")"
+          not_parallel_resources_to_scan="$(get_not_parallel_resources_to_scan "$not_parallel_resources" "$resource_priority_list")"
+          
+          echo "parallel_resources_to_scan=$parallel_resources_to_scan"
+          echo "not_parallel_resources_to_scan=$not_parallel_resources_to_scan"
+
+          echo "parallel_resources_to_scan=$parallel_resources_to_scan" >> "$GITHUB_OUTPUT"
+          echo "not_parallel_resources_to_scan=$not_parallel_resources_to_scan" >> "$GITHUB_OUTPUT"
