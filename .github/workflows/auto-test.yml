@@ -28,6 +28,12 @@ env:
   AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   AZURE_SECRET_VALUE: ${{ secrets.AZURE_SECRET_VALUE }}
   default_resource_priority_list: '["storage"]'
+  TF_VAR_project: ${{ secrets.TF_VAR_project }}
+  TF_VAR_region: ${{ secrets.AWS_REGION }}
+  TF_VAR_zone: ${{ secrets.TF_VAR_zone }}
+  TF_BACKEND_STORAGE_NAME: ${{ secrets.TF_BACKEND_STORAGE_NAME }}
+  TF_CLI_ARGS: "-no-color"
+  AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
 
 
 permissions:
@@ -44,48 +50,30 @@ jobs:
       matrix:
         compliance: ['green', 'red']
     
+    env:
+      COMPLINCE: ${{ matrix.compliance }}
+      RESOURCE: common_resources
+    
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v4
       - uses: ./.github/workflows/actions/set-up-cloud-creds
-  
+        with:
+          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
+          step: common_${{ matrix.compliance }}
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Clean old S3 logs
+        shell: bash
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          cloud=$(echo "${{ github.repository }}" | cut -d'-' -f 2)
+          aws s3 rm s3://$TF_BACKEND_STORAGE_NAME/$cloud/logs --recursive
+          aws s3 rm s3://$TF_BACKEND_STORAGE_NAME/$cloud/policy_output --recursive
+
+      - name: Deploy common resources
+        uses: ./.github/workflows/actions/tf-init-apply
+
+      - uses: ./.github/workflows/actions/publish-logs-to-s3
+        if: ${{ always() }}
+        with:
+          local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/logs"
+          remote_path: "logs"
