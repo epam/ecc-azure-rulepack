@@ -18,7 +18,7 @@ resource "azurerm_key_vault_access_policy" "client" {
 }
 
 resource "azurerm_key_vault_key" "this" {
-  name         = "keycommongreen"
+  name         = "keycommongreen${random_integer.this.result}"
   key_vault_id = azurerm_key_vault.this.id
   key_type     = "RSA"
   key_size     = 2048
