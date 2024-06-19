@@ -5,4 +5,4 @@ requests
 botocore
 python-dateutil
 c7n @ git+https://github.com/cloud-custodian/cloud-custodian@main
-c7n-azure
+c7n-azure @ git+https://github.com/cloud-custodian/cloud-custodian@main

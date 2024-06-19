@@ -34,12 +34,14 @@ def main():
         if not args.sa:
             print('Please use --sa param for AWS to set IAM role for Custodian scans')
             sys.exit(1)
-        session_policy_path = os.path.join(args.auto_test_dir, 'iam', args.resource + '.json')
+        session_policy_path = os.path.join(args.auto_test_dir, args.resource + '.json')
         if not os.path.exists(session_policy_path):
             print(f"Missing IAM policy for {args.resource} in {session_policy_path}")
             sys.exit(1)
     if args.cloud == "gcp":
         sa = args.sa
+    if args.cloud == "azure":
+        session_policy_path = os.path.join(args.auto_test_dir, 'iam', args.resource + '.json')
 
     path = os.path.join(RULEPACK_TESTING_PATH, args.infra_color, args.resource)
 
