@@ -208,3 +208,37 @@ jobs:
         with:
           local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/output"
           remote_path: "policy_output/${{ matrix.compliance }}"
+
+ destroy_common_resources:
+    runs-on: ubuntu-22.04
+    needs: [deploy_common_resources, deploy_and_scan_parallel_resources,deploy_and_scan_not_parallel_resources]
+    if: ${{ always() }}
+    strategy:
+      max-parallel: 10
+      fail-fast: false
+      matrix:
+        compliance: ['green', 'red']
+    env:
+      COMPLINCE: ${{ matrix.compliance }}
+      RESOURCE: common_resources
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v4
+
+      - uses: ./.github/workflows/actions/set-up-cloud-creds
+        with:
+          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
+          client_id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          step: common_${{ matrix.compliance }}
+
+      - name: Destroy common resources
+        if: ${{ always() }}
+        uses: ./.github/workflows/actions/tf-destroy
+
+      - uses: ./.github/workflows/actions/publish-logs-to-s3
+        if: ${{ always() }}
+        with:
+          local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/logs"
+          remote_path: "logs"
