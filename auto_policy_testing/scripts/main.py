@@ -14,6 +14,8 @@ parser.add_argument('--resource', type=str, help='resource to scan', required=Tr
 parser.add_argument('--base_dir', type=str, help='BASE_DIR path to the the rulepack repository ', required=True)
 parser.add_argument('--output_dir', type=str, help='OUTPUT_DIR path to the the report results', required=True)
 parser.add_argument('--auto_test_dir', help='Full path to auto-test directory', type=str, required=True)
+parser.add_argument('--regions', help="Please use ';' as separator", type=str)
+parser.add_argument('--sa', help="For GCP - Service Account for scanning, for AWS - IAM role", type=str, default="")
 args = parser.parse_args()
 
 policy_execution_outputs = {}
@@ -26,19 +28,18 @@ def main():
     if os.path.exists(args.output_dir):
         shutil.rmtree(args.output_dir)
     os.makedirs(args.output_dir, exist_ok=True)
+    sa = args.sa
 
     if args.cloud == "aws":
         if not args.sa:
             print('Please use --sa param for AWS to set IAM role for Custodian scans')
             sys.exit(1)
-        session_policy_path = os.path.join(args.auto_test_dir, args.resource + '.json')
+        session_policy_path = os.path.join(args.auto_test_dir, 'iam', args.resource + '.json')
         if not os.path.exists(session_policy_path):
             print(f"Missing IAM policy for {args.resource} in {session_policy_path}")
             sys.exit(1)
     if args.cloud == "gcp":
         sa = args.sa
-    if args.cloud == "azure":
-        session_policy_path = os.path.join(args.auto_test_dir)
 
     path = os.path.join(RULEPACK_TESTING_PATH, args.infra_color, args.resource)
 
@@ -52,6 +53,8 @@ def main():
             resource=args.resource,
             path=path,
             policies=policies,
+            regions=args.regions,
+            sa=args.sa if args.sa else None,
             color=args.infra_color,
             session_policy_file=session_policy_path if 'session_policy_path' in locals() else None
         ))
