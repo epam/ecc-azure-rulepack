@@ -1,5 +1,5 @@
 output "storage" {
   value = {
-    storageid = azurerm_storage_account.this.id
+    storage = azurerm_storage_account.this.id 
   }
 }
