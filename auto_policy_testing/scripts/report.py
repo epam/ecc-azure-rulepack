@@ -298,7 +298,7 @@ def create_report(policy_execution_outputs: dict,
     for entity in sorted_report:
         # Create failed file
         if entity["errors"] and entity["errors"] != [[]]:
-            error_message = f'{entity["policy_name"]}:' + entity["region"] if entity["region"] != "default" else ""
+            error_message = f'{entity["policy_name"]}:'# + entity["region"] if entity["region"] != "default" else ""
             for error in entity["errors"]:
                 if error:  
                     error_message += f'\n{error}\n'
