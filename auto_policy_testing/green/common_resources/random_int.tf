@@ -1,4 +1,4 @@
 resource "random_integer" "this" {
-  min = 200
-  max = 250
+  min = 260
+  max = 300
 }

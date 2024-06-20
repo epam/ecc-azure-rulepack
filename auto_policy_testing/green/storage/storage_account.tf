@@ -59,10 +59,18 @@ resource "azurerm_key_vault_access_policy" "storage" {
 
   key_permissions    = ["Get", "UnwrapKey", "WrapKey"]
   secret_permissions = ["Get"]
+
+  depends_on = [
+    azurerm_storage_account.this
+  ]
 }
 
 resource "azurerm_storage_account_customer_managed_key" "this" {
   storage_account_id = azurerm_storage_account.this.id
   key_vault_id       = data.terraform_remote_state.common.outputs.key_vault_id
   key_name           = data.terraform_remote_state.common.outputs.key_name
+  depends_on = [
+    azurerm_storage_account.this,
+    azurerm_key_vault_access_policy.storage
+  ]
 }

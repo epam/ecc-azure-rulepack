@@ -8,7 +8,10 @@ resource "azurerm_storage_account" "this" {
 
   network_rules {
     default_action = "Allow"
+    bypass         = ["None"]
   }
+
+  min_tls_version = "TLS1_0"
 
   tags = var.tags
 }
