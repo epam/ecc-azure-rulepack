@@ -1,4 +1,4 @@
-location = "eastus"
+location = "northeurope"
 
 tags = {
   ComplianceStatus = "Green"
