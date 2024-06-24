@@ -1,9 +1,7 @@
-# This is a basic workflow to help you get started with Actions
 name: Auto-testing
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches:
       - 'feature/auto_policy_testing'
@@ -14,7 +12,8 @@ on:
       resource_priority_list:
         type: string
         description: Priority list for resources (you can remove unnecessary resources during testing)
-        default: '["storage"]'
+        default: '["webapp"]'
+        #'["storage", "webapp"]'
         required: true
 
 # limits to only one workflow in time 

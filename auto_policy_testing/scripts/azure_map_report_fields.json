@@ -1,3 +1,4 @@
 {
-    "storage": ["id"]
+    "storage": ["id"],
+    "webapp" : ["id"]
 }
