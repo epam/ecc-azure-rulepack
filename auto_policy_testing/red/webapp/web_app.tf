@@ -17,8 +17,8 @@ resource "azurerm_linux_web_app" "this" {
   client_certificate_enabled = false
 
   site_config {
-    minimum_tls_version = "1.0"
     remote_debugging_enabled = true
+    minimum_tls_version = "1.0"
     ftps_state = "AllAllowed"
     http2_enabled = false
     application_stack {
