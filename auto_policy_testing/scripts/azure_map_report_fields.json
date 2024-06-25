@@ -1,4 +1,5 @@
 {
     "storage": ["id"],
-    "webapp" : ["id"]
+    "webapp" : ["id"],
+    "funcapp": ["id"]
 }

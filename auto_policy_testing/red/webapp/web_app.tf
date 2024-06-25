@@ -18,11 +18,14 @@ resource "azurerm_linux_web_app" "this" {
 
   site_config {
     minimum_tls_version = "1.0"
+    remote_debugging_enabled = true
     ftps_state = "AllAllowed"
     http2_enabled = false
-    remote_debugging_enabled = true
     application_stack {
       python_version = "3.7"
+    }
+    cors {
+      allowed_origins = ["*"]
     }
   }
 
