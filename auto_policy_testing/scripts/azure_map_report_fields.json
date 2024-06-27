@@ -1,5 +1,6 @@
 {
     "storage": ["id"],
     "webapp" : ["id"],
-    "vnet": ["id"]
+    "vnet": ["id"],
+    "networkinterface": ["id"]
 }
