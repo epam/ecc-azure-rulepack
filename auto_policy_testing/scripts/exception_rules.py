@@ -14,7 +14,8 @@ azure = {
             "ecc-azure-179-asb_app_service_managed_identity", #api app deprecated
             "ecc-azure-236-asb_cors_api", #api app deprecated
             "ecc-azure-239-asb_certif_api", #api app deprecated
-            "ecc-azure-256-asb_remotedebug_api" #api app deprecated
+            "ecc-azure-256-asb_remotedebug_api", #api app deprecated
+            "ecc-azure-258-asb_remotedebug_web" #terraform or azure policy issue
             ],
     "not-parallel": [],
     "sleep_before_scan": []
