@@ -15,8 +15,6 @@ policies:
         key: properties.subnets
         value: []
         op: ne
-      - not:
-          - type: value
-            key: properties.subnets[].properties.networkSecurityGroup.id
-            value: \/.+\/networkSecurityGroups\/.+
-            op: regex
+      - type: value
+        key: properties.subnets[].properties.networkSecurityGroup.id
+        value: empty
