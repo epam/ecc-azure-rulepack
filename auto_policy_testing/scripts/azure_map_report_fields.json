@@ -2,5 +2,6 @@
     "storage": ["id"],
     "webapp" : ["id"],
     "vnet": ["id"],
-    "networkinterface": ["id"]
+    "networkinterface": ["id"],
+    "networksecuritygroup": ["id"]
 }
