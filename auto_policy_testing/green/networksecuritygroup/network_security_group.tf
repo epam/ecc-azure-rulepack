@@ -29,13 +29,19 @@ resource "azurerm_network_security_group" "this" {
     destination_address_prefix = "*"
   }
 
+  provisioner "local-exec" {
+    command = "terraform import azurerm_network_watcher.this /subscriptions/f7dc8823-4f06-4346-9de0-badbe6273a54/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_northeurope"
+
+    environment = {}
+  }
+
   tags = var.tags
 }
 
 resource "azurerm_network_watcher" "this" {
-  name                = "networksecuritygroup-cisnsgflowloganalytics-nw"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
+  name                = "NetworkWatcher_northeurope"
+  location            = "northeurope"
+  resource_group_name = "NetworkWatcherRG"
 }
 
 resource "azurerm_log_analytics_workspace" "this" {
