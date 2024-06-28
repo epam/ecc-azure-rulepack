@@ -29,20 +29,15 @@ resource "azurerm_network_security_group" "this" {
     destination_address_prefix = "*"
   }
 
-  provisioner "local-exec" {
-    command = "terraform import azurerm_network_watcher.this /subscriptions/f7dc8823-4f06-4346-9de0-badbe6273a54/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_northeurope"
-
-    environment = {}
-  }
-
   tags = var.tags
 }
 
-resource "azurerm_network_watcher" "this" {
-  name                = "NetworkWatcher_northeurope"
-  location            = "northeurope"
-  resource_group_name = "NetworkWatcherRG"
-}
+#remove it when azure policy will be removed
+#resource "azurerm_network_watcher" "this" {
+#  name                = "NetworkWatcher_northeurope"
+#  location            = "northeurope"
+#  resource_group_name = "NetworkWatcherRG"
+#}
 
 resource "azurerm_log_analytics_workspace" "this" {
   name                = "networksecuritygroup-cisnsgflowloganalytics-law"
@@ -52,8 +47,8 @@ resource "azurerm_log_analytics_workspace" "this" {
 }
 
 resource "azurerm_network_watcher_flow_log" "this" {
-  network_watcher_name = azurerm_network_watcher.this.name
-  resource_group_name  = azurerm_resource_group.this.name
+  network_watcher_name = "NetworkWatcher_northeurope" #this update too when policy will be removed
+  resource_group_name  = "NetworkWatcherRG" #this update too when policy will be removed
   name                 = "networksecuritygroup-cisnsgflowloganalytics-log"
 
   network_security_group_id = azurerm_network_security_group.this.id
