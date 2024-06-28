@@ -39,34 +39,34 @@ resource "azurerm_network_security_group" "this" {
 #  resource_group_name = "NetworkWatcherRG"
 #}
 
-resource "azurerm_log_analytics_workspace" "this" {
-  name                = "networksecuritygroup-cisnsgflowloganalytics-law"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
-  sku                 = "PerGB2018"
-}
+#resource "azurerm_log_analytics_workspace" "this" {
+#  name                = "networksecuritygroup-cisnsgflowloganalytics-law"
+#  location            = azurerm_resource_group.this.location
+#  resource_group_name = azurerm_resource_group.this.name
+#  sku                 = "PerGB2018"
+#}
 
-resource "azurerm_network_watcher_flow_log" "this" {
-  network_watcher_name = "NetworkWatcher_northeurope" #this update too when policy will be removed
-  resource_group_name  = "NetworkWatcherRG" #this update too when policy will be removed
-  name                 = "networksecuritygroup-cisnsgflowloganalytics-log"
+#resource "azurerm_network_watcher_flow_log" "this" {
+#  network_watcher_name = "NetworkWatcher_northeurope" #this update too when policy will be removed
+#  resource_group_name  = "NetworkWatcherRG" #this update too when policy will be removed
+#  name                 = "networksecuritygroup-cisnsgflowloganalytics-log"
 
-  network_security_group_id = azurerm_network_security_group.this.id
-  storage_account_id        = data.terraform_remote_state.common.outputs.storage_id
-  enabled                   = true
+#  network_security_group_id = azurerm_network_security_group.this.id
+#  storage_account_id        = data.terraform_remote_state.common.outputs.storage_id
+#  enabled                   = true
 
-  retention_policy {
-    enabled = true
-    days    = 7
-  }
-  traffic_analytics {
-    enabled               = true
-    workspace_id          = azurerm_log_analytics_workspace.this.workspace_id
-    workspace_region      = azurerm_log_analytics_workspace.this.location
-    workspace_resource_id = azurerm_log_analytics_workspace.this.id
-    interval_in_minutes   = 10
-  }
-}
+#  retention_policy {
+#    enabled = true
+#    days    = 7
+#  }
+#  traffic_analytics {
+#    enabled               = true
+#    workspace_id          = azurerm_log_analytics_workspace.this.workspace_id
+#    workspace_region      = azurerm_log_analytics_workspace.this.location
+#    workspace_resource_id = azurerm_log_analytics_workspace.this.id
+#    interval_in_minutes   = 10
+#  }
+#}
 
 
 
