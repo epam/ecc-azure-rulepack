@@ -12,7 +12,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
 
   admin_ssh_key {
     username   = random_string.this.result
-    public_key = file("~/.ssh/id_rsa.pub")
+    public_key = var.public_key
   }
 
   source_image_reference {

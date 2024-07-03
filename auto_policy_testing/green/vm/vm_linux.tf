@@ -9,7 +9,7 @@ resource "azurerm_linux_virtual_machine" "this" {
 
   admin_ssh_key {
     username   = random_string.this.result
-    public_key = file("~/.ssh/id_rsa.pub")
+    public_key = var.public_key
   }
 
   network_interface_ids = [
