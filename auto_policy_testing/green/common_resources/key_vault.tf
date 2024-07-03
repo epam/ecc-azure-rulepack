@@ -6,6 +6,7 @@ resource "azurerm_key_vault" "this" {
   sku_name                   = "premium"
   soft_delete_retention_days = 7
   purge_protection_enabled   = true
+  enabled_for_disk_encryption = true
 }
 
 resource "azurerm_key_vault_access_policy" "client" {

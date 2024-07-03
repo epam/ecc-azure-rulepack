@@ -12,8 +12,8 @@ on:
       resource_priority_list:
         type: string
         description: Priority list for resources (you can remove unnecessary resources during testing)
-        default: '["networksecuritygroup"]'
-        #'["storage", "webapp", "vnet", "networkinterface", "networksecuritygroup"]'
+        default: '["vm"]'
+        #'["storage", "webapp", "vnet", "networkinterface", "networksecuritygroup", "vm"]'
         required: true
 
 # limits to only one workflow in time 
@@ -26,8 +26,8 @@ env:
   AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
   AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   AZURE_SECRET_VALUE: ${{ secrets.AZURE_SECRET_VALUE }}
-  default_resource_priority_list: '["networksecuritygroup"]'
-  #default_resource_priority_list: '["storage", "webapp", "vnet", "networkinterface", "networksecuritygroup"]'
+  default_resource_priority_list: '["vm"]'
+  #default_resource_priority_list: '["storage", "webapp", "vnet", "networkinterface", "networksecuritygroup", "vm"]'
   TF_VAR_project: ${{ secrets.TF_VAR_project }}
   TF_VAR_region: ${{ secrets.AWS_REGION }}
   TF_VAR_zone: ${{ secrets.TF_VAR_zone }}

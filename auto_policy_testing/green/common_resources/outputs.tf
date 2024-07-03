@@ -2,8 +2,20 @@ output "key_vault_id" {
     value =   azurerm_key_vault.this.id
 }
 
+output "key_vault_url" {
+    value =   azurerm_key_vault.this.vault_uri
+}
+
+output "key_vault_name" {
+    value =   azurerm_key_vault.this.name
+}
+
 output "key_name" {
     value = azurerm_key_vault_key.this.name
+}
+
+output "key_id" {
+    value = azurerm_key_vault_key.this.id
 }
 
 output "vnet_id" {
@@ -16,6 +28,10 @@ output "subnet_id" {
 
 output "public_ip" {
     value = azurerm_public_ip.this.ip_address
+}
+
+output "public_ip_id" {
+    value = azurerm_public_ip.this.id
 }
 
 output "storage_id" {

@@ -8,7 +8,11 @@ azure = {
               "ecc-azure-069-cis_app_last_java",
               "ecc-azure-071-cis_app_last_php",
               "ecc-azure-072-cis-app-keyvaults", #policy doesn't work
-              "ecc-azure-378-cis_nsg_flow_log_analytics" #policy doesn't work
+              "ecc-azure-378-cis_nsg_flow_log_analytics", #policy doesn't work
+              "ecc-azure-368-vmss_omi_vulnerability", #policy doesn't work
+              "ecc-azure-197-asb_vm_disk_encryption_on", #policy doesn't work
+              "ecc-azure-227-asb_reslogs_vmss", #policy doesn't work
+              "ecc-azure-272-asb_scaleset" #policy doesn't work
               ], 
     "red": ["ecc-azure-105-cis_sa_keys_regen",
             "ecc-azure-267-asb_java_funcapp",
@@ -18,7 +22,8 @@ azure = {
             "ecc-azure-239-asb_certif_api", #api app deprecated
             "ecc-azure-256-asb_remotedebug_api", #api app deprecated
             "ecc-azure-258-asb_remotedebug_web", #terraform or azure policy issue
-            "ecc-azure-378-cis_nsg_flow_log_analytics" #policy doesn't work
+            "ecc-azure-378-cis_nsg_flow_log_analytics", #policy doesn't work
+            "ecc-azure-368-vmss_omi_vulnerability" #policy doesn't work
             ],
     "not-parallel": [],
     "sleep_before_scan": []

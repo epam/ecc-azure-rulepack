@@ -10,6 +10,14 @@ output "storage_id" {
     value =   azurerm_storage_account.this.id
 }
 
+output "container_name" {
+    value =   azurerm_storage_container.this.name
+}
+
+output "storage_endpoint" {
+    value =   azurerm_storage_account.this.primary_blob_endpoint
+}
+
 output "storage_name" {
     value =   azurerm_storage_account.this.name
 }

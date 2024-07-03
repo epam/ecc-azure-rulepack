@@ -3,5 +3,7 @@
     "webapp" : ["id"],
     "vnet": ["id"],
     "networkinterface": ["id"],
-    "networksecuritygroup": ["id"]
+    "networksecuritygroup": ["id"],
+    "vm": ["id"],
+    "vmss": ["id"]
 }
