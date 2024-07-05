@@ -2,6 +2,10 @@ output "resource_group" {
     value =   azurerm_resource_group.resources.name
 }
 
+output "location" {
+    value = var.location
+}
+
 output "vnet_id" {
     value = azurerm_virtual_network.this.id
 }

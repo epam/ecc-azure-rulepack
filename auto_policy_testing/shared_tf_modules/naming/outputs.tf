@@ -13,7 +13,9 @@ output "resource_prefix" {
     publicip                = "${local.suffix}-${var.resource_type}-publicip-${local.compliance_status}",
     keyvault-key            = "${local.suffix}-keyvault-key-${local.compliance_status}",
     loadbalancer            = "${local.suffix}-${var.resource_type}-loadbalancer-${local.compliance_status}",
-    availabilityset         = "${local.suffix}-${var.resource_type}-availabilityset-${local.compliance_status}"
+    availabilityset         = "${local.suffix}-${var.resource_type}-availabilityset-${local.compliance_status}",
+    networksecuritygroup    = "${local.suffix}-${var.resource_type}-networksecuritygroup-${local.compliance_status}"
+
   }
 }
 
