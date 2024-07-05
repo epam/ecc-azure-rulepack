@@ -1,7 +1,7 @@
 resource "azurerm_availability_set" "this" {
-  name                = "vm-aset"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
+  name                = module.naming.resource_prefix.availabilityset
+  location            = data.terraform_remote_state.common.outputs.location
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
-  tags = var.tags
+  tags = module.naming.default_tags
 }

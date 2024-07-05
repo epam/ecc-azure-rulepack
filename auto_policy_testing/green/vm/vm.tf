@@ -1,7 +1,8 @@
 resource "azurerm_windows_virtual_machine" "this" {
-  name                  = "winvmgrn"
-  location              = azurerm_resource_group.this.location
-  resource_group_name   = azurerm_resource_group.this.name
+  name                  = "${module.naming.resource_prefix.vm}win"
+
+  location              = data.terraform_remote_state.common.outputs.location
+  resource_group_name   = data.terraform_remote_state.common.outputs.resource_group
   network_interface_ids = [azurerm_network_interface.nic1.id]
   size                  = "Standard_DS2_v2"
   admin_username        = random_string.this.result
@@ -26,6 +27,6 @@ resource "azurerm_windows_virtual_machine" "this" {
     type = "SystemAssigned"
   }
 
-  tags = var.tags
+  tags = module.naming.default_tags
 }
 

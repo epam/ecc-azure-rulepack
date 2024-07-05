@@ -1,3 +1,12 @@
+output "resource_group" {
+    value =   azurerm_resource_group.resources.name
+}
+
+output "location" {
+    value = var.location
+}
+
+
 output "key_vault_id" {
     value =   azurerm_key_vault.this.id
 }
@@ -45,4 +54,13 @@ output "storage_name" {
 output "storage_key" {
     value =   azurerm_storage_account.this.primary_access_key
     sensitive = true
+}
+
+output "workspace_key" {
+    value =   azurerm_log_analytics_workspace.this.primary_shared_key
+    sensitive = true
+}
+
+output "workspace_id" {
+    value =   azurerm_log_analytics_workspace.this.workspace_id
 }

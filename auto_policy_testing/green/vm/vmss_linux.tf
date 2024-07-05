@@ -1,7 +1,7 @@
 resource "azurerm_linux_virtual_machine_scale_set" "this" {
-  name                            = "lss-vm-green"
-  resource_group_name             = azurerm_resource_group.this.name
-  location                        = azurerm_resource_group.this.location
+  name                            = "${module.naming.resource_prefix.vmss}lin"
+  location                        = data.terraform_remote_state.common.outputs.location
+  resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
   sku                             = "Standard_DS2_v2"
   disable_password_authentication = true
   admin_username                  = random_string.this.result
@@ -48,6 +48,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
     enable_automatic_os_upgrade = true
   }
 
-  tags = var.tags
+  tags = module.naming.default_tags
 }
 

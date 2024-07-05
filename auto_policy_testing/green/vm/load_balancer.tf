@@ -1,13 +1,15 @@
 resource "azurerm_lb" "this" {
-  name                = "vmsspip-green"
-  resource_group_name = azurerm_resource_group.this.name
-  location            = azurerm_resource_group.this.location
+  name                = module.naming.resource_prefix.loadbalancer
+  location            = data.terraform_remote_state.common.outputs.location
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   sku                 = "Standard"
 
   frontend_ip_configuration {
     name                 = "PublicFrontend"
     public_ip_address_id = data.terraform_remote_state.common.outputs.public_ip_id
   }
+
+  tags = module.naming.default_tags
 }
 
 resource "azurerm_lb_backend_address_pool" "this" {

@@ -25,35 +25,19 @@ resource "azurerm_virtual_machine_extension" "win1" {
   SETTINGS
 
   depends_on = [azurerm_windows_virtual_machine.this]
-
-  tags = var.tags
 }
 
 resource "azurerm_virtual_machine_extension" "win2" {
-  name                 = "vm-extension2wingreen"
-  virtual_machine_id   = azurerm_windows_virtual_machine.this.id
-  publisher            = "Microsoft.Azure.Monitoring.DependencyAgent"
-  type                 = "DependencyAgentWindows"
-  type_handler_version = "9.5"
-
-  depends_on = [azurerm_virtual_machine_extension.win1]
-
-  tags = var.tags
-}
-
-resource "azurerm_virtual_machine_extension" "win3" {
   name                 = "vm-win3ext"
   virtual_machine_id   = azurerm_windows_virtual_machine.this.id
   publisher            = "Microsoft.GuestConfiguration"
   type                 = "ConfigurationforWindows"
   type_handler_version = "1.11"
 
-  depends_on = [azurerm_virtual_machine_extension.win2]
-
-  tags = var.tags
+  depends_on = [azurerm_virtual_machine_extension.win1]
 }
 
-resource "azurerm_virtual_machine_extension" "win4" {
+resource "azurerm_virtual_machine_extension" "win3" {
   name                 = "vm-win4ext"
   virtual_machine_id   = azurerm_windows_virtual_machine.this.id
   publisher            = "Microsoft.EnterpriseCloud.Monitoring"
@@ -62,21 +46,19 @@ resource "azurerm_virtual_machine_extension" "win4" {
 
   settings           = <<SETTINGS
     {
-      "workspaceId": "${local.workspaceId}"
+      "workspaceId": "${data.terraform_remote_state.common.outputs.workspace_id}"
     }
     SETTINGS   
   protected_settings = <<PROTECTED_SETTINGS
     {
-      "workspaceKey": "${local.workspaceKey}"
+      "workspaceKey": "${data.terraform_remote_state.common.outputs.workspace_key}"
     }
     PROTECTED_SETTINGS
 
-  tags = var.tags
-
-  depends_on = [azurerm_log_analytics_workspace.this, azurerm_virtual_machine_extension.win3]
+  depends_on = [azurerm_virtual_machine_extension.win2]
 }
 
-resource "azurerm_virtual_machine_extension" "win5" {
+resource "azurerm_virtual_machine_extension" "win4" {
     #count                             =     "windows"
     name                              =     "AzureDiskEncryption"
     virtual_machine_id                =     azurerm_windows_virtual_machine.this.id
@@ -97,7 +79,7 @@ resource "azurerm_virtual_machine_extension" "win5" {
     }
     SETTINGS
 
-    depends_on                        =     [azurerm_virtual_machine_extension.win4]
+    depends_on                        =     [azurerm_virtual_machine_extension.win3]
 }
 
 resource "azurerm_virtual_machine_scale_set_extension" "vmsswin1" {
@@ -115,6 +97,7 @@ resource "azurerm_virtual_machine_scale_set_extension" "vmsswin2" {
   publisher                    = "Microsoft.Azure.Diagnostics"
   type                         = "IaaSDiagnostics"
   type_handler_version         = "1.1"
+
   depends_on = [azurerm_virtual_machine_scale_set_extension.vmsswin1]
 }
 
@@ -125,6 +108,7 @@ resource "azurerm_virtual_machine_scale_set_extension" "vmsswin3" {
   publisher                    = "Microsoft.EnterpriseCloud.Monitoring"
   type                         = "MicrosoftMonitoringAgent"
   type_handler_version         = "1.0"
+
   depends_on = [azurerm_virtual_machine_scale_set_extension.vmsswin2]
 }
 
