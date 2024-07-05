@@ -59,6 +59,14 @@ resource "azurerm_virtual_machine_extension" "win3" {
 }
 
 resource "azurerm_virtual_machine_extension" "win4" {
+  name                 = "dependencyextensiongreen"
+  virtual_machine_id   = azurerm_windows_virtual_machine.this.id
+  publisher            = "Microsoft.Azure.Monitoring.DependencyAgent"
+  type                 = "DependencyAgentWindows"
+  type_handler_version = "9.5"
+}
+
+resource "azurerm_virtual_machine_extension" "win5" {
     #count                             =     "windows"
     name                              =     "AzureDiskEncryption"
     virtual_machine_id                =     azurerm_windows_virtual_machine.this.id
@@ -79,7 +87,7 @@ resource "azurerm_virtual_machine_extension" "win4" {
     }
     SETTINGS
 
-    depends_on                        =     [azurerm_virtual_machine_extension.win3]
+    depends_on                        =     [azurerm_virtual_machine_extension.win4]
 }
 
 resource "azurerm_virtual_machine_scale_set_extension" "vmsswin1" {
