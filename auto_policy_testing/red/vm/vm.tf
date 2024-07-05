@@ -18,5 +18,4 @@ resource "azurerm_windows_virtual_machine" "this" {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
-  tags = module.naming.default_tags
 }

@@ -22,5 +22,4 @@ resource "azurerm_linux_virtual_machine" "this" {
     sku       = "16.04-LTS"
     version   = "latest"
   }
-  tags = module.naming.default_tags
 }

@@ -33,5 +33,4 @@ resource "azurerm_virtual_machine" "this" {
   os_profile_linux_config {
     disable_password_authentication = false
   }
-  tags = module.naming.default_tags
 }

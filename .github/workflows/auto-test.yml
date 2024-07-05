@@ -149,8 +149,6 @@ jobs:
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           step: common_${{ matrix.compliance }}
-          
-      - uses: ./.github/workflows/actions/install-dependencies
 
       - name: Custodian scan
         uses: ./.github/workflows/actions/c7n-scan

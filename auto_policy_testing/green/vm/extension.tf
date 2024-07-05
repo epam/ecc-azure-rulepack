@@ -64,6 +64,8 @@ resource "azurerm_virtual_machine_extension" "win4" {
   publisher            = "Microsoft.Azure.Monitoring.DependencyAgent"
   type                 = "DependencyAgentWindows"
   type_handler_version = "9.5"
+
+  depends_on = [azurerm_virtual_machine_extension.win3]
 }
 
 resource "azurerm_virtual_machine_extension" "win5" {
