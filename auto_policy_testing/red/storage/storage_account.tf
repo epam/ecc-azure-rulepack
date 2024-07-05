@@ -17,13 +17,13 @@ resource "azurerm_storage_account" "this" {
 }
 
 resource "azurerm_storage_container" "container1" {
-  name                  = "${random_string.this.result}sc1red"
+  name                  = "${random_integer.this.result}sc1red"
   storage_account_name  = azurerm_storage_account.this.name
   container_access_type = "container"
 }
 
 resource "azurerm_storage_container" "container2" {
-  name                  = "${random_string.this.result}sc2red"
+  name                  = "${random_integer.this.result}sc2red"
   storage_account_name  = azurerm_storage_account.this.name
   container_access_type = "blob"
 }
