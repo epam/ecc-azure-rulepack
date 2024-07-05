@@ -13,8 +13,4 @@ resource "azurerm_key_vault_access_policy" "user_assigned" {
 
   key_permissions    = ["Get", "UnwrapKey", "WrapKey"]
   secret_permissions = ["Get"]
-
-  depends_on = [
-    azurerm_storage_account.this
-  ]
 }
