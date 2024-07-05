@@ -49,5 +49,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
   }
 
   tags = module.naming.default_tags
+
+  depends_on = [ azurerm_lb_probe.this ]
 }
 

@@ -15,7 +15,6 @@ resource "azurerm_lb" "this" {
 resource "azurerm_lb_backend_address_pool" "this" {
   loadbalancer_id = azurerm_lb.this.id
   name            = "publicWorkerPool"
-  depends_on = [ azurerm_lb.this ]
 }
 
 resource "azurerm_lb_rule" "this" {
@@ -27,8 +26,6 @@ resource "azurerm_lb_rule" "this" {
   frontend_ip_configuration_name = "PublicFrontend"
   backend_address_pool_ids       = [azurerm_lb_backend_address_pool.this.id]
   probe_id                       = azurerm_lb_probe.this.id
-
-  depends_on = [ azurerm_lb.this, azurerm_lb_backend_address_pool.this ]
 }
 
 resource "azurerm_lb_probe" "this" {
@@ -36,6 +33,4 @@ resource "azurerm_lb_probe" "this" {
   loadbalancer_id = azurerm_lb.this.id
   protocol        = "Tcp"
   port            = "80"
-
-  depends_on = [ azurerm_lb.this, azurerm_lb_backend_address_pool.this, azurerm_lb_rule.this ]
 }
