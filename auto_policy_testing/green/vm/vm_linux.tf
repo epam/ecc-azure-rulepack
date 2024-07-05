@@ -1,5 +1,5 @@
 resource "azurerm_linux_virtual_machine" "this" {
-  name                            = "${module.naming.resource_prefix.vm}lin"
+  name                            = "${module.naming.resource_prefix.vm}grlin"
   location                        = data.terraform_remote_state.common.outputs.location
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
   size                            = "Standard_DS2_v2"

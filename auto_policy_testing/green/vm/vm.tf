@@ -1,5 +1,5 @@
 resource "azurerm_windows_virtual_machine" "this" {
-  name                  = "${module.naming.resource_prefix.vm}win"
+  name                  = "${module.naming.resource_prefix.vm}grwin"
 
   location              = data.terraform_remote_state.common.outputs.location
   resource_group_name   = data.terraform_remote_state.common.outputs.resource_group

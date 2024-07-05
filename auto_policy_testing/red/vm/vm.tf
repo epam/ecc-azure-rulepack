@@ -1,7 +1,7 @@
 resource "azurerm_windows_virtual_machine" "this" {
-  name                  = "winvm-vm-red"
-  location              = azurerm_resource_group.this.location
-  resource_group_name   = azurerm_resource_group.this.name
+  name                  = "${module.naming.resource_prefix.vm}rdwin"
+  location              = data.terraform_remote_state.common.outputs.location
+  resource_group_name   = data.terraform_remote_state.common.outputs.resource_group
   network_interface_ids = [azurerm_network_interface.nic1.id]
   size                  = "Standard_B1s"
   admin_username        = random_string.this.result
@@ -18,4 +18,5 @@ resource "azurerm_windows_virtual_machine" "this" {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
+  tags = module.naming.default_tags
 }

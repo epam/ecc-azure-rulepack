@@ -4,13 +4,6 @@ resource "azurerm_virtual_machine_extension" "linuxvm_extension" {
   publisher            = "Microsoft.GuestConfiguration"
   type                 = "ConfigurationForLinux"
   type_handler_version = "1.0"
-
-  tags = var.tags
-}
-
-locals {
-  workspaceKey = azurerm_log_analytics_workspace.this.primary_shared_key
-  workspaceId  = azurerm_log_analytics_workspace.this.workspace_id
 }
 
 resource "azurerm_virtual_machine_extension" "this" {
@@ -22,16 +15,14 @@ resource "azurerm_virtual_machine_extension" "this" {
 
   settings           = <<SETTINGS
     {
-      "workspaceId": "${local.workspaceId}"
+      "workspaceId": "${data.terraform_remote_state.common.outputs.workspace_id}"
     }
     SETTINGS   
   protected_settings = <<PROTECTED_SETTINGS
     {
-      "workspaceKey": "${local.workspaceKey}"
+      "workspaceKey": "${data.terraform_remote_state.common.outputs.workspace_key}"
     }
     PROTECTED_SETTINGS
-
-  tags = var.tags
 
   depends_on = [azurerm_log_analytics_workspace.this]
 }
@@ -45,12 +36,12 @@ resource "azurerm_virtual_machine_scale_set_extension" "this" {
 
   settings           = <<SETTINGS
     {
-      "workspaceId": "${local.workspaceId}"
+      "workspaceId": "${data.terraform_remote_state.common.outputs.workspace_id}"
     }
     SETTINGS   
   protected_settings = <<PROTECTED_SETTINGS
     {
-      "workspaceKey": "${local.workspaceKey}"
+      "workspaceKey": "${data.terraform_remote_state.common.outputs.workspace_key}"
     }
     PROTECTED_SETTINGS
 

@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "this" {
-  name     = "common-rg-red${random_integer.this.result}"
+  name     = module.naming.resource_prefix.resourcegroup
   location = "${var.location}"
 }

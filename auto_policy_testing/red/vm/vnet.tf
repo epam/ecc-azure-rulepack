@@ -1,7 +1,7 @@
 resource "azurerm_network_interface" "nic1" {
-  name                = "nic-vm1-red"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
+  name                = "${module.naming.resource_prefix.networkinterface}-vm1"
+  location            = data.terraform_remote_state.common.outputs.location
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
   ip_configuration {
     name                          = "conf1-vm-red"
@@ -9,14 +9,14 @@ resource "azurerm_network_interface" "nic1" {
     private_ip_address_allocation = "Dynamic"
   }
 
-  tags = var.tags
+  tags = module.naming.default_tags
 }
 
 
 resource "azurerm_network_interface" "nic2" {
-  name                = "nic2-vm-red"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
+  name                = "${module.naming.resource_prefix.networkinterface}-vm2"
+  location            = data.terraform_remote_state.common.outputs.location
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
   ip_configuration {
     name                          = "conf2-vm-red"
@@ -24,13 +24,13 @@ resource "azurerm_network_interface" "nic2" {
     private_ip_address_allocation = "Dynamic"
   }
 
-  tags = var.tags
+  tags = module.naming.default_tags
 }
 
 resource "azurerm_network_interface" "nic3" {
-  name                = "nic3-vm-red"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
+  name                = "${module.naming.resource_prefix.networkinterface}-vm3"
+  location            = data.terraform_remote_state.common.outputs.location
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
   ip_configuration {
     name                          = "conf3-vm-red"
@@ -38,5 +38,5 @@ resource "azurerm_network_interface" "nic3" {
     private_ip_address_allocation = "Dynamic"
   }
 
-  tags = var.tags
+  tags = module.naming.default_tags
 }

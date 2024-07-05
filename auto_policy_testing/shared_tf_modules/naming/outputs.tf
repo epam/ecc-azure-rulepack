@@ -1,7 +1,7 @@
 output "resource_prefix" {
   value = {
-    vm                      = "vmgr",
-    vmss                    = "vmssgr",
+    vm                      = "vm",
+    vmss                    = "vmss",
     networkinterface        = "${local.suffix}-${var.resource_type}-networkinterface-${local.compliance_status}",
     recoveryvault           = "${local.suffix}-${var.resource_type}-recoveryvault-${local.compliance_status}",
     keyvault                = "keyvault${local.compliance_status}",

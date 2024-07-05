@@ -1,7 +1,7 @@
 resource "azurerm_linux_virtual_machine" "this" {
-  name                            = "linuxvm-vm-red"
-  resource_group_name             = azurerm_resource_group.this.name
-  location                        = azurerm_resource_group.this.location
+  name                            = "${module.naming.resource_prefix.vm}rdlin"
+  location            = data.terraform_remote_state.common.outputs.location
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   size                            = "Standard_B1s"
   disable_password_authentication = false
   admin_username                  = random_string.this.result
@@ -22,4 +22,5 @@ resource "azurerm_linux_virtual_machine" "this" {
     sku       = "16.04-LTS"
     version   = "latest"
   }
+  tags = module.naming.default_tags
 }

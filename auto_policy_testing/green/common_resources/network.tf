@@ -20,5 +20,5 @@ resource "azurerm_public_ip" "this" {
   allocation_method   = "Static"
   sku                 = "Standard"
 
-  tags                 = module.naming.default_tags
+  tags                = module.naming.default_tags
 }

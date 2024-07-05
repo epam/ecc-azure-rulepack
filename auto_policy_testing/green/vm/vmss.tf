@@ -1,5 +1,5 @@
 resource "azurerm_windows_virtual_machine_scale_set" "this" {
-  name                            = "${module.naming.resource_prefix.vmss}win"
+  name                            = "${module.naming.resource_prefix.vmss}grwin"
   location                        = data.terraform_remote_state.common.outputs.location
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
   sku                             = "Standard_DS2_v2"

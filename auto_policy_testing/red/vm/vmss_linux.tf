@@ -1,7 +1,7 @@
 resource "azurerm_linux_virtual_machine_scale_set" "this" {
-  name                            = "lss-vm-red"
-  resource_group_name             = azurerm_resource_group.this.name
-  location                        = azurerm_resource_group.this.location
+  name                            = "${module.naming.resource_prefix.vmss}rdlin"
+  location                        = data.terraform_remote_state.common.outputs.location
+  resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
   sku                             = "Standard_B1s"
   disable_password_authentication = false
   admin_username                  = random_string.this.result
@@ -32,6 +32,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
       subnet_id = data.terraform_remote_state.common.outputs.subnet_id
     }
   }
-  tags = var.tags
+  tags = module.naming.default_tags
 }
 
