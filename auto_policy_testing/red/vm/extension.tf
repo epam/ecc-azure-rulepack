@@ -42,7 +42,4 @@ resource "azurerm_virtual_machine_scale_set_extension" "this" {
       "workspaceKey": "${data.terraform_remote_state.common.outputs.workspace_key}"
     }
     PROTECTED_SETTINGS
-
-
-  depends_on = [azurerm_log_analytics_workspace.this]
 }
