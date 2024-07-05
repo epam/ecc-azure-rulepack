@@ -1,7 +1,9 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_user_assigned_identity" "this" {
-  location            = azurerm_resource_group.this.location
-  name                = "app-identity-green"
-  resource_group_name = azurerm_resource_group.this.name
+  name                = module.naming.resource_prefix.useridentity
+  location            = data.terraform_remote_state.common.outputs.location
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 }
 
 resource "azurerm_key_vault_access_policy" "user_assigned" {

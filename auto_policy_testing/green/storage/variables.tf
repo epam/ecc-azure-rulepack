@@ -1,11 +1,3 @@
-variable "location" {
-  type = string
-}
-
-variable "tags" {
-  type = map(string)
-}
-
 variable "remote_state_region" {
   type        = string
   description = "Region where resources will be created"

@@ -1,7 +1,7 @@
 resource "azurerm_network_security_group" "this" {
   name                = "networksecuritygroup-nsg-green"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
+  location            = data.terraform_remote_state.common.outputs.location
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
   security_rule {
     name                       = "deny_inbound_udp"
@@ -29,7 +29,7 @@ resource "azurerm_network_security_group" "this" {
     destination_address_prefix = "*"
   }
 
-  tags = var.tags
+  tags = module.naming.default_tags
 }
 
 #remove it when azure policy will be removed

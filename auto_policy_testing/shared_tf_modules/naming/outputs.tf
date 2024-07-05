@@ -14,8 +14,12 @@ output "resource_prefix" {
     keyvault-key            = "${local.suffix}-keyvault-key-${local.compliance_status}",
     loadbalancer            = "${local.suffix}-${var.resource_type}-loadbalancer-${local.compliance_status}",
     availabilityset         = "${local.suffix}-${var.resource_type}-availabilityset-${local.compliance_status}",
-    networksecuritygroup    = "${local.suffix}-${var.resource_type}-networksecuritygroup-${local.compliance_status}"
-
+    networksecuritygroup    = "${local.suffix}-${var.resource_type}-networksecuritygroup-${local.compliance_status}",
+    privateendpoint         = "${local.suffix}-${var.resource_type}-networksecuritygroup-${local.compliance_status}",
+    webapp                  = "${local.suffix}-${var.resource_type}-webapp-${local.compliance_status}",
+    serviceplan             = "${local.suffix}-${var.resource_type}-serviceplan-${local.compliance_status}",
+    useridentity            = "${local.suffix}-${var.resource_type}-useridentity-${local.compliance_status}",
+    diagnosticsetting       = "${local.suffix}-${var.resource_type}-diagnosticsetting-${local.compliance_status}"
   }
 }
 

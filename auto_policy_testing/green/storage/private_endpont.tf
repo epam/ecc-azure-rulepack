@@ -1,7 +1,7 @@
 resource "azurerm_private_endpoint" "this" {
-  name                = "${random_string.this.result}endpgreen"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
+  name                = module.naming.resource_prefix.privateendpoint
+  location            = data.terraform_remote_state.common.outputs.location
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   subnet_id           = data.terraform_remote_state.common.outputs.subnet_id
 
   private_service_connection {
