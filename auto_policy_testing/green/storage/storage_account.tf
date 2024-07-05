@@ -1,7 +1,7 @@
 resource "azurerm_storage_account" "this" {
   name                     = "${module.naming.resource_prefix.storage}storage${random_integer.this.result}"
-  location            = data.terraform_remote_state.common.outputs.location
-  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
+  location                 = data.terraform_remote_state.common.outputs.location
+  resource_group_name      = data.terraform_remote_state.common.outputs.resource_group
   account_tier             = "Standard"
   account_replication_type = "GRS"
   allow_nested_items_to_be_public = false

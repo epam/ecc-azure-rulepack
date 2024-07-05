@@ -1,7 +1,7 @@
 resource "azurerm_linux_function_app" "this" {
-  name                       = "functions-func-red"
-  location                   = azurerm_resource_group.this.location
-  resource_group_name        = azurerm_resource_group.this.name
+  name                       = module.naming.resource_prefix.funcapp
+  location                   = data.terraform_remote_state.common.outputs.location
+  resource_group_name        = data.terraform_remote_state.common.outputs.resource_group
   service_plan_id            = azurerm_service_plan.this.id
   storage_account_name       = data.terraform_remote_state.common.outputs.storage_name
   storage_account_access_key = data.terraform_remote_state.common.outputs.storage_key
@@ -16,5 +16,5 @@ resource "azurerm_linux_function_app" "this" {
     }
   }
 
-  tags = var.tags
+  tags = module.naming.default_tags
 }

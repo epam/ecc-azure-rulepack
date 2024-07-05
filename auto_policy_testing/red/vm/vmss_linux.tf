@@ -32,5 +32,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
       subnet_id = data.terraform_remote_state.common.outputs.subnet_id
     }
   }
+  tags = module.naming.default_tags
 }
 

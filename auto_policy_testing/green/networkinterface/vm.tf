@@ -5,7 +5,7 @@ resource "azurerm_network_interface" "this" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.this.id
+    subnet_id                     = data.terraform_remote_state.common.outputs.subnet_id
     private_ip_address_allocation = "Dynamic"
   }
   
@@ -15,7 +15,7 @@ resource "azurerm_network_interface" "this" {
 }
 
 resource "azurerm_linux_virtual_machine" "this" {
-  name                            = "${module.naming.resource_prefix.vm}nic"
+  name                            = "${module.naming.resource_prefix.vm}nicgr"
   location                        = data.terraform_remote_state.common.outputs.location
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
   size                            = "Standard_F2"

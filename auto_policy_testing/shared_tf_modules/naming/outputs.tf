@@ -17,6 +17,7 @@ output "resource_prefix" {
     networksecuritygroup    = "${local.suffix}-${var.resource_type}-networksecuritygroup-${local.compliance_status}",
     privateendpoint         = "${local.suffix}-${var.resource_type}-networksecuritygroup-${local.compliance_status}",
     webapp                  = "${local.suffix}-${var.resource_type}-webapp-${local.compliance_status}",
+    funcapp                 = "${local.suffix}-${var.resource_type}-funcapp-${local.compliance_status}",
     serviceplan             = "${local.suffix}-${var.resource_type}-serviceplan-${local.compliance_status}",
     useridentity            = "${local.suffix}-${var.resource_type}-useridentity-${local.compliance_status}",
     diagnosticsetting       = "${local.suffix}-${var.resource_type}-diagnosticsetting-${local.compliance_status}"

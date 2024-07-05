@@ -1,5 +1,5 @@
 resource "azurerm_network_security_group" "this" {
-  name                = "networksecuritygroup-nsg-green"
+  name                = module.naming.resource_prefix.networksecuritygroup
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 

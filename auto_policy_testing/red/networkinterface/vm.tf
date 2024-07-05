@@ -1,39 +1,22 @@
-resource "azurerm_virtual_network" "this" {
-  name                = "vnet-networkinterface-red"
-  address_space       = ["10.0.0.0/24"]
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
-
-  tags = var.tags
-}
-
-resource "azurerm_subnet" "this" {
-  name                 = "snet1-networkinterface-red"
-  resource_group_name  = azurerm_resource_group.this.name
-  virtual_network_name = azurerm_virtual_network.this.name
-  address_prefixes     = ["10.0.0.0/25"]
-
-}
-
 resource "azurerm_network_interface" "this" {
-  name                = "nic1-networkinterface-red"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
+  name                  = module.naming.resource_prefix.networkinterface
+  location              = data.terraform_remote_state.common.outputs.location
+  resource_group_name   = data.terraform_remote_state.common.outputs.resource_group
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.this.id
+    subnet_id                     = data.terraform_remote_state.common.outputs.subnet_id
     private_ip_address_allocation = "Dynamic"
   }
   enable_ip_forwarding = true
 
-  tags = var.tags
+  tags = module.naming.default_tags
 }
 
 resource "azurerm_linux_virtual_machine" "this" {
-  name                            = "vm1-networkinterface-red"
-  resource_group_name             = azurerm_resource_group.this.name
-  location                        = azurerm_resource_group.this.location
+  name                            = "${module.naming.resource_prefix.vm}nicrd"
+  location                        = data.terraform_remote_state.common.outputs.location
+  resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
   size                            = "Standard_F2"
   admin_username                  = random_string.this.result
   admin_password                  = random_password.this.result
@@ -52,5 +35,5 @@ resource "azurerm_linux_virtual_machine" "this" {
     version   = "latest"
   }
 
-  tags = var.tags
+  tags = module.naming.default_tags
 }

@@ -10,10 +10,3 @@ terraform {
 provider "azurerm" {
   features {}
 }
-
-resource "azurerm_resource_group" "this" {
-  name     = "networkinterface-rg-red"
-  location = var.location
-
-  tags = var.tags
-}

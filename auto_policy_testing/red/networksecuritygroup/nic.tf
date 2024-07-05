@@ -1,7 +1,7 @@
 resource "azurerm_network_interface" "this" {
-  name                = "nic1-networksecuritygroup"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
+  name                  = module.naming.resource_prefix.networkinterface
+  location              = data.terraform_remote_state.common.outputs.location
+  resource_group_name   = data.terraform_remote_state.common.outputs.resource_group
 
   ip_configuration {
     name                          = "internal"
@@ -9,7 +9,7 @@ resource "azurerm_network_interface" "this" {
     private_ip_address_allocation = "Dynamic"
   }
 
-  tags = var.tags
+  tags = module.naming.default_tags
 }
 
 resource "azurerm_network_interface_security_group_association" "assoc_nic" {
