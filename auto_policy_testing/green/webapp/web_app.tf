@@ -48,7 +48,7 @@ resource "azurerm_linux_web_app" "this" {
     command = "az webapp config set -g $resourceGroup  -n $resourceName --min-tls-version '1.3'"
 
     environment = {
-      resource_group_name = "GREEN-INFRASTRUCTURE-CI"
+      resourceGroup = "GREEN-INFRASTRUCTURE-CI"
       resourceName = "autotest-webapp-webapp-green-linux"
     }
   }
