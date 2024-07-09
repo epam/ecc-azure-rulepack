@@ -20,7 +20,8 @@ output "resource_prefix" {
     funcapp                 = "${local.suffix}-${var.resource_type}-funcapp-${local.compliance_status}",
     serviceplan             = "${local.suffix}-${var.resource_type}-serviceplan-${local.compliance_status}",
     useridentity            = "${local.suffix}-${var.resource_type}-useridentity-${local.compliance_status}",
-    diagnosticsetting       = "${local.suffix}-${var.resource_type}-diagnosticsetting-${local.compliance_status}"
+    diagnosticsetting       = "${local.suffix}-${var.resource_type}-diagnosticsetting-${local.compliance_status}",
+    synapse                 = "${local.suffix}-${var.resource_type}-synapse-${local.compliance_status}"
   }
 }
 
