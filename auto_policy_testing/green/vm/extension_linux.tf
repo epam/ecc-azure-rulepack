@@ -4,6 +4,8 @@ resource "azurerm_virtual_machine_extension" "lin1" {
   publisher            = "Microsoft.Azure.Monitoring.DependencyAgent"
   type                 = "DependencyAgentLinux"
   type_handler_version = "9.10"
+
+  tags = module.naming.default_tags
 }
 
 resource "azurerm_virtual_machine_extension" "lin2" {
@@ -12,6 +14,8 @@ resource "azurerm_virtual_machine_extension" "lin2" {
   publisher            = "Microsoft.GuestConfiguration"
   type                 = "ConfigurationForLinux"
   type_handler_version = "1.0"
+
+  tags = module.naming.default_tags
 
   depends_on = [azurerm_virtual_machine_extension.lin1]
 }
@@ -33,6 +37,8 @@ resource "azurerm_virtual_machine_extension" "lin3" {
       "workspaceKey": "${data.terraform_remote_state.common.outputs.workspace_key}"
     }
     PROTECTED_SETTINGS
+
+  tags = module.naming.default_tags
 
   depends_on = [azurerm_virtual_machine_extension.lin2]
 }

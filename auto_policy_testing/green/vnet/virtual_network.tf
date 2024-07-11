@@ -3,6 +3,7 @@ resource "azurerm_virtual_network" "this" {
   address_space       = ["10.0.0.0/24"]
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
+  
   tags = module.naming.default_tags
 }
 

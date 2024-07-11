@@ -24,6 +24,8 @@ resource "azurerm_virtual_machine_extension" "win1" {
     }
   SETTINGS
 
+  tags = module.naming.default_tags
+
   depends_on = [azurerm_windows_virtual_machine.this]
 }
 
@@ -33,6 +35,8 @@ resource "azurerm_virtual_machine_extension" "win2" {
   publisher            = "Microsoft.GuestConfiguration"
   type                 = "ConfigurationforWindows"
   type_handler_version = "1.11"
+
+  tags = module.naming.default_tags
 
   depends_on = [azurerm_virtual_machine_extension.win1]
 }
@@ -55,6 +59,8 @@ resource "azurerm_virtual_machine_extension" "win3" {
     }
     PROTECTED_SETTINGS
 
+  tags = module.naming.default_tags
+
   depends_on = [azurerm_virtual_machine_extension.win2]
 }
 
@@ -64,6 +70,8 @@ resource "azurerm_virtual_machine_extension" "win4" {
   publisher            = "Microsoft.Azure.Monitoring.DependencyAgent"
   type                 = "DependencyAgentWindows"
   type_handler_version = "9.5"
+
+  tags = module.naming.default_tags
 
   depends_on = [azurerm_virtual_machine_extension.win3]
 }
@@ -88,6 +96,8 @@ resource "azurerm_virtual_machine_extension" "win5" {
         "VolumeType"                  :     "All"
     }
     SETTINGS
+
+    tags = module.naming.default_tags
 
     depends_on                        =     [azurerm_virtual_machine_extension.win4]
 }

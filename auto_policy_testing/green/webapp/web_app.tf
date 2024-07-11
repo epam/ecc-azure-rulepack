@@ -41,15 +41,15 @@ resource "azurerm_linux_web_app" "this" {
 
   logs {
     detailed_error_messages = true
-    failed_request_tracing = true
+    failed_request_tracing  = true
   }
 
   provisioner "local-exec" {
     command = "az webapp config set -g $resourceGroup  -n $resourceName --min-tls-version '1.3'"
 
     environment = {
-      resourceGroup = "GREEN-INFRASTRUCTURE-CI"
-      resourceName = "autotest-webapp-webapp-green-linux"
+      resourceGroup = data.terraform_remote_state.common.outputs.resource_group
+      resourceName  = "autotest-webapp-webapp-green-linux"
     }
   }
 

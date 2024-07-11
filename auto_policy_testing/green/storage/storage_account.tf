@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_storage_account" "this" {
   name                     = "${module.naming.resource_prefix.storage}storage${random_integer.this.result}"
   location                 = data.terraform_remote_state.common.outputs.location

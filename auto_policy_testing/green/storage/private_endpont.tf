@@ -14,4 +14,6 @@ resource "azurerm_private_endpoint" "this" {
   depends_on = [
     azurerm_storage_account.this
   ]
+
+  tags = module.naming.default_tags
 }
