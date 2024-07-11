@@ -1,7 +1,3 @@
-variable "public_key" {
-  type = string
-}
-
 variable "remote_state_region" {
   type        = string
   description = "Region where resources will be created"

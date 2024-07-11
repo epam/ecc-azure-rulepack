@@ -1,6 +1,6 @@
 resource "azurerm_storage_account" "this" {
   name                      = "${module.naming.resource_prefix.storage}storage${random_integer.this.result}"
-  location                  = data.terraform_remote_state.common.outputs.location
+  location                  = "eastus" #this option required for 291 policy
   resource_group_name       = data.terraform_remote_state.common.outputs.resource_group
   account_tier              = "Standard"
   account_replication_type  = "LRS"
