@@ -32,6 +32,11 @@ resource "azurerm_network_security_group" "this" {
   tags = module.naming.default_tags
 }
 
+resource "azurerm_network_interface_security_group_association" "assoc_nic" {
+  network_interface_id      = azurerm_network_interface.this.id
+  network_security_group_id = azurerm_network_security_group.this.id
+}
+
 #remove it when azure policy will be removed
 #resource "azurerm_network_watcher" "this" {
 #  name                = "NetworkWatcher_northeurope"
@@ -67,6 +72,3 @@ resource "azurerm_network_security_group" "this" {
 #    interval_in_minutes   = 10
 #  }
 #}
-
-
-
