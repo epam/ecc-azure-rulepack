@@ -18,6 +18,7 @@ resource "azurerm_linux_web_app" "this" {
 
   site_config {
     remote_debugging_enabled = true
+    remote_debugging_version = "VS2022"
     minimum_tls_version = "1.0"
     ftps_state = "AllAllowed"
     http2_enabled = false
@@ -36,6 +37,23 @@ resource "azurerm_linux_web_app" "this" {
   logs {
     detailed_error_messages = false
     failed_request_tracing = false
+  }
+
+  tags = module.naming.default_tags
+}
+
+resource "azurerm_linux_web_app" "this2" {
+  name                = "${module.naming.resource_prefix.webapp}-linux2"
+  location            = data.terraform_remote_state.common.outputs.location
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
+  service_plan_id     = azurerm_service_plan.this.id
+
+  site_config {
+    application_stack {
+      python_version = "3.7"
+    }
+    remote_debugging_enabled = true
+    remote_debugging_version = "VS2022"
   }
 
   tags = module.naming.default_tags

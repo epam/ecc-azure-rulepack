@@ -5,8 +5,6 @@ gcp = {}
 azure = {
     "green": ["ecc-azure-109-cis_sa_logging_blob", #cannot configure via terraform or az cli
               "ecc-azure-110-cis_sa_logging_table", #cannot configure via terraform or az cli
-              "ecc-azure-069-cis_app_last_java", #will try
-              "ecc-azure-071-cis_app_last_php", #will try
               "ecc-azure-197-asb_vm_disk_encryption_on", #policy doesn't work
               "ecc-azure-227-asb_reslogs_vmss", #policy doesn't work
               "ecc-azure-272-asb_scaleset", #policy doesn't work
