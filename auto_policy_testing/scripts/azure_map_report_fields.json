@@ -6,5 +6,7 @@
     "networksecuritygroup": ["id"],
     "vm": ["id"],
     "vmss": ["id"],
-    "synapse": ["id"]
+    "synapse": ["id"],
+    "sql-database": ["id"],
+    "sql-server": ["id"]
 }

@@ -56,6 +56,11 @@ output "storage_key" {
     sensitive = true
 }
 
+output "storage_blob_endpoint" {
+    value =   azurerm_storage_account.this.primary_blob_endpoint
+    sensitive = true
+}
+
 output "workspace_key" {
     value =   azurerm_log_analytics_workspace.this.primary_shared_key
     sensitive = true

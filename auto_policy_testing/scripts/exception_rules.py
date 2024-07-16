@@ -3,7 +3,8 @@ aws = {}
 gcp = {}
 
 azure = {
-    "green": ["ecc-azure-109-cis_sa_logging_blob", #cannot configure via terraform or az cli
+    "green": ["ecc-azure-072-cis-app-keyvaults", #policy working, waiting for release version
+              "ecc-azure-109-cis_sa_logging_blob", #cannot configure via terraform or az cli
               "ecc-azure-110-cis_sa_logging_table", #cannot configure via terraform or az cli
               "ecc-azure-197-asb_vm_disk_encryption_on", #policy doesn't work
               "ecc-azure-227-asb_reslogs_vmss", #policy doesn't work
@@ -14,6 +15,7 @@ azure = {
     "red": ["ecc-azure-105-cis_sa_keys_regen", #cannot configure via terraform or az cli
             "ecc-azure-197-asb_vm_disk_encryption_on", #policy doesn't work
             "ecc-azure-227-asb_reslogs_vmss", #policy doesn't work
+            "ecc-azure-258-asb_remotedebug_web", #terraform issue
             "ecc-azure-272-asb_scaleset", #policy doesn't work
             "ecc-azure-298-function_app_service_logging", #cannot configure via terraform or az cli
             "ecc-azure-368-vmss_omi_vulnerability", #policy doesn't work
