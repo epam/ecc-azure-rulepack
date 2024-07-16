@@ -9,7 +9,7 @@ policies:
     comment: '020023062000'
     description: |
       Name like 'Admin' for an Azure SQL Server Administrator account is found
-    resource: azure.sqlserver
+    resource: azure.sql-server
     filters:
       - type: value
         key: properties.administratorLogin

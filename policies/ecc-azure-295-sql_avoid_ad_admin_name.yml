@@ -9,7 +9,7 @@ policies:
     comment: '020023062000'
     description: |
       Name like 'Admin' for an Azure SQL Server Active Directory Administrator account is found
-    resource: azure.sqlserver
+    resource: azure.sql-server
     filters:
       - and:
           - type: azure-ad-administrators
