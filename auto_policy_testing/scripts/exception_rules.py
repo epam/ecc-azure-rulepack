@@ -22,5 +22,9 @@ azure = {
             "ecc-azure-378-cis_nsg_flow_log_analytics" #policy doesn't work
             ],
     "not-parallel": [],
-    "sleep_before_scan": []
+    "sleep_before_scan": {
+        "1m": [
+            "sql"
+        ]
+    }
 }
