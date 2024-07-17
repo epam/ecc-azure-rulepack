@@ -52,8 +52,8 @@ resource "azurerm_linux_web_app" "this2" {
     application_stack {
       python_version = "3.7"
     }
-    remote_debugging_enabled = true
-    remote_debugging_version = "VS2022"
+    #remote_debugging_enabled = true
+    #remote_debugging_version = "VS2022"
   }
 
   tags = module.naming.default_tags

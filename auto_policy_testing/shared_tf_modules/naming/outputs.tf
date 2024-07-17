@@ -24,7 +24,7 @@ output "resource_prefix" {
     synapse                 = "${local.suffix}-${var.resource_type}-synapse-${local.compliance_status}",
     sql-database            = "${local.suffix}-${var.resource_type}-sql-database-${local.compliance_status}",
     sql-server              = "${local.suffix}-${var.resource_type}-sql-server-${local.compliance_status}",
-    failovergroup          = "${local.suffix}-${var.resource_type}-failovergroup-${local.compliance_status}"
+    failovergroup           = "${local.suffix}-${var.resource_type}-failovergroup-${local.compliance_status}"
   }
 }
 
