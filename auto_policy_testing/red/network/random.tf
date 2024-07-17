@@ -3,6 +3,7 @@ resource "random_password" "this" {
   special = true
   numeric = true
   upper   = true
+  lower   = true
   override_special = "_%@"
 }
 
