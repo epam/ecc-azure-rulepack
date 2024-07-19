@@ -27,6 +27,10 @@ output "key_id" {
     value = azurerm_key_vault_key.this.id
 }
 
+output "user_assigned_id" {
+    value = azurerm_user_assigned_identity.this.id
+}
+
 output "vnet_id" {
     value = azurerm_virtual_network.this.id
 }
@@ -41,6 +45,10 @@ output "public_ip" {
 
 output "public_ip_id" {
     value = azurerm_public_ip.this.id
+}
+
+output "dns_id" {
+  value = azurerm_private_dns_zone.this.id
 }
 
 output "storage_id" {

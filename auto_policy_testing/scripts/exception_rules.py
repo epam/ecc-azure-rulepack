@@ -23,8 +23,11 @@ azure = {
             ],
     "not-parallel": [],
     "sleep_before_scan": {
-        "7m": [
-            "sql"
+        "5m": [
+            "sql-server"
+        ],
+        "5m": [
+            "sql-database"
         ]
     }
 }

@@ -8,5 +8,6 @@
     "vmss": ["id"],
     "synapse": ["id"],
     "sql-database": ["id"],
-    "sql-server": ["id"]
+    "sql-server": ["id"],
+    "mysql-flexibleserver": ["id"]
 }
