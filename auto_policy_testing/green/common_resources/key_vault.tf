@@ -17,6 +17,8 @@ resource "azurerm_user_assigned_identity" "this" {
   location            = azurerm_resource_group.this.location
   name                = random_string.this.result
   resource_group_name = azurerm_resource_group.this.name
+
+  tags = module.naming.default_tags
 }
 
 resource "azurerm_key_vault_access_policy" "client" {
@@ -45,7 +47,8 @@ resource "azurerm_key_vault_key" "this" {
   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 
   depends_on   = [
-    azurerm_key_vault_access_policy.client
+    azurerm_key_vault_access_policy.client,
+    azurerm_key_vault_access_policy.userassigned
   ]
 
   tags         = module.naming.default_tags

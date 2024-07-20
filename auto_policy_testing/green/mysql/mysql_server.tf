@@ -7,8 +7,8 @@ resource "azurerm_mysql_flexible_server" "this" {
   administrator_password       = random_password.this.result
   sku_name                     = "GP_Standard_D2ds_v4"
 
-  delegated_subnet_id          = data.terraform_remote_state.common.outputs.subnet_id
-  private_dns_zone_id          = data.terraform_remote_state.common.outputs.dns_id
+  delegated_subnet_id          = azurerm_subnet.this.id
+  private_dns_zone_id          = azurerm_private_dns_zone.this.id
 
   geo_redundant_backup_enabled = false
 
@@ -18,11 +18,15 @@ resource "azurerm_mysql_flexible_server" "this" {
   }
   
   customer_managed_key {
-    key_vault_key_id = "${data.terraform_remote_state.common.outputs.key_id}"
+    key_vault_key_id = azurerm_key_vault_key.this.id
     primary_user_assigned_identity_id = data.terraform_remote_state.common.outputs.user_assigned_id
   }
   
   tags = module.naming.default_tags
+
+  depends_on = [ azurerm_private_dns_zone_virtual_network_link.this,
+                 azurerm_key_vault_key.this
+                 ]
 }
 
 resource "azurerm_mysql_flexible_server_configuration" "this1" {
@@ -71,4 +75,19 @@ resource "azurerm_mysql_flexible_server_configuration" "this6" {
   server_name                = azurerm_mysql_flexible_server.this.name
   value                      = "CONNECTION"
   depends_on = [ azurerm_mysql_flexible_server.this ]
+}
+
+
+resource "azurerm_mysql_flexible_server" "geo" {
+  name                          = "${module.naming.resource_prefix.mysql-flexibleserver}-geo"
+  location                      = data.terraform_remote_state.common.outputs.location
+  resource_group_name           = data.terraform_remote_state.common.outputs.resource_group
+
+  administrator_login          = random_string.this.result
+  administrator_password       = random_password.this.result
+  sku_name                     = "GP_Standard_D2ds_v4"
+
+  geo_redundant_backup_enabled = true
+
+  tags = module.naming.default_tags
 }
