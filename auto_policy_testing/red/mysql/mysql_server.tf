@@ -7,6 +7,8 @@ resource "azurerm_mysql_flexible_server" "this" {
   administrator_password       = random_password.this.result
   sku_name                     = "GP_Standard_D2ds_v4"
 
+  public_network_access_enabled = true
+
   geo_redundant_backup_enabled = false
 
   tags = module.naming.default_tags

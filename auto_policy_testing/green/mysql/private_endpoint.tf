@@ -2,7 +2,7 @@ resource "azurerm_private_endpoint" "this" {
   name                          = "mysqlendpgreen${random_integer.this.result}"
   location                      = data.terraform_remote_state.common.outputs.location
   resource_group_name           = data.terraform_remote_state.common.outputs.resource_group
-  subnet_id                     = azurerm_subnet.this.id
+  subnet_id                     = data.terraform_remote_state.common.outputs.subnet_id
 
   private_service_connection {
     name                           = "connection_green"
