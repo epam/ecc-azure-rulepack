@@ -182,7 +182,7 @@ jobs:
     env:
       COMPLINCE: ${{ matrix.compliance }}
       RESOURCE: ${{ matrix.resource }}
-      TF_VAR_remote_state_key: "aws/states/common_resources/${{ matrix.compliance }}.tfstate"
+      TF_VAR_remote_state_key: "azure/states/common_resources/${{ matrix.compliance }}.tfstate"
       
     steps:
       - name: Git clone the repository
@@ -195,11 +195,20 @@ jobs:
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           step: common_${{ matrix.compliance }}
+          
       - uses: ./.github/workflows/actions/install-dependencies
         env:
           PROJECT_TOKEN: ${{ secrets.CLOUDCUSTODIAN_CORE }}
       - name: Deploy terraform resources
         uses: ./.github/workflows/actions/tf-init-apply
+
+      - uses: ./.github/workflows/actions/set-up-cloud-creds
+        with:
+          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
+          client_id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          step: common_${{ matrix.compliance }}
 
       - name: Custodian scan
         uses: ./.github/workflows/actions/c7n-scan
