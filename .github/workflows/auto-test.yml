@@ -138,7 +138,8 @@ jobs:
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           step: common_${{ matrix.compliance }}
       - uses: ./.github/workflows/actions/install-dependencies
-
+        env:
+          PROJECT_TOKEN: ${{ secrets.CLOUDCUSTODIAN_CORE }}
       - name: Deploy terraform resources
         uses: ./.github/workflows/actions/tf-init-apply
       
@@ -195,7 +196,8 @@ jobs:
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           step: common_${{ matrix.compliance }}
       - uses: ./.github/workflows/actions/install-dependencies
-
+        env:
+          PROJECT_TOKEN: ${{ secrets.CLOUDCUSTODIAN_CORE }}
       - name: Deploy terraform resources
         uses: ./.github/workflows/actions/tf-init-apply
 
