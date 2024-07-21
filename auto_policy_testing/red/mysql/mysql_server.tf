@@ -7,8 +7,6 @@ resource "azurerm_mysql_flexible_server" "this" {
   administrator_password       = random_password.this.result
   sku_name                     = "GP_Standard_D2ds_v4"
 
-  public_network_access_enabled = true
-
   geo_redundant_backup_enabled = false
 
   tags = module.naming.default_tags
@@ -52,4 +50,12 @@ resource "azurerm_mysql_flexible_server_configuration" "this5" {
   server_name                = azurerm_mysql_flexible_server.this.name
   value                      = "GENERAL"
   depends_on = [ azurerm_mysql_flexible_server.this ]
+}
+
+resource "null_resource" "enable_public_access" {
+  depends_on = [azurerm_mysql_flexible_server.this]
+
+  provisioner "local-exec" {
+    command = "az mysql flexible-server update --name ${azurerm_mysql_flexible_server.this.name} --resource-group ${azurerm_mysql_flexible_server.this.resource_group_name} --public-access Enabled"
+  }
 }
