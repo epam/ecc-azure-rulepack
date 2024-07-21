@@ -51,11 +51,3 @@ resource "azurerm_mysql_flexible_server_configuration" "this5" {
   value                      = "GENERAL"
   depends_on = [ azurerm_mysql_flexible_server.this ]
 }
-
-resource "null_resource" "enable_public_access" {
-  depends_on = [azurerm_mysql_flexible_server.this]
-
-  provisioner "local-exec" {
-    command = "az mysql flexible-server update --name ${azurerm_mysql_flexible_server.this.name} --resource-group ${azurerm_mysql_flexible_server.this.resource_group_name} --public-access Enabled"
-  }
-}

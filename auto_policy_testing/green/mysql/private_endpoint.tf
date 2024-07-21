@@ -6,12 +6,12 @@ resource "azurerm_private_endpoint" "this" {
 
   private_service_connection {
     name                           = "connection_green"
-    private_connection_resource_id = azurerm_mysql_flexible_server.this.id
+    private_connection_resource_id = azurerm_mysql_flexible_server.geo.id
     subresource_names              = ["mysqlServer"]
     is_manual_connection           = false
   }
 
   depends_on = [
-    azurerm_mysql_flexible_server.this
+    azurerm_mysql_flexible_server.geo
   ]
 }
