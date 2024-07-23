@@ -4,7 +4,7 @@ resource "azurerm_public_ip" "this" {
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
   allocation_method   = "Dynamic"
 
-  tags = module.naming.default_tagstring.this.result
+  tags = module.naming.default_tags
 }
 
 resource "azurerm_application_gateway" "this" {
@@ -61,5 +61,5 @@ resource "azurerm_application_gateway" "this" {
     backend_http_settings_name = "${random_string.this.result}_back_http_set_red"
   }
 
-  tags = module.naming.default_tagstring.this.result
+  tags = module.naming.default_tags
 }
