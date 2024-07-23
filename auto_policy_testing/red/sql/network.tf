@@ -124,6 +124,10 @@ resource "azurerm_virtual_network" "this" {
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   
   tags                = module.naming.default_tags
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "azurerm_subnet" "this" {
@@ -139,6 +143,9 @@ resource "azurerm_subnet" "this" {
       name    = "Microsoft.Sql/managedInstances"
       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action", "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action"]
     }
+  }
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
