@@ -11,7 +11,6 @@ azure = {
               "ecc-azure-272-asb_scaleset", #policy doesn't work
               "ecc-azure-344-mysql_threat_detection_policy", #policy doesn't work
               "ecc-azure-345-mysql_infrastructure_encryption", #policy doesn't work
-              "ecc-azure-347-mysql_cmk", # should be updated
               "ecc-azure-368-vmss_omi_vulnerability", #policy doesn't work
               "ecc-azure-378-cis_nsg_flow_log_analytics" #policy doesn't work
               ], 
@@ -23,7 +22,6 @@ azure = {
             "ecc-azure-298-function_app_service_logging", #cannot configure via terraform or az cli
             "ecc-azure-344-mysql_threat_detection_policy", #policy doesn't work
             "ecc-azure-345-mysql_infrastructure_encryption", #policy doesn't work
-            "ecc-azure-347-mysql_cmk", # should be updated
             "ecc-azure-368-vmss_omi_vulnerability", #policy doesn't work
             "ecc-azure-378-cis_nsg_flow_log_analytics" #policy doesn't work
             ],
