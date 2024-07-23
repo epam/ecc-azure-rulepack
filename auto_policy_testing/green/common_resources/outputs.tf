@@ -2,6 +2,10 @@ output "resource_group" {
     value =   azurerm_resource_group.resources.name
 }
 
+output "resource_group_id" {
+    value =   azurerm_resource_group.resources.id
+}
+
 output "location" {
     value = var.location
 }

@@ -51,3 +51,11 @@ resource "azurerm_mysql_flexible_server_configuration" "this5" {
   value                      = "GENERAL"
   depends_on = [ azurerm_mysql_flexible_server.this ]
 }
+
+resource "azurerm_mysql_flexible_server_firewall_rule" "this6" {
+  name                = "AllowAll"
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
+  server_name         = azurerm_mysql_flexible_server.this.name
+  start_ip_address    = "0.0.0.0"
+  end_ip_address      = "0.0.0.0"
+}

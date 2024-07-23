@@ -153,7 +153,7 @@ resource "azurerm_route_table" "this" {
   resource_group_name           = data.terraform_remote_state.common.outputs.resource_group
   disable_bgp_route_propagation = false
   depends_on = [
-    azurerm_subnet.this,
+    azurerm_subnet.this
   ]
 }
 

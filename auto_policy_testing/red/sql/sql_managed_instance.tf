@@ -6,7 +6,7 @@ resource "azurerm_mssql_managed_instance" "this" {
   license_type       = "BasePrice"
   sku_name           = "GP_Gen5"
   storage_size_in_gb = 32
-  subnet_id          = data.terraform_remote_state.common.outputs.subnet_id
+  subnet_id          = azurerm_subnet.this.id
   vcores             = 4
 
   administrator_login          = random_string.this.result
