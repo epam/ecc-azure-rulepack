@@ -148,7 +148,7 @@ resource "azurerm_subnet_network_security_group_association" "this" {
 }
 
 resource "azurerm_route_table" "this" {
-  name                          = "routetable-mi"
+  name                          = "routetable-mi-green"
   location                      = data.terraform_remote_state.common.outputs.location
   resource_group_name           = data.terraform_remote_state.common.outputs.resource_group
   disable_bgp_route_propagation = false
