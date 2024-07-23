@@ -13,4 +13,4 @@ policies:
     filters:
       - type: value
         key: properties.dataEncryption
-        value: present
+        value: absent
