@@ -10,3 +10,9 @@ resource "azurerm_storage_account" "this" {
 
   tags = module.naming.default_tags
 }
+
+resource "azurerm_storage_container" "this" {
+  name                  = "acccommonstoragegreencontainer"
+  storage_account_name  = azurerm_storage_account.this.name
+  container_access_type = "private"
+}

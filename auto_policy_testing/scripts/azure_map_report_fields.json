@@ -9,5 +9,6 @@
     "synapse": ["id"],
     "sql-database": ["id"],
     "sql-server": ["id"],
+    "sql-managed-instance": ["id"],
     "mysql-flexibleserver": ["id"]
 }

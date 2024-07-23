@@ -24,6 +24,7 @@ output "resource_prefix" {
     synapse                 = "${local.suffix}-${var.resource_type}-synapse-${local.compliance_status}",
     sql-database            = "${local.suffix}-${var.resource_type}-sql-database-${local.compliance_status}",
     sql-server              = "${local.suffix}-${var.resource_type}-sql-server-${local.compliance_status}",
+    sql-managed-instance    = "${local.suffix}-${var.resource_type}-sql-managed-instance-${local.compliance_status}",
     failovergroup           = "${local.suffix}-${var.resource_type}-failovergroup-${local.compliance_status}",
     mysql-flexibleserver    = "${local.suffix}-${var.resource_type}-mysql-flexibleserver-${local.compliance_status}"
   }
