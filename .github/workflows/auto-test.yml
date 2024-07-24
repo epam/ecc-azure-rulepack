@@ -131,9 +131,7 @@ jobs:
       - uses: ./.github/workflows/actions/set-up-cloud-creds
         with:
           aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          client_id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           step: common_${{ matrix.compliance }}
       - uses: ./.github/workflows/actions/install-dependencies
         env:
@@ -144,9 +142,7 @@ jobs:
       - uses: ./.github/workflows/actions/set-up-cloud-creds
         with:
           aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          client_id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           step: common_${{ matrix.compliance }}
 
       - name: Custodian scan
@@ -155,9 +151,7 @@ jobs:
       - uses: ./.github/workflows/actions/set-up-cloud-creds
         with:
           aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          client_id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           step: common_${{ matrix.compliance }}
 
       - name: Destroy terraform resources
@@ -197,9 +191,7 @@ jobs:
       - uses: ./.github/workflows/actions/set-up-cloud-creds
         with:
           aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          client_id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           step: common_${{ matrix.compliance }}
           
       - uses: ./.github/workflows/actions/install-dependencies
@@ -211,9 +203,7 @@ jobs:
       - uses: ./.github/workflows/actions/set-up-cloud-creds
         with:
           aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          client_id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           step: common_${{ matrix.compliance }}
 
       - name: Custodian scan
@@ -222,9 +212,7 @@ jobs:
       - uses: ./.github/workflows/actions/set-up-cloud-creds
         with:
           aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          client_id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           step: common_${{ matrix.compliance }}
 
       - name: Destroy terraform resources
@@ -261,9 +249,7 @@ jobs:
       - uses: ./.github/workflows/actions/set-up-cloud-creds
         with:
           aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          client_id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           step: common_${{ matrix.compliance }}
 
       - name: Destroy common resources
