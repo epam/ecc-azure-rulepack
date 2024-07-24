@@ -3,8 +3,7 @@ aws = {}
 gcp = {}
 
 azure = {
-    "green": ["ecc-azure-072-cis-app-keyvaults", #policy working, waiting for release version
-              "ecc-azure-109-cis_sa_logging_blob", #cannot configure via terraform or az cli
+    "green": ["ecc-azure-109-cis_sa_logging_blob", #cannot configure via terraform or az cli
               "ecc-azure-152-asb_vm_jit_port_protection", #cannot configure via terraform or az cli
               "ecc-azure-172-asb_mysql_private_endpoint", #policy doesn`t work because of old api
               "ecc-azure-110-cis_sa_logging_table", #cannot configure via terraform or az cli

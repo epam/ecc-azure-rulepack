@@ -2,6 +2,8 @@ resource "azurerm_network_security_group" "this" {
   name                = module.naming.resource_prefix.networksecuritygroup
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
+
+  tags                = module.naming.default_tags
 }
 
 
@@ -158,7 +160,7 @@ resource "azurerm_route_table" "this" {
   name                          = "routetable-mi-red"
   location                      = data.terraform_remote_state.common.outputs.location
   resource_group_name           = data.terraform_remote_state.common.outputs.resource_group
-  disable_bgp_route_propagation = false
+  bgp_route_propagation_enabled = false
   depends_on = [
     azurerm_subnet.this
   ]
