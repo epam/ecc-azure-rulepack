@@ -13,8 +13,8 @@ resource "azurerm_application_gateway" "this" {
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
 
   sku {
-    name     = "Standard_Small"
-    tier     = "Standard"
+    name     = "Standard"
+    tier     = "Standard_v2"
     capacity = 2
   }
 
