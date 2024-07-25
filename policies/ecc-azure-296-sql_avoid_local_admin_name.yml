@@ -12,6 +12,9 @@ policies:
     resource: azure.sql-server
     filters:
       - type: value
+        key: properties.state
+        value: Ready
+      - type: value
         key: properties.administratorLogin
         value: .+\W*admin\W*|\W*admin\W*.+|^[Aa][Dd][Mm][Ii][Nn]$|^[Aa][Dd][Mm][Ii][Nn][Ii][Ss][Tt][Rr][Aa][Tt][Oo][Rr]$
         op: regex

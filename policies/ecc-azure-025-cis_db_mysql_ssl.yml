@@ -11,9 +11,11 @@ policies:
       SSL connection is disabled on MySQL servers
     resource: azure.mysql-flexibleserver
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - type: server-parameter
         name: require_secure_transport
         key: value
         op: eq
         value: "OFF"
-

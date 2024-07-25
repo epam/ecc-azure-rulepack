@@ -10,7 +10,10 @@ policies:
     description: |
       MySQL instance with server parameter 'slow_query_log' disabled
     resource: azure.mysql-flexibleserver
-    filters:      
+    filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - type: server-parameter
         name: slow_query_log
         key: value

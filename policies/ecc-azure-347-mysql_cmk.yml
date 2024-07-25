@@ -12,5 +12,8 @@ policies:
     resource: azure.mysql-flexibleserver
     filters:
       - type: value
+        key: properties.state
+        value: Ready
+      - type: value
         key: properties.dataEncryption
         value: absent

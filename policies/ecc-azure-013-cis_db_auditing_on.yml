@@ -11,6 +11,9 @@ policies:
       Azure SQL Database Auditing is set to "Off"
     resource: azure.sql-server
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - type: auditing-policies
         attrs:
           - type: value

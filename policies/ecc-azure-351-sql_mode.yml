@@ -11,6 +11,9 @@ policies:
       MySQL instance without sql_mode parameter set to "STRICT_ALL_TABLES" value
     resource: azure.mysql-flexibleserver
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - not:
           - type: server-parameter
             name: sql_mode
