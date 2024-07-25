@@ -55,6 +55,7 @@ resource "azurerm_application_gateway" "this" {
 
   request_routing_rule {
     name                       = "${random_string.this.result}_routrule_red"
+    priority                   = 9
     rule_type                  = "Basic"
     http_listener_name         = "${random_string.this.result}_http_listener_red"
     backend_address_pool_name  = "${random_string.this.result}_back_adr_pool_red"
