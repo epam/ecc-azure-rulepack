@@ -3,7 +3,7 @@ resource "azurerm_service_plan" "this" {
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   os_type             = "Linux"
-  sku_name            = "B1"
+  sku_name            = "P1v2"
 
   tags = module.naming.default_tags
 }

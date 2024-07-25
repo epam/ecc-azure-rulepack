@@ -37,6 +37,8 @@ resource "azurerm_mssql_managed_instance_security_alert_policy" "this" {
 resource "azurerm_mssql_managed_instance_transparent_data_encryption" "this" {
   managed_instance_id = azurerm_mssql_managed_instance.this.id
   key_vault_key_id    = data.terraform_remote_state.common.outputs.key_id
+
+  depends_on = [ azurerm_key_vault_access_policy.policy3 ]
 }
 
 resource "azurerm_mssql_managed_instance_vulnerability_assessment" "this" {

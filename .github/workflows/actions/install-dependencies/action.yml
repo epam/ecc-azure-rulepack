@@ -28,4 +28,4 @@ runs:
         
 
         cd ../../..
-        cp -r  non-compatible-policies/. policies
+        cp -r  non-compatible/policies/. policies
