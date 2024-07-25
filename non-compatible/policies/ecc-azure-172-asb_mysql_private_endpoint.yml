@@ -11,6 +11,9 @@ policies:
       MySQL instance without Private Endpoint connection configured
     resource: azure.mysql-server
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - or:
           - type: value
             key: properties.privateEndpointConnections

@@ -11,6 +11,9 @@ policies:
       MySQL instance with server setting "audit_log_events" set to "off"
     resource: azure.mysql-flexibleserver
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - not:
           - type: server-parameter
             name: audit_log_events

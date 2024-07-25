@@ -12,5 +12,8 @@ policies:
     resource: azure.mysql
     filters:
       - type: value
+        key: properties.state
+        value: Ready
+      - type: value
         key: properties.infrastructureEncryption
         value: Disabled
