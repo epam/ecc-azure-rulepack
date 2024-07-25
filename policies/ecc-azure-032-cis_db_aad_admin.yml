@@ -11,6 +11,9 @@ policies:
       Azure Active Directory admin is not configured for Azure SQL
     resource: azure.sql-server
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - not:
           - type: azure-ad-administrators
             key: azureADOnlyAuthentication

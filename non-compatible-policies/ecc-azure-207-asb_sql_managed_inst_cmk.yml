@@ -11,6 +11,9 @@ policies:
       SQL managed instance without CMK encryption configured
     resource: azure.sql-managed-instance
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - type: encryption-protector
         key: kind
         value: servicemanaged

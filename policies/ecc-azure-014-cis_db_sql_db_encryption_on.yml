@@ -13,3 +13,6 @@ policies:
     filters:
       - type: transparent-data-encryption
         enabled: false
+      - type: value
+        key: properties.status
+        value: Online

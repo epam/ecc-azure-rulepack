@@ -28,6 +28,6 @@ azure = {
             "ecc-azure-368-vmss_omi_vulnerability", #policy doesn't work
             "ecc-azure-378-cis_nsg_flow_log_analytics" #policy doesn't work
             ],
-    "not-parallel": ["sql", "mysql"],
+    "not-parallel": [],
     "sleep_before_scan": []
 }

@@ -11,6 +11,9 @@ policies:
       Name like 'Admin' for an Azure SQL Server Active Directory Administrator account is found
     resource: azure.sql-server
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - and:
           - type: azure-ad-administrators
             key: administratorType

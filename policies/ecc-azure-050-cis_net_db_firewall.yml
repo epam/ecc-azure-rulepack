@@ -11,6 +11,9 @@ policies:
       SQL instances accessible from the Internet or Azure services
     resource: azure.sql-server
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - or:
           - type: firewall-rules
             include: ['0.0.0.0']
