@@ -11,6 +11,9 @@ policies:
       Advanced Threat Protection is disabled on MySQL server
     resource: azure.mysql
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - type: security-alert-policy
         key: state
         value: Disabled

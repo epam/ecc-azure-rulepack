@@ -16,4 +16,7 @@ policies:
         key: value
         op: eq
         value: "OFF"
+      - type: value
+        key: properties.state
+        value: Ready
 

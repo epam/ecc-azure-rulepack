@@ -17,4 +17,7 @@ policies:
         op: eq
         value: "off"
         value_type: normalize
+      - type: value
+        key: properties.state
+        value: Ready
 

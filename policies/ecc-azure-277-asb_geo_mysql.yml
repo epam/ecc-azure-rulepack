@@ -14,3 +14,6 @@ policies:
       - type: value
         key: properties.backup.geoRedundantBackup
         value: Disabled
+      - type: value
+        key: properties.state
+        value: Ready
