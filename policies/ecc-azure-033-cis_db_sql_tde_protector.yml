@@ -11,6 +11,9 @@ policies:
       Transparent Data Encryption protector is not encrypted with Customer Managed key
     resource: azure.sql-server
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - not:
         - type: transparent-data-encryption
           key_type: CustomerManaged

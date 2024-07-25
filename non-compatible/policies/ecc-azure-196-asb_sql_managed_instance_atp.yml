@@ -11,6 +11,9 @@ policies:
       Advanced Threat Protection is disabled on SQL managed instance
     resource: azure.sql-managed-instance
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - type: managed-server-security-alert-policies
         key: state
         value: Disabled

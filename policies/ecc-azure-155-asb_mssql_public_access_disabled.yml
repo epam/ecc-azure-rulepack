@@ -12,6 +12,9 @@ policies:
     resource: azure.sql-server
     filters:
       - type: value
+        key: properties.state
+        value: Ready
+      - type: value
         key: properties.publicNetworkAccess
         value: Enabled
       - not:

@@ -11,6 +11,9 @@ policies:
       Azure SQL Server data replication with Failover groups
     resource: azure.sql-server
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - type: failover-group
         count: 0
         count_op: eq

@@ -11,5 +11,8 @@ policies:
       Transparent Data Encryption is disabled on SQL Database
     resource: azure.sql-database
     filters:
+      - type: value
+        key: properties.status
+        value: Online
       - type: transparent-data-encryption
         enabled: false

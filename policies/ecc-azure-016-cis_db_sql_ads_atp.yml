@@ -11,6 +11,9 @@ policies:
       Advanced Threat Protection is disabled on SQL server
     resource: azure.sql-server
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - type: security-alert-policies
         attrs:
           - type: value

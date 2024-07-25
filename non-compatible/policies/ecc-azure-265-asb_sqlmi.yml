@@ -11,6 +11,9 @@ policies:
       Azure SQL Vulnerability assessment is disabled for a managed instance
     resource: azure.sql-managed-instance
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - type: vulnerability-assessments
         key: recurring_scans.is_enabled
         value: false
