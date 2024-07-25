@@ -12,6 +12,9 @@ policies:
     resource: azure.mysql-flexibleserver
     filters:
       - type: value
+        key: properties.state
+        value: Ready
+      - type: value
         key: properties.backup.geoRedundantBackup
         value: Disabled
       - type: value

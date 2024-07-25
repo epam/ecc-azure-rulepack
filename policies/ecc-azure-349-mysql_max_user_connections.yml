@@ -11,6 +11,9 @@ policies:
       MySQL instance without server setting "max_user_connections" limits
     resource: azure.mysql-flexibleserver
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - type: server-parameter
         name: max_user_connections
         key: value

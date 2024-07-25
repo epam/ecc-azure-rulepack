@@ -11,6 +11,9 @@ policies:
       MySQL instance with server parameter 'local_infile' enabled
     resource: azure.mysql-flexibleserver
     filters:
+      - type: value
+        key: properties.state
+        value: Ready
       - type: server-parameter
         name: local_infile
         key: value
