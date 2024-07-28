@@ -21,7 +21,7 @@ resource "azurerm_application_gateway" "this" {
 
   gateway_ip_configuration {
     name      = "${random_string.this.result}_gtw_ip_conf_red"
-    subnet_id = azurerm_subnet.this.id
+    subnet_id = azurerm_subnet.appgw.id
   }
 
   frontend_port {
