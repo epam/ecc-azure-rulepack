@@ -2,7 +2,7 @@ resource "azurerm_public_ip" "this" {
   name                = "${random_string.this.result}_pip_red"
   location                        = data.terraform_remote_state.common.outputs.location
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
   sku                 = "Standard"
 
   tags = module.naming.default_tags
