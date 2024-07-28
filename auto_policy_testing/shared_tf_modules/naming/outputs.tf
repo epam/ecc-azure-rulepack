@@ -26,7 +26,9 @@ output "resource_prefix" {
     sql-server              = "${local.suffix}-${var.resource_type}-sql-server-${local.compliance_status}",
     sql-managed-instance    = "${local.suffix}-${var.resource_type}-sql-managed-instance-${local.compliance_status}",
     failovergroup           = "${local.suffix}-${var.resource_type}-failovergroup-${local.compliance_status}",
-    mysql-flexibleserver    = "${local.suffix}-${var.resource_type}-mysql-flexibleserver-${local.compliance_status}"
+    mysql-flexibleserver    = "${local.suffix}-${var.resource_type}-mysql-flexibleserver-${local.compliance_status}",
+    monitor-action-group    = "${local.suffix}-${var.resource_type}-monitor-action-group-${local.compliance_status}",
+    monitor-activity-log-alert  = "${local.suffix}-${var.resource_type}-monitor-activity-log-alert-${local.compliance_status}"
   }
 }
 
