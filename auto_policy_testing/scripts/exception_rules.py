@@ -26,8 +26,9 @@ azure = {
             "ecc-azure-344-mysql_threat_detection_policy", #policy doesn't work
             "ecc-azure-345-mysql_infrastructure_encryption", #policy doesn't work
             "ecc-azure-368-vmss_omi_vulnerability", #policy doesn't work
-            "ecc-azure-378-cis_nsg_flow_log_analytics" #policy doesn't work
+            "ecc-azure-378-cis_nsg_flow_log_analytics", #policy doesn't work
+            "ecc-azure-112-cis_net_netwatcher" #cannot setup red infrastructure because of azure policy on tenant level
             ],
-    "not-parallel": [],
+    "not-parallel": ["subscription"],
     "sleep_before_scan": []
 }
