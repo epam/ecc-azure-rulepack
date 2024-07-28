@@ -3,6 +3,7 @@ resource "azurerm_public_ip" "this" {
   location                        = data.terraform_remote_state.common.outputs.location
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
   allocation_method   = "Dynamic"
+  sku                 = "Standard"
 
   tags = module.naming.default_tags
 }
@@ -13,8 +14,8 @@ resource "azurerm_application_gateway" "this" {
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
 
   sku {
-    name     = "WAF_v2"
-    tier     = "WAF_v2"
+    name     = "Standard_v2"
+    tier     = "Standard_v2"
     capacity = 2
   }
 
