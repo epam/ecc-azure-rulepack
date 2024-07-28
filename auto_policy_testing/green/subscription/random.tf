@@ -1,13 +1,13 @@
 resource "random_password" "this" {
   length           = 16
-  number           = true
+  numeric           = true
   special          = true
   override_special = "_%@"
 }
 
 resource "random_string" "this" {
   length  = 8
-  number  = false
+  numeric  = false
   special = false
 }
 
