@@ -5,15 +5,15 @@ resource "azurerm_private_endpoint" "this" {
   subnet_id           = data.terraform_remote_state.common.outputs.subnet_id
 
   private_service_connection {
-    name                           = "connection_postgresql_green"
-    private_connection_resource_id = azurerm_postgresql_server.this.id
-    subresource_names              = ["postgresqlServer"]
+    name                           = "connection_cosmosdb_green"
+    private_connection_resource_id = azurerm_cosmosdb_account.this.id
+    subresource_names              = ["MongoDB"]
     is_manual_connection           = false
   }
 
   depends_on = [
-    azurerm_postgresql_server.this
+    azurerm_cosmosdb_account.this,
+    azurerm_virtual_network.this,
+    azurerm_subnet.this
   ]
-
-  tags = module.naming.default_tags
 }

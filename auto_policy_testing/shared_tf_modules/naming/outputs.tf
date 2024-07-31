@@ -32,7 +32,8 @@ output "resource_prefix" {
     disk                    = "${local.suffix}-${var.resource_type}-disk-${local.compliance_status}",
     encryptionset           = "${local.suffix}-${var.resource_type}-encryptionset-${local.compliance_status}",
     snapshot                = "${local.suffix}-${var.resource_type}-snapshot-${local.compliance_status}",
-    postgresql-server       = "${local.suffix}-${var.resource_type}-postgresql-server-${local.compliance_status}"
+    postgresql-server       = "${local.suffix}-${var.resource_type}-postgresql-server-${local.compliance_status}",
+    cosmosdb                = "${local.suffix}-${var.resource_type}-cosmosdb-${local.compliance_status}"
   }
 }
 

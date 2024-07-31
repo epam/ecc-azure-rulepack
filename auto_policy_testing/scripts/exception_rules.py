@@ -27,7 +27,9 @@ azure = {
             "ecc-azure-345-mysql_infrastructure_encryption", #policy doesn't work
             "ecc-azure-368-vmss_omi_vulnerability", #policy doesn't work
             "ecc-azure-378-cis_nsg_flow_log_analytics", #policy doesn't work
-            "ecc-azure-112-cis_net_netwatcher" #cannot setup red infrastructure because of azure policy on tenant level
+            "ecc-azure-112-cis_net_netwatcher", #cannot setup red infrastructure because of azure policy on tenant level
+            "ecc-azure-141-asb_fw_traffic_route", #temporary in block
+            "ecc-azure-176-asb_ddos_protection_enabled" #temporary in block
             ],
     "not-parallel": ["subscription"],
     "sleep_before_scan": []

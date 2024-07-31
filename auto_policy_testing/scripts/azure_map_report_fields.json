@@ -13,5 +13,6 @@
     "mysql-flexibleserver": ["id"],
     "subscription": ["id"],
     "disk": ["id"],
-    "postgresql-server": ["id"]
+    "postgresql-server": ["id"],
+    "cosmosdb": ["id"]
 }
