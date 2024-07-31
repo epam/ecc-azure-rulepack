@@ -1,0 +1,39 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-043-cis_log_del_nsg
+    comment: '020032012700'
+    description: |
+      Subscription does not contain Activity Log Alert with appropriate scope for Delete Network Security Group Rule
+    resource: azure.subscription
+    filters:
+      - type: missing
+        policy:
+          resource: azure.alert-logs
+          filters:
+            - type: value
+              key: location
+              value: global
+            - type: value
+              key: properties.condition.allOf[?field == 'operationName'][].equals
+              value: "Microsoft.Network/networkSecurityGroups/delete"
+              op: in
+              value_type: swap
+            - type: value
+              key: length(properties.condition.allOf)
+              value: 2
+            - type: value
+              key: join(',', properties.scopes[])
+              value: '^\/[a-z]{13}\/[a-z0-9A-Z]{8}\-[a-z0-9A-Z]{4}\-[a-z0-9A-Z]{4}\-[a-z0-9A-Z]{4}\-[a-z0-9A-Z]{12}$'
+              op: regex
+            - type: value
+              key: properties.enabled
+              value: true
+            - type: value
+              key: properties.actions.actionGroups
+              value: []
+              op: ne
