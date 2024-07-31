@@ -16,4 +16,8 @@ resource "azurerm_private_endpoint" "this" {
   ]
 
   tags = module.naming.default_tags
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }

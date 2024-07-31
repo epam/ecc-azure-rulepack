@@ -33,6 +33,10 @@ resource "azurerm_postgresql_server" "this" {
 resource "azurerm_postgresql_server_key" "this" {
   server_id        = azurerm_postgresql_server.this.id
   key_vault_key_id = data.terraform_remote_state.common.outputs.key_id
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "azurerm_postgresql_configuration" "log_checkpoints" {

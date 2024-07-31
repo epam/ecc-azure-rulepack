@@ -12,8 +12,6 @@ resource "azurerm_private_endpoint" "this" {
   }
 
   depends_on = [
-    azurerm_cosmosdb_account.this,
-    azurerm_virtual_network.this,
-    azurerm_subnet.this
+    azurerm_cosmosdb_account.this
   ]
 }
