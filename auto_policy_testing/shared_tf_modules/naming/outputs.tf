@@ -31,7 +31,8 @@ output "resource_prefix" {
     monitor-activity-log-alert  = "${local.suffix}-${var.resource_type}-monitor-activity-log-alert-${local.compliance_status}",
     disk                    = "${local.suffix}-${var.resource_type}-disk-${local.compliance_status}",
     encryptionset           = "${local.suffix}-${var.resource_type}-encryptionset-${local.compliance_status}",
-    snapshot                = "${local.suffix}-${var.resource_type}-snapshot-${local.compliance_status}"
+    snapshot                = "${local.suffix}-${var.resource_type}-snapshot-${local.compliance_status}",
+    postgresql-server       = "${local.suffix}-${var.resource_type}-postgresql-server-${local.compliance_status}"
   }
 }
 

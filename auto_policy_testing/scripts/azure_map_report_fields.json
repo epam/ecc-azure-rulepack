@@ -12,5 +12,6 @@
     "sql-managed-instance": ["id"],
     "mysql-flexibleserver": ["id"],
     "subscription": ["id"],
-    "disk": ["id"]
+    "disk": ["id"],
+    "postgresql-server": ["id"]
 }
