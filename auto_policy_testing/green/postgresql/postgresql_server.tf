@@ -108,6 +108,10 @@ resource "azurerm_postgresql_configuration" "log_line_prefix" {
   server_name         = azurerm_postgresql_server.this.name
   value               = "%m [%p]: [%l-1], db=%d,user=%u,app=%a,client=%h,"
 
+  depends_on = [
+    azurerm_postgresql_server.this
+  ]
+
   lifecycle {
     create_before_destroy = true
   }
