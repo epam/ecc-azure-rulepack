@@ -13,7 +13,8 @@ azure = {
               "ecc-azure-344-mysql_threat_detection_policy", #policy doesn't work
               "ecc-azure-345-mysql_infrastructure_encryption", #policy doesn't work
               "ecc-azure-368-vmss_omi_vulnerability", #policy doesn't work
-              "ecc-azure-378-cis_nsg_flow_log_analytics" #policy doesn't work
+              "ecc-azure-378-cis_nsg_flow_log_analytics", #policy doesn't work
+              "ecc-azure-201-asb_cosmosdb_encrypt_cmk" #temporary in block
               ], 
     "red": ["ecc-azure-105-cis_sa_keys_regen", #cannot configure via terraform or az cli
             "ecc-azure-157-asb_mysql_public_access_disabled", #cannot configure via terraform or az cli

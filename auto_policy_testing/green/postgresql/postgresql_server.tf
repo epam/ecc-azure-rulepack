@@ -51,7 +51,9 @@ resource "azurerm_postgresql_server" "cmk" {
 
 resource "azurerm_postgresql_server_key" "this" {
   server_id        = azurerm_postgresql_server.cmk.id
-  key_vault_key_id = data.terraform_remote_state.common.outputs.key_id      
+  key_vault_key_id = data.terraform_remote_state.common.outputs.key_id
+
+  depends_on = [ azurerm_key_vault_access_policy.postgresql ]    
 }
 
 resource "azurerm_postgresql_configuration" "log_checkpoints" {

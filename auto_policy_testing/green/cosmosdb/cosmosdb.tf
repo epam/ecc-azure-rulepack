@@ -25,7 +25,7 @@ resource "azurerm_cosmosdb_account" "this" {
 
   ip_range_filter = "127.0.0.1"
 
-  key_vault_key_id = data.terraform_remote_state.common.outputs.key_versionless_id
+#  key_vault_key_id = data.terraform_remote_state.common.outputs.key_versionless_id
 
   access_key_metadata_writes_enabled = false
 
@@ -33,11 +33,6 @@ resource "azurerm_cosmosdb_account" "this" {
     consistency_level       = "BoundedStaleness"
     max_interval_in_seconds = 301
     max_staleness_prefix    = 100001
-  }
-
-  geo_location {
-    location          = "eastus2"
-    failover_priority = 1
   }
 
   geo_location {
