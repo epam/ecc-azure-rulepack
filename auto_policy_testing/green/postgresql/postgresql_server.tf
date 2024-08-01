@@ -107,6 +107,10 @@ resource "azurerm_postgresql_configuration" "log_line_prefix" {
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   server_name         = azurerm_postgresql_server.this.name
   value               = "%m [%p]: [%l-1], db=%d,user=%u,app=%a,client=%h,"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "azurerm_postgresql_configuration" "log_min_error_statement" {
