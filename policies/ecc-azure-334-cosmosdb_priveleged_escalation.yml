@@ -13,4 +13,4 @@ policies:
     filters:
       - type: value
         key: properties.disableKeyBasedMetadataWriteAccess
-        value: true
+        value: false
