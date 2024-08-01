@@ -31,6 +31,6 @@ azure = {
             "ecc-azure-141-asb_fw_traffic_route", #temporary in block
             "ecc-azure-176-asb_ddos_protection_enabled" #temporary in block
             ],
-    "not-parallel": ["subscription", "cosmosdb"],
+    "not-parallel": ["subscription"],
     "sleep_before_scan": []
 }

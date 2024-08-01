@@ -30,13 +30,28 @@ resource "azurerm_postgresql_server" "this" {
   tags = module.naming.default_tags
 }
 
-resource "azurerm_postgresql_server_key" "this" {
-  server_id        = azurerm_postgresql_server.this.id
-  key_vault_key_id = data.terraform_remote_state.common.outputs.key_id
+resource "azurerm_postgresql_server" "cmk" {
+  name                = "${module.naming.resource_prefix.postgresql-server}-cmk"
+  location                      = data.terraform_remote_state.common.outputs.location
+  resource_group_name           = data.terraform_remote_state.common.outputs.resource_group
 
-  lifecycle {
-    create_before_destroy = true
+  sku_name   = "GP_Gen5_2"
+  version    = "11"
+  storage_mb = 51200
+
+  administrator_login          = random_string.this.result
+  administrator_login_password = random_password.this.result
+
+  ssl_enforcement_enabled = true
+
+  identity {
+    type = "SystemAssigned"
   }
+}
+
+resource "azurerm_postgresql_server_key" "this" {
+  server_id        = azurerm_postgresql_server.cmk.id
+  key_vault_key_id = data.terraform_remote_state.common.outputs.key_id      
 }
 
 resource "azurerm_postgresql_configuration" "log_checkpoints" {
@@ -107,14 +122,6 @@ resource "azurerm_postgresql_configuration" "log_line_prefix" {
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   server_name         = azurerm_postgresql_server.this.name
   value               = "%m [%p]: [%l-1], db=%d,user=%u,app=%a,client=%h,"
-
-  depends_on = [
-    azurerm_postgresql_server.this
-  ]
-
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 resource "azurerm_postgresql_configuration" "log_min_error_statement" {

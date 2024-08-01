@@ -31,6 +31,10 @@ output "key_id" {
     value = azurerm_key_vault_key.this.id
 }
 
+output "key_versionless_id" {
+    value = azurerm_key_vault_key.this.versionless_id
+}
+
 output "user_assigned_id" {
     value = azurerm_user_assigned_identity.this.id
 }
