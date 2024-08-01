@@ -48,9 +48,7 @@ resource "azurerm_postgresql_server" "cmk" {
     type = "SystemAssigned"
   }
 
-  lifecycle {
-    create_before_destroy = true
-  }
+  tags = module.naming.default_tags
 }
 
 resource "azurerm_postgresql_server_key" "this" {
