@@ -9,3 +9,8 @@ resource "random_string" "this" {
   numeric  = false
   special = false
 }
+
+resource "random_integer" "this" {
+  min = 101
+  max = 200
+}
