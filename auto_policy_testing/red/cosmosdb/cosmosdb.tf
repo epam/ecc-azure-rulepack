@@ -16,7 +16,5 @@ resource "azurerm_cosmosdb_account" "this" {
     failover_priority = 0
   }
 
-  access_key_metadata_writes_enabled = true
-
   tags = module.naming.default_tags
 }
