@@ -14,5 +14,7 @@
     "subscription": ["id"],
     "disk": ["id"],
     "postgresql-server": ["id"],
-    "cosmosdb": ["id"]
+    "cosmosdb": ["id"],
+    "signalr": ["id"],
+    "spring-service-instance": ["id"]
 }

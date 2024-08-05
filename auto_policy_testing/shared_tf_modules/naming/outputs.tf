@@ -33,7 +33,10 @@ output "resource_prefix" {
     encryptionset           = "${local.suffix}-${var.resource_type}-encryptionset-${local.compliance_status}",
     snapshot                = "${local.suffix}-${var.resource_type}-snapshot-${local.compliance_status}",
     postgresql-server       = "${local.suffix}-${var.resource_type}-postgresql-server-${local.compliance_status}",
-    cosmosdb                = "${local.suffix}-${var.resource_type}-cosmosdb-${local.compliance_status}"
+    cosmosdb                = "${local.suffix}-${var.resource_type}-cosmosdb-${local.compliance_status}",
+    signalr                 = "${local.suffix}${var.resource_type}signalr${local.compliance_status}",
+    appinsights             = "${local.suffix}${var.resource_type}appinsights${local.compliance_status}",
+    spring                  = "${local.suffix}-${var.resource_type}-spring-${local.compliance_status}"
   }
 }
 
