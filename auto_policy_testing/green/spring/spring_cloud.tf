@@ -1,6 +1,6 @@
 resource "azurerm_virtual_network" "this" {
   name                = module.naming.resource_prefix.vnet
-  address_space       = ["10.0.0.0/16"]
+  address_space       = ["10.1.0.0/16"]
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   
