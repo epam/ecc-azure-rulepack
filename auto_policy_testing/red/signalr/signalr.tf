@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_signalr_service" "this" {
   name                = module.naming.resource_prefix.signalr
   location            = data.terraform_remote_state.common.outputs.location
