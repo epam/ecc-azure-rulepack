@@ -16,5 +16,6 @@
     "postgresql-server": ["id"],
     "cosmosdb": ["id"],
     "signalr": ["id"],
-    "spring-service-instance": ["id"]
+    "spring-service-instance": ["id"],
+    "search": ["id"]
 }

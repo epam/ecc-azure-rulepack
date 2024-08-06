@@ -10,14 +10,14 @@ resource "azurerm_virtual_network" "this" {
 }
 
 resource "azurerm_subnet" "runtime_subnet" {
-  name                 = module.naming.resource_prefix.subnet
+  name                 = "${module.naming.resource_prefix.subnet}-runtime"
   resource_group_name  = data.terraform_remote_state.common.outputs.resource_group
   virtual_network_name = azurerm_virtual_network.this.name
-  address_prefixes     = ["10.1.2.0/24"]
+  address_prefixes     = ["10.1.4.0/24"]
 }
 
 resource "azurerm_subnet" "app_subnet" {
-  name                 = module.naming.resource_prefix.subnet
+  name                 = "${module.naming.resource_prefix.subnet}-app"
   resource_group_name  = data.terraform_remote_state.common.outputs.resource_group
   virtual_network_name = azurerm_virtual_network.this.name
   address_prefixes     = ["10.1.1.0/24"]
