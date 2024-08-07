@@ -1,12 +1,5 @@
 data "azurerm_client_config" "current" {}
 
-resource "null_resource" "this" {
-  provisioner "local-exec" {
-    command = ""
-  }
-  
-}
-
 resource "azurerm_service_fabric_cluster" "this" {
   name                = module.naming.resource_prefix.service-fabric
   location            = data.terraform_remote_state.common.outputs.location
@@ -25,22 +18,8 @@ resource "azurerm_service_fabric_cluster" "this" {
     http_endpoint_port   = 80
   }
 
-  certificate {
-        thumbprint = "${var.sf_cluster_cert_thumb}"
-        x509_store_name = "My"
-    }
-
   fabric_settings {
     name = "Security"
-    parameters = {
-      "ClusterProtectionLevel" = "EncryptAndSign"
-    }
-  }
-
-  azure_active_directory {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    cluster_application_id = "11111111-1111-1111-1111-111111111111"
-    client_application_id = "11111111-1111-1111-1111-111111111111"
   }
 
   tags = module.naming.default_tags

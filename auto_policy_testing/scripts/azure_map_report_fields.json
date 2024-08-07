@@ -17,5 +17,6 @@
     "cosmosdb": ["id"],
     "signalr": ["id"],
     "spring-service-instance": ["id"],
-    "search": ["id"]
+    "search": ["id"],
+    "service-fabric-cluster": ["id"]
 }
