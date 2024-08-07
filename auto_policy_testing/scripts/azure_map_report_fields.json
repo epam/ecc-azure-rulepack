@@ -18,5 +18,6 @@
     "signalr": ["id"],
     "spring-service-instance": ["id"],
     "search": ["id"],
-    "service-fabric-cluster": ["id"]
+    "service-fabric-cluster": ["id"],
+    "stream-job": ["id"]
 }
