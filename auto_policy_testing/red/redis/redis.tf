@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_redis_cache" "this" {
   name                = module.naming.resource_prefix.redis
   location            = data.terraform_remote_state.common.outputs.location
