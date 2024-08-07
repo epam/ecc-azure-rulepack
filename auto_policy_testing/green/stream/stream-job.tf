@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_stream_analytics_job" "this" {
   name                                     = module.naming.resource_prefix.stream
   location                                 = data.terraform_remote_state.common.outputs.location

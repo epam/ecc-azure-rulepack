@@ -19,5 +19,6 @@
     "spring-service-instance": ["id"],
     "search": ["id"],
     "service-fabric-cluster": ["id"],
-    "stream-job": ["id"]
+    "stream-job": ["id"],
+    "redis": ["id"]
 }

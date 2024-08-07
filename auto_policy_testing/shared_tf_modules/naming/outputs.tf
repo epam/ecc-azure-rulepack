@@ -39,7 +39,8 @@ output "resource_prefix" {
     spring                  = "${local.suffix}-${var.resource_type}-spring-${local.compliance_status}",
     search                  = "${local.suffix}-${var.resource_type}-search-${local.compliance_status}",
     service-fabric          = "${local.suffix}fabr${local.compliance_status}",
-    stream                  = "${local.suffix}-${var.resource_type}-stream-${local.compliance_status}"
+    stream                  = "${local.suffix}-${var.resource_type}-stream-${local.compliance_status}",
+    redis                   = "${local.suffix}-${var.resource_type}-redis-${local.compliance_status}"
   }
 }
 
