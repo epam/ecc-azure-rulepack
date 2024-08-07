@@ -12,5 +12,8 @@ policies:
     resource: azure.redis
     filters:
       - type: value
+        key: properties.provisioningState
+        value: Succeeded
+      - type: value
         key: properties.enableNonSslPort
         value: true

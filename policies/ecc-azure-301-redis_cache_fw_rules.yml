@@ -11,6 +11,9 @@ policies:
       Redis Cache without exposed to the public Internet
     resource: azure.redis
     filters:
+      - type: value
+        key: properties.provisioningState
+        value: Succeeded
       - type: firewall
         attrs:
           - type: value
