@@ -40,7 +40,8 @@ output "resource_prefix" {
     search                  = "${local.suffix}-${var.resource_type}-search-${local.compliance_status}",
     service-fabric          = "${local.suffix}fabr${local.compliance_status}",
     stream                  = "${local.suffix}-${var.resource_type}-stream-${local.compliance_status}",
-    redis                   = "${local.suffix}-${var.resource_type}-redis-${local.compliance_status}"
+    redis                   = "${local.suffix}-${var.resource_type}-redis-${local.compliance_status}",
+    servicebus              = "${local.suffix}-${var.resource_type}-servicebus-${local.compliance_status}"
   }
 }
 

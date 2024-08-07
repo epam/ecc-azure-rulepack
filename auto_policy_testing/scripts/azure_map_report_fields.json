@@ -20,5 +20,6 @@
     "search": ["id"],
     "service-fabric-cluster": ["id"],
     "stream-job": ["id"],
-    "redis": ["id"]
+    "redis": ["id"],
+    "servicebus-namespace": ["id"]
 }
