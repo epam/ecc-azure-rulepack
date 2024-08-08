@@ -13,22 +13,21 @@ resource "azurerm_subnet" "this" {
   enforce_private_link_endpoint_network_policies = true
 }
 
-
 resource "azurerm_private_endpoint" "this" {
-  name                = "${var.prefix}endpgreen"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
-  subnet_id           = azurerm_subnet.this.id
+  name                          = "${var.prefix}endpgreen"
+  location                      = azurerm_resource_group.this.location
+  resource_group_name           = azurerm_resource_group.this.name
+  subnet_id                     = azurerm_subnet.this.id
 
   private_service_connection {
     name                           = "connection_green"
-    private_connection_resource_id = azurerm_mysql_server.this.id
+    private_connection_resource_id = azurerm_mysql_flexible_server.this.id
     subresource_names              = ["mysqlServer"]
     is_manual_connection           = false
   }
 
   depends_on = [
-    azurerm_mysql_server.this,
+    azurerm_mysql_flexible_server.this,
     azurerm_virtual_network.this,
     azurerm_subnet.this
   ]
