@@ -1,7 +1,7 @@
 resource "azurerm_kubernetes_cluster" "this" {
   name                = module.naming.resource_prefix.aks
   location            = data.terraform_remote_state.common.outputs.location
-  resource_group_name = data.terraform_remote_state.common.outputs.resource_grou
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   dns_prefix          = "aks${random_string.this.result}green"
   kubernetes_version  = "1.29.2"
 
