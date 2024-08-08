@@ -24,10 +24,5 @@ resource "azurerm_kubernetes_cluster" "this" {
     type = "SystemAssigned"
   }
 
-  azure_active_directory_role_based_access_control {
-    managed            = false
-    azure_rbac_enabled = false
-  }
-
   tags = module.naming.default_tags
 }

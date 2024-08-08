@@ -25,4 +25,6 @@ resource "azurerm_kusto_cluster_customer_managed_key" "this" {
   key_vault_id = data.terraform_remote_state.common.outputs.key_vault_id
   key_name     = data.terraform_remote_state.common.outputs.key_name
   key_version  = data.terraform_remote_state.common.outputs.key_version
+
+  depends_on = [ azurerm_key_vault_access_policy.cluster ]
 }

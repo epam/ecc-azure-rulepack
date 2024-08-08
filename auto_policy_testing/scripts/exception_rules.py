@@ -31,7 +31,8 @@ azure = {
             "ecc-azure-112-cis_net_netwatcher", #cannot setup red infrastructure because of azure policy on tenant level
             "ecc-azure-141-asb_fw_traffic_route", #temporary in block
             "ecc-azure-176-asb_ddos_protection_enabled", #temporary in block
-            "ecc-azure-302-redis_cache_disabled_public_access" #python sdk should be updated
+            "ecc-azure-302-redis_cache_disabled_public_access", #python sdk should be updated
+            "ecc-azure-058-cis_aks_rbac" #cannot create red infra, screen in tg
             ],
     "not-parallel": ["subscription", "spring", "role", "monitor"],
     "sleep_before_scan": []
