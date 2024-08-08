@@ -5,6 +5,7 @@ output "resource_prefix" {
     networkinterface        = "${local.suffix}-${var.resource_type}-networkinterface-${local.compliance_status}",
     recoveryvault           = "${local.suffix}-${var.resource_type}-recoveryvault-${local.compliance_status}",
     keyvault                = "keyvault${local.compliance_status}",
+    keyvaultkey             = "keyvaultkey${local.compliance_status}",
     loganalytics            = "${local.suffix}loganalytics${local.compliance_status}",
     storage                 = "storage${local.compliance_status}",
     resourcegroup           = "${local.suffix}-${var.resource_type}-resourcegroup-${local.compliance_status}",
@@ -44,7 +45,7 @@ output "resource_prefix" {
     servicebus              = "${local.suffix}-${var.resource_type}-servicebus-${local.compliance_status}",
     roledefinition          = "${local.suffix}-${var.resource_type}-roledefinition-${local.compliance_status}",
     ml-workspace            = "${local.suffix}ml-workspace${local.compliance_status}",
-    ml-cluster              = "${local.suffix}-${var.resource_type}-ml-cluster-${local.compliance_status}",
+    ml-cluster              = "${local.suffix}ml-cluster${local.compliance_status}",
     logic-app               = "${local.suffix}-${var.resource_type}-logic-app-${local.compliance_status}",
     kusto                   = "${local.suffix}kusto${local.compliance_status}",
     aks                     = "${local.suffix}-${var.resource_type}-aks-${local.compliance_status}"

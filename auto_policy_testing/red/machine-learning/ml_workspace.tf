@@ -5,7 +5,7 @@ resource "azurerm_machine_learning_workspace" "this" {
   location                = data.terraform_remote_state.common.outputs.location
   resource_group_name     = data.terraform_remote_state.common.outputs.resource_group
   application_insights_id = azurerm_application_insights.this.id
-  key_vault_id            = data.terraform_remote_state.common.outputs.key_vault_id
+  key_vault_id            = azurerm_key_vault.this.id
   storage_account_id      = data.terraform_remote_state.common.outputs.storage_id
 
   identity {
