@@ -14,6 +14,10 @@ terraform {
 }
 
 provider "azurerm" {
-  features {}
+  features {
+    machine_learning {
+      purge_soft_deleted_workspace_on_destroy = true
+    }
+  }
 }
 
