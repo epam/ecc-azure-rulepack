@@ -33,6 +33,6 @@ azure = {
             "ecc-azure-176-asb_ddos_protection_enabled", #temporary in block
             "ecc-azure-302-redis_cache_disabled_public_access" #python sdk should be updated
             ],
-    "not-parallel": ["subscription", "spring"],
+    "not-parallel": ["subscription", "spring", "role"],
     "sleep_before_scan": []
 }
