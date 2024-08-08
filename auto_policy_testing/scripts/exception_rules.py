@@ -5,7 +5,6 @@ gcp = {}
 azure = {
     "green": ["ecc-azure-109-cis_sa_logging_blob", #cannot configure via terraform or az cli
               "ecc-azure-152-asb_vm_jit_port_protection", #cannot configure via terraform or az cli
-              "ecc-azure-172-asb_mysql_private_endpoint", #policy doesn`t work because of old api
               "ecc-azure-110-cis_sa_logging_table", #cannot configure via terraform or az cli
               "ecc-azure-197-asb_vm_disk_encryption_on", #policy doesn't work
               "ecc-azure-227-asb_reslogs_vmss", #policy doesn't work
@@ -20,7 +19,6 @@ azure = {
               ], 
     "red": ["ecc-azure-105-cis_sa_keys_regen", #cannot configure via terraform or az cli
             "ecc-azure-157-asb_mysql_public_access_disabled", #cannot configure via terraform or az cli
-            "ecc-azure-172-asb_mysql_private_endpoint", #policy doesn`t work because of old api
             "ecc-azure-197-asb_vm_disk_encryption_on", #policy doesn't work
             "ecc-azure-227-asb_reslogs_vmss", #policy doesn't work
             "ecc-azure-258-asb_remotedebug_web", #terraform issue
