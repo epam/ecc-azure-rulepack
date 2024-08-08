@@ -9,11 +9,6 @@ resource "azurerm_key_vault" "this" {
   soft_delete_retention_days = 7
   purge_protection_enabled   = true
 
-  network_acls {
-    bypass         = "None"
-    default_action = "Deny"
-  }
-
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = data.azurerm_client_config.current.object_id
@@ -40,7 +35,6 @@ resource "azurerm_key_vault_key" "this" {
   key_vault_id    = azurerm_key_vault.this.id
   key_type        = "RSA"
   key_size        = 2048
-  expiration_date = "2025-01-01T12:00:00Z"
 
   key_opts = [
     "decrypt",
@@ -50,14 +44,10 @@ resource "azurerm_key_vault_key" "this" {
     "verify",
     "wrapKey",
   ]
-
-  tags = module.naming.default_tags
 }
 
 resource "azurerm_key_vault_secret" "this" {
   name            = "${module.naming.resource_prefix.keyvaultsecret}sec${random_integer.this.result}"
   value           = "123456"
   key_vault_id    = azurerm_key_vault.this.id
-  expiration_date = "2025-01-01T12:00:00Z"
-  content_type    = "plainText"
 }

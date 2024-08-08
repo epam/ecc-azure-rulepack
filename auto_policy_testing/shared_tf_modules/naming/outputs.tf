@@ -6,6 +6,7 @@ output "resource_prefix" {
     recoveryvault           = "${local.suffix}-${var.resource_type}-recoveryvault-${local.compliance_status}",
     keyvault                = "keyvault${local.compliance_status}",
     keyvaultkey             = "keyvaultkey${local.compliance_status}",
+    keyvaultsecret          = "keyvaultsecret${local.compliance_status}",
     loganalytics            = "${local.suffix}loganalytics${local.compliance_status}",
     storage                 = "storage${local.compliance_status}",
     resourcegroup           = "${local.suffix}-${var.resource_type}-resourcegroup-${local.compliance_status}",

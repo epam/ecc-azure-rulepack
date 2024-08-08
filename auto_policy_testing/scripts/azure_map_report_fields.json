@@ -27,5 +27,8 @@
     "machine-learning-workspace": ["id"],
     "logic-app-workflow": ["id"],
     "kusto": ["id"],
-    "aks": ["id"]
+    "aks": ["id"],
+    "keyvault":["id"],
+    "keyvault-key":["id"],
+    "keyvault-secret":["id"]
 }
