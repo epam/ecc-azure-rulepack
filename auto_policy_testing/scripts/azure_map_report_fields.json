@@ -26,5 +26,6 @@
     "monitor-log-profile": ["id"],
     "machine-learning-workspace": ["id"],
     "logic-app-workflow": ["id"],
-    "kusto": ["id"]
+    "kusto": ["id"],
+    "aks": ["id"]
 }
