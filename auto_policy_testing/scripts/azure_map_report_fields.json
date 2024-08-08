@@ -22,5 +22,6 @@
     "stream-job": ["id"],
     "redis": ["id"],
     "servicebus-namespace": ["id"],
-    "roledefinition": ["id"]
+    "roledefinition": ["id"],
+    "monitor-log-profile": ["id"]
 }
