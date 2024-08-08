@@ -23,5 +23,6 @@
     "redis": ["id"],
     "servicebus-namespace": ["id"],
     "roledefinition": ["id"],
-    "monitor-log-profile": ["id"]
+    "monitor-log-profile": ["id"],
+    "machine-learning-workspace": ["id"]
 }

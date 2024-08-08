@@ -42,7 +42,9 @@ output "resource_prefix" {
     stream                  = "${local.suffix}-${var.resource_type}-stream-${local.compliance_status}",
     redis                   = "${local.suffix}-${var.resource_type}-redis-${local.compliance_status}",
     servicebus              = "${local.suffix}-${var.resource_type}-servicebus-${local.compliance_status}",
-    roledefinition          = "${local.suffix}-${var.resource_type}-roledefinition-${local.compliance_status}"
+    roledefinition          = "${local.suffix}-${var.resource_type}-roledefinition-${local.compliance_status}",
+    ml-workspace            = "${local.suffix}-${var.resource_type}-ml-workspace-${local.compliance_status}",
+    ml-cluster              = "${local.suffix}-${var.resource_type}-ml-cluster-${local.compliance_status}"
   }
 }
 
