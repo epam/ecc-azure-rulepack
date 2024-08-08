@@ -24,5 +24,6 @@
     "servicebus-namespace": ["id"],
     "roledefinition": ["id"],
     "monitor-log-profile": ["id"],
-    "machine-learning-workspace": ["id"]
+    "machine-learning-workspace": ["id"],
+    "logic-app-workflow": ["id"]
 }

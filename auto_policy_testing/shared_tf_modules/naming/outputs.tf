@@ -44,7 +44,8 @@ output "resource_prefix" {
     servicebus              = "${local.suffix}-${var.resource_type}-servicebus-${local.compliance_status}",
     roledefinition          = "${local.suffix}-${var.resource_type}-roledefinition-${local.compliance_status}",
     ml-workspace            = "${local.suffix}-${var.resource_type}-ml-workspace-${local.compliance_status}",
-    ml-cluster              = "${local.suffix}-${var.resource_type}-ml-cluster-${local.compliance_status}"
+    ml-cluster              = "${local.suffix}-${var.resource_type}-ml-cluster-${local.compliance_status}",
+    logic-app               = "${local.suffix}-${var.resource_type}-logic-app-${local.compliance_status}"
   }
 }
 
