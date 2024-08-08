@@ -15,7 +15,8 @@ azure = {
               "ecc-azure-368-vmss_omi_vulnerability", #policy doesn't work
               "ecc-azure-378-cis_nsg_flow_log_analytics", #policy doesn't work
               "ecc-azure-201-asb_cosmosdb_encrypt_cmk", #policy work but need additional permissions
-              "ecc-azure-203-asb_postgresql_encrypt_cmk" #policy work but terraform destroy fails pipeline
+              "ecc-azure-203-asb_postgresql_encrypt_cmk", #policy work but terraform destroy fails pipeline
+              "ecc-azure-302-redis_cache_disabled_public_access" #python sdk should be updated
               ], 
     "red": ["ecc-azure-105-cis_sa_keys_regen", #cannot configure via terraform or az cli
             "ecc-azure-157-asb_mysql_public_access_disabled", #cannot configure via terraform or az cli
@@ -31,7 +32,8 @@ azure = {
             "ecc-azure-378-cis_nsg_flow_log_analytics", #policy doesn't work
             "ecc-azure-112-cis_net_netwatcher", #cannot setup red infrastructure because of azure policy on tenant level
             "ecc-azure-141-asb_fw_traffic_route", #temporary in block
-            "ecc-azure-176-asb_ddos_protection_enabled" #temporary in block
+            "ecc-azure-176-asb_ddos_protection_enabled", #temporary in block
+            "ecc-azure-302-redis_cache_disabled_public_access" #python sdk should be updated
             ],
     "not-parallel": ["subscription", "spring"],
     "sleep_before_scan": []

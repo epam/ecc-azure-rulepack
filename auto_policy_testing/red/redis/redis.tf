@@ -5,8 +5,8 @@ resource "azurerm_redis_cache" "this" {
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   capacity            = 1
-  family              = "C"
-  sku_name            = "Standard"
+  family              = "P"
+  sku_name            = "Premium"
   enable_non_ssl_port = true
   minimum_tls_version = "1.2"
 
