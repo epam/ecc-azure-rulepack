@@ -31,5 +31,6 @@
     "keyvault":["id"],
     "keyvault-key":["id"],
     "keyvault-secret":["id"],
-    "iothub": ["id"]
+    "iothub": ["id"],
+    "front-door": ["id"]
 }
