@@ -49,7 +49,8 @@ output "resource_prefix" {
     ml-cluster              = "${local.suffix}ml-cluster${local.compliance_status}",
     logic-app               = "${local.suffix}-${var.resource_type}-logic-app-${local.compliance_status}",
     kusto                   = "${local.suffix}kusto${local.compliance_status}",
-    aks                     = "${local.suffix}-${var.resource_type}-aks-${local.compliance_status}"
+    aks                     = "${local.suffix}-${var.resource_type}-aks-${local.compliance_status}",
+    iothub                  = "${local.suffix}-${var.resource_type}-iothub-${local.compliance_status}"
   }
 }
 

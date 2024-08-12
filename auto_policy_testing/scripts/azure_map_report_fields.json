@@ -30,5 +30,6 @@
     "aks": ["id"],
     "keyvault":["id"],
     "keyvault-key":["id"],
-    "keyvault-secret":["id"]
+    "keyvault-secret":["id"],
+    "iothub": ["id"]
 }
