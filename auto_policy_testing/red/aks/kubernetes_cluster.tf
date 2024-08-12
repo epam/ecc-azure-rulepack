@@ -5,6 +5,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   dns_prefix          = "aks${random_string.this.result}red"
+  kubernetes_version  = "1.13.3"
 
   azure_policy_enabled = false
 

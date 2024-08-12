@@ -6,7 +6,7 @@ resource "azurerm_private_endpoint" "this" {
 
   private_service_connection {
     name                           = "connection_green"
-    private_connection_resource_id = azurerm_key_vault.this1.id
+    private_connection_resource_id = azurerm_key_vault.this.id
     subresource_names              = ["vault"]
     is_manual_connection           = false
   }

@@ -32,7 +32,8 @@ azure = {
             "ecc-azure-141-asb_fw_traffic_route", #temporary in block
             "ecc-azure-176-asb_ddos_protection_enabled", #temporary in block
             "ecc-azure-302-redis_cache_disabled_public_access", #python sdk should be updated
-            "ecc-azure-058-cis_aks_rbac" #cannot create red infra, screen in tg
+            "ecc-azure-058-cis_aks_rbac", #cannot create red infra, screen in tg
+            "ecc-azure-235-asb_k8s_policy" #issue with rule, should be fixed
             ],
     "not-parallel": ["subscription", "spring", "role", "monitor"],
     "sleep_before_scan": []

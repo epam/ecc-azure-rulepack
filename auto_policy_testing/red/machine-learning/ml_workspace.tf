@@ -19,7 +19,7 @@ resource "azurerm_machine_learning_compute_cluster" "this" {
   name                          = module.naming.resource_prefix.ml-cluster
   location                      = data.terraform_remote_state.common.outputs.location
   vm_priority                   = "Dedicated"
-  vm_size                       = "STANDARD_D4_V2"
+  vm_size                       = "STANDARD_F2S_V2"
   machine_learning_workspace_id = azurerm_machine_learning_workspace.this.id
   subnet_resource_id            = data.terraform_remote_state.common.outputs.subnet_id
 

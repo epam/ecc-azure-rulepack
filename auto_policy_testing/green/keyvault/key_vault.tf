@@ -9,11 +9,6 @@ resource "azurerm_key_vault" "this" {
   soft_delete_retention_days = 7
   purge_protection_enabled   = true
 
-  network_acls {
-    bypass         = "None"
-    default_action = "Deny"
-  }
-
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = data.azurerm_client_config.current.object_id
@@ -42,22 +37,9 @@ resource "azurerm_key_vault" "this1" {
   tenant_id                  = data.azurerm_client_config.current.tenant_id
   sku_name                   = "standard"
 
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
-
-    key_permissions = [
-      "Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy", "SetRotationPolicy"
-    ]
-
-    secret_permissions = [
-      "Get",
-      "List",
-      "Set",
-      "Delete",
-      "Purge",
-    ]
-
+  network_acls {
+    bypass         = "None"
+    default_action = "Deny"
   }
 
   tags = module.naming.default_tags
