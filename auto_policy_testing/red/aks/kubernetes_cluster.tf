@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_kubernetes_cluster" "this" {
   name                = module.naming.resource_prefix.aks
   location            = data.terraform_remote_state.common.outputs.location

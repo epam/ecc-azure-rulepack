@@ -35,6 +35,34 @@ resource "azurerm_key_vault" "this" {
   tags = module.naming.default_tags
 }
 
+resource "azurerm_key_vault" "this1" {
+  name                       = "${module.naming.resource_prefix.keyvault}kv1${random_integer.this.result}"
+  location                   = data.terraform_remote_state.common.outputs.location
+  resource_group_name        = data.terraform_remote_state.common.outputs.resource_group
+  tenant_id                  = data.azurerm_client_config.current.tenant_id
+  sku_name                   = "standard"
+
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azurerm_client_config.current.object_id
+
+    key_permissions = [
+      "Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy", "SetRotationPolicy"
+    ]
+
+    secret_permissions = [
+      "Get",
+      "List",
+      "Set",
+      "Delete",
+      "Purge",
+    ]
+
+  }
+
+  tags = module.naming.default_tags
+}
+
 resource "azurerm_key_vault_key" "this" {
   name            = "${module.naming.resource_prefix.keyvaultkey}key${random_integer.this.result}"
   key_vault_id    = azurerm_key_vault.this.id
