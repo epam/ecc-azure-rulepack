@@ -41,7 +41,15 @@ resource "azurerm_windows_virtual_machine" "this" {
   tags = module.naming.default_tags
 }
 
+resource "azurerm_security_center_server_vulnerability_assessments_setting" "this" {
+  vulnerability_assessment_provider = "MdeTvm"
+
+  depends_on = [ azurerm_security_center_subscription_pricing.servers ]
+}
+
 resource "azurerm_security_center_server_vulnerability_assessment_virtual_machine" "this" {
   virtual_machine_id = azurerm_windows_virtual_machine.this.id
+
+  depends_on = [ azurerm_security_center_server_vulnerability_assessments_setting.this ]
 }
 

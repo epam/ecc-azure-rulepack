@@ -18,6 +18,32 @@ resource "azurerm_network_security_group" "this" {
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
+  security_rule {
+    name                       = "deny_inbound_udp"
+    priority                   = 101
+    direction                  = "Inbound"
+    access                     = "Deny"
+    protocol                   = "Udp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+
+
+  security_rule {
+    name                       = "deny_inbound_all"
+    priority                   = 102
+    direction                  = "Inbound"
+    access                     = "Deny"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
   tags = module.naming.default_tags
 }
 
@@ -37,6 +63,32 @@ resource "azurerm_network_security_group" "this1" {
   name                = "${module.naming.resource_prefix.networksecuritygroup}-data"
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
+
+  security_rule {
+    name                       = "deny_inbound_udp"
+    priority                   = 101
+    direction                  = "Inbound"
+    access                     = "Deny"
+    protocol                   = "Udp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+
+
+  security_rule {
+    name                       = "deny_inbound_all"
+    priority                   = 102
+    direction                  = "Inbound"
+    access                     = "Deny"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
 
   tags = module.naming.default_tags
 }

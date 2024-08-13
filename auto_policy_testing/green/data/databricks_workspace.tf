@@ -6,7 +6,7 @@ resource "azurerm_databricks_workspace" "this" {
 
   custom_parameters {
     no_public_ip                                         = true
-    virtual_network_id                                   = data.terraform_remote_state.common.outputs.vnet_id
+    virtual_network_id                                   = azurerm_virtual_network.this.id
     private_subnet_name                                  = azurerm_subnet.this.name
     public_subnet_name                                   = azurerm_subnet.this1.name
     private_subnet_network_security_group_association_id = azurerm_subnet_network_security_group_association.this.id

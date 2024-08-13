@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_frontdoor" "this" {
   name                = "greencifdendpoint"
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
