@@ -35,7 +35,7 @@ azure = {
             "ecc-azure-058-cis_aks_rbac", #cannot create red infra, screen in tg
             "ecc-azure-235-asb_k8s_policy", #issue with rule, should be fixed
             "ecc-azure-281-aks_non_vulnerable_version", #cannot create red tf because azure restrict to deploy new aks with vulnerable version
-            "ecc-azure-235-asb_k8s_policy" #issue with policy, should be fixed 
+            "ecc-azure-038-cis_log_keyvaults" # policy and tf works but "Azure Policy" automatically deploys DS to keyvault
             ],
     "not-parallel": ["subscription", "spring", "role", "monitor"],
     "sleep_before_scan": []

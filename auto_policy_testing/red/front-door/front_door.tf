@@ -9,7 +9,7 @@ resource "azurerm_frontdoor" "this" {
     frontend_endpoints = ["${random_integer.this.result}fdendpoint"]
     forwarding_configuration {
       forwarding_protocol = "MatchRequest"
-      backend_pool_name   = "${random_integer.this.result}backendpoolred"
+      backend_pool_name   = "autotestcibackendpoolred"
     }
   }
 
@@ -22,7 +22,7 @@ resource "azurerm_frontdoor" "this" {
   }
 
   backend_pool {
-    name = "${random_integer.this.result}backendpoolred"
+    name = "autotestcibackendpoolred"
     backend {
       host_header = "www.bing.com"
       address     = "www.bing.com"
