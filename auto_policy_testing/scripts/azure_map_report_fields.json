@@ -41,5 +41,6 @@
     "defender-pricing": ["id"],
     "defender-setting": ["id"],
     "defender-assessment": ["id"],
-    "defender-contact": ["id"]
+    "defender-contact": ["id"],
+    "container-registry": ["id"]
 }
