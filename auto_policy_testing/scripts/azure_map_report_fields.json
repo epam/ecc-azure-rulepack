@@ -34,5 +34,7 @@
     "iothub": ["id"],
     "front-door": ["id"],
     "event-grid-domain": ["id"],
-    "event-grid-topic": ["id"]
+    "event-grid-topic": ["id"],
+    "databricks": ["id"],
+    "datafactory": ["id"]
 }
