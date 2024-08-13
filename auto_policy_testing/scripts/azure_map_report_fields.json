@@ -32,5 +32,7 @@
     "keyvault-key":["id"],
     "keyvault-secret":["id"],
     "iothub": ["id"],
-    "front-door": ["id"]
+    "front-door": ["id"],
+    "event-grid-domain": ["id"],
+    "event-grid-topic": ["id"]
 }

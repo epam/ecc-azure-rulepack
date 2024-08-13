@@ -50,7 +50,9 @@ output "resource_prefix" {
     logic-app               = "${local.suffix}-${var.resource_type}-logic-app-${local.compliance_status}",
     kusto                   = "${local.suffix}kusto${local.compliance_status}",
     aks                     = "${local.suffix}-${var.resource_type}-aks-${local.compliance_status}",
-    iothub                  = "${local.suffix}-${var.resource_type}-iothub-${local.compliance_status}"
+    iothub                  = "${local.suffix}-${var.resource_type}-iothub-${local.compliance_status}",
+    eventgrid               = "${local.suffix}-${var.resource_type}-eventgrid-${local.compliance_status}",
+    eventgridtopic          = "${local.suffix}-${var.resource_type}-eventgridtopic-${local.compliance_status}"
   }
 }
 
