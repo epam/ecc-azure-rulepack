@@ -11,6 +11,16 @@ resource "azurerm_subnet" "this" {
   resource_group_name  = data.terraform_remote_state.common.outputs.resource_group
   virtual_network_name = azurerm_virtual_network.this.name
   address_prefixes     = ["10.0.2.0/24"]
+  delegation {
+    name = "fs"
+
+    service_delegation {
+      name = "Microsoft.Databricks/workspaces"
+      actions = [
+        "*",
+      ]
+    }
+  }
 }
 
 resource "azurerm_network_security_group" "this" {
@@ -57,6 +67,17 @@ resource "azurerm_subnet" "this1" {
   resource_group_name  = data.terraform_remote_state.common.outputs.resource_group
   virtual_network_name = azurerm_virtual_network.this.name
   address_prefixes     = ["10.0.3.0/24"]
+
+  delegation {
+    name = "fs"
+
+    service_delegation {
+      name = "Microsoft.Databricks/workspaces"
+      actions = [
+        "*",
+      ]
+    }
+  }
 }
 
 resource "azurerm_network_security_group" "this1" {

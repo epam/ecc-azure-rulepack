@@ -55,7 +55,7 @@ output "resource_prefix" {
     eventgridtopic          = "${local.suffix}-${var.resource_type}-eventgridtopic-${local.compliance_status}",
     databricksws            = "${local.suffix}-${var.resource_type}-databricksws-${local.compliance_status}",
     datafactory             = "${local.suffix}-${var.resource_type}-datafactory-${local.compliance_status}",
-    containerregistry       = "${local.suffix}-${var.resource_type}-containerregistry-${local.compliance_status}"
+    containerregistry       = "${local.suffix}${var.resource_type}containerregistry${local.compliance_status}"
   }
 }
 
