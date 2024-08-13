@@ -42,7 +42,8 @@ resource "azurerm_frontdoor" "this" {
   }
 
   depends_on = [
-    azurerm_frontdoor_firewall_policy.this
+    azurerm_frontdoor_firewall_policy.this,
+    random_integer.this
   ]
 
   tags = module.naming.default_tags
