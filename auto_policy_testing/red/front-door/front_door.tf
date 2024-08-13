@@ -1,5 +1,5 @@
 resource "azurerm_frontdoor" "this" {
-  name                = "${random_integer.this.result}frontdoorred"
+  name                = "redcifdendpoint"
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
   routing_rule {
@@ -36,7 +36,7 @@ resource "azurerm_frontdoor" "this" {
 
   frontend_endpoint {
     name      = "redcifdendpoint"
-    host_name = "redcifrontdoorred.azurefd.net"
+    host_name = "redcifdendpoint.azurefd.net"
   }
 
   depends_on = [

@@ -1,5 +1,5 @@
 resource "azurerm_frontdoor" "this" {
-  name                = "${random_integer.this.result}frontdoorgreen"
+  name                = "greencifdendpoint"
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
   routing_rule {
@@ -37,7 +37,7 @@ resource "azurerm_frontdoor" "this" {
 
   frontend_endpoint {
     name                                    = "greencifdendpoint"
-    host_name                               = "greencifrontdoorgreen.azurefd.net"
+    host_name                               = "greencifdendpoint.azurefd.net"
     web_application_firewall_policy_link_id = azurerm_frontdoor_firewall_policy.this.id
   }
 
