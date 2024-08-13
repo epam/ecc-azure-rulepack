@@ -36,5 +36,10 @@
     "event-grid-domain": ["id"],
     "event-grid-topic": ["id"],
     "databricks": ["id"],
-    "datafactory": ["id"]
+    "datafactory": ["id"],
+    "defender-autoprovisioning": ["id"],
+    "defender-pricing": ["id"],
+    "defender-setting": ["id"],
+    "defender-assessment": ["id"],
+    "defender-contact": ["id"]
 }

@@ -37,6 +37,6 @@ azure = {
             "ecc-azure-281-aks_non_vulnerable_version", #cannot create red tf because azure restrict to deploy new aks with vulnerable version
             "ecc-azure-038-cis_log_keyvaults" # policy and tf works but "Azure Policy" automatically deploys DS to keyvault
             ],
-    "not-parallel": ["subscription", "spring", "role", "monitor"],
+    "not-parallel": ["subscription", "spring", "role", "monitor", "defender"],
     "sleep_before_scan": []
 }
