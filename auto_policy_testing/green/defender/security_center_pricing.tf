@@ -55,6 +55,6 @@ resource "azurerm_security_center_subscription_pricing" "os_rds" {
 
 resource "azurerm_security_center_subscription_pricing" "cosmodb" {
   tier          = "Standard"
-  resource_type = "cosmosdb"
+  resource_type = "CosmosDbs"
 }
 

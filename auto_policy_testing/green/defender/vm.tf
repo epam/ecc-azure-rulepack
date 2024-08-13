@@ -41,7 +41,7 @@ resource "azurerm_windows_virtual_machine" "this" {
   tags = module.naming.default_tags
 }
 
-resource "azurerm_security_center_server_vulnerability_assessment" "this" {
+resource "azurerm_security_center_server_vulnerability_assessment_virtual_machine" "this" {
   virtual_machine_id = azurerm_windows_virtual_machine.this.id
 }
 
