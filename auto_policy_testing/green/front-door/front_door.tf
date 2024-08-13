@@ -3,10 +3,10 @@ resource "azurerm_frontdoor" "this" {
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
   routing_rule {
-    name               = "${random_integer.this.result}fdroutingrle"
+    name               = "autotestcifdroutingrlegreen"
     accepted_protocols = ["Http", "Https"]
     patterns_to_match  = ["/*"]
-    frontend_endpoints = ["${random_integer.this.result}fdendpoint"]
+    frontend_endpoints = ["autotestcifdendpointgreen"]
     forwarding_configuration {
       forwarding_protocol = "MatchRequest"
       backend_pool_name   = "autotestcibackendpoolgreen"
@@ -14,11 +14,11 @@ resource "azurerm_frontdoor" "this" {
   }
 
   backend_pool_load_balancing {
-    name = "${random_integer.this.result}bplbgreen"
+    name = "autotestcibplbgreen"
   }
 
   backend_pool_health_probe {
-    name = "${random_integer.this.result}healthprobegreen"
+    name = "autotestcihealthprobegreen"
   }
 
   backend_pool {
@@ -30,14 +30,14 @@ resource "azurerm_frontdoor" "this" {
       https_port  = 443
     }
 
-    load_balancing_name = "${random_integer.this.result}bplbgreen"
-    health_probe_name   = "${random_integer.this.result}healthprobegreen"
+    load_balancing_name = "autotestcibplbgreen"
+    health_probe_name   = "autotestcihealthprobegreen"
   }
 
 
   frontend_endpoint {
-    name                                    = "${random_integer.this.result}fdendpoint"
-    host_name                               = "${random_integer.this.result}frontdoorgreen.azurefd.net"
+    name                                    = "autotestcifdendpointgreen"
+    host_name                               = "autotestcifrontdoorgreen.azurefd.net"
     web_application_firewall_policy_link_id = azurerm_frontdoor_firewall_policy.this.id
   }
 
