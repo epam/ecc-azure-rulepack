@@ -1,6 +1,6 @@
 output "data" {
   value = {
-    databricks = azurerm_databricks_workspace.this.id,
-    datafactory = azurerm_data_factory.this.id
+    databricks  = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/red-infrastructure-ci/providers/Microsoft.DataFactory/factories/${azurerm_databricks_workspace.this.name}",
+    datafactory = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/red-infrastructure-ci/providers/Microsoft.DataFactory/factories/${azurerm_data_factory.this.name}"
   }
 }

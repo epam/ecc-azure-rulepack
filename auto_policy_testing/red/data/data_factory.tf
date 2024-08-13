@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_data_factory" "this" {
   name                = module.naming.resource_prefix.datafactory
   location            = data.terraform_remote_state.common.outputs.location

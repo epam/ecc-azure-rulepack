@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_user_assigned_identity" "this" {
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group

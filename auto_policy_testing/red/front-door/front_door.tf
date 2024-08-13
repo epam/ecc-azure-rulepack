@@ -3,26 +3,26 @@ resource "azurerm_frontdoor" "this" {
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
   routing_rule {
-    name               = "autotestcifdroutingrlered"
+    name               = "redcifdroutingrle"
     accepted_protocols = ["Http", "Https"]
     patterns_to_match  = ["/*"]
-    frontend_endpoints = ["autotestcifdendpointred"]
+    frontend_endpoints = ["redcifdendpoint"]
     forwarding_configuration {
       forwarding_protocol = "MatchRequest"
-      backend_pool_name   = "autotestcibackendpoolred"
+      backend_pool_name   = "redcibackendpoolred"
     }
   }
 
   backend_pool_load_balancing {
-    name = "autotestcibplbred"
+    name = "redcibplbred"
   }
 
   backend_pool_health_probe {
-    name = "autotestcihealthprobered"
+    name = "redcihealthprobered"
   }
 
   backend_pool {
-    name = "autotestcibackendpoolred"
+    name = "redcibackendpoolred"
     backend {
       host_header = "www.bing.com"
       address     = "www.bing.com"
@@ -30,15 +30,13 @@ resource "azurerm_frontdoor" "this" {
       https_port  = 443
     }
 
-    load_balancing_name = "autotestcibplbred"
-    health_probe_name   = "autotestcihealthprobered"
+    load_balancing_name = "redcibplbred"
+    health_probe_name   = "redcihealthprobered"
   }
 
-
   frontend_endpoint {
-    name                                    = "autotestcifdendpointred"
-    host_name                               = "autotestcifrontdoorred.azurefd.net"
-    web_application_firewall_policy_link_id = azurerm_frontdoor_firewall_policy.this.id
+    name      = "redcifdendpoint"
+    host_name = "redcifrontdoorred.azurefd.net"
   }
 
   depends_on = [
