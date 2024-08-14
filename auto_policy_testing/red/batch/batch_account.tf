@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_batch_account" "this" {
   name                          = module.naming.resource_prefix.batch
   location                      = "eastus"

@@ -20,5 +20,7 @@ resource "azurerm_data_factory" "this" {
   customer_managed_key_id          = data.terraform_remote_state.common.outputs.key_id
 
   tags = module.naming.default_tags
+
+  depends_on = [ azurerm_key_vault_access_policy.user_identity ]
 }
 
