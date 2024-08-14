@@ -42,5 +42,6 @@
     "defender-setting": ["id"],
     "defender-assessment": ["id"],
     "defender-contact": ["id"],
-    "container-registry": ["id"]
+    "container-registry": ["id"],
+    "cognitiveservice": ["id"]
 }
