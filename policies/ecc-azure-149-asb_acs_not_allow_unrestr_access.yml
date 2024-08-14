@@ -9,7 +9,7 @@ policies:
     comment: '020040080000'
     description: |
       Azure Container Registry which accepts connections over the Internet from hosts on any network.
-    resource: azure.containerregistry
+    resource: azure.container-registry
     filters:
       - or:
           - type: value
