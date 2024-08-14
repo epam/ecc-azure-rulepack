@@ -56,7 +56,8 @@ output "resource_prefix" {
     databricksws            = "${local.suffix}-${var.resource_type}-databricksws-${local.compliance_status}",
     datafactory             = "${local.suffix}-${var.resource_type}-datafactory-${local.compliance_status}",
     containerregistry       = "${local.suffix}${var.resource_type}containerregistry${local.compliance_status}",
-    cognitive               = "${local.suffix}-${var.resource_type}-cognitive-${local.compliance_status}"
+    cognitive               = "${local.suffix}-${var.resource_type}-cognitive-${local.compliance_status}",
+    batch                   = "${local.suffix}-${var.resource_type}-batch-${local.compliance_status}"
   }
 }
 

@@ -43,5 +43,6 @@
     "defender-assessment": ["id"],
     "defender-contact": ["id"],
     "container-registry": ["id"],
-    "cognitiveservice": ["id"]
+    "cognitiveservice": ["id"],
+    "batch": ["id"]
 }
