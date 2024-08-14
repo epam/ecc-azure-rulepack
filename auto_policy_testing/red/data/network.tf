@@ -75,7 +75,14 @@ resource "azurerm_subnet" "this1" {
     service_delegation {
       name = "Microsoft.Databricks/workspaces"
       actions = [
-        "*",
+        "Microsoft.Network/publicIPAddresses/join/action",
+        "Microsoft.Network/networkinterfaces/*", 
+        "Microsoft.Network/publicIPAddresses/read",
+        "Microsoft.Network/virtualNetworks/read",
+        "Microsoft.Network/virtualNetworks/subnets/action",
+        "Microsoft.Network/virtualNetworks/subnets/join/action",
+        "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action",
+        "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action",
       ]
     }
   }

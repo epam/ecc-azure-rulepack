@@ -1,7 +1,7 @@
 resource "azurerm_frontdoor_firewall_policy" "this" {
   name                              = "wafpolicy${random_integer.this.result}red"
-  resource_group_name               = data.terraform_remote_state.common.outputs.resource_group
-  enabled                           = false
+  resource_group_name               = azurerm_resource_group.this.name
+  enabled                           = true
   mode                              = "Prevention"
   redirect_url                      = "https://www.contoso.com"
   custom_block_response_status_code = 403
