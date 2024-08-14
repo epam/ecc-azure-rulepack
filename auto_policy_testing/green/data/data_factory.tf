@@ -16,6 +16,9 @@ resource "azurerm_data_factory" "this" {
     identity_ids = [azurerm_user_assigned_identity.this.id]
   }
 
+  customer_managed_key_identity_id = azurerm_user_assigned_identity.this.id
+  customer_managed_key_id          = data.terraform_remote_state.common.outputs.key_id
+
   tags = module.naming.default_tags
 }
 
