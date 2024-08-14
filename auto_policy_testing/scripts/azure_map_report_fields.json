@@ -48,5 +48,6 @@
     "automation-account": ["id"],
     "application-gateway": ["id"],
     "app-configuration": ["id"],
-    "api-management": ["id"]
+    "api-management": ["id"],
+    "alert-logs": ["id"]
 }
