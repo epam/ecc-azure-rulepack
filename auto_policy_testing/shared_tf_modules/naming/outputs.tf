@@ -58,7 +58,9 @@ output "resource_prefix" {
     containerregistry       = "${local.suffix}${var.resource_type}containerregistry${local.compliance_status}",
     cognitive               = "${local.suffix}-${var.resource_type}-cognitive-${local.compliance_status}",
     batch                   = "${local.suffix}${var.resource_type}batch${local.compliance_status}",
-    automation              = "${local.suffix}-${var.resource_type}-automation-${local.compliance_status}"
+    automation              = "${local.suffix}-${var.resource_type}-automation-${local.compliance_status}",
+    appgw                   = "${local.suffix}-${var.resource_type}-appgw-${local.compliance_status}",
+    appconf                 = "${local.suffix}-${var.resource_type}-appconf-${local.compliance_status}"
   }
 }
 

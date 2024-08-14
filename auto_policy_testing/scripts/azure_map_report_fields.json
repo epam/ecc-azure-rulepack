@@ -45,5 +45,7 @@
     "container-registry": ["id"],
     "cognitiveservice": ["id"],
     "batch": ["id"],
-    "automation-account": ["id"]
+    "automation-account": ["id"],
+    "application-gateway": ["id"],
+    "app-configuration": ["id"]
 }
