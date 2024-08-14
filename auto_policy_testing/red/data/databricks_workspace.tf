@@ -5,7 +5,7 @@ resource "azurerm_databricks_workspace" "this" {
   sku                 = "standard"
 
   custom_parameters {
-    no_public_ip                                         = true
+    no_public_ip                                         = false
     virtual_network_id                                   = azurerm_virtual_network.this.id
     private_subnet_name                                  = azurerm_subnet.this.name
     public_subnet_name                                   = azurerm_subnet.this1.name

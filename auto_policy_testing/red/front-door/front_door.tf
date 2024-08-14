@@ -58,7 +58,7 @@ resource "azurerm_resource_group" "this" {
 
 resource "azurerm_frontdoor" "this1" {
   name                = "redcifdendpoint1"
-  resource_group_name = azurerm_resource_group.this.name
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
   routing_rule {
     name               = "redcifdroutingrle1"
@@ -95,6 +95,7 @@ resource "azurerm_frontdoor" "this1" {
   frontend_endpoint {
     name      = "redcifdendpoint1"
     host_name = "redcifdendpoint1.azurefd.net"
+    web_application_firewall_policy_link_id = azurerm_frontdoor_firewall_policy.this.id
   }
 
   depends_on = [

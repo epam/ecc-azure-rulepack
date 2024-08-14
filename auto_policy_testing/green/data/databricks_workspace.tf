@@ -14,7 +14,7 @@ resource "azurerm_databricks_workspace" "this" {
   }
 
   public_network_access_enabled = false
-  network_security_group_rules_required = "NoAzureServiceRules"
+  network_security_group_rules_required = "NoAzureDatabricksRules"
 
 
   tags = module.naming.default_tags

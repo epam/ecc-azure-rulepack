@@ -12,5 +12,7 @@ resource "azurerm_cognitive_account" "this" {
     default_action = "Allow"
   }
 
+  custom_subdomain_name = "https://openai.azure.com/"
+
   tags = module.naming.default_tags
 }

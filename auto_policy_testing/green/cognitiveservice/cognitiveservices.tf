@@ -12,6 +12,8 @@ resource "azurerm_cognitive_account" "this" {
     default_action = "Deny"
   }
 
+  custom_subdomain_name = "https://openai.azure.com/"
+
   identity {
     type = "UserAssigned"
     identity_ids = [
