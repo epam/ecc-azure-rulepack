@@ -2,11 +2,11 @@ resource "azurerm_cognitive_account" "this" {
   name                          = module.naming.resource_prefix.cognitive
   location                      = data.terraform_remote_state.common.outputs.location
   resource_group_name           = data.terraform_remote_state.common.outputs.resource_group
-  kind                          = "Emotion"
+  kind                          = "Face"
 
   public_network_access_enabled = "false"
 
-  sku_name = "F0"
+  sku_name = "S1"
 
   network_acls {
     default_action = "Deny"

@@ -47,5 +47,6 @@
     "batch": ["id"],
     "automation-account": ["id"],
     "application-gateway": ["id"],
-    "app-configuration": ["id"]
+    "app-configuration": ["id"],
+    "api-management": ["id"]
 }

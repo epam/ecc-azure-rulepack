@@ -60,7 +60,8 @@ output "resource_prefix" {
     batch                   = "${local.suffix}${var.resource_type}batch${local.compliance_status}",
     automation              = "${local.suffix}-${var.resource_type}-automation-${local.compliance_status}",
     appgw                   = "${local.suffix}-${var.resource_type}-appgw-${local.compliance_status}",
-    appconf                 = "${local.suffix}-${var.resource_type}-appconf-${local.compliance_status}"
+    appconf                 = "${local.suffix}-${var.resource_type}-appconf-${local.compliance_status}",
+    apimanagement           = "${local.suffix}-${var.resource_type}-apimanagement-${local.compliance_status}"
   }
 }
 
