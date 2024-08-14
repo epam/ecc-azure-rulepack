@@ -44,5 +44,6 @@
     "defender-contact": ["id"],
     "container-registry": ["id"],
     "cognitiveservice": ["id"],
-    "batch": ["id"]
+    "batch": ["id"],
+    "automation-account": ["id"]
 }
