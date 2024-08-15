@@ -1,9 +1,9 @@
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_monitor_action_group" "this" {
-  name                = "agautotestcired"
+  name                = "agcired"
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
-  short_name          = "agautotestcired"
+  short_name          = "agcired"
 
   email_receiver {
     name          = "receiver-red"

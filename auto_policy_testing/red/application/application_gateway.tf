@@ -76,6 +76,7 @@ resource "azurerm_application_gateway" "this" {
     http_listener_name         = "autotestci_http_listener_red"
     backend_address_pool_name  = "autotestci_back_adr_pool_red"
     backend_http_settings_name = "autotestci_back_http_set_red"
+    priority                   = 10
   }
 
   waf_configuration {

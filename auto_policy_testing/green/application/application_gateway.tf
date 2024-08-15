@@ -63,11 +63,17 @@ resource "azurerm_application_gateway" "this" {
     request_timeout       = 60
   }
 
+  ssl_certificate {
+    name = "green-appgw-cert"
+    key_vault_secret_id = azurerm_key_vault_certificate.this.secret_id
+  }
+
   http_listener {
     name                           = "autotestci_http_listener_green"
     frontend_ip_configuration_name = "autotestci_front_ip_conf_green"
     frontend_port_name             = "autotestci_front_port_green"
     protocol                       = "Https"
+    ssl_certificate_name           = "green-appgw-cert"
   }
 
   request_routing_rule {
@@ -76,6 +82,7 @@ resource "azurerm_application_gateway" "this" {
     http_listener_name         = "autotestci_http_listener_green"
     backend_address_pool_name  = "autotestci_back_adr_pool_green"
     backend_http_settings_name = "autotestci_back_http_set_green"
+    priority                   = 10
   }
 
   ssl_policy {
@@ -105,6 +112,10 @@ resource "azurerm_application_gateway" "this" {
     rule_set_type    = "OWASP"
     rule_set_version = "3.0"
 
+  }
+
+  identity {
+    type = "SystemAssigned"
   }
 
   tags = module.naming.default_tags
