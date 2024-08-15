@@ -42,7 +42,7 @@ resource "azurerm_application_gateway" "this" {
 
   frontend_port {
     name = "autotestci_front_port_green"
-    port = 80
+    port = 443
   }
 
   frontend_ip_configuration {
@@ -58,8 +58,8 @@ resource "azurerm_application_gateway" "this" {
     name                  = "autotestci_back_http_set_green"
     cookie_based_affinity = "Disabled"
     path                  = "/path1/"
-    port                  = 80
-    protocol              = "Http"
+    port                  = 443
+    protocol              = "Https"
     request_timeout       = 60
   }
 

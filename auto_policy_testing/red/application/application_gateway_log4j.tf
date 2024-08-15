@@ -10,7 +10,7 @@ resource "azurerm_virtual_network" "this1" {
 resource "azurerm_subnet" "this1" {
   name                 = "${module.naming.resource_prefix.subnet}-1"
   resource_group_name  = data.terraform_remote_state.common.outputs.resource_group
-  virtual_network_name = azurerm_virtual_network.this.name
+  virtual_network_name = azurerm_virtual_network.this1.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
@@ -37,7 +37,7 @@ resource "azurerm_application_gateway" "this1" {
 
   gateway_ip_configuration {
     name      = "autotestci_gtw_ip_conf_red1"
-    subnet_id = azurerm_subnet.this.id
+    subnet_id = azurerm_subnet.this1.id
   }
 
   frontend_port {
@@ -47,7 +47,7 @@ resource "azurerm_application_gateway" "this1" {
 
   frontend_ip_configuration {
     name                 = "autotestci_front_ip_conf_red1"
-    public_ip_address_id = azurerm_public_ip.this.id
+    public_ip_address_id = azurerm_public_ip.this1.id
   }
 
   backend_address_pool {

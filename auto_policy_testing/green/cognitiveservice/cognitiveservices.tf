@@ -14,6 +14,11 @@ resource "azurerm_cognitive_account" "this" {
 
   custom_subdomain_name = "${random_integer.this.result}autotestcigreen"
 
+  customer_managed_key {
+    key_vault_key_id     = data.terraform_remote_state.common.outputs.key_id
+    identity_client_id   = azurerm_user_assigned_identity.this.client_id
+  }
+
   identity {
     type = "UserAssigned"
     identity_ids = [
@@ -22,10 +27,4 @@ resource "azurerm_cognitive_account" "this" {
   }
 
   tags = module.naming.default_tags
-}
-
-resource "azurerm_cognitive_account_customer_managed_key" "this" {
-  cognitive_account_id = azurerm_cognitive_account.this.id
-  key_vault_key_id     = data.terraform_remote_state.common.outputs.key_id
-  identity_client_id   = azurerm_user_assigned_identity.this.client_id
 }
