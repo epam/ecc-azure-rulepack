@@ -12,7 +12,7 @@ resource "azurerm_api_management" "this" {
 
   client_certificate_enabled = true
   
-  sku_name = "Developer_1"
+  sku_name = "Premium_10"
 
   identity {
     type = "SystemAssigned"

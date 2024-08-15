@@ -1,7 +1,16 @@
+data "azurerm_client_config" "current" {}
+
+resource "azurerm_user_assigned_identity" "this" {
+  location            = data.terraform_remote_state.common.outputs.location
+  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
+
+  name = module.naming.resource_prefix.useridentity
+}
+
 resource "azurerm_key_vault_access_policy" "appgw" {
   key_vault_id = data.terraform_remote_state.common.outputs.key_vault_id
-  tenant_id    = azurerm_application_gateway.this.identity[0].tenant_id
-  object_id    = azurerm_application_gateway.this.identity[0].principal_id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = azurerm_user_assigned_identity.this.principal_id
 
   key_permissions    = ["Get", "UnwrapKey", "WrapKey"]
   secret_permissions = ["Get"]

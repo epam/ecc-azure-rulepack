@@ -12,7 +12,7 @@ resource "azurerm_cognitive_account" "this" {
     default_action = "Deny"
   }
 
-  custom_subdomain_name = "autotestcigreen"
+  custom_subdomain_name = "${random_integer.this.result}autotestcigreen"
 
   identity {
     type = "UserAssigned"

@@ -115,8 +115,15 @@ resource "azurerm_application_gateway" "this" {
   }
 
   identity {
-    type = "SystemAssigned"
+    type = "UserAssigned"
+    identity_ids = [
+      azurerm_user_assigned_identity.this.id
+    ]
   }
+
+  depends_on = [ azurerm_key_vault_access_policy.appgw,
+                 azurerm_key_vault_certificate.this
+   ]
 
   tags = module.naming.default_tags
 }
