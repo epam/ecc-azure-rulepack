@@ -1,10 +1,8 @@
 name: Auto-testing
-
-# Controls when the workflow will run
 on:
   push:
     branches:
-      - 'feature/auto_policy_testing'
+      - "feature/auto_policy_testing"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -12,13 +10,12 @@ on:
       resource_priority_list:
         type: string
         description: Priority list for resources (you can remove unnecessary resources during testing)
-        default: '["data", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
-        #'["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
+        default: '[]'
         required: true
 
 # limits to only one workflow in time 
 concurrency:
-  group: ${{ github.workflow }}
+  group: ${{ github.workflow }} 
 
 env:
   AUTO_TEST_DIR: "auto_policy_testing"
@@ -26,99 +23,110 @@ env:
   AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
   AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   AZURE_SECRET_VALUE: ${{ secrets.AZURE_SECRET_VALUE }}
-  default_resource_priority_list: '["data", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
-  #default_resource_priority_list: '["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
+  default_resource_priority_list: '["data"]'
   TF_VAR_project: ${{ secrets.TF_VAR_project }}
   TF_VAR_region: ${{ secrets.AWS_REGION }}
   TF_VAR_zone: ${{ secrets.TF_VAR_zone }}
   TF_BACKEND_STORAGE_NAME: ${{ secrets.TF_BACKEND_STORAGE_NAME }}
   TF_CLI_ARGS: "-no-color"
   AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+  RED: '\033[0;31m'
+  ACTIONS_REPO_BRANCH: "main"
 
 
 permissions:
-  id-token: write # This is required for requesting the JWT
   contents: read  # This is required for actions/checkout
+  id-token: write # This is required for requesting the JWT
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   deploy_common_resources:
+    name: Deploy common
     runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
-        compliance: ['green', 'red']
-    
+        compliance: ["green", "red"]
     env:
       COMPLINCE: ${{ matrix.compliance }}
       RESOURCE: common_resources
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v4
+
+      - name: Checkout ecc-actions
+        run: git clone -b $ACTIONS_REPO_BRANCH "https://git:$PROJECT_TOKEN@git.epam.com/epmc-sec/cloudlab/cloud_custodian/ecc-actions.git" ecc-actions
+        env:
+          PROJECT_TOKEN: ${{ secrets.ECC_CHANGELOG_ACTION }}
+          ACTIONS_REPO_BRANCH: ${{ env.ACTIONS_REPO_BRANCH }}
+
+      - name: Deploy common
+        uses: ./ecc-actions/auto-test-actions/deploy-common-resources
+        with:
+          CI_ASSUME_ROLE: ${{ secrets.CI_ASSUME_ROLE }}
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+          COMPLIANCE: ${{ matrix.compliance }}
     
-    steps:
-      - name: Git clone the repository
-        uses: actions/checkout@v4
-      - uses: ./.github/workflows/actions/set-up-cloud-creds
-        with:
-          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          step: common_${{ matrix.compliance }}
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+  # create_readonly_role_for_scans:
+  #   name: Create readonly role for scans
+  #   if: github.repository == 'epam/ecc-azure-rulepack'
+  #   runs-on: ubuntu-22.04
+  #   # needs: deploy_common_resources
+  #   outputs:
+  #     readonly_role_name: ${{ steps.create-readonly-role.outputs.readonly_role_name }}
+  #   steps:
+  #     - name: Git clone the repository
+  #       uses: actions/checkout@v4
 
-      - name: Clean old S3 logs
-        shell: bash
-        run: |
-          cloud=$(echo "${{ github.repository }}" | cut -d'-' -f 2)
-          aws s3 rm s3://$TF_BACKEND_STORAGE_NAME/$cloud/logs --recursive
-          aws s3 rm s3://$TF_BACKEND_STORAGE_NAME/$cloud/policy_output --recursive
+  #     - name: Checkout ecc-actions
+  #       run: git clone -b $ACTIONS_REPO_BRANCH "https://git:$PROJECT_TOKEN@git.epam.com/epmc-sec/cloudlab/cloud_custodian/ecc-actions.git" ecc-actions
+  #       env:
+  #         PROJECT_TOKEN: ${{ secrets.ECC_CHANGELOG_ACTION }}
+  #         ACTIONS_REPO_BRANCH: ${{ env.ACTIONS_REPO_BRANCH }}
 
-      - name: Deploy common resources
-        uses: ./.github/workflows/actions/tf-init-apply
+  #     - name: Create readonly role for scans
+  #       id: create-readonly-role
+  #       uses: ./ecc-actions/auto-test-actions/readonly-role-for-scans
+  #       with:
+  #         CI_ASSUME_ROLE: ${{ secrets.CI_ASSUME_ROLE }}
+  #         AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+  #         SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+  #         WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+  #         COMPLIANCE: ${{ matrix.compliance }}
+  #         PROJECT_TOKEN: ${{ secrets.CLOUDCUSTODIAN_CORE }}
+  #         ROLE_ACTION: "create"
 
-      - uses: ./.github/workflows/actions/publish-logs-to-s3
-        if: ${{ always() }}
-        with:
-          local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/logs"
-          remote_path: "logs"
-  
-  prepare_matrix_resources:
+  prepare_resource_matrix:
+    name: Prepare resource matrix
     runs-on: ubuntu-22.04
-    needs: [ deploy_common_resources ]
+    needs: deploy_common_resources
     outputs:
-      parallel_resources_list: ${{ steps.pass-resource-priority-list-to-matrix.outputs.parallel_resources_to_scan }}
-      not_parallel_resources_list: ${{ steps.pass-resource-priority-list-to-matrix.outputs.not_parallel_resources_to_scan }}
+      parallel_resources_list: ${{ steps.prepare-resource-matrix.outputs.parallel_resources_to_scan }}
+      not_parallel_resources_list: ${{ steps.prepare-resource-matrix.outputs.not_parallel_resources_to_scan }}
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v4
-      - id: pass-resource-priority-list-to-matrix
-        shell: bash
-        working-directory: ${{ env.AUTO_TEST_DIR }}/scripts
-        run: |
-          if [ "${{ inputs.resource_priority_list }}" != '' ]; then
-            resource_priority_list="${{ inputs.resource_priority_list }}"
-          else
-            resource_priority_list="$default_resource_priority_list"
-          fi
 
-          cloud=$(echo "${{ github.repository }}" | cut -d'-' -f 2)
-          not_parallel_resources="$(python -c "import exception_rules; print(exception_rules.$cloud.get('not-parallel',[]))")"
-          source resources_to_scan.sh
-          parallel_resources_to_scan="$(get_parallel_resources_to_scan "$not_parallel_resources" "$resource_priority_list")"
-          not_parallel_resources_to_scan="$(get_not_parallel_resources_to_scan "$not_parallel_resources" "$resource_priority_list")"
-          
-          echo "parallel_resources_to_scan=$parallel_resources_to_scan"
-          echo "not_parallel_resources_to_scan=$not_parallel_resources_to_scan"
+      - name: Checkout ecc-actions
+        run: git clone -b $ACTIONS_REPO_BRANCH "https://git:$PROJECT_TOKEN@git.epam.com/epmc-sec/cloudlab/cloud_custodian/ecc-actions.git" ecc-actions
+        env:
+          PROJECT_TOKEN: ${{ secrets.ECC_CHANGELOG_ACTION }}
+          ACTIONS_REPO_BRANCH: ${{ env.ACTIONS_REPO_BRANCH }}
 
-          echo "parallel_resources_to_scan=$parallel_resources_to_scan" >> "$GITHUB_OUTPUT"
-          echo "not_parallel_resources_to_scan=$not_parallel_resources_to_scan" >> "$GITHUB_OUTPUT"
+      - name: Prepare resource matrix
+        id: prepare-resource-matrix
+        uses: ./ecc-actions/auto-test-actions/prepare-resource-matrix
 
   deploy_and_scan_parallel_resources:
     runs-on: ubuntu-22.04
-    needs: [ deploy_common_resources, prepare_matrix_resources]
+    needs: [ deploy_common_resources, prepare_resource_matrix ]
     strategy:
       max-parallel: 10
       fail-fast: false
       matrix:
         compliance: ['green', 'red']
-        resource: ${{fromJson(needs.prepare_matrix_resources.outputs.parallel_resources_list)}}
+        resource: ${{fromJson(needs.prepare_resource_matrix.outputs.parallel_resources_list)}}
     env:
       COMPLINCE: ${{ matrix.compliance }}
       RESOURCE: ${{ matrix.resource }}
@@ -128,57 +136,30 @@ jobs:
       - name: Git clone the repository
         uses: actions/checkout@v4
 
-      - uses: ./.github/workflows/actions/set-up-cloud-creds
-        with:
-          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          step: common_${{ matrix.compliance }}
-      - uses: ./.github/workflows/actions/install-dependencies
+      - name: Checkout ecc-actions
+        run: git clone -b $ACTIONS_REPO_BRANCH "https://git:$PROJECT_TOKEN@git.epam.com/epmc-sec/cloudlab/cloud_custodian/ecc-actions.git" ecc-actions
         env:
+          PROJECT_TOKEN: ${{ secrets.ECC_CHANGELOG_ACTION }}
+          ACTIONS_REPO_BRANCH: ${{ env.ACTIONS_REPO_BRANCH }}
+          
+      - name: Deploy and scan parallel resources
+        uses: ./ecc-actions/auto-test-actions/deploy-and-scan-resources
+        with:
+          CI_ASSUME_ROLE: ${{ secrets.CI_ASSUME_ROLE }}
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
           PROJECT_TOKEN: ${{ secrets.CLOUDCUSTODIAN_CORE }}
-      - name: Deploy terraform resources
-        uses: ./.github/workflows/actions/tf-init-apply
-      
-      - uses: ./.github/workflows/actions/set-up-cloud-creds
-        with:
-          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          step: common_${{ matrix.compliance }}
 
-      - name: Custodian scan
-        uses: ./.github/workflows/actions/c7n-scan
-      
-      - uses: ./.github/workflows/actions/set-up-cloud-creds
-        with:
-          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          step: common_${{ matrix.compliance }}
-
-      - name: Destroy terraform resources
-        uses: ./.github/workflows/actions/tf-destroy
-        if: ${{ always() }}
-
-      - uses: ./.github/workflows/actions/publish-logs-to-s3
-        if: ${{ always() }}
-        with:
-          local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/logs"
-          remote_path: "logs"
-      - uses: ./.github/workflows/actions/publish-logs-to-s3
-        if: ${{ always() }}
-        with:
-          local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/output"
-          remote_path: "policy_output/${{ matrix.compliance }}"
 
   deploy_and_scan_not_parallel_resources:
     runs-on: ubuntu-22.04
-    needs: [ deploy_common_resources, prepare_matrix_resources]
-    if: ${{ needs.prepare_matrix_resources.outputs.not_parallel_resources_list != '[]' }}
+    needs: [ deploy_common_resources, prepare_resource_matrix]
+    if: ${{ needs.prepare_resource_matrix.outputs.not_parallel_resources_list != '[]' }}
     strategy:
       max-parallel: 1
       fail-fast: false
       matrix:
         compliance: ['green', 'red']
-        resource: ${{fromJson(needs.prepare_matrix_resources.outputs.not_parallel_resources_list)}}
+        resource: ${{fromJson(needs.prepare_resource_matrix.outputs.not_parallel_resources_list)}}
     env:
       COMPLINCE: ${{ matrix.compliance }}
       RESOURCE: ${{ matrix.resource }}
@@ -188,76 +169,69 @@ jobs:
       - name: Git clone the repository
         uses: actions/checkout@v4
 
-      - uses: ./.github/workflows/actions/set-up-cloud-creds
-        with:
-          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          step: common_${{ matrix.compliance }}
-          
-      - uses: ./.github/workflows/actions/install-dependencies
+      - name: Checkout ecc-actions
+        run: git clone -b $ACTIONS_REPO_BRANCH "https://git:$PROJECT_TOKEN@git.epam.com/epmc-sec/cloudlab/cloud_custodian/ecc-actions.git" ecc-actions
         env:
+          PROJECT_TOKEN: ${{ secrets.ECC_CHANGELOG_ACTION }}
+          ACTIONS_REPO_BRANCH: ${{ env.ACTIONS_REPO_BRANCH }}
+          
+      - name: Deploy and scan parallel resources
+        uses: ./ecc-actions/auto-test-actions/deploy-and-scan-resources
+        with:
+          CI_ASSUME_ROLE: ${{ secrets.CI_ASSUME_ROLE }}
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
           PROJECT_TOKEN: ${{ secrets.CLOUDCUSTODIAN_CORE }}
-      - name: Deploy terraform resources
-        uses: ./.github/workflows/actions/tf-init-apply
 
-      - uses: ./.github/workflows/actions/set-up-cloud-creds
-        with:
-          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          step: common_${{ matrix.compliance }}
-
-      - name: Custodian scan
-        uses: ./.github/workflows/actions/c7n-scan
-      
-      - uses: ./.github/workflows/actions/set-up-cloud-creds
-        with:
-          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          step: common_${{ matrix.compliance }}
-
-      - name: Destroy terraform resources
-        uses: ./.github/workflows/actions/tf-destroy
-        if: ${{ always() }}
-
-      - uses: ./.github/workflows/actions/publish-logs-to-s3
-        if: ${{ always() }}
-        with:
-          local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/logs"
-          remote_path: "logs"
-      - uses: ./.github/workflows/actions/publish-logs-to-s3
-        if: ${{ always() }}
-        with:
-          local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/output"
-          remote_path: "policy_output/${{ matrix.compliance }}"
+  # delete_readonly_role_for_scans:
+  #   name: Delete readonly role for scans
+  #   if: ${{ always() }}
+  #   runs-on: ubuntu-22.04
+  #   needs: [ create_readonly_role_for_scans ] #, deploy_and_scan_parallel_resources, deploy_and_scan_not_parallel_resources ]
+  #   steps:
+  #     - name: Git clone the repository
+  #       uses: actions/checkout@v4
+  #     - name: Checkout ecc-actions
+  #       run: git clone -b $ACTIONS_REPO_BRANCH "https://git:$PROJECT_TOKEN@git.epam.com/epmc-sec/cloudlab/cloud_custodian/ecc-actions.git" ecc-actions
+  #       env:
+  #         PROJECT_TOKEN: ${{ secrets.ECC_CHANGELOG_ACTION }}
+  #         ACTIONS_REPO_BRANCH: ${{ env.ACTIONS_REPO_BRANCH }}
+  #     - name: Delete readonly role for scans
+  #       uses: ./ecc-actions/auto-test-actions/readonly-role-for-scans
+  #       with:
+  #         CI_ASSUME_ROLE: ${{ secrets.CI_ASSUME_ROLE }}
+  #         AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+  #         SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+  #         WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+  #         COMPLIANCE: ${{ matrix.compliance }}
+  #         PROJECT_TOKEN: ${{ secrets.CLOUDCUSTODIAN_CORE }}
+  #         ROLE_ACTION: "delete"
+  #       env:
+  #         created_role_name: ${{ needs.create_readonly_role_for_scans.outputs.readonly_role_name }}
 
   destroy_common_resources:
+    name: Destroy common
     runs-on: ubuntu-22.04
-    needs: [deploy_common_resources, deploy_and_scan_parallel_resources,deploy_and_scan_not_parallel_resources]
+    needs: [deploy_and_scan_not_parallel_resources, deploy_and_scan_parallel_resources]
     if: ${{ always() }}
     strategy:
       max-parallel: 10
       fail-fast: false
       matrix:
-        compliance: ['green', 'red']
+        compliance: ["green", "red"]
     env:
       COMPLINCE: ${{ matrix.compliance }}
       RESOURCE: common_resources
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v4
-
-      - uses: ./.github/workflows/actions/set-up-cloud-creds
-        with:
-          aws_assume_role: ${{ secrets.CI_ASSUME_ROLE }}
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          step: common_${{ matrix.compliance }}
-
+      - name: Checkout ecc-actions
+        run: git clone -b $ACTIONS_REPO_BRANCH "https://git:$PROJECT_TOKEN@git.epam.com/epmc-sec/cloudlab/cloud_custodian/ecc-actions.git" ecc-actions
+        env:
+          PROJECT_TOKEN: ${{ secrets.ECC_CHANGELOG_ACTION }}
+          ACTIONS_REPO_BRANCH: ${{ env.ACTIONS_REPO_BRANCH }}
       - name: Destroy common resources
-        if: ${{ always() }}
-        uses: ./.github/workflows/actions/tf-destroy
-
-      - uses: ./.github/workflows/actions/publish-logs-to-s3
-        if: ${{ always() }}
+        uses: ./ecc-actions/auto-test-actions/destroy-common-resources
         with:
-          local_path: "${{ github.workspace }}/${{ env.AUTO_TEST_DIR }}/logs"
-          remote_path: "logs"
+          CI_ASSUME_ROLE: ${{ secrets.CI_ASSUME_ROLE }}
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+          COMPLIANCE: ${{ matrix.compliance }}
