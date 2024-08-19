@@ -6,7 +6,7 @@ resource "azurerm_cognitive_account" "this" {
 
   public_network_access_enabled = "false"
 
-  sku_name = "S0"
+  sku_name = "P2"
 
   network_acls {
     default_action = "Deny"

@@ -39,4 +39,6 @@ resource "azurerm_api_management_certificate" "this" {
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
   key_vault_secret_id = azurerm_key_vault_certificate.this.secret_id
+
+  depends_on = [ azurerm_key_vault_access_policy.api ]
 }
