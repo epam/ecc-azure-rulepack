@@ -38,9 +38,9 @@ azure = {
             "ecc-azure-281-aks_non_vulnerable_version", #cannot create red tf because azure restrict to deploy new aks with vulnerable version
             "ecc-azure-038-cis_log_keyvaults", # policy and tf works but "Azure Policy" automatically deploys DS to keyvault
             "ecc-azure-354-acr_anonymous_pull", #issue with policy, should be reviewed and fixed
-            "ecc-azure-005-cis_sec_email", #cannot create red tf simultaneously with 006, 007 red tf infra
-            "ecc-azure-362-vm_without_va_extension" #cannot create create red tf simultaneously with 094 red tf infra
+            "ecc-azure-005-cis_sec_email" #cannot create red tf simultaneously with 006, 007 red tf infra
+            
             ],
-    "not-parallel": ["subscription", "spring", "role", "monitor", "defender"],
+    "not-parallel": ["subscription", "spring", "role", "monitor", "defender", "cognitiveservice"],
     "sleep_before_scan": []
 }
