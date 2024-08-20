@@ -12,7 +12,7 @@ policies:
     resource: azure.api-management
     filters:
       - type: value
-        key: properties.isOnline
-        value: true
+        key: properties.provisioningState
+        value: Succeeded
       - type: certificates
         count: 0
