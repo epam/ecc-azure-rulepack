@@ -32,7 +32,8 @@ resource "azurerm_api_management" "this1" {
 
   tags = module.naming.default_tags
 
-  depends_on = [ azurerm_api_management_certificate.this ]
+  depends_on = [ azurerm_api_management_certificate.this,
+                 azurerm_subnet.this ]
 }
 
 resource "azurerm_api_management_certificate" "this" {
