@@ -83,7 +83,7 @@ resource "azurerm_application_gateway" "this1" {
     enabled          = true
     firewall_mode    = "Prevention"
     rule_set_type    = "OWASP"
-    rule_set_version = "2.2.9"
+    rule_set_version = "3.0"
     disabled_rule_group {
       rule_group_name = "Known-CVEs"
     }
