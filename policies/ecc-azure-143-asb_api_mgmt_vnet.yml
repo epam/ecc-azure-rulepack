@@ -12,6 +12,9 @@ policies:
     resource: azure.api-management
     filters:
       - type: value
+        key: properties.provisioningState
+        value: Succeeded
+      - type: value
         key: properties.virtualNetworkType
         value: 'None'
         op: eq

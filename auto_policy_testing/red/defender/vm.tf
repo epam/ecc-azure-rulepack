@@ -13,7 +13,7 @@ resource "azurerm_network_interface" "nic1" {
 }
 
 resource "azurerm_windows_virtual_machine" "this" {
-  name                  = "${module.naming.resource_prefix.vm}grva"
+  name                  = "${module.naming.resource_prefix.vm}rdva"
 
   location              = data.terraform_remote_state.common.outputs.location
   resource_group_name   = data.terraform_remote_state.common.outputs.resource_group

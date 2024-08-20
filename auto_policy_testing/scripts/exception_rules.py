@@ -39,7 +39,7 @@ azure = {
             "ecc-azure-038-cis_log_keyvaults", # policy and tf works but "Azure Policy" automatically deploys DS to keyvault
             "ecc-azure-354-acr_anonymous_pull", #issue with policy, should be reviewed and fixed
             "ecc-azure-005-cis_sec_email", #cannot create red tf simultaneously with 006, 007 red tf infra
-            "ecc-azure-362-vm_without_va_extension" #cannot create create red tf simultaneously with 094 red tf infra
+            "ecc-azure-362-vm_without_va_extension"
             ],
     "not-parallel": ["subscription", "spring", "role", "monitor", "defender"],
     "sleep_before_scan": []

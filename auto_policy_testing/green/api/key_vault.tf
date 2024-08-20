@@ -19,6 +19,8 @@ resource "azurerm_key_vault_access_policy" "api" {
       "SetIssuers",
       "Update",
     ]
+
+    depends_on = [ azurerm_api_management.this ]
 }
 
 

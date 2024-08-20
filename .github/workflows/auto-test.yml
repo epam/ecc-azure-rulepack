@@ -23,7 +23,8 @@ env:
   AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
   AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   AZURE_SECRET_VALUE: ${{ secrets.AZURE_SECRET_VALUE }}
-  default_resource_priority_list: '["data"]'
+  default_resource_priority_list: '["cognitiveservice", "api", "defender", "application"]'
+  #default_resource_priority_list: '["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
   TF_VAR_project: ${{ secrets.TF_VAR_project }}
   TF_VAR_region: ${{ secrets.AWS_REGION }}
   TF_VAR_zone: ${{ secrets.TF_VAR_zone }}
@@ -119,8 +120,10 @@ jobs:
         uses: ./ecc-actions/auto-test-actions/prepare-resource-matrix
 
   deploy_and_scan_parallel_resources:
+    name: Scan P
     runs-on: ubuntu-22.04
     needs: [ deploy_common_resources, prepare_resource_matrix ]
+    if: ${{ needs.prepare_resource_matrix.outputs.parallel_resources_list != '[]' }}
     strategy:
       max-parallel: 10
       fail-fast: false
@@ -130,7 +133,6 @@ jobs:
     env:
       COMPLINCE: ${{ matrix.compliance }}
       RESOURCE: ${{ matrix.resource }}
-      TF_VAR_remote_state_key: "azure/states/common_resources/${{ matrix.compliance }}.tfstate"
       
     steps:
       - name: Git clone the repository
@@ -147,10 +149,12 @@ jobs:
         with:
           CI_ASSUME_ROLE: ${{ secrets.CI_ASSUME_ROLE }}
           AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+          COMPLIANCE: ${{ matrix.compliance }}
           PROJECT_TOKEN: ${{ secrets.CLOUDCUSTODIAN_CORE }}
 
 
   deploy_and_scan_not_parallel_resources:
+    name: Scan N/P
     runs-on: ubuntu-22.04
     needs: [ deploy_common_resources, prepare_resource_matrix]
     if: ${{ needs.prepare_resource_matrix.outputs.not_parallel_resources_list != '[]' }}
@@ -163,7 +167,6 @@ jobs:
     env:
       COMPLINCE: ${{ matrix.compliance }}
       RESOURCE: ${{ matrix.resource }}
-      TF_VAR_remote_state_key: "azure/states/common_resources/${{ matrix.compliance }}.tfstate"
       
     steps:
       - name: Git clone the repository
@@ -175,7 +178,7 @@ jobs:
           PROJECT_TOKEN: ${{ secrets.ECC_CHANGELOG_ACTION }}
           ACTIONS_REPO_BRANCH: ${{ env.ACTIONS_REPO_BRANCH }}
           
-      - name: Deploy and scan parallel resources
+      - name: Deploy and scan non parallel resources
         uses: ./ecc-actions/auto-test-actions/deploy-and-scan-resources
         with:
           CI_ASSUME_ROLE: ${{ secrets.CI_ASSUME_ROLE }}

@@ -11,5 +11,8 @@ policies:
       API Managment service without configured client certificates
     resource: azure.api-management
     filters:
+      - type: value
+        key: properties.provisioningState
+        value: Succeeded
       - type: certificates
         count: 0
