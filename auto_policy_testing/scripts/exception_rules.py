@@ -16,7 +16,8 @@ azure = {
               "ecc-azure-201-asb_cosmosdb_encrypt_cmk", #policy work but need additional permissions
               "ecc-azure-203-asb_postgresql_encrypt_cmk", #policy work but terraform destroy fails pipeline
               "ecc-azure-302-redis_cache_disabled_public_access", #python sdk should be updated
-              "ecc-azure-354-acr_anonymous_pull" #issue with policy, should be reviewed and fixed
+              "ecc-azure-354-acr_anonymous_pull", #issue with policy, should be reviewed and fixed
+              "ecc-azure-143-asb_api_mgmt_vnet" #issue with terraform, should be reviewed and fixed
               ], 
     "red": ["ecc-azure-105-cis_sa_keys_regen", #cannot configure via terraform or az cli
             "ecc-azure-157-asb_mysql_public_access_disabled", #cannot configure via terraform or az cli
@@ -39,7 +40,8 @@ azure = {
             "ecc-azure-038-cis_log_keyvaults", # policy and tf works but "Azure Policy" automatically deploys DS to keyvault
             "ecc-azure-354-acr_anonymous_pull", #issue with policy, should be reviewed and fixed
             "ecc-azure-005-cis_sec_email", #cannot create red tf simultaneously with 006, 007 red tf infra
-            "ecc-azure-362-vm_without_va_extension"
+            "ecc-azure-362-vm_without_va_extension",
+            "ecc-azure-143-asb_api_mgmt_vnet" #issue with terraform, should be reviewed and fixed
             ],
     "not-parallel": ["subscription", "spring", "role", "monitor", "defender"],
     "sleep_before_scan": []

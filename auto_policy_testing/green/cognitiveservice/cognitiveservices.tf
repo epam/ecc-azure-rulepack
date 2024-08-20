@@ -6,13 +6,13 @@ resource "azurerm_cognitive_account" "this" {
 
   public_network_access_enabled = "false"
 
-  sku_name = "P2"
+  sku_name = "S0"
 
   network_acls {
     default_action = "Deny"
   }
 
-  custom_subdomain_name = "${random_integer.this.result}autotestcigreen"
+  custom_subdomain_name = "dntest${random_integer.this.result}"
 
   identity {
     type = "SystemAssigned, UserAssigned"
