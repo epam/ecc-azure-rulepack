@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - "feature/auto_policy_testing"
+      - "fix/auto-tests-action"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -33,7 +34,7 @@ env:
   TF_CLI_ARGS: "-no-color"
   AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
   RED: '\033[0;31m'
-  ACTIONS_REPO_BRANCH: "main"
+  ACTIONS_REPO_BRANCH: "fix/auto-tests-action"
 
 
 permissions:
