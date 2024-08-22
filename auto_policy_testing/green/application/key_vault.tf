@@ -32,7 +32,7 @@ resource "azurerm_key_vault_access_policy" "appgw" {
 
 
 resource "azurerm_key_vault_certificate" "this" {
-  name         = "green-appgw-cert"
+  name         = "green-appgw-cert${random_integer.this.result}"
   key_vault_id = data.terraform_remote_state.common.outputs.key_vault_id
 
   certificate_policy {

@@ -37,7 +37,7 @@ resource "azurerm_api_management" "this" {
 #}
 
 resource "azurerm_api_management_certificate" "this" {
-  name                = "green-apimgmt-cert1"
+  name                = "green-apimgmt-cert1${random_integer.apimgmt_num.result}"
   api_management_name = azurerm_api_management.this.name
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
