@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - "feature/auto_policy_testing"
-      - "fix/auto-tests-action"
+      - "fix/auto-tests-action2"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -25,7 +25,7 @@ env:
   AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
   AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   AZURE_SECRET_VALUE: ${{ secrets.AZURE_SECRET_VALUE }}
-  default_resource_priority_list: '["cognitiveservice", "api", "defender", "application"]'
+  default_resource_priority_list: '["role"]'
   #default_resource_priority_list: '["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
   TF_VAR_project: ${{ secrets.TF_VAR_project }}
   TF_VAR_region: ${{ secrets.AWS_REGION }}
@@ -34,7 +34,7 @@ env:
   TF_CLI_ARGS: "-no-color"
   AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
   RED: '\033[0;31m'
-  ACTIONS_REPO_BRANCH: "fix/auto-tests-action"
+  ACTIONS_REPO_BRANCH: "fix/auto-tests-action2"
 
 
 permissions:
