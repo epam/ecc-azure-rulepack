@@ -6,7 +6,7 @@ resource "azurerm_storage_account" "this" {
   account_tier              = "Standard"
   account_kind              = "StorageV2"
   account_replication_type  = "LRS"
-  enable_https_traffic_only = true
+  https_traffic_only_enabled = true
 
   tags = module.naming.default_tags
 }

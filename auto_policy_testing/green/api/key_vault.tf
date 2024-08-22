@@ -25,7 +25,7 @@ resource "azurerm_key_vault_access_policy" "api" {
 
 
 resource "azurerm_key_vault_certificate" "this" {
-  name         = "green-apimgmt-cert"
+  name         = "green-apimgmt-cert${random_integer.apimgmt_num.result}"
   key_vault_id = data.terraform_remote_state.common.outputs.key_vault_id
 
   certificate_policy {
