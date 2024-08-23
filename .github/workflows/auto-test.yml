@@ -184,6 +184,7 @@ jobs:
         with:
           CI_ASSUME_ROLE: ${{ secrets.CI_ASSUME_ROLE }}
           AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+          COMPLIANCE: ${{ matrix.compliance }}
           PROJECT_TOKEN: ${{ secrets.CLOUDCUSTODIAN_CORE }}
 
   # delete_readonly_role_for_scans:
