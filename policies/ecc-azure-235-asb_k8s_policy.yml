@@ -11,6 +11,7 @@ policies:
       Kubernetes cluster with Azure Policy for AKS disabled
     resource: azure.aks
     filters:
-      - type: value
-        key: properties.addonProfiles.azurepolicy.enabled
-        value: false
+      - not:
+        - type: value
+          key: properties.addonProfiles.azurepolicy.enabled
+          value: true
