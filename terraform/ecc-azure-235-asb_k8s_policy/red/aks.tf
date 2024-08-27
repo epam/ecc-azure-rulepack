@@ -20,11 +20,7 @@ resource "azurerm_kubernetes_cluster" "this" {
     type = "SystemAssigned"
   }
 
-  addon_profile {
-    azure_policy {
-      enabled = false
-    }
-  }
+  azure_policy_enabled = false
 
   tags = var.tags
 }
