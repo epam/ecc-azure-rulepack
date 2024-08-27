@@ -13,6 +13,7 @@ azure = {
               "ecc-azure-345-mysql_infrastructure_encryption", #policy doesn't work
               "ecc-azure-368-vmss_omi_vulnerability", #policy doesn't work
               "ecc-azure-378-cis_nsg_flow_log_analytics", #policy doesn't work
+              "ecc-azure-201-asb_cosmosdb_encrypt_cmk", #policy work but need additional permissions
               "ecc-azure-302-redis_cache_disabled_public_access", #python sdk should be updated
               "ecc-azure-354-acr_anonymous_pull", #issue with policy, should be reviewed and fixed
               "ecc-azure-143-asb_api_mgmt_vnet" #issue with terraform, should be reviewed and fixed
@@ -32,7 +33,7 @@ azure = {
             "ecc-azure-141-asb_fw_traffic_route", #temporary in block
             "ecc-azure-176-asb_ddos_protection_enabled", #temporary in block
             "ecc-azure-302-redis_cache_disabled_public_access", #python sdk should be updated
-            "ecc-azure-058-cis_aks_rbac", #cannot create red infra, screen in tg
+            "ecc-azure-058-cis_aks_rbac", # Cannot create red tf for 058 rule because Azure AD integration (Legacy) is deprecated.
             "ecc-azure-235-asb_k8s_policy", #issue with rule, should be fixed
             "ecc-azure-281-aks_non_vulnerable_version", #cannot create red tf because azure restrict to deploy new aks with vulnerable version
             "ecc-azure-038-cis_log_keyvaults", # policy and tf works but "Azure Policy" automatically deploys DS to keyvault
