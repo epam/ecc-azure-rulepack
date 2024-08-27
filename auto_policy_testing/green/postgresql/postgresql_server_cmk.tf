@@ -1,7 +1,15 @@
+resource "azurerm_resource_group" "this" {
+  name     = "postgrescmk-rg-green"
+  location = data.terraform_remote_state.common.outputs.location
+
+  tags = module.naming.default_tags
+}
+
+
 resource "azurerm_postgresql_server" "cmk" {
   name                = "${module.naming.resource_prefix.postgresql-server}-cmk"
-  location                      = data.terraform_remote_state.common.outputs.location
-  resource_group_name           = data.terraform_remote_state.common.outputs.resource_group
+  location            = azurerm_resource_group.this.location
+  resource_group_name = azurerm_resource_group.this.name
 
   sku_name   = "GP_Gen5_2"
   version    = "11"
