@@ -13,7 +13,6 @@ azure = {
               "ecc-azure-345-mysql_infrastructure_encryption", #policy doesn't work
               "ecc-azure-368-vmss_omi_vulnerability", #policy doesn't work
               "ecc-azure-378-cis_nsg_flow_log_analytics", #policy doesn't work
-              "ecc-azure-201-asb_cosmosdb_encrypt_cmk", #policy work but need additional permissions
               "ecc-azure-302-redis_cache_disabled_public_access", #python sdk should be updated
               "ecc-azure-354-acr_anonymous_pull", #issue with policy, should be reviewed and fixed
               "ecc-azure-143-asb_api_mgmt_vnet" #issue with terraform, should be reviewed and fixed
