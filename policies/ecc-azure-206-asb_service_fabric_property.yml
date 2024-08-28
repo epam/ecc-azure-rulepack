@@ -13,10 +13,6 @@ policies:
     filters:
       - not:
           - type: value
-            key: properties.fabricSettings[?name=='Security'].parameters[].name
-            value: ClusterProtectionLevel
-            op: contains
-          - type: value
-            key: properties.fabricSettings[?name=='Security'].parameters[].value
+            key: properties.fabricSettings[].parameters[?name=='ClusterProtectionLevel'][].value
             value: EncryptAndSign
             op: contains
