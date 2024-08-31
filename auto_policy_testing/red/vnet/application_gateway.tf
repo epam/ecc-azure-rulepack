@@ -14,11 +14,10 @@ resource "azurerm_application_gateway" "this" {
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
 
   sku {
-    name     = "Standard_v2"
-    tier     = "Standard_v2"
+    name     = "WAF_v2"
+    tier     = "WAF_v2"
     capacity = 2
   }
-
   gateway_ip_configuration {
     name      = "${random_string.this.result}_gtw_ip_conf_red"
     subnet_id = azurerm_subnet.appgw.id
@@ -61,6 +60,14 @@ resource "azurerm_application_gateway" "this" {
     http_listener_name         = "${random_string.this.result}_http_listener_red"
     backend_address_pool_name  = "${random_string.this.result}_back_adr_pool_red"
     backend_http_settings_name = "${random_string.this.result}_back_http_set_red"
+  }
+
+  waf_configuration {
+    enabled          = true
+    firewall_mode    = "Prevention"
+    rule_set_type    = "OWASP"
+    rule_set_version = "3.0"
+
   }
 
   tags = module.naming.default_tags

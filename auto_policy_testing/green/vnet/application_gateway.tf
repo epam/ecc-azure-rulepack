@@ -21,7 +21,7 @@ resource "azurerm_application_gateway" "this" {
 
   gateway_ip_configuration {
     name      = "autotestci_vnet_ip_conf_green"
-    subnet_id = azurerm_subnet.this.id
+    subnet_id = azurerm_subnet.this1.id
   }
 
   frontend_port {
