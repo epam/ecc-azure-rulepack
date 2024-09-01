@@ -1,15 +1,22 @@
+resource "azurerm_resource_group" "this" {
+  name     = "${random_string.this.result}-vnet-rg-red"
+  location = "eastus"
+
+  tags = module.naming.default_tags
+}
+
 resource "azurerm_virtual_network" "this1" {
   name                = "${module.naming.resource_prefix.vnet}1"
   address_space       = ["10.0.0.0/16"]
   location            = "eastus"
-  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
+  resource_group_name = azurerm_resource_group.this.name
   
   tags = module.naming.default_tags
 }
 
 resource "azurerm_subnet" "this1" {
   name                  = "${module.naming.resource_prefix.subnet}1"
-  resource_group_name   = data.terraform_remote_state.common.outputs.resource_group
+  resource_group_name   = azurerm_resource_group.this.name
   virtual_network_name  = azurerm_virtual_network.this1.name
   address_prefixes      = ["10.0.2.0/24"]
 }
@@ -17,7 +24,7 @@ resource "azurerm_subnet" "this1" {
 resource "azurerm_public_ip" "this" {
   name                = "${random_string.this.result}_pip_red"
   location                        = "eastus"
-  resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
+  resource_group_name             = azurerm_resource_group.this.name
   allocation_method   = "Static"
   sku                 = "Standard"
 
@@ -27,7 +34,7 @@ resource "azurerm_public_ip" "this" {
 resource "azurerm_application_gateway" "this" {
   name                = "${random_string.this.result}_app_gateway_red"
   location                        = "eastus"
-  resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
+  resource_group_name             = azurerm_resource_group.this.name
 
   sku {
     name     = "WAF_v2"
@@ -71,7 +78,7 @@ resource "azurerm_application_gateway" "this" {
 
   request_routing_rule {
     name                       = "${random_string.this.result}_routrule_red"
-    priority                   = 9
+    priority                   = 10
     rule_type                  = "Basic"
     http_listener_name         = "${random_string.this.result}_http_listener_red"
     backend_address_pool_name  = "${random_string.this.result}_back_adr_pool_red"
