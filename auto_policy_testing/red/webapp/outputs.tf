@@ -5,7 +5,7 @@ output "webapp" {
     ecc-azure-237-asb_cors_func = azurerm_linux_function_app.this.id,
     ecc-azure-241-asb_certif_func = azurerm_linux_function_app.this.id,
     ecc-azure-257-asb_remotedebug_func = azurerm_linux_function_app.this.id,
-    ecc-azure-258-asb_remotedebug_web = azurerm_linux_web_app.this2.id,
+    ecc-azure-258-asb_remotedebug_web = azurerm_linux_web_app.remdeb.id,
     ecc-azure-267-asb_java_funcapp = azurerm_linux_function_app.this2.id,
     ecc-azure-270-asb_python_funcapp = azurerm_linux_function_app.this.id,
     ecc-azure-298-function_app_service_logging = azurerm_linux_function_app.this.id,
