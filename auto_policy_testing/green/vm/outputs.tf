@@ -8,6 +8,9 @@ output "vm" {
     ecc-azure-353-vmss_auto_image_patching = azurerm_linux_virtual_machine_scale_set.this.id,
     ecc-azure-367-vm_omi_vulnerability = azurerm_windows_virtual_machine.this.id,
     ecc-azure-412-cis_tpm_and_secure_boot = azurerm_windows_virtual_machine.this.id,
+    ecc-azure-227-asb_reslogs_vmss = azurerm_windows_virtual_machine_scale_set.this1.id,
+    ecc-azure-368-vmss_omi_vulnerability = azurerm_linux_virtual_machine_scale_set.this1.id,
+    ecc-azure-272-asb_scaleset = azurerm_windows_virtual_machine_scale_set.this1.id,
     vm = [azurerm_windows_virtual_machine.this.id, azurerm_linux_virtual_machine.this.id],
     vmss = [azurerm_windows_virtual_machine_scale_set.this.id, azurerm_linux_virtual_machine_scale_set.this.id]
   }

@@ -54,7 +54,7 @@ resource "azurerm_virtual_machine_scale_set_extension" "linvmss1" {
 
 resource "azurerm_virtual_machine_scale_set_extension" "linvmss2" {
   name                         = "OmsAgentForLinux"
-  virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.this.id
+  virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.this1.id
   publisher                    = "Microsoft.EnterpriseCloud.Monitoring"
   type                         = "OmsAgentForLinux"
   type_handler_version         = "1.14"

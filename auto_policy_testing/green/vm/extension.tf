@@ -132,3 +132,19 @@ resource "azurerm_virtual_machine_scale_set_extension" "vmsswin3" {
   depends_on = [azurerm_virtual_machine_scale_set_extension.vmsswin2]
 }
 
+resource "azurerm_virtual_machine_scale_set_extension" "vmsswin11" {
+  name                         = "wvmssdiagext"
+  virtual_machine_scale_set_id = azurerm_windows_virtual_machine_scale_set.this1.id
+  publisher                    = "Microsoft.Azure.Diagnostics"
+  type                         = "IaaSDiagnostics"
+  type_handler_version         = "1.1"
+}
+
+resource "azurerm_virtual_machine_scale_set_extension" "vmsswin12" {
+  name                         = "IaaSAntimalware"
+  virtual_machine_scale_set_id = azurerm_windows_virtual_machine_scale_set.this1.id
+  publisher                    = "Microsoft.Azure.Security"
+  type                         = "IaaSAntimalware"
+  type_handler_version         = "1.5"
+  depends_on = [azurerm_virtual_machine_scale_set_extension.vmsswin11]
+}
