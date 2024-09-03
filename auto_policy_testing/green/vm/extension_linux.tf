@@ -43,29 +43,6 @@ resource "azurerm_virtual_machine_extension" "lin3" {
   depends_on = [azurerm_virtual_machine_extension.lin2]
 }
 
-resource "azurerm_virtual_machine_extension" "lin4" {
-    name                              =     "AzureDiskEncryption"
-    virtual_machine_id                =     azurerm_linux_virtual_machine.this1.id
-    publisher                         =     "Microsoft.Azure.Security"
-    type                              =     "AzureDiskEncryptionForLinux"
-    type_handler_version              =     "1.1"
-    auto_upgrade_minor_version        =     true
-
-    settings = <<SETTINGS
-    {
-        "EncryptionOperation"         :     "EnableEncryption",
-        "KeyVaultURL"                 :     "${data.terraform_remote_state.common.outputs.key_vault_url}",
-        "KeyVaultResourceId"          :     "${data.terraform_remote_state.common.outputs.key_vault_id}",
-        "KeyEncryptionKeyURL"         :     "${data.terraform_remote_state.common.outputs.key_id}",
-        "KekVaultResourceId"          :     "${data.terraform_remote_state.common.outputs.key_vault_id}",
-        "KeyEncryptionAlgorithm"      :     "RSA-OAEP",
-        "VolumeType"                  :     "All"
-    }
-    SETTINGS
-
-    depends_on = [azurerm_linux_virtual_machine.this1]
-}
-
 resource "azurerm_virtual_machine_scale_set_extension" "linvmss1" {
   name                         = "lvmssdiagext"
   virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.this.id

@@ -39,17 +39,3 @@ resource "azurerm_network_interface" "nic3" {
 
   tags = module.naming.default_tags
 }
-
-resource "azurerm_network_interface" "nic4" {
-  name                = "${module.naming.resource_prefix.networkinterface}-vm4"
-  location            = data.terraform_remote_state.common.outputs.location
-  resource_group_name = data.terraform_remote_state.common.outputs.resource_group
-
-  ip_configuration {
-    name                          = "conf4-vm-green"
-    subnet_id                     = data.terraform_remote_state.common.outputs.subnet_id
-    private_ip_address_allocation = "Dynamic"
-  }
-
-  tags = module.naming.default_tags
-}

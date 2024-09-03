@@ -2,7 +2,7 @@ output "vm" {
   value = {
     ecc-azure-116-cis_vm_endpoint_protection = azurerm_windows_virtual_machine.this.id,
     ecc-azure-132-vm_wo_del_lock = azurerm_linux_virtual_machine.this.id,
-    ecc-azure-197-asb_vm_disk_encryption_on = azurerm_linux_virtual_machine.this1.id,
+    ecc-azure-197-asb_vm_disk_encryption_on = azurerm_windows_virtual_machine.this.id,
     ecc-azure-275-asb_vm_backup = azurerm_windows_virtual_machine.this.id,
     ecc-azure-337-vm_antimalware_auto_updates = azurerm_windows_virtual_machine.this.id,
     ecc-azure-353-vmss_auto_image_patching = azurerm_linux_virtual_machine_scale_set.this.id,
