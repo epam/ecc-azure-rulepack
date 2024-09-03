@@ -2,10 +2,11 @@ resource "azurerm_linux_virtual_machine" "this" {
   name                            = "${module.naming.resource_prefix.vm}grlin"
   location                        = data.terraform_remote_state.common.outputs.location
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
-  size                            = "Standard_DS2_v2"
+  size                            = "Standard_DS2_v3"
   disable_password_authentication = true
   admin_username                  = random_string.this.result
   availability_set_id             = azurerm_availability_set.this.id
+  allow_extension_operations      = true
 
   admin_ssh_key {
     username   = random_string.this.result
@@ -19,6 +20,7 @@ resource "azurerm_linux_virtual_machine" "this" {
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
+    disk_size_gb         = 64
   }
 
   source_image_reference {

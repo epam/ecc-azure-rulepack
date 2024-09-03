@@ -9,6 +9,7 @@ resource "azurerm_key_vault" "this" {
   soft_delete_retention_days = 7
   purge_protection_enabled   = true
   enabled_for_disk_encryption = true
+  enabled_for_deployment      = true
 
   tags = module.naming.default_tags
 }
@@ -27,7 +28,7 @@ resource "azurerm_key_vault_access_policy" "client" {
   object_id          = data.azurerm_client_config.current.object_id
 
   key_permissions    = ["Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy", "SetRotationPolicy"]
-  secret_permissions = ["Get"]
+  secret_permissions = ["Backup", "Delete", "Get", "List", "Purge", "Recover", "Restore", "Set"]
   certificate_permissions = [
       "Create",
       "Delete",
