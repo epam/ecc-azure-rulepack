@@ -23,7 +23,8 @@ resource "azurerm_public_ip" "this" {
   name                = "${var.prefix}_pip_green"
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
+  sku                 = "Standard"
 
   tags = var.tags
 }
@@ -34,8 +35,8 @@ resource "azurerm_application_gateway" "this" {
   location            = azurerm_resource_group.this.location
 
   sku {
-    name     = "Standard_Small"
-    tier     = "Standard"
+    name     = "WAF_v2"
+    tier     = "WAF_v2"
     capacity = 2
   }
 
@@ -80,6 +81,15 @@ resource "azurerm_application_gateway" "this" {
     http_listener_name         = "${var.prefix}_http_listener_green"
     backend_address_pool_name  = "${var.prefix}_back_adr_pool_green"
     backend_http_settings_name = "${var.prefix}_back_http_set_green"
+    priority                   = 10
+  }
+
+  waf_configuration {
+    enabled          = true
+    firewall_mode    = "Prevention"
+    rule_set_type    = "OWASP"
+    rule_set_version = "3.0"
+
   }
 
   tags = var.tags

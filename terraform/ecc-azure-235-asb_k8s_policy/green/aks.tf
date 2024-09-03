@@ -14,17 +14,14 @@ resource "azurerm_kubernetes_cluster" "this" {
     name       = "default"
     node_count = 1
     vm_size    = "Standard_D2_v2"
+    
   }
 
   identity {
     type = "SystemAssigned"
   }
 
-  addon_profile {
-    azure_policy {
-      enabled = true
-    }
-  }
+  azure_policy_enabled = true
 
   tags = var.tags
 }

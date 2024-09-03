@@ -8,12 +8,9 @@ terraform {
 }
 
 provider "azurerm" {
-  features {}
-}
-
-resource "azurerm_resource_group" "this" {
-  name     = "${var.prefix}-rg-red"
-  location = var.location
-
-  tags = var.tags
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = false
+    }
+  }
 }
