@@ -2,7 +2,7 @@ resource "azurerm_linux_virtual_machine" "this" {
   name                            = "${module.naming.resource_prefix.vm}grlin"
   location                        = data.terraform_remote_state.common.outputs.location
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
-  size                            = "Standard_DS2_v3"
+  size                            = "Standard_D2s_v3"
   disable_password_authentication = true
   admin_username                  = random_string.this.result
   availability_set_id             = azurerm_availability_set.this.id
