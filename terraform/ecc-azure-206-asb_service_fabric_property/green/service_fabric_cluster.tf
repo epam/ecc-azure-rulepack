@@ -1,5 +1,5 @@
 resource "azurerm_service_fabric_cluster" "this" {
-  name                 = "sf${var.prefix}red"
+  name                 = "sf${var.prefix}green"
   resource_group_name  = azurerm_resource_group.this.name
   location             = azurerm_resource_group.this.location
   reliability_level    = "Bronze"
@@ -23,6 +23,9 @@ resource "azurerm_service_fabric_cluster" "this" {
 
   fabric_settings {
     name = "Security"
+    parameters = {
+      "ClusterProtectionLevel" = "EncryptAndSign"
+    }
   }
 
   tags = var.tags
