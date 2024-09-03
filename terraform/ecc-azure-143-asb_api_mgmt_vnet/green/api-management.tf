@@ -5,11 +5,12 @@ resource "azurerm_api_management" "this" {
   publisher_name       = "org_${var.prefix}"
   publisher_email      = "test@example.com"
   sku_name             = "Developer_1"
-  virtual_network_type = "Internal"
+  virtual_network_type = "External"
 
   virtual_network_configuration {
     subnet_id = azurerm_subnet.this.id
   }
+  public_network_access_enabled = true
 
   tags = var.tags
 }
