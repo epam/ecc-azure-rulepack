@@ -4,6 +4,6 @@ resource "azurerm_management_lock" "lin-lock" {
   lock_level = "CanNotDelete"
   notes      = "Locked because it's needed by policy"
 
-  depends_on = [azurerm_virtual_machine_extension.lin4]
+  depends_on = [azurerm_virtual_machine_extension.lin3]
 
 }

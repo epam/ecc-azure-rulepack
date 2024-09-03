@@ -45,7 +45,7 @@ resource "azurerm_virtual_machine_extension" "lin3" {
 
 resource "azurerm_virtual_machine_extension" "lin4" {
     name                              =     "AzureDiskEncryption"
-    virtual_machine_id                =     azurerm_linux_virtual_machine.this.id
+    virtual_machine_id                =     azurerm_linux_virtual_machine.this1.id
     publisher                         =     "Microsoft.Azure.Security"
     type                              =     "AzureDiskEncryptionForLinux"
     type_handler_version              =     "1.1"
@@ -63,7 +63,7 @@ resource "azurerm_virtual_machine_extension" "lin4" {
     }
     SETTINGS
 
-    depends_on = [azurerm_virtual_machine_extension.lin3]
+    depends_on = [azurerm_linux_virtual_machine.this1]
 }
 
 resource "azurerm_virtual_machine_scale_set_extension" "linvmss1" {
