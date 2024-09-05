@@ -9,7 +9,7 @@ resource "azurerm_network_interface" "this" {
     private_ip_address_allocation = "Dynamic"
   }
   
-  enable_ip_forwarding = false
+  ip_forwarding_enabled = false
 
   tags = module.naming.default_tags
 }

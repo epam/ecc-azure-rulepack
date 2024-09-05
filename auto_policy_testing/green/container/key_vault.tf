@@ -12,11 +12,7 @@ resource "azurerm_key_vault_access_policy" "user_identity" {
   tenant_id    = data.azurerm_client_config.current.tenant_id
   object_id    = azurerm_user_assigned_identity.this.principal_id
 
-  key_permissions = [
-    "Get",
-    "WrapKey",
-    "UnwrapKey"
-  ]
+  key_permissions = ["Get", "UnwrapKey", "WrapKey"]
 
 }
 

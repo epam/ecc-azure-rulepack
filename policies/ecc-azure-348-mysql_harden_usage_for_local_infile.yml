@@ -20,6 +20,3 @@ policies:
         op: eq
         value: "on"
         value_type: normalize
-      - type: value
-        key: properties.state
-        value: Ready

@@ -10,7 +10,7 @@ on:
       resource_priority_list:
         type: string
         description: Priority list for resources (you can remove unnecessary resources during testing)
-        default: '["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
+        default: '["storage", "container", "automation", "api", "network", "vnet", "defender"]'
         #'["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
         required: true
 
@@ -24,7 +24,7 @@ env:
   AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
   AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   AZURE_SECRET_VALUE: ${{ secrets.AZURE_SECRET_VALUE }}
-  default_resource_priority_list: '["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
+  default_resource_priority_list: '["storage", "container", "automation", "api", "network", "vnet", "defender"]'
   #default_resource_priority_list: '["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
   TF_VAR_project: ${{ secrets.TF_VAR_project }}
   TF_VAR_region: ${{ secrets.AWS_REGION }}

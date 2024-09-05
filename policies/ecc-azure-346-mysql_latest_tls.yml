@@ -19,6 +19,3 @@ policies:
         key: value
         op: ne
         value: "TLSv1.2"
-      - type: value
-        key: properties.state
-        value: Ready

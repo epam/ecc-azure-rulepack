@@ -19,6 +19,3 @@ policies:
         key: value
         op: eq
         value: "0"
-      - type: value
-        key: properties.state
-        value: Ready

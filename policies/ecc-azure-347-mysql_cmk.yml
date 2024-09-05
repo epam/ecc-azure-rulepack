@@ -17,6 +17,3 @@ policies:
       - type: value
         key: properties.dataEncryption
         value: absent
-      - type: value
-        key: properties.state
-        value: Ready
