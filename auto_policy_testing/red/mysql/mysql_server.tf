@@ -20,14 +20,6 @@ resource "azurerm_mysql_flexible_server_configuration" "this1" {
     depends_on = [ azurerm_mysql_flexible_server.this ]
 }
 
-resource "azurerm_mysql_flexible_server_configuration" "this2" {
-    name                       = "tls_version"
-    resource_group_name        = data.terraform_remote_state.common.outputs.resource_group
-    server_name                = azurerm_mysql_flexible_server.this.name
-    value                      = "TLSv1.1"
-    depends_on = [ azurerm_mysql_flexible_server.this ]
-}
-
 resource "azurerm_mysql_flexible_server_configuration" "this3" {
   name                       = "local_infile"
   resource_group_name        = data.terraform_remote_state.common.outputs.resource_group
