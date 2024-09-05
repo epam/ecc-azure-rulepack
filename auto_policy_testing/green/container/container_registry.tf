@@ -7,6 +7,7 @@ resource "azurerm_container_registry" "this" {
   anonymous_pull_enabled        = false
 
   encryption {
+    enabled            = true
     key_vault_key_id   = data.terraform_remote_state.common.outputs.key_id
     identity_client_id = azurerm_user_assigned_identity.this.client_id
   }
