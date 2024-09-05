@@ -3,6 +3,11 @@ resource "azurerm_virtual_network" "this" {
   address_space       = ["10.0.0.0/16"]
   location            = "eastus"
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
+
+  ddos_protection_plan {
+    id     = azurerm_network_ddos_protection_plan.this.id
+    enable = false
+  }
   
   tags = module.naming.default_tags
 }

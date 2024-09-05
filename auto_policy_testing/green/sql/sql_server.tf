@@ -1,5 +1,15 @@
 data "azurerm_client_config" "current" {}
 
+resource "azurerm_security_center_subscription_pricing" "azure_sql" {
+  tier          = "Standard"
+  resource_type = "SqlServers"
+}
+
+resource "azurerm_security_center_subscription_pricing" "sql_machines" {
+  tier          = "Standard"
+  resource_type = "SqlServerVirtualMachines"
+}
+
 resource "azurerm_mssql_server" "this" {
   name                          = module.naming.resource_prefix.sql-server
   location                      = data.terraform_remote_state.common.outputs.location

@@ -95,3 +95,10 @@ resource "azurerm_application_gateway" "this" {
 
   tags = module.naming.default_tags
 }
+
+resource "azurerm_network_ddos_protection_plan" "this" {
+  name                = "autotestci_vnet-ddos_prot_plan1"
+  location            = "eastus"
+  resource_group_name = azurerm_resource_group.this.name
+  tags                = module.naming.default_tags
+}
