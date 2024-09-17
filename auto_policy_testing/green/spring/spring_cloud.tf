@@ -26,7 +26,7 @@ resource "azurerm_subnet" "app_subnet" {
 resource "azurerm_role_assignment" "this" {
   scope                = azurerm_virtual_network.this.id
   role_definition_name = "Owner"
-  principal_id         = "e8de9221-a19c-4c81-b814-fd37c6caf9d2"
+  principal_id         = "99851ac6-2d87-4965-aba9-b6d7b01e68cd"
 
   depends_on = [ azurerm_subnet.app_subnet ]
 }
