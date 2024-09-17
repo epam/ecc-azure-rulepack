@@ -5,10 +5,10 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-231-asb_vm_wo_mma
+  - name: ecc-azure-231-asb_vm_wo_ama
     comment: '020019030000'
     description: |
-      Virtual machine without MicrosoftMonitoringAgent or OmsAgentForLinux extension installed
+      Virtual machine without AzureMonitorWindowsAgent or AzureMonitorLinuxAgent extension installed
     resource: azure.vm
     filters:
       - not:
@@ -20,7 +20,7 @@ policies:
                   - type: vm-extensions
                     op: in
                     key: "[].properties.type"
-                    value: MicrosoftMonitoringAgent
+                    value: AzureMonitorWindowsAgent
                     value_type: swap
                   - type: vm-extensions
                     op: in
@@ -34,7 +34,7 @@ policies:
                   - type: vm-extensions
                     op: in
                     key: "[].properties.type"
-                    value: OmsAgentForLinux
+                    value: AzureMonitorLinuxAgent
                     value_type: swap
                   - type: vm-extensions
                     op: in

@@ -5,19 +5,19 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-232-asb_vmss_wo_mma
+  - name: ecc-azure-232-asb_vmss_wo_ama
     comment: '020019030000'
     description: |
-      Virtual machine scale sets without MicrosoftMonitoringAgent or OmsAgentForLinux extension installed
+      Virtual machine scale sets without AzureMonitorWindowsAgent or AzureMonitorLinuxAgent extension installed
     resource: azure.vmss
     filters:
       - not:
           - or:
               - type: value
                 key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
-                value: MicrosoftMonitoringAgent
+                value: AzureMonitorWindowsAgent
                 op: contains
               - type: value
                 key: properties.virtualMachineProfile.extensionProfile.extensions[].properties.type
-                value: OmsAgentForLinux
+                value: AzureMonitorLinuxAgent
                 op: contains
