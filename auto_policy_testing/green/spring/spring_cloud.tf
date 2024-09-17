@@ -23,6 +23,14 @@ resource "azurerm_subnet" "app_subnet" {
   address_prefixes     = ["10.1.1.0/24"]
 }
 
+resource "azurerm_role_assignment" "this" {
+  scope                = azurerm_virtual_network.this.id
+  role_definition_name = "Owner"
+  principal_id         = "e8de9221-a19c-4c81-b814-fd37c6caf9d2"
+
+  depends_on = [ azurerm_subnet.app_subnet ]
+}
+
 resource "azurerm_application_insights" "this" {
   name                = module.naming.resource_prefix.appinsights
   location            = data.terraform_remote_state.common.outputs.location
@@ -45,4 +53,6 @@ resource "azurerm_spring_cloud_service" "this" {
   }
 
   tags = module.naming.default_tags
+
+  depends_on = [ azurerm_role_assignment.this ]
 }
