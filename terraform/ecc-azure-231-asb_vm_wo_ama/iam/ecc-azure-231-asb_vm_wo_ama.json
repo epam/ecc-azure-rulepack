@@ -1,6 +1,6 @@
 {
     "properties": {
-        "roleName": "Custodian-ecc-azure-231-asb_vm_wo_mma",
+        "roleName": "Custodian-ecc-azure-231-asb_vm_wo_ama",
         "description": "",
         "assignableScopes": [
             "/subscriptions/{subscription_id}"
