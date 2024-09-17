@@ -42,24 +42,12 @@ resource "azurerm_virtual_machine_extension" "win2" {
 }
 
 resource "azurerm_virtual_machine_extension" "win3" {
-  name                 = "vm-win4ext"
   virtual_machine_id   = azurerm_windows_virtual_machine.this.id
-  publisher            = "Microsoft.EnterpriseCloud.Monitoring"
-  type                 = "MicrosoftMonitoringAgent"
-  type_handler_version = "1.0"
-
-  settings           = <<SETTINGS
-    {
-      "workspaceId": "${data.terraform_remote_state.common.outputs.workspace_id}"
-    }
-    SETTINGS   
-  protected_settings = <<PROTECTED_SETTINGS
-    {
-      "workspaceKey": "${data.terraform_remote_state.common.outputs.workspace_key}"
-    }
-    PROTECTED_SETTINGS
-
-  tags = module.naming.default_tags
+  name                       = "AzureMonitorWindowsAgent"
+  publisher                  = "Microsoft.Azure.Monitor"
+  type                       = "AzureMonitorWindowsAgent"
+  type_handler_version       = "1.0"
+  auto_upgrade_minor_version = "true"
 
   depends_on = [azurerm_virtual_machine_extension.win2]
 }
@@ -123,11 +111,11 @@ resource "azurerm_virtual_machine_scale_set_extension" "vmsswin2" {
 
 resource "azurerm_virtual_machine_scale_set_extension" "vmsswin3" {
   virtual_machine_scale_set_id = azurerm_windows_virtual_machine_scale_set.this.id
-  auto_upgrade_minor_version   = true
-  name                         = "MicrosoftMonitoringAgent"
-  publisher                    = "Microsoft.EnterpriseCloud.Monitoring"
-  type                         = "MicrosoftMonitoringAgent"
-  type_handler_version         = "1.0"
+  name                       = "AzureMonitorWindowsAgent"
+  publisher                  = "Microsoft.Azure.Monitor"
+  type                       = "AzureMonitorWindowsAgent"
+  type_handler_version       = "1.0"
+  auto_upgrade_minor_version = "true"
 
   depends_on = [azurerm_virtual_machine_scale_set_extension.vmsswin2]
 }
