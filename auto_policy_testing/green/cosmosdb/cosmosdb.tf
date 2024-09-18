@@ -25,7 +25,7 @@ resource "azurerm_cosmosdb_account" "this" {
 
   ip_range_filter = "127.0.0.1"
 
-  #key_vault_key_id = data.terraform_remote_state.common.outputs.key_versionless_id
+  key_vault_key_id = data.terraform_remote_state.common.outputs.key_versionless_id
 
   access_key_metadata_writes_enabled = false
 

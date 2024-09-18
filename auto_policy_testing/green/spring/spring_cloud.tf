@@ -38,6 +38,8 @@ resource "azurerm_application_insights" "this" {
   application_type    = "web"
 
   tags = module.naming.default_tags
+
+  depends_on = [ azurerm_role_assignment.this ]
 }
 
 resource "azurerm_spring_cloud_service" "this" {
@@ -54,5 +56,5 @@ resource "azurerm_spring_cloud_service" "this" {
 
   tags = module.naming.default_tags
 
-  depends_on = [ azurerm_role_assignment.this ]
+  depends_on = [ azurerm_application_insights.this ]
 }

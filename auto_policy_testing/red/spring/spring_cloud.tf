@@ -16,4 +16,6 @@ resource "azurerm_spring_cloud_service" "this" {
   sku_name            = "S0"
 
   tags = module.naming.default_tags
+
+  depends_on = [ azurerm_application_insights.this ]
 }
