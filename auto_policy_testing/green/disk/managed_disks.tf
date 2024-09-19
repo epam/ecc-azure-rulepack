@@ -9,6 +9,8 @@ resource "azurerm_managed_disk" "this1" {
   disk_encryption_set_id = azurerm_disk_encryption_set.this.id
 
   tags = module.naming.default_tags
+
+  depends_on = [ azurerm_disk_encryption_set.this ]
 }
 
 resource "azurerm_managed_disk" "this2" {
@@ -22,4 +24,6 @@ resource "azurerm_managed_disk" "this2" {
   disk_encryption_set_id = azurerm_disk_encryption_set.this.id
 
   tags = module.naming.default_tags
+
+  depends_on = [ azurerm_disk_encryption_set.this ]
 }

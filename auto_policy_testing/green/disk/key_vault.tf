@@ -11,4 +11,6 @@ resource "azurerm_key_vault_access_policy" "this" {
     "WrapKey",
     "UnwrapKey"
   ]
+
+  depends_on = [ azurerm_disk_encryption_set.this ]
 }
