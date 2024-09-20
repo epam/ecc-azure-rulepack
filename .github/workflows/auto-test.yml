@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - "feature/auto_policy_testing"
+      - "feature/optimize_auto_tests"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -128,7 +129,7 @@ jobs:
     needs: [ deploy_common_resources, prepare_resource_matrix ]
     if: ${{ needs.prepare_resource_matrix.outputs.parallel_resources_list != '[]' }}
     strategy:
-      max-parallel: 10
+      max-parallel: 8
       fail-fast: false
       matrix:
         compliance: ['green', 'red']
@@ -195,6 +196,7 @@ jobs:
     needs: [deploy_common_resources, prepare_resource_matrix]
     if: ${{ needs.prepare_resource_matrix.outputs.sequential_resources_list != '[]' }}
     strategy:
+      max-parallel: 4
       fail-fast: false
       matrix:
         resource: ${{fromJson(needs.prepare_resource_matrix.outputs.sequential_resources_list)}}
