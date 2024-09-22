@@ -16,4 +16,9 @@ resource "azurerm_private_endpoint" "this" {
   depends_on = [
     azurerm_machine_learning_workspace.this
   ]
+
+  timeouts {
+    create = "2h"
+    delete = "2h"
+  }
 }

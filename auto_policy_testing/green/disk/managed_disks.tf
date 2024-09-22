@@ -10,7 +10,7 @@ resource "azurerm_managed_disk" "this1" {
 
   tags = module.naming.default_tags
 
-  depends_on = [ azurerm_disk_encryption_set.this ]
+  depends_on = [ azurerm_key_vault_access_policy.this ]
 }
 
 resource "azurerm_managed_disk" "this2" {
@@ -25,5 +25,5 @@ resource "azurerm_managed_disk" "this2" {
 
   tags = module.naming.default_tags
 
-  depends_on = [ azurerm_disk_encryption_set.this ]
+  depends_on = [ azurerm_key_vault_access_policy.this ]
 }
