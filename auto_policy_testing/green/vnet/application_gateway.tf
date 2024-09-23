@@ -95,4 +95,8 @@ resource "azurerm_network_ddos_protection_plan" "this" {
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   tags                = module.naming.default_tags
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
