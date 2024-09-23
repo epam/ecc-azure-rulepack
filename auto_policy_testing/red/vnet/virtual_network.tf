@@ -1,7 +1,7 @@
 resource "azurerm_virtual_network" "this" {
   name                = module.naming.resource_prefix.vnet
   address_space       = ["10.0.0.0/16"]
-  location            = "eastus"
+  location            = "eastasia"
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   
   tags = module.naming.default_tags
@@ -16,7 +16,7 @@ resource "azurerm_subnet" "this" {
 
 resource "azurerm_network_interface" "this" {
   name                = "${module.naming.resource_prefix.networkinterface}-vnet"
-  location            = "eastus"
+  location            = "eastasia"
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
 
   ip_configuration {

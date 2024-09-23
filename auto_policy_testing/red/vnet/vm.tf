@@ -1,6 +1,6 @@
 resource "azurerm_linux_virtual_machine" "this" {
   name                            = "${module.naming.resource_prefix.vm}rdnet"
-  location                        = "eastus"
+  location                        = "eastasia"
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
   size                            = "Standard_B1s"
   admin_username                  = random_string.this.result

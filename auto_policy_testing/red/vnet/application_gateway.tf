@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "this" {
   name     = "${random_string.this.result}-vnet-rg-red"
-  location = "eastus"
+  location = "eastasia"
 
   tags = module.naming.default_tags
 }
@@ -8,7 +8,7 @@ resource "azurerm_resource_group" "this" {
 resource "azurerm_virtual_network" "this1" {
   name                = "${module.naming.resource_prefix.vnet}1"
   address_space       = ["10.0.0.0/16"]
-  location            = "eastus"
+  location            = "eastasia"
   resource_group_name = azurerm_resource_group.this.name
   
   tags = module.naming.default_tags
@@ -23,7 +23,7 @@ resource "azurerm_subnet" "this1" {
 
 resource "azurerm_public_ip" "this" {
   name                = "${random_string.this.result}_pip_red"
-  location                        = "eastus"
+  location                        = "eastasia"
   resource_group_name             = azurerm_resource_group.this.name
   allocation_method   = "Static"
   sku                 = "Standard"
@@ -33,7 +33,7 @@ resource "azurerm_public_ip" "this" {
 
 resource "azurerm_application_gateway" "this" {
   name                = "${random_string.this.result}_app_gateway_red"
-  location                        = "eastus"
+  location                        = "eastasia"
   resource_group_name             = azurerm_resource_group.this.name
 
   sku {
