@@ -14,5 +14,7 @@ resource "azurerm_key_vault_access_policy" "user_identity" {
 
   key_permissions = ["Get", "UnwrapKey", "WrapKey"]
 
+  depends_on = [ azurerm_user_assigned_identity.this ]
+
 }
 
