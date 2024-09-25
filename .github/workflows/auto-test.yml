@@ -128,7 +128,7 @@ jobs:
     needs: [ deploy_common_resources, prepare_resource_matrix ]
     if: ${{ needs.prepare_resource_matrix.outputs.parallel_resources_list != '[]' }}
     strategy:
-      max-parallel: 7
+      max-parallel: 5
       fail-fast: false
       matrix:
         compliance: ['green', 'red']
