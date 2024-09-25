@@ -10,3 +10,9 @@ resource "azurerm_role_definition" "this" {
   }
   assignable_scopes = [data.azurerm_subscription.primary.id]
 }
+
+resource "time_sleep" "wait_10_minutes" {
+  depends_on = [azurerm_role_definition.this]
+
+  create_duration = "10m"
+}
