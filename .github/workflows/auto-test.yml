@@ -4,7 +4,7 @@ on:
     branches:
       - "feature/auto_policy_testing"
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows you to run this workflow manually from the Actions tabb
   workflow_dispatch:
     inputs:
       resource_priority_list:
