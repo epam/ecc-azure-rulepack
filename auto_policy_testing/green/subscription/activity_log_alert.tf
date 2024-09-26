@@ -199,3 +199,9 @@ resource "azurerm_monitor_activity_log_alert" "this11" {
 
   tags = module.naming.default_tags
 }
+
+resource "time_sleep" "wait_10_minutes" {
+  depends_on = [azurerm_monitor_activity_log_alert.this11]
+
+  create_duration = "10m"
+}
