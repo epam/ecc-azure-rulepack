@@ -5,7 +5,7 @@ resource "azurerm_key_vault" "this" {
   tenant_id                  = data.azurerm_client_config.current.tenant_id
   sku_name                   = "premium"
   soft_delete_retention_days = 7
-  purge_protection_enabled   = false
+  purge_protection_enabled   = true
   enabled_for_disk_encryption = true
 
   tags = module.naming.default_tags
