@@ -16,6 +16,7 @@ resource "azurerm_security_center_subscription_pricing" "azure_sql" {
 resource "azurerm_security_center_subscription_pricing" "sql_machines" {
   tier          = "Standard"
   resource_type = "SqlServerVirtualMachines"
+  depends_on = [ azurerm_security_center_subscription_pricing.azure_sql ]
 }
 
 resource "azurerm_security_center_subscription_pricing" "storages" {
@@ -51,10 +52,12 @@ resource "azurerm_security_center_subscription_pricing" "arm" {
 resource "azurerm_security_center_subscription_pricing" "os_rds" {
   tier          = "Standard"
   resource_type = "OpenSourceRelationalDatabases"
+  depends_on = [ azurerm_security_center_subscription_pricing.sql_machines ]
 }
 
 resource "azurerm_security_center_subscription_pricing" "cosmodb" {
   tier          = "Standard"
   resource_type = "CosmosDbs"
+  depends_on = [ azurerm_security_center_subscription_pricing.os_rds ]
 }
 
