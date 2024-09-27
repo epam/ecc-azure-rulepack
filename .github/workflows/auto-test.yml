@@ -11,7 +11,7 @@ on:
       resource_priority_list:
         type: string
         description: Priority list for resources (you can remove unnecessary resources during testing)
-        default: '["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
+        default: ''
         #'["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
         required: true
 
@@ -34,7 +34,7 @@ env:
   TF_CLI_ARGS: "-no-color"
   AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
   RED: '\033[0;31m'
-  ACTIONS_REPO_BRANCH: "auto_test_ci"
+  ACTIONS_REPO_BRANCH: "main"
 
 
 permissions:
@@ -123,6 +123,8 @@ jobs:
       - name: Prepare resource matrix
         id: prepare-resource-matrix
         uses: ./ecc-actions/auto-test-actions/prepare-resource-matrix
+        with:
+          RESOURCE_PRIORITY_LIST: ${{ github.event.inputs.resource_priority_list }}
 
   deploy_and_scan_isolated_resources:
     name: Scan I N/P
