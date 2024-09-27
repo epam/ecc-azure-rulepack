@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - "feature/auto_policy_testing"
+      - "defender_separate"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,7 +25,7 @@ env:
   AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
   AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   AZURE_SECRET_VALUE: ${{ secrets.AZURE_SECRET_VALUE }}
-  default_resource_priority_list: '["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
+  default_resource_priority_list: '["storage", "sql", "defender"]'
   #default_resource_priority_list: '["storage", "webapp", "vnet", "network", "vm", "synapse", "sql", "mysql", "subscription", "disk", "postgresql", "cosmosdb", "signalr", "spring", "search", "service-fabric", "stream", "redis", "servicebus", "role", "monitor", "machine-learning", "logic", "kusto", "aks", "keyvault", "iothub", "front-door", "event", "data", "defender", "container", "cognitiveservice", "batch", "automation", "application", "app-configuration", "api", "alert"]'
   TF_VAR_project: ${{ secrets.TF_VAR_project }}
   TF_VAR_region: ${{ secrets.AWS_REGION }}
@@ -33,7 +34,7 @@ env:
   TF_CLI_ARGS: "-no-color"
   AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
   RED: '\033[0;31m'
-  ACTIONS_REPO_BRANCH: "main"
+  ACTIONS_REPO_BRANCH: "auto_test_ci"
 
 
 permissions:
@@ -107,6 +108,7 @@ jobs:
       parallel_resources_list: ${{ steps.prepare-resource-matrix.outputs.parallel_resources_to_scan }}
       not_parallel_resources_list: ${{ steps.prepare-resource-matrix.outputs.not_parallel_resources_to_scan }}
       sequential_resources_list: ${{ steps.prepare-resource-matrix.outputs.sequential_resources_to_scan }}
+      isolated_resources_list: ${{ steps.prepare-resource-matrix.outputs.isolated_resources_to_scan }}
       sequential_resources_length: ${{ steps.prepare-resource-matrix.outputs.sequential_resources_length }}
     steps:
       - name: Git clone the repository
@@ -122,10 +124,43 @@ jobs:
         id: prepare-resource-matrix
         uses: ./ecc-actions/auto-test-actions/prepare-resource-matrix
 
+  deploy_and_scan_isolated_resources:
+    name: Scan I N/P
+    runs-on: ubuntu-22.04
+    needs: [ deploy_common_resources, prepare_resource_matrix ]
+    if: ${{ needs.prepare_resource_matrix.outputs.isolated_resources_list != '[]' }}
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix:
+        compliance: ['green', 'red']
+        resource: ${{fromJson(needs.prepare_resource_matrix.outputs.isolated_resources_list)}}
+    env:
+      COMPLINCE: ${{ matrix.compliance }}
+      RESOURCE: ${{ matrix.resource }}
+      
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v4
+
+      - name: Checkout ecc-actions
+        run: git clone -b $ACTIONS_REPO_BRANCH "https://git:$PROJECT_TOKEN@git.epam.com/epmc-sec/cloudlab/cloud_custodian/ecc-actions.git" ecc-actions
+        env:
+          PROJECT_TOKEN: ${{ secrets.ECC_CHANGELOG_ACTION }}
+          ACTIONS_REPO_BRANCH: ${{ env.ACTIONS_REPO_BRANCH }}
+          
+      - name: Deploy and scan parallel resources
+        uses: ./ecc-actions/auto-test-actions/deploy-and-scan-resources
+        with:
+          CI_ASSUME_ROLE: ${{ secrets.CI_ASSUME_ROLE }}
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+          COMPLIANCE: ${{ matrix.compliance }}
+          PROJECT_TOKEN: ${{ secrets.CLOUDCUSTODIAN_CORE }}
+
   deploy_and_scan_parallel_resources:
     name: Scan P
     runs-on: ubuntu-22.04
-    needs: [ deploy_common_resources, prepare_resource_matrix ]
+    needs: [ deploy_common_resources, prepare_resource_matrix, deploy_and_scan_isolated_resources ]
     if: ${{ needs.prepare_resource_matrix.outputs.parallel_resources_list != '[]' }}
     strategy:
       max-parallel: 10
@@ -159,7 +194,7 @@ jobs:
   deploy_and_scan_not_parallel_resources:
     name: Scan N/P
     runs-on: ubuntu-22.04
-    needs: [ deploy_common_resources, prepare_resource_matrix]
+    needs: [ deploy_common_resources, prepare_resource_matrix, deploy_and_scan_isolated_resources]
     if: ${{ needs.prepare_resource_matrix.outputs.not_parallel_resources_list != '[]' }}
     strategy:
       max-parallel: 1
@@ -192,9 +227,10 @@ jobs:
   deploy_and_scan_sequential_resources:
     name: Scan S
     runs-on: ubuntu-22.04
-    needs: [deploy_common_resources, prepare_resource_matrix]
+    needs: [deploy_common_resources, prepare_resource_matrix, deploy_and_scan_isolated_resources]
     if: ${{ needs.prepare_resource_matrix.outputs.sequential_resources_list != '[]' }}
     strategy:
+      max-parallel: 7
       fail-fast: false
       matrix:
         resource: ${{fromJson(needs.prepare_resource_matrix.outputs.sequential_resources_list)}}
