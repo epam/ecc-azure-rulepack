@@ -8,10 +8,10 @@ resource "azurerm_security_center_subscription_pricing" "app" {
   resource_type = "AppServices"
 }
 
-resource "azurerm_security_center_subscription_pricing" "azure_sql" {
-  tier          = "Standard"
-  resource_type = "SqlServers"
-}
+#resource "azurerm_security_center_subscription_pricing" "azure_sql" {
+#  tier          = "Standard"
+#  resource_type = "SqlServers"
+#}
 
 resource "azurerm_security_center_subscription_pricing" "sql_machines" {
   tier          = "Standard"
@@ -48,10 +48,10 @@ resource "azurerm_security_center_subscription_pricing" "arm" {
   resource_type = "Arm"
 }
 
-resource "azurerm_security_center_subscription_pricing" "os_rds" {
-  tier          = "Standard"
-  resource_type = "OpenSourceRelationalDatabases"
-}
+#resource "azurerm_security_center_subscription_pricing" "os_rds" {
+#  tier          = "Standard"
+#  resource_type = "OpenSourceRelationalDatabases"
+#}
 
 resource "azurerm_security_center_subscription_pricing" "cosmodb" {
   tier          = "Standard"
