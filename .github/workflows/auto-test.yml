@@ -34,7 +34,7 @@ env:
   TF_CLI_ARGS: "-no-color"
   AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
   RED: '\033[0;31m'
-  ACTIONS_REPO_BRANCH: "main"
+  ACTIONS_REPO_BRANCH: "feature/add_dfc_to_exceptions"
 
 
 permissions:
