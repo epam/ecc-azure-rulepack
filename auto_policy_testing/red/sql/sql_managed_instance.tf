@@ -19,3 +19,9 @@ resource "azurerm_mssql_managed_instance" "this" {
     azurerm_subnet_route_table_association.this,
   ]
 }
+
+resource "azurerm_mssql_managed_instance_security_alert_policy" "this" {
+  resource_group_name        = data.terraform_remote_state.common.outputs.resource_group
+  managed_instance_name      = azurerm_mssql_managed_instance.this.name
+  enabled                    = false
+}

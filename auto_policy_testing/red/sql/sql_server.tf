@@ -20,6 +20,12 @@ resource "azurerm_mssql_firewall_rule" "this" {
   end_ip_address   = "0.0.0.1"
 }
 
+resource "azurerm_mssql_server_security_alert_policy" "this" {
+  resource_group_name        = data.terraform_remote_state.common.outputs.resource_group
+  server_name                = azurerm_mssql_server.this.name
+  state                      = "Disabled"
+}
+
 resource "azurerm_mssql_server" "audit" {
   name                          = "${module.naming.resource_prefix.sql-server}-audit"
   location                      = data.terraform_remote_state.common.outputs.location

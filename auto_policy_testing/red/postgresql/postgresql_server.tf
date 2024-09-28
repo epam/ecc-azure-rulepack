@@ -20,6 +20,7 @@ resource "azurerm_postgresql_server" "this" {
 
   threat_detection_policy {
     enabled = false
+    disabled_alerts = [ "Sql_Injection", "Sql_Injection_Vulnerability", "Access_Anomaly", "Data_Exfiltration", "Unsafe_Action"]
   }
 
   identity {
