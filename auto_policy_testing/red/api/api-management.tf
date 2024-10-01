@@ -6,4 +6,9 @@ resource "azurerm_api_management" "this" {
   publisher_email      = "test@example.com"
   
   sku_name = "Consumption_0"
+
+  timeouts {
+    create = "2h"
+    delete = "2h"
+  }
 }

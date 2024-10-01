@@ -1,14 +1,7 @@
-resource "azurerm_resource_group" "this" {
-  name     = "${module.naming.resource_prefix.resourcegroup}"
-  location = "eastus"
-
-  tags = module.naming.default_tags
-}
-
 resource "azurerm_storage_account" "this" {
   name                      = "${module.naming.resource_prefix.storage}storage${random_integer.this.result}"
   location                  = "eastus" #this option required for 291 policy
-  resource_group_name       = azurerm_resource_group.this.name
+  resource_group_name       = data.terraform_remote_state.common.outputs.resource_group
   account_tier              = "Standard"
   account_replication_type  = "LRS"
   enable_https_traffic_only = false

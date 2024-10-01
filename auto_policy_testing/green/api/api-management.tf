@@ -14,6 +14,11 @@ resource "azurerm_api_management" "this" {
   }
 
   tags = module.naming.default_tags
+
+  timeouts {
+    create = "2h"
+    delete = "2h"
+  }
 }
 
 resource "azurerm_api_management" "this1" {
@@ -33,6 +38,11 @@ resource "azurerm_api_management" "this1" {
   sku_name = "Developer_1"
 
   tags = module.naming.default_tags
+
+  timeouts {
+    create = "2h"
+    delete = "2h"
+  }
 
   depends_on = [ azurerm_subnet_network_security_group_association.this ]
 }
