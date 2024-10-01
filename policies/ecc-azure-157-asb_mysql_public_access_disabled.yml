@@ -17,6 +17,3 @@ policies:
       - type: value
         key: properties.publicNetworkAccess
         value: Enabled
-      - type: value
-        key: properties.state
-        value: Ready
