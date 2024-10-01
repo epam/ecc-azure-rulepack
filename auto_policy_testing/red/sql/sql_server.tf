@@ -11,6 +11,11 @@ resource "azurerm_mssql_server" "this" {
   minimum_tls_version           = "1.1"
   
   tags = module.naming.default_tags
+
+  timeouts {
+    create = "2h"
+    delete = "2h"
+  }
 }
 
 resource "azurerm_mssql_firewall_rule" "this" {
