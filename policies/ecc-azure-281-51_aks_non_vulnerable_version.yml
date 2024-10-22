@@ -1,0 +1,22 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-281-51_aks_non_vulnerable_version
+    comment: '020054072000'
+    description: |
+      Kubernetes cluster that utilizes one of the vulnerable k8s versions
+    resource: azure.aks
+    filters:
+      - or:
+          - type: value
+            key: properties.kubernetesVersion
+            value: 1\.([0-9]|10)\..+
+            op: regex
+          - type: value
+            key: properties.kubernetesVersion
+            value: 1\.((11\.[0-8])|(12\.[0-6])|(13\.[0-4]))$
+            op: regex
