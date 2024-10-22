@@ -1,0 +1,19 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-281-11_aks_non_vulnerable_version",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.ContainerService/managedClusters/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}

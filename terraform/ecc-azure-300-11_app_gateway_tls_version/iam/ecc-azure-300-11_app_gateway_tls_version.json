@@ -1,0 +1,19 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-300-11_app_gateway_tls_version",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "MMicrosoft.Network/applicationGatewayAvailableSslOptions/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}

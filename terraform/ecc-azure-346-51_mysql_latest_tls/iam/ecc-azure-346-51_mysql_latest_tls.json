@@ -1,0 +1,20 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-346-51_mysql_latest_tls",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.DBforMySQL/flexibleServers/read",
+                    "Microsoft.DBforMySQL/flexibleServers/configurations/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}

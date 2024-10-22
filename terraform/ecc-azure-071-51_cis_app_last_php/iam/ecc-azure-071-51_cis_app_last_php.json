@@ -1,0 +1,20 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-071-51_cis_app_last_php",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Web/sites/Read",
+                    "Microsoft.Web/sites/config/Read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}
