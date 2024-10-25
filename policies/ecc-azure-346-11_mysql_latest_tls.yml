@@ -1,0 +1,21 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-346-11_mysql_latest_tls
+    comment: '020021062000'
+    description: |
+      MySQL instance with vulnerable and outdated TLS version
+    resource: azure.mysql-flexibleserver
+    filters:
+      - type: value
+        key: properties.state
+        value: Ready
+      - type: server-parameter
+        name: tls_version
+        key: value
+        op: ne
+        value: "TLSv1.2"
