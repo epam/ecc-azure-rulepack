@@ -17,4 +17,5 @@ policies:
       - not:
           - type: value
             key: properties.minimalTlsVersion
-            value: '1.2'
+            value: '1.1'
+            op: lte

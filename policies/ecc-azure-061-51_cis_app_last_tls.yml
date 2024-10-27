@@ -13,5 +13,5 @@ policies:
     filters:
       - type: configuration
         key: minTlsVersion
-        value: '1.3'
-        op: ne
+        value: '1.1'
+        op: lte
