@@ -1,0 +1,19 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-422-dep_depr_mariadb_instance
+    comment: '020052062000'
+    description: |
+      Deprecated Azure Database for MariaDB exist in subscription
+    resource: azure.mysql
+    filters:
+      - type: value
+        key: properties.userVisibleState
+        value: Ready
+      - type: value
+        key: type
+        value: "Microsoft.DBforMariaDB/servers"
