@@ -9,7 +9,7 @@ policies:
     comment: '020052062000'
     description: |
       Deprecated Azure Database for MariaDB exist in subscription
-    resource: azure.mysql
+    resource: azure.mariadb-server
     filters:
       - type: value
         key: properties.userVisibleState
