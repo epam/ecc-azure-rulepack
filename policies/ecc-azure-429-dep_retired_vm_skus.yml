@@ -1,0 +1,17 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-429-dep_retired_vm_skus
+    comment: '020055032000'
+    description: |
+      Azure Virtual Machine is using retired VM size
+    resource: azure.vm
+    filters:
+      - type: value
+        key: properties.hardwareProfile.vmSize
+        value: '.*_A[0-9]{1}$|.*NC6s_v3$|.*NC12s_v[2-3]{1}$|.*NC24s_v[2-3]{1}$|.*NC6s_v[2-3]{1}$|.*NC24rs_v2$|.*HB60rs$|.*HB60-45rs$|.*HB60-30rs$|.*HB60-15rs$|.*M192is_v2$|.*M192ims_v2$|.*M192ids_v2|.*M192idms_v2$|.*_NV6$|.*_NV12$|.*_NV24$|.*_ND6s$|.*_ND12s$|.*_ND24s$|.*_ND24rs$'
+        op: regex
