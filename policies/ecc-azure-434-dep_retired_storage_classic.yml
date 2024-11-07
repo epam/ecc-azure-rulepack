@@ -1,0 +1,16 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-434-dep_retired_storage_classic
+    comment: '020052042000'
+    description: |
+      Retired classic storage account instance exist in subscription
+    resource: azure.storage
+    filters:
+      - type: value
+        key: type
+        value: Microsoft.ClassicStorage/storageAccounts
