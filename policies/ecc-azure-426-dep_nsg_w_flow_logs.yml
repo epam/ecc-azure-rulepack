@@ -1,0 +1,17 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-426-dep_nsg_w_flow_logs
+    comment: '020053022000'
+    description: |
+      Network security group with retired flow logs feature
+    resource: azure.networksecuritygroup
+    filters:
+      - not:
+        - type: flow-logs
+          key: logs[].flowAnalyticsConfiguration
+          value: empty
