@@ -1,0 +1,16 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-441-delete_empty_vmss
+    comment: '020002032000'
+    description: |
+      Empty virtual machine scale sets available within your Microsoft Azure cloud account
+    resource: azure.vmss
+    filters:
+        - type: value
+          key: sku.capacity
+          value: 0
