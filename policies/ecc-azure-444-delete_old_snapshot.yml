@@ -1,0 +1,19 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-444-delete_old_snapshot
+    comment: '020002042000'
+    description: |
+      Old Azure virtual machine (VM) disks snapshots exist in subscription
+    resource: azure.snapshot
+    filters:
+      - type: value
+        key: properties.timeCreated
+        op: greater-than
+        value_type: age
+        value: 30
+      
