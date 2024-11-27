@@ -11,7 +11,12 @@ policies:
       Virtual network without DDoS protection enabled which contains application gateway subnet
     resource: azure.vnet
     filters:
-      - type: subnet-application-gateway-vnet-filter
+      - type: list-item
+        key: properties.subnets
+        attrs:
+          - type: value
+            key: properties.applicationGatewayIPConfigurations
+            value: present
       - type: value
         key: properties.enableDdosProtection
         value: false
