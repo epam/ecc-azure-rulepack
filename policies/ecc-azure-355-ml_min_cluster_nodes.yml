@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-355-ml_min_cluster_nodes
-    comment: '020003090000'
+    comment: '020005090000'
     description: |
       Azure Machine Learning Compute cluster have minNodeCount property not equal to 0
     resource: azure.machine-learning-workspace
