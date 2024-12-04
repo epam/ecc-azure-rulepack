@@ -1,6 +1,6 @@
 {
     "properties": {
-        "roleName": "Custodian-ecc-azure-430-dep_dotNet_funcapp",
+        "roleName": "Custodian-ecc-azure-430-11_dep_dotNet_funcapp",
         "description": "",
         "assignableScopes": [
             "/subscriptions/{subscription_id}"
