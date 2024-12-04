@@ -1,6 +1,6 @@
 {
     "properties": {
-        "roleName": "Custodian-ecc-azure-427-dep_powershell_funcapp",
+        "roleName": "Custodian-ecc-azure-427-51_dep_powershell_funcapp",
         "description": "",
         "assignableScopes": [
             "/subscriptions/{subscription_id}"
