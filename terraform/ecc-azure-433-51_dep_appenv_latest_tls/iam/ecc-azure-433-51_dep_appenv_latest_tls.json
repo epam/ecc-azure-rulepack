@@ -1,0 +1,19 @@
+{
+    "properties": {
+        "roleName": "ecc-azure-433-51_dep_appenv_latest_tls",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Web/hostingEnvironments/Read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}

@@ -5,7 +5,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-433-dep_appenv_latest_tls
+  - name: ecc-azure-433-51_dep_appenv_latest_tls
     comment: '020057172000'
     description: |
       App Service Environment that uses TLS version before 1.2
