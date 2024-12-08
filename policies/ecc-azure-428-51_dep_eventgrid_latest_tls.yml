@@ -5,7 +5,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-428-dep_eventgrid_latest_tls
+  - name: ecc-azure-428-51_dep_eventgrid_latest_tls
     comment: '020057022000'
     description: |
       Event Grid Domains service has an deprecated TLS version
