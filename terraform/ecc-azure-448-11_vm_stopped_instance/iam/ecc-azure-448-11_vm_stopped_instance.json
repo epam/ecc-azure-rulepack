@@ -1,6 +1,6 @@
 {
     "properties": {
-        "roleName": "Custodian-ecc-azure-448-vm_stopped_instance",
+        "roleName": "Custodian-ecc-azure-448-11_vm_stopped_instance",
         "description": "",
         "assignableScopes": [
             "/subscriptions/{subscription_id}"
