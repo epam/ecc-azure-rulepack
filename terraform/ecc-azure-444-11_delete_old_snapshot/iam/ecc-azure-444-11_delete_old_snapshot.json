@@ -1,6 +1,6 @@
 {
     "properties": {
-        "roleName": "Custodian-ecc-azure-444-delete_old_snapshot",
+        "roleName": "Custodian-ecc-azure-444-11_delete_old_snapshot",
         "description": "",
         "assignableScopes": [
             "/subscriptions/{subscription_id}"
