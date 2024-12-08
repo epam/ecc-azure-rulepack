@@ -5,7 +5,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-448-vm_stopped_instance
+  - name: ecc-azure-448-00_vm_stopped_instance
     comment: '020002032000'
     description: |
       Stopped Azure VM instances are not removed after a specified time period
