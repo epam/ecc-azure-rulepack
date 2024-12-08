@@ -1,6 +1,6 @@
 {
     "properties": {
-        "roleName": "Custodian-ecc-azure-451-delete_unused_waf",
+        "roleName": "Custodian-ecc-azure-451-00_delete_unused_waf",
         "description": "",
         "assignableScopes": [
             "/subscriptions/{subscription_id}"
