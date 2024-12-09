@@ -5,8 +5,8 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-437-dep_redis_latest_tls
-    comment: '020057062000'
+  - name: ecc-azure-437-11_dep_redis_latest_tls
+    comment: '020021062000'
     description: |
       Redis cache with deprecated TLS version
     resource: azure.redis
