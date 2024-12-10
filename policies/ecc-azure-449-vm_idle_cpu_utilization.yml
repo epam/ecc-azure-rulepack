@@ -1,0 +1,38 @@
+# Copyright (c) 2024 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-449-vm_idle_cpu_utilization
+    comment: '020003032000'
+    description: |
+      Idle Azure VM instances
+    resource: azure.vm
+    filters:
+      - type: instance-view
+        key: statuses[].code
+        op: in
+        value_type: swap
+        value: PowerState/running
+      - type: metric
+        metric: Percentage CPU
+        aggregation: maximum
+        op: lt
+        threshold: 5
+        timeframe: 504
+      - type: metric
+        metric: Network In Total
+        aggregation: maximum
+        op: lt
+        threshold: 50000
+        timeframe: 504
+      - type: metric
+        metric: Network Out Total
+        aggregation: maximum
+        op: lt
+        threshold: 50000
+        timeframe: 504
+
+      
