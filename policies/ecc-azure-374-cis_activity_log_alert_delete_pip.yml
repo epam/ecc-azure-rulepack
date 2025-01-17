@@ -8,7 +8,7 @@ policies:
   - name: ecc-azure-374-cis_activity_log_alert_delete_pip
     comment: '020032012700'
     description: |
-      Subscription where Activity Log Alert does not exsist for Delete Public IP Address rule
+      Subscription where Activity Log Alert does not exist for Delete Public IP Address rule
     resource: azure.subscription
     filters:
       - type: missing
