@@ -19,24 +19,34 @@ policies:
         - and:
           - type: configuration
             key: linuxFxVersion
-            value_regex: ".*POWERSHELL.([0-9]{1}.[0-9]{1})$"
-            op: lt
-            value: "7.4"
+            op: regex
+            value: ".*POWERSHELL.*"
           - type: configuration
             key: linuxFxVersion
-            value_regex: ".*POWERSHELL.([0-9]{1}.[0-9]{1})$"
-            op: gte
-            value: "7.2"
+            value_regex: ".*POWERSHELL.7.([0-9]{1})$"
+            value_type: integer
+            op: lt
+            value: 4
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: ".*POWERSHELL.7.([0-9]{1})$"
+            value_type: integer
+            op: gt
+            value: 2
         - and:
           - type: configuration
             key: powerShellVersion
-            value: "7.4"
+            value_regex: "7.([0-9]{1})$"
+            value_type: integer
             op: lt
+            value: 4
+          - type: configuration
+            key: powerShellVersion
+            value_regex: "7.([0-9]{1})$"
+            value_type: integer
+            op: gt
+            value: 2
           - type: configuration
             key: powerShellVersion
             value: ""
             op: ne
-          - type: configuration
-            key: powerShellVersion
-            value: "7.2"
-            op: gte

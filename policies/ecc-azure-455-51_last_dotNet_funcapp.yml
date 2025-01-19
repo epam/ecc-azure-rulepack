@@ -19,23 +19,35 @@ policies:
         - and:
           - type: configuration
             key: linuxFxVersion
-            value_regex: ".*DOTNET.([0-9]{1}.[0-9]{1})$"
-            op: lt
-            value: "9.0"
+            op: regex
+            value: ".*DOTNET.*"
           - type: configuration
             key: linuxFxVersion
-            value_regex: ".*DOTNET.([0-9]{1}.[0-9]{1})$"
-            op: gte
-            value: "6.0"
+            value_regex: ".*DOTNET.([0-9]{1}).[0-9]{1}$"
+            value_type: integer
+            op: lt
+            value: 9
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: ".*DOTNET.([0-9]{1}).[0-9]{1}$"
+            value_type: integer
+            op: gt
+            value: 7
         - and:
           - type: value
             key: properties.siteConfig.linuxFxVersion
-            value_regex: ".*DOTNET.([0-9]{1}.[0-9]{1})$"
-            op: lt
-            value: "9.0"
+            op: regex
+            value: ".*DOTNET.*"
           - type: value
             key: properties.siteConfig.linuxFxVersion
-            value_regex: ".*DOTNET.([0-9]{1}.[0-9]{1})$"
-            op: gte
-            value: "6.0"
+            value_regex: ".*DOTNET.([0-9]{1}).[0-9]{1}$"
+            value_type: integer
+            op: lt
+            value: 9
+          - type: value
+            key: properties.siteConfig.linuxFxVersion
+            value_regex: ".*DOTNET.([0-9]{1}).[0-9]{1}$"
+            value_type: integer
+            op: gt
+            value: 7
 
