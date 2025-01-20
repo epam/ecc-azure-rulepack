@@ -1,4 +1,4 @@
-prefix = "267-51"
+prefix = "26751"
 
 location = "eastus"
 

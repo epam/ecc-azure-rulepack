@@ -15,7 +15,6 @@ policies:
         key: kind
         value: app*
         op: regex
-      - not:
-          - type: configuration
-            key: linuxFxVersion
-            value: PHP|8.3
+      - type: configuration
+        key: linuxFxVersion
+        value: PHP|8.2

@@ -15,7 +15,16 @@ policies:
         key: kind
         value: app*
         op: regex
-      - not:
-          - type: configuration
-            key: linuxFxVersion
-            value: PYTHON|3.12
+      - and:
+        - type: configuration
+          key: linuxFxVersion
+          value_regex: "PYTHON.3.([0-9]{2}|[0-9]{1})$"
+          value_type: integer
+          op: lt
+          value: 12
+        - type: configuration
+          key: linuxFxVersion
+          value_regex: "PYTHON.3.([0-9]{2}|[0-9]{1})$"
+          value_type: integer
+          op: gt
+          value: 8
