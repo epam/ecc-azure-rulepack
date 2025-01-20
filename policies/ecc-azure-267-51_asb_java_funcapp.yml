@@ -15,11 +15,28 @@ policies:
         key: kind
         value: functionapp*
         op: regex
-      - not:
-        - or:
-            - type: configuration
-              key: linuxFxVersion
-              value: "JAVA|17"
-            - type: configuration
-              key: javaVersion
-              value: "17"
+      - or:
+        - and:
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: "JAVA.([0-9]{2}|[0-9]{1})$"
+            value_type: integer
+            op: lt
+            value: 17
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: "JAVA.([0-9]{2}|[0-9]{1})$"
+            value_type: integer
+            op: gte
+            value: 8
+        - and:
+          - type: configuration
+            key: javaVersion
+            value_type: integer
+            op: lt
+            value: 17
+          - type: configuration
+            key: javaVersion
+            value_type: integer
+            op: gte
+            value: 8

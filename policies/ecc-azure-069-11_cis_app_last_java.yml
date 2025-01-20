@@ -19,13 +19,13 @@ policies:
         - or:
             - type: configuration
               key: linuxFxVersion
-              value: .*-jre21
+              value: .*-jre17
               op: regex
             - type: configuration
               key: linuxFxVersion
-              value: .*-java21
+              value: .*-java17
               op: regex
             - type: configuration
               key: javaVersion
-              value: 21.*
+              value: 17.*
               op: regex
