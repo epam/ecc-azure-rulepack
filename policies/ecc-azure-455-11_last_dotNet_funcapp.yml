@@ -16,14 +16,24 @@ policies:
         value: functionapp*
         op: regex
       - or:
-        - type: configuration
-          key: linuxFxVersion
-          value_regex: ".*DOTNET.([0-9]{1}.[0-9]{1})$"
-          op: lt
-          value: "9.0"
-        - type: value
-          key: properties.siteConfig.linuxFxVersion
-          value_regex: ".*DOTNET.([0-9]{1}.[0-9]{1})$"
-          op: lt
-          value: "9.0"
+        - and:
+          - type: configuration
+            key: linuxFxVersion
+            op: regex
+            value: ".*DOTNET.*"
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: ".*DOTNET.([0-9]{1}.[0-9]{1})$"
+            op: ne
+            value: "9.0"
+        - and:
+          - type: value
+            key: properties.siteConfig.linuxFxVersion
+            op: regex
+            value: ".*DOTNET.*"
+          - type: value
+            key: properties.siteConfig.linuxFxVersion
+            value_regex: ".*DOTNET.([0-9]{1}.[0-9]{1})$"
+            op: ne
+            value: "9.0"
 

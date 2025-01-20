@@ -16,16 +16,21 @@ policies:
         value: functionapp*
         op: regex
       - or:
-        - type: configuration
-          key: linuxFxVersion
-          value_regex: ".*POWERSHELL.([0-9]{1}.[0-9]{1})$"
-          op: lt
-          value: "7.4"
+        - and:
+          - type: configuration
+            key: linuxFxVersion
+            op: regex
+            value: ".*POWERSHELL.*"
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: ".*POWERSHELL.([0-9]{1}.[0-9]{1})$"
+            op: ne
+            value: "7.4"
         - and:
           - type: configuration
             key: powerShellVersion
             value: "7.4"
-            op: lt
+            op: ne
           - type: configuration
             key: powerShellVersion
             value: ""

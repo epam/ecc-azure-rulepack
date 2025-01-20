@@ -15,4 +15,5 @@ policies:
         name: log_retention_days
         key: value
         op: lt
-        value: "4"
+        value_type: integer
+        value: 4

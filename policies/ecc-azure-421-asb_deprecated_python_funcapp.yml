@@ -16,17 +16,27 @@ policies:
         value: functionapp*
         op: regex
       - or:
-        - type: configuration
-          key: linuxFxVersion
-          value_regex: ".*PYTHON.([0-9]{1}.[0-9]{1})$"
-          op: lte
-          value: "3.8"
+        - and:
+          - type: configuration
+            key: linuxFxVersion
+            op: regex
+            value: ".*PYTHON.*"
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: ".*PYTHON.3.([0-9]{1})$"
+            value_type: integer
+            op: lte
+            value: 8
         - and:
           - type: configuration
             key: pythonVersion
-            value: "3.8"
+            value_regex: "3.([0-9]{1})$"
+            value_type: integer
             op: lte
+            value: 8
           - type: configuration
             key: pythonVersion
-            value: ""
+            value_regex: "3.([0-9]{1})$"
+            value_type: integer
             op: ne
+            value: 0

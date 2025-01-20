@@ -16,18 +16,38 @@ policies:
         value: app*
         op: regex
       - or:
-        - type: configuration
-          key: linuxFxVersion
-          value_regex: ".*-jre([0-9]{1})$"
-          op: lt
-          value: "8"
-        - type: configuration
-          key: linuxFxVersion
-          value_regex: ".*-java([0-9]{1})$"
-          op: lt
-          value: "8"
-        - type: configuration
-          key: javaVersion
-          value_regex: "([0-9]{1}).*"
-          op: lt
-          value: "8"
+        - and:
+          - type: configuration
+            key: linuxFxVersion
+            op: regex
+            value: ".*-jre.*"
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: ".*-jre([0-9]{1})$"
+            value_type: integer
+            op: lt
+            value: 8
+        - and:
+          - type: configuration
+            key: linuxFxVersion
+            op: regex
+            value: ".*-java.*"
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: ".*-java([0-9]{1})$"
+            value_type: integer
+            op: lt
+            value: 8
+        - and:
+          - type: configuration
+            key: javaVersion
+            value_regex: "([0-9]{1}).*"
+            value_type: integer
+            op: lt
+            value: 8
+          - type: configuration
+            key: javaVersion
+            value_regex: "([0-9]{1}).*"
+            value_type: integer
+            op: ne
+            value: 0
