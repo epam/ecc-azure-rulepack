@@ -11,8 +11,13 @@ policies:
       Kubernetes cluster without authorized IP access or/and exposed to the public Internet
     resource: azure.aks
     filters:
-      - not:
-          - type: value
-            key: properties.apiServerAccessProfile.authorizedIPRanges[]
-            value: .+
-            op: regex
+      - or:
+        - type: value
+          key: properties.apiServerAccessProfile.authorizedIPRanges
+          op: in
+          value_type: swap
+          value: "0.0.0.0/0"
+        - type: value
+          key: properties.apiServerAccessProfile.authorizedIPRanges
+          value: absent
+        
