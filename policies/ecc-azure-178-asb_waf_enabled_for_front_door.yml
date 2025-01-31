@@ -9,10 +9,4 @@ policies:
     comment: '020027020000'
     description: |
       Azure Front Door service without Web Application Firewall enabled
-    resource: azure.front-door
-    filters:
-      - not:
-          - type: value
-            key: properties.frontendEndpoints[].properties.webApplicationFirewallPolicyLink.id
-            value: \/.+\/frontdoorwebapplicationfirewallpolicies\/.+
-            op: regex
+    resource: azure.afd-custom-domain

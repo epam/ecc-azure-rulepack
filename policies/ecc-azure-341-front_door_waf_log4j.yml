@@ -9,13 +9,6 @@ policies:
     comment: '020027022000'
     description: |
       Azure Front Door without Log4j WAF rule enabled
-    resource: azure.front-door
-    filters:
-      - type: firewall-policy
-        attrs:
-          - type: value
-            key: properties.managedRules.managedRuleSets[].ruleGroupOverrides[].rules[?ruleId == '944240'][].enabledState
-            value: Disabled
-            op: contains
+    resource: azure.afd-custom-domain
 
         

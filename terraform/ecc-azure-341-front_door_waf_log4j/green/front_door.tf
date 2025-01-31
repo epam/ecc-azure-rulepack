@@ -1,82 +1,32 @@
-resource "azurerm_frontdoor" "this" {
-  name                = "frontdoorgreen"
+resource "azurerm_dns_zone" "this" {
+  name                = "sub-domain-green.domain.com"
   resource_group_name = azurerm_resource_group.this.name
 
-  routing_rule {
-    name               = "greenRoutingRule1"
-    accepted_protocols = ["Http", "Https"]
-    patterns_to_match  = ["/*"]
-    frontend_endpoints = ["frontdoorgreen"]
-    forwarding_configuration {
-      forwarding_protocol = "MatchRequest"
-      backend_pool_name   = "greenBackendBing"
-    }
-  }
-
-  backend_pool_load_balancing {
-    name = "greenLoadBalancingSettings1"
-  }
-
-  backend_pool_health_probe {
-    name = "greenHealthProbeSetting1"
-  }
-
-  backend_pool {
-    name = "greenBackendBing"
-    backend {
-      host_header = "www.bing.com"
-      address     = "www.bing.com"
-      http_port   = 80
-      https_port  = 443
-    }
-
-    load_balancing_name = "greenLoadBalancingSettings1"
-    health_probe_name   = "greenHealthProbeSetting1"
-  }
-
-  frontend_endpoint {
-    name      = "frontdoorgreen"
-    host_name = "frontdoorgreen.azurefd.net"
-    web_application_firewall_policy_link_id = azurerm_frontdoor_firewall_policy.this.id
-  }
-
-  depends_on = [ azurerm_frontdoor_firewall_policy.this ]
-
+  tags = var.tags
 }
 
-resource "azurerm_frontdoor_firewall_policy" "this" {
-  name                              = "greenfdwafpolicy"
-  resource_group_name               = azurerm_resource_group.this.name
-  enabled                           = true
-  mode                              = "Prevention"
-  redirect_url                      = "https://www.contoso.com"
-  custom_block_response_status_code = 403
-  custom_block_response_body        = "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="
+resource "azurerm_cdn_frontdoor_profile" "this" {
+  name                = "${var.prefix}-green-profile"
+  resource_group_name = azurerm_resource_group.this.name
+  sku_name            = "Premium_AzureFrontDoor"
 
-  managed_rule {
-    type    = "DefaultRuleSet"
-    version = "1.0"
+  tags = var.tags
+}
 
-    exclusion {
-      match_variable = "QueryStringArgNames"
-      operator       = "Equals"
-      selector       = "not_suspicious"
-    }
+resource "azurerm_cdn_frontdoor_custom_domain" "this" {
+  name                     = "${var.prefix}-green-customDomain"
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.this.id
+  dns_zone_id              = azurerm_dns_zone.this.id
+  host_name                = "contosogreen.fabrikam.com"
 
-    override {
-      rule_group_name = "JAVA"
-
-      rule {
-        rule_id = "944240"
-        enabled = true
-        action  = "Block"
-      }
-    }
-
+  tls {
+    certificate_type    = "ManagedCertificate"
   }
+}
 
-  managed_rule {
-    type    = "Microsoft_BotManagerRuleSet"
-    version = "1.0"
-  }
+resource "azurerm_cdn_frontdoor_endpoint" "this" {
+  name                     = "${var.prefix}-green-end"
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.this.id
+
+  tags = var.tags
 }

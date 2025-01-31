@@ -8,7 +8,7 @@
         "permissions": [
             {
                 "actions": [
-                    "Microsoft.Network/frontDoors/read"
+                    "Microsoft.Cdn/profiles/customdomains/read"
                 ],
                 "notActions": [],
                 "dataActions": [],

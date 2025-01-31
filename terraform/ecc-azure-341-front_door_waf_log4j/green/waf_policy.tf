@@ -4,11 +4,32 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "this" {
   sku_name                          = azurerm_cdn_frontdoor_profile.this.sku_name
   enabled                           = true
   mode                              = "Prevention"
+  redirect_url                      = "https://www.contoso.com"
+  custom_block_response_status_code = 403
+  custom_block_response_body        = "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="
 
+  
   managed_rule {
-    type    = "Microsoft_BotManagerRuleSet"
+    type    = "DefaultRuleSet"
     version = "1.0"
-    action  = "Log"
+    action = "block"
+
+    exclusion {
+      match_variable = "QueryStringArgNames"
+      operator       = "Equals"
+      selector       = "not_suspicious"
+    }
+
+    override {
+      rule_group_name = "JAVA"
+
+      rule {
+        rule_id = "944240"
+        enabled = true
+        action  = "Block"
+      }
+    }
+
   }
 }
 
