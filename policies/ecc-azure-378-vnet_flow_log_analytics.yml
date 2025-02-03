@@ -5,12 +5,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 policies:
-  - name: ecc-azure-378-cis_nsg_flow_log_analytics
-    comment: '020019022700'
+  - name: ecc-azure-378-vnet_flow_log_analytics
+    comment: '020019022000'
     description: |
-      Network Security Group Flow Log Analytics disabled
-    resource: azure.networksecuritygroup
+      Virtual network Flow Log Analytics disabled
+    resource: azure.vnet
     filters:
-      - type: flow-logs
-        key: logs[].flowAnalyticsConfiguration
-        value: empty
+      - type: value
+        key: properties.flowLogs
+        value: absent
