@@ -4,6 +4,7 @@ resource "azurerm_storage_account" "this" {
   location                 = azurerm_resource_group.this.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
+  allow_nested_items_to_be_public = false
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {
@@ -14,4 +15,25 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   enabled_log {
     category = "AppServiceHTTPLogs"
   }
+
+  enabled_log {
+    category = "AppServiceConsoleLogs"
+  }
+
+  enabled_log {
+    category = "AppServiceAuditLogs"
+  }
+
+  enabled_log {
+    category = "AppServiceAppLogs"
+  }
+
+  enabled_log {
+    category = "AppServiceIPSecAuditLogs"
+  }
+
+  enabled_log {
+    category = "AppServicePlatformLogs"
+  }
+
 }

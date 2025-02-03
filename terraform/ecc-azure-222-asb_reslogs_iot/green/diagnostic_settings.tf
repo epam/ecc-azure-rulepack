@@ -14,4 +14,45 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   enabled_log {
     category = "Connections"
   }
+
+  enabled_log {
+    category = "DeviceTelemetry"
+  }
+  
+  enabled_log {
+    category = "C2DCommands"
+  }
+  enabled_log {
+    category = "DeviceIdentityOperations"
+  }
+  enabled_log {
+    category = "FileUploadOperations"
+  }
+  enabled_log {
+    category = "Routes"
+  }
+  enabled_log {
+    category = "D2CTwinOperations"
+  }
+  enabled_log {
+    category = "C2DTwinOperations"
+  }
+  enabled_log {
+    category = "TwinQueries"
+  }
+  enabled_log {
+    category = "JobsOperations"
+  }
+  enabled_log {
+    category = "DirectMethods"
+  }
+  enabled_log {
+    category = "DistributedTracing"
+  }
+  enabled_log {
+    category = "Configurations"
+  }
+  enabled_log {
+    category = "DeviceStreams"
+  }
 }

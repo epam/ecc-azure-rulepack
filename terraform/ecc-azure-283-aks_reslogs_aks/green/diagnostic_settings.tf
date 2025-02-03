@@ -12,6 +12,34 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   storage_account_id = azurerm_storage_account.this.id
 
   enabled_log {
+    category = "cloud-controller-manager"
+  }
+
+  enabled_log {
+    category = "cluster-autoscaler"
+  }
+
+  enabled_log {
+    category = "guard"
+  }
+
+  enabled_log {
     category = "kube-apiserver"
+  }
+
+  enabled_log {
+    category = "kube-audit"
+  }
+
+  enabled_log {
+    category = "kube-audit-admin"
+  }
+
+  enabled_log {
+    category = "kube-controller-manager"
+  }
+
+  enabled_log {
+    category = "kube-scheduler"
   }
 }

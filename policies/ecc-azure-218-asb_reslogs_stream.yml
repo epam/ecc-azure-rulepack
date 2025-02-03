@@ -16,9 +16,6 @@ policies:
           - type: diagnostic-settings
             key: logs
             value: absent
-          - not:
-            - type: diagnostic-settings
-              key: logs[?category == 'Execution' || category == 'Authoring'][].enabled
-              value: true
-              op: in
-              value_type: swap
+          - type: diagnostic-settings
+            key: contains(keys(@),'logs') && logs!=`null` && length(logs[?category == 'Execution' && enabled == `true` || category == 'Authoring' && enabled == `true`])!=`2`
+            value: true

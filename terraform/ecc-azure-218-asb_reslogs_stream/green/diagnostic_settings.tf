@@ -14,4 +14,8 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   enabled_log {
     category = "Execution"    
   }
+
+  enabled_log {
+    category = "Authoring"    
+  }
 }
