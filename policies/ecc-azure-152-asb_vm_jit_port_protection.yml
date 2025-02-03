@@ -11,4 +11,10 @@ policies:
       VM without JIT policy enabled for SSH or RDP ports
     resource: azure.vm
     filters:
-      - type: security-jit-policy
+      - type: jit-policy-port
+        attrs:
+          - type: value
+            key: number
+            op: in
+            value: [22, 3389]
+        count: 0
