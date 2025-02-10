@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-412-cis_tpm_and_secure_boot
-    comment: '020023032700'
+    comment: '020023033400'
     description: |
       Azure virtual machine with Trusted Launch disabled
     resource: azure.vm

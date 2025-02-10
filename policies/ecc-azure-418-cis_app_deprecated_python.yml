@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-418-cis_app_deprecated_python
-    comment: '020056172700'
+    comment: '020056173400'
     description: |
       App Service with deprecated Python version
     resource: azure.webapp

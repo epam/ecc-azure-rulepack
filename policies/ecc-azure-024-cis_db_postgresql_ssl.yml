@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-024-cis_db_postgresql_ssl
-    comment: '020044062700'
+    comment: '020044063400'
     description: |
       SSL connection is disabled on PostgreSQL servers
     resource: azure.postgresql-server

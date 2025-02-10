@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-106-cis_sa_logging_queue
-    comment: '020019042700'
+    comment: '020019043400'
     description: |
       Storage account without logging enabled for Queues
     resource: azure.storage
