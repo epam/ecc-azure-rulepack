@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-002-cis_iam_owner_roles
-    comment: '020033002700'
+    comment: '020033003400'
     description: |
       Custom role with Owner privileges on a subscription scope is created
     resource: azure.roledefinition

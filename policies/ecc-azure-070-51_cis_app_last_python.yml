@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-070-51_cis_app_last_python
-    comment: '020056172700'
+    comment: '020056173400'
     description: |
       App Service with outdated Python version
     resource: azure.webapp

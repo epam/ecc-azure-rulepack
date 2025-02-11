@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-305-51_cis_storage_account_minimum_tls
-    comment: '020057042700'
+    comment: '020057043400'
     description: |
       Storage account with vulnerable and outdated TLS version
     resource: azure.storage
