@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-313-cis_postgresql_log_min_messages
-    comment: '020019061910'
+    comment: '020019063610'
     description: |
       PostgreSQL instance without server parameter 'log_min_messages' set to WARNING
     resource: azure.postgresql-server
