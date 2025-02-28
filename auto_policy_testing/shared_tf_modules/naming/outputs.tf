@@ -68,7 +68,8 @@ output "resource_prefix" {
     frontdoor-endpoint      = "${local.suffix}-${var.resource_type}-frontdoor-endpoint-${local.compliance_status}",
     frontdoor-route         = "${local.suffix}-${var.resource_type}-frontdoor-route-${local.compliance_status}",
     frontdoor-origin        = "${local.suffix}-${var.resource_type}-frontdoor-origin-${local.compliance_status}",
-    frontdoor-origin-gr     = "${local.suffix}-${var.resource_type}-frontdoor-origin-gr-${local.compliance_status}"
+    frontdoor-origin-gr     = "${local.suffix}-${var.resource_type}-frontdoor-origin-gr-${local.compliance_status}",
+    appenv                  = "${local.suffix}-${var.resource_type}-appenv-${local.compliance_status}"
   }
 }
 
