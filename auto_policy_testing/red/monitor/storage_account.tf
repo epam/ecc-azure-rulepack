@@ -6,7 +6,7 @@ resource "azurerm_storage_account" "this" {
   resource_group_name             = data.terraform_remote_state.common.outputs.resource_group
   account_tier                    = "Standard"
   account_replication_type        = "LRS"
-  allow_nested_items_to_be_public = true
+  allow_nested_items_to_be_public = false
 
   identity {
     type = "SystemAssigned"

@@ -4,7 +4,8 @@ resource "azurerm_storage_account" "this" {
   resource_group_name       = data.terraform_remote_state.common.outputs.resource_group
   account_tier              = "Standard"
   account_replication_type  = "LRS"
-  enable_https_traffic_only = false
+  https_traffic_only_enabled = false
+  allow_nested_items_to_be_public = false
 
   network_rules {
     default_action = "Allow"

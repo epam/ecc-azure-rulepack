@@ -62,7 +62,13 @@ output "resource_prefix" {
     appgw                   = "${local.suffix}-${var.resource_type}-appgw-${local.compliance_status}",
     appconf                 = "${local.suffix}-${var.resource_type}-appconf-${local.compliance_status}",
     apimanagement           = "${local.suffix}-${var.resource_type}-apimanagement-${local.compliance_status}",
-    alertlogs               = "${local.suffix}-${var.resource_type}-alertlogs-${local.compliance_status}"
+    alertlogs               = "${local.suffix}-${var.resource_type}-alertlogs-${local.compliance_status}",
+    frontdoor-profile       = "${local.suffix}-${var.resource_type}-frontdoor-profile-${local.compliance_status}",
+    frontdoor-domain        = "${local.suffix}-${var.resource_type}-frontdoor-domain-${local.compliance_status}",
+    frontdoor-endpoint      = "${local.suffix}-${var.resource_type}-frontdoor-endpoint-${local.compliance_status}",
+    frontdoor-route         = "${local.suffix}-${var.resource_type}-frontdoor-route-${local.compliance_status}",
+    frontdoor-origin        = "${local.suffix}-${var.resource_type}-frontdoor-origin-${local.compliance_status}",
+    frontdoor-origin-gr     = "${local.suffix}-${var.resource_type}-frontdoor-origin-gr-${local.compliance_status}"
   }
 }
 

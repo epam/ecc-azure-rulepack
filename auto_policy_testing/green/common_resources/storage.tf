@@ -7,6 +7,7 @@ resource "azurerm_storage_account" "this" {
   account_kind              = "StorageV2"
   account_replication_type  = "LRS"
   https_traffic_only_enabled = true
+  allow_nested_items_to_be_public = false
 
   tags = module.naming.default_tags
 }
