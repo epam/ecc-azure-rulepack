@@ -1,0 +1,20 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-456-cis_db_postgresql_res_logs
+    comment: '020019062000'
+    description: |
+      PostgreSQL instance with logging disabled
+    resource: azure.postgresql-server
+    filters:      
+      - or:
+        - type: diagnostic-settings
+          key: logs
+          value: absent
+        - type: diagnostic-settings
+          key: contains(keys(@),'logs') && logs!=`null` && length(logs[?category == 'PostgreSQLLogs' && enabled == `true` || category == 'QueryStoreRuntimeStatistics'&& enabled == `true` || category == 'QueryStoreWaitStatistics' && enabled == `true`])!=`3`
+          value: true

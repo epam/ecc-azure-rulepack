@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-011-cis_sa_soft_del
-    comment: '020049042700'
+    comment: '020049043400'
     description: |
       Soft delete for Azure Storage Blobs is disabled
     resource: azure.storage

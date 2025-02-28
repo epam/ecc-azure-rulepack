@@ -1,0 +1,53 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-417-cis_app_deprecated_java
+    comment: '020056173400'
+    description: |
+      App Service with deprecated Java version
+    resource: azure.webapp
+    filters:
+      - type: value
+        key: kind
+        value: app*
+        op: regex
+      - or:
+        - and:
+          - type: configuration
+            key: linuxFxVersion
+            op: regex
+            value: ".*-jre.*"
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: ".*-jre([0-9]{1})$"
+            value_type: integer
+            op: lt
+            value: 8
+        - and:
+          - type: configuration
+            key: linuxFxVersion
+            op: regex
+            value: ".*-java.*"
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: ".*-java([0-9]{1})$"
+            value_type: integer
+            op: lt
+            value: 8
+        - and:
+          - type: configuration
+            key: javaVersion
+            value_regex: "([0-9]{1}).*"
+            value_type: integer
+            op: lt
+            value: 8
+          - type: configuration
+            key: javaVersion
+            value_regex: "([0-9]{1}).*"
+            value_type: integer
+            op: ne
+            value: 0

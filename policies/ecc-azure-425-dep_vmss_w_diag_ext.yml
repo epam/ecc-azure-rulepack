@@ -1,0 +1,26 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-425-dep_vmss_w_diag_ext
+    comment: '020058032000'
+    description: |
+      Virtual machine scale sets with deprecated LinuxDiagnostic or IaaSDiangostics extension installed
+    resource: azure.vmss
+    filters:
+        - type: value
+          key: join(',', properties.virtualMachineProfile.extensionProfile.extensions[].properties.publisher)
+          value: '.*Microsoft\.Azure\.Diagnostics.*'
+          op: regex
+        - or:
+            - type: value
+              key: join(',', properties.virtualMachineProfile.extensionProfile.extensions[].properties.type)
+              value: '.*LinuxDiagnostic.*'
+              op: regex
+            - type: value
+              key: join(',', properties.virtualMachineProfile.extensionProfile.extensions[].properties.type)
+              value: '.*IaaSDiagnostics.*'
+              op: regex

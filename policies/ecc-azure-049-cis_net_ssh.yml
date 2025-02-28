@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-049-cis_net_ssh
-    comment: '020042022700'
+    comment: '020042023400'
     description: |
       Network Security Group with inbound rule that allows SSH traffic from the Internet
     resource: azure.networksecuritygroup

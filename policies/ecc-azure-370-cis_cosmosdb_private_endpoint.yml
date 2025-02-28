@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-370-cis_cosmosdb_private_endpoint
-    comment: '020041022700'
+    comment: '020041023400'
     description: |
       CosmosDB account without Private Endpoint connection configured
     resource: azure.cosmosdb

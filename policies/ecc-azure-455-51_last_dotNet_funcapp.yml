@@ -1,0 +1,53 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-455-51_last_dotNet_funcapp
+    comment: '020056170000'
+    description: |
+      Function app has an outdated .NET version
+    resource: azure.webapp
+    filters:
+      - type: value
+        key: kind
+        value: functionapp*
+        op: regex
+      - or:
+        - and:
+          - type: configuration
+            key: linuxFxVersion
+            op: regex
+            value: ".*DOTNET.*"
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: ".*DOTNET.([0-9]{1}).[0-9]{1}$"
+            value_type: integer
+            op: lt
+            value: 9
+          - type: configuration
+            key: linuxFxVersion
+            value_regex: ".*DOTNET.([0-9]{1}).[0-9]{1}$"
+            value_type: integer
+            op: gt
+            value: 7
+        - and:
+          - type: value
+            key: properties.siteConfig.linuxFxVersion
+            op: regex
+            value: ".*DOTNET.*"
+          - type: value
+            key: properties.siteConfig.linuxFxVersion
+            value_regex: ".*DOTNET.([0-9]{1}).[0-9]{1}$"
+            value_type: integer
+            op: lt
+            value: 9
+          - type: value
+            key: properties.siteConfig.linuxFxVersion
+            value_regex: ".*DOTNET.([0-9]{1}).[0-9]{1}$"
+            value_type: integer
+            op: gt
+            value: 7
+

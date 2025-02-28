@@ -1,0 +1,31 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-069-11_cis_app_last_java
+    comment: '020021173400'
+    description: |
+      App Service with outdated Java version
+    resource: azure.webapp
+    filters:
+      - type: value
+        key: kind
+        value: app*
+        op: regex
+      - not:
+        - or:
+            - type: configuration
+              key: linuxFxVersion
+              value: .*-jre17
+              op: regex
+            - type: configuration
+              key: linuxFxVersion
+              value: .*-java17
+              op: regex
+            - type: configuration
+              key: javaVersion
+              value: 17.*
+              op: regex

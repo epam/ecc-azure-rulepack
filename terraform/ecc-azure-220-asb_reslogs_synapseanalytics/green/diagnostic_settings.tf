@@ -12,6 +12,34 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   storage_account_id = azurerm_storage_account.thisdiag.id
 
   enabled_log {
-    category = "SynapseRBACOperations"
+    category = "BuiltinSqlReqsEnded"
+  }
+
+  enabled_log {
+    category = "GatewayApiRequests"
+  }
+
+  enabled_log {
+    category = "IntegrationActivityRuns"
+  }
+  
+  enabled_log {
+    category = "IntegrationPipelineRuns"
+  }
+  
+  enabled_log {
+    category = "IntegrationTriggerRuns"
+  }
+  
+  enabled_log {
+    category = "SQLSecurityAuditEvents"
+  }
+  
+  enabled_log {
+    category = "SynapseLinkEvent"
+  }
+
+  enabled_log {
+    category = "SynapseRbacOperations"
   }
 }

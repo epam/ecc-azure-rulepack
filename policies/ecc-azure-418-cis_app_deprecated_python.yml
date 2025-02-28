@@ -1,0 +1,28 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-418-cis_app_deprecated_python
+    comment: '020056173400'
+    description: |
+      App Service with deprecated Python version
+    resource: azure.webapp
+    filters:
+      - type: value
+        key: kind
+        value: app*
+        op: regex
+      - and:
+        - type: configuration
+          key: linuxFxVersion
+          op: regex
+          value: ".*PYTHON.*"
+        - type: configuration
+          key: linuxFxVersion
+          value_regex: ".*PYTHON.3.([0-9]{1})$"
+          value_type: integer
+          op: lt
+          value: 8

@@ -1,0 +1,16 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-445-11_delete_unattached_disk
+    comment: '020025042000'
+    description: |
+      Unattached (unused) Microsoft Azure virtual machine disk volumes available within your subscription
+    resource: azure.disk
+    filters:
+      - type: value
+        key: properties.diskState
+        value: Unattached

@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-379-cis_appservice_http_logs
-    comment: '020019012700'
+    comment: '020019013400'
     description: |
       App Service with web requests logging disabled
     resource: azure.webapp
@@ -15,9 +15,6 @@ policies:
         - type: diagnostic-settings
           key: logs
           value: absent
-        - not:
-          - type: diagnostic-settings
-            key: logs[?category == 'AppServiceHTTPLogs' || category == 'AppServiceConsoleLogs' || category == 'AppServiceEnvironmentPlatformLogs' || category == 'AppServiceAuditLogs' || category == 'AppServiceFileAuditLogs' || category == 'AppServiceAppLogs' || category == 'AppServiceIPSecAuditLogs' || category == 'AppServicePlatformLogs' || category == 'AppServiceAntivirusScanAuditLogs '][].enabled
-            value: true
-            op: in
-            value_type: swap
+        - type: diagnostic-settings
+          key: contains(keys(@),'logs') && logs!=`null` && length(logs[?category == 'AppServiceHTTPLogs' && enabled == `true` || category == 'AppServiceConsoleLogs' && enabled == `true` || category == 'AppServiceAuditLogs' && enabled == `true` || category == 'AppServiceAppLogs' && enabled == `true` || category == 'AppServiceIPSecAuditLogs' && enabled == `true` || category == 'AppServicePlatformLogs' && enabled == `true`])!=`6`
+          value: true

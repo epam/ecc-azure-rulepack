@@ -1,0 +1,21 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-439-disable_premium_ssd
+    comment: '020007042000'
+    description: |
+      Virtual machine with Premium SSD volumes
+    resource: azure.disk
+    filters:
+      - and:
+          - type: value
+            key: properties.diskState
+            op: ne
+            value: Unattached
+          - type: value
+            key: sku.tier
+            value: Premium

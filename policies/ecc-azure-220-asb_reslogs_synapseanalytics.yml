@@ -16,9 +16,6 @@ policies:
         - type: diagnostic-settings
           key: logs
           value: absent
-        - not:
-          - type: diagnostic-settings
-            key: logs[?category == 'SynapseRBACOperations' || category == 'SynapseBuiltinSqlPoolRequestsEnded' || category == 'SynapseGatewayApiRequests' || category == 'SynapseIntegrationActivityRuns' || category == 'SynapseIntegrationPipelineRuns' || category == 'SynapseIntegrationTriggerRuns' || category == 'SQLSecurityAuditEvents' || category == 'SynapseLinkEvent'][].enabled
-            value: true
-            op: in
-            value_type: swap
+        - type: diagnostic-settings
+          key: contains(keys(@),'logs') && logs!=`null` && length(logs[?category == 'BuiltinSqlReqsEnded' && enabled == `true` || category == 'GatewayApiRequests' && enabled == `true` || category == 'IntegrationActivityRuns' && enabled == `true` || category == 'IntegrationPipelineRuns' && enabled == `true` || category == 'IntegrationTriggerRuns' && enabled == `true` || category == 'SQLSecurityAuditEvents' && enabled == `true` || category == 'SynapseLinkEvent' && enabled == `true` || category == 'SynapseRbacOperations' && enabled == `true`])!=`8`
+          value: true

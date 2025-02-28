@@ -6,9 +6,9 @@
 
 policies:
   - name: ecc-azure-039-cis_log_create_policy
-    comment: '020032012700'
+    comment: '020032013400'
     description: |
-      Subscription where Activity Log Alert does not exsist for Create Policy Assignment
+      Subscription where Activity Log Alert does not exist for Create Policy Assignment
     resource: azure.subscription
     filters:
       - type: missing

@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-042-cis_log_create_upd_nsg
-    comment: '020032012700'
+    comment: '020032013400'
     description: |
       Subscription does not contain Activity Log Alert with appropriate scope for Create or Update Network Security Group Rule
     resource: azure.subscription

@@ -1,0 +1,19 @@
+# Copyright (c) 2023 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-433-51_dep_appenv_latest_tls
+    comment: '020057172000'
+    description: |
+      App Service Environment that uses TLS version before 1.2
+    resource: azure.app-service-environment
+    filters:
+      - not:
+        - type: value
+          key: properties.clusterSettings[?name == 'DisableTls1.0'][].value
+          value: "1"
+          op: in
+          value_type: swap

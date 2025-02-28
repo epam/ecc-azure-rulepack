@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-102-cis_sec_defender_wdatp
-    comment: '020016182700'
+    comment: '020016183400'
     description: |
       WDATP integration is disabled in Microsoft Defender for Cloud
     resource: azure.defender-setting

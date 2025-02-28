@@ -16,9 +16,6 @@ policies:
         - type: diagnostic-settings
           key: logs
           value: absent
-        - not:
-          - type: diagnostic-settings
-            key: logs[?category == 'Connections' || category == 'DeviceTelemetry' || category == 'C2DCommands' || category == 'DeviceIdentityOperations' || category == 'FileUploadOperations' || category == 'Routes' || category == 'D2CTwinOperations' || category == 'C2DTwinOperations' || category == 'TwinQueries' || category == 'JobsOperations' || category == 'DirectMethods' || category == 'DistributedTracing' || category == 'Configurations' || category == 'DeviceStreams'][].enabled
-            value: true
-            op: in
-            value_type: swap
+        - type: diagnostic-settings
+          key: contains(keys(@),'logs') && logs!=`null` && length(logs[?category == 'Connections' && enabled == `true` || category == 'DeviceTelemetry' && enabled == `true` || category == 'C2DCommands' && enabled == `true` || category == 'DeviceIdentityOperations' && enabled == `true` || category == 'FileUploadOperations' && enabled == `true` || category == 'Routes' && enabled == `true` || category == 'D2CTwinOperations' && enabled == `true` || category == 'C2DTwinOperations' && enabled == `true` || category == 'TwinQueries' && enabled == `true` || category == 'JobsOperations' && enabled == `true` || category == 'DirectMethods' && enabled == `true` || category == 'DistributedTracing' && enabled == `true` || category == 'Configurations' && enabled == `true` || category == 'DeviceStreams' && enabled == `true`])!=`14`
+          value: true
