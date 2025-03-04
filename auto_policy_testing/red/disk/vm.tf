@@ -23,7 +23,7 @@ resource "azurerm_virtual_machine" "this" {
   storage_os_disk {
     os_type           = "Linux"
     name              = "autotest-disk-disk-red-2"
-    managed_disk_type = "Standard_LRS"
+    managed_disk_type = "Premium_LRS"
     caching           = "ReadWrite"
     create_option     = "Attach"
     managed_disk_id   = "${azurerm_managed_disk.this2.id}"
