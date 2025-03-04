@@ -70,7 +70,8 @@ output "resource_prefix" {
     frontdoor-origin        = "${local.suffix}-${var.resource_type}-frontdoor-origin-${local.compliance_status}",
     frontdoor-origin-gr     = "${local.suffix}-${var.resource_type}-frontdoor-origin-gr-${local.compliance_status}",
     appenv                  = "${local.suffix}-${var.resource_type}-appenv-${local.compliance_status}",
-    waf                     = "${local.suffix}-${var.resource_type}-waf-${local.compliance_status}"
+    waf                     = "${local.suffix}-${var.resource_type}-waf-${local.compliance_status}",
+    loadbalancer            = "${local.suffix}-${var.resource_type}-loadbalancer-${local.compliance_status}"
   }
 }
 
