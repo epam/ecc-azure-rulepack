@@ -40,3 +40,16 @@ resource "azurerm_machine_learning_compute_cluster" "this" {
 
   tags = module.naming.default_tags
 }
+
+resource "null_resource" "ml_compute_instance" {
+  provisioner "local-exec" {
+    command = "az ml compute create -f compute-instance.yml --resource-group $resourceGroup --workspace-name $workspaceName"
+
+    environment = {
+      resourceGroup = data.terraform_remote_state.common.outputs.resource_group
+      workspaceName = azurerm_machine_learning_workspace.this.name
+    }
+  }
+
+  depends_on = [ azurerm_machine_learning_workspace.this ]
+}
