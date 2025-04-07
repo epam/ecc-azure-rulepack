@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-112-cis_net_netwatcher
-    comment: '020016023400'
+    comment: '020016023800'
     description: |
       Network Watcher is disabled across the subscription
     resource: azure.subscription
