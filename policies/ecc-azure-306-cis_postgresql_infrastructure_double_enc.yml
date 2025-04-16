@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-306-cis_postgresql_infrastructure_double_enc
-    comment: '020043063400'
+    comment: '020043063900'
     description: |
       PostgreSQL instance with disabled Infrastructure double encryption
     resource: azure.postgresql-server

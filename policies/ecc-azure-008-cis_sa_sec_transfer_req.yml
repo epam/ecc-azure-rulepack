@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-008-cis_sa_sec_transfer_req
-    comment: '020044043400'
+    comment: '020044043800'
     description: |
       Storage account that allows http traffic
     resource: azure.storage

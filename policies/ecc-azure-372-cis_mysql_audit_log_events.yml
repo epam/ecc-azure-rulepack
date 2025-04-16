@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-372-cis_mysql_audit_log_events
-    comment: '020019063400'
+    comment: '020019063900'
     description: |
       MySQL instance with server setting "audit_log_events" set to "off"
     resource: azure.mysql-flexibleserver

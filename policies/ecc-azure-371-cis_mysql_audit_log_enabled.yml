@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-371-cis_mysql_audit_log_enabled
-    comment: '020019063400'
+    comment: '020019063900'
     description: |
       MySQL instance with server setting "audit_log_enabled" set to "off"
     resource: azure.mysql-flexibleserver

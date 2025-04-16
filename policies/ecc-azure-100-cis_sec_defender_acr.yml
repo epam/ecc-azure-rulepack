@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-100-cis_sec_defender_acr
-    comment: '020032183400'
+    comment: '020032183800'
     description: |
       Azure Defender for Container Registries is set to "Off"
     resource: azure.defender-pricing

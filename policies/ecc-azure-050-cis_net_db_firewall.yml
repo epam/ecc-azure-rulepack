@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-050-cis_net_db_firewall
-    comment: '020042023400'
+    comment: '020042023900'
     description: |
       SQL instances accessible from the Internet or Azure services
     resource: azure.sql-server
