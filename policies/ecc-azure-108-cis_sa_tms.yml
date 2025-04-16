@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-108-cis_sa_tms
-    comment: '020033043400'
+    comment: '020033043800'
     description: |
       Storage account without access from/to "Trusted Microsoft Services"
     resource: azure.storage
