@@ -1,0 +1,19 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-465-cis_bastion_host_exist",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Network/bastionHosts/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}

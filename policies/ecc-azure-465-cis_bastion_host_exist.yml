@@ -1,0 +1,23 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-465-cis_bastion_host_exist
+    comment: '020033023800'
+    description: |
+      Subscription where Azure Bastion Host is not configured 
+    resource: azure.subscription
+    filters:
+      - type: missing
+        policy:
+          resource: azure.bastion-host
+          filters:
+            - type: value
+              key: name
+              value: present
+            - type: value
+              key: properties.provisioningState
+              value: Succeeded
