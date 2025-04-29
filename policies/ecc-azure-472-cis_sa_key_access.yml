@@ -1,0 +1,16 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-472-cis_sa_key_access
+    comment: '020033043700'
+    description: |
+      Storage account with enabled 'Shared Key authorization'
+    resource: azure.storage
+    filters:
+      - type: value
+        key: properties.allowSharedKeyAccess
+        value: true
