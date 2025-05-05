@@ -1,0 +1,19 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-474-cis_reslogs_databricks",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Databricks/workspaces/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}
