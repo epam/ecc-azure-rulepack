@@ -1,0 +1,20 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-474-cis_reslogs_databricks
+    comment: '020019053800'
+    description: |
+      Azure Databricks instance with logging disabled
+    resource: azure.databricks
+    filters:      
+      - or:
+        - type: diagnostic-settings
+          key: logs
+          value: absent
+        - type: diagnostic-settings
+          key: contains(keys(@),'logs') && logs!=`null` && length(logs[?category == 'accounts' && enabled == `true` || category == 'filesystem' && enabled == `true` || category == 'clusters' && enabled == `true` || category == 'notebook' && enabled == `true` || category == 'jobs' && enabled == `true`])!=`5`
+          value: true
