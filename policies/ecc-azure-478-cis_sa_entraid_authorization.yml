@@ -1,0 +1,16 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-478-cis_sa_entraid_authorization
+    comment: '020033043800'
+    description: |
+      Storage account with disabled Microsoft Entra authorization
+    resource: azure.storage
+    filters:
+      - type: value
+        key: properties.defaultToOAuthAuthentication
+        value: false
