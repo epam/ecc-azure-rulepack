@@ -1,0 +1,17 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-475-cis_databricks_data_cmk
+    comment: '020045053800'
+    description: |
+      Azure Databricks workspace does not use CMK for encryption
+    resource: azure.databricks
+    filters:
+      - not:
+        - type: value
+          key: properties.parameters.encryption.value.keySource
+          value: Microsoft.Keyvault
