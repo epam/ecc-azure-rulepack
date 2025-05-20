@@ -1,0 +1,22 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-470-cis_sec_agentless_scan
+    comment: '020016183800'
+    description: |
+      Agentless scanning for machines is disabled in Microsoft Defender for Cloud
+    resource: azure.defender-pricing
+    filters:
+      - name: VirtualMachines
+      - type: value
+        key: properties.extensions[?name == 'AgentlessVmScanning'].isEnabled
+        value: "False"
+        op: in
+        value_type: swap
+
+      
+    
