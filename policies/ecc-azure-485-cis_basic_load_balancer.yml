@@ -1,0 +1,17 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-485-cis_basic_load_balancer
+    comment: '020020023800'
+    description: |
+      Load balancers with Basic SKU
+    resource: azure.loadbalancer
+    filters:
+      - type: value
+        key: sku.name
+        value: Basic
+    
