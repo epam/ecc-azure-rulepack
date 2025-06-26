@@ -13,11 +13,11 @@ policies:
     filters:
       - or:
           - type: value
-            key: properties.email
+            key: properties.emails
             value: null
             op: eq
           - type: value
-            key: properties.email
+            key: properties.emails
             value: absent
           
 
