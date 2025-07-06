@@ -1,0 +1,20 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-500-cis_reslogs_eventhub",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.EventHub/Namespaces/read",
+                    "Microsoft.Insights/diagnosticSettings/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}
