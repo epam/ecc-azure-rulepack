@@ -14,6 +14,7 @@ resource "azurerm_storage_account" "this" {
   location                 = azurerm_resource_group.this.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
+  allow_nested_items_to_be_public = false
 
   tags = var.tags
 }
@@ -28,7 +29,7 @@ resource "azurerm_linux_function_app" "this" {
 
   site_config {
     application_stack {
-      python_version = "3.11"
+      python_version = "3.12"
     }
   }
 
