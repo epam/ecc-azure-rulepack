@@ -32,7 +32,7 @@ policies:
             value_regex: ".*DOTNET.([0-9]{1}).[0-9]{1}$"
             value_type: integer
             op: gt
-            value: 7
+            value: 8
         - and:
           - type: value
             key: properties.siteConfig.linuxFxVersion
@@ -49,5 +49,5 @@ policies:
             value_regex: ".*DOTNET.([0-9]{1}).[0-9]{1}$"
             value_type: integer
             op: gt
-            value: 7
+            value: 8
 

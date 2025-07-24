@@ -33,7 +33,7 @@ policies:
             value_regex: "3.([0-9]{1})$"
             value_type: integer
             op: lte
-            value: 8
+            value: 9
           - type: configuration
             key: pythonVersion
             value_regex: "3.([0-9]{1})$"
