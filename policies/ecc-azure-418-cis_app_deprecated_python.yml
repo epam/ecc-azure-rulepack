@@ -25,4 +25,4 @@ policies:
           value_regex: ".*PYTHON.3.([0-9]{1})$"
           value_type: integer
           op: lt
-          value: 8
+          value: 9

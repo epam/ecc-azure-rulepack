@@ -15,6 +15,16 @@ policies:
         key: kind
         value: app*
         op: regex
-      - type: configuration
-        key: linuxFxVersion
-        value: PHP|8.2
+      - and:
+        - type: configuration
+          key: linuxFxVersion
+          value_regex: "PHP.8.([0-9]{1})$"
+          value_type: integer
+          op: lte
+          value: 3
+        - type: configuration
+          key: linuxFxVersion
+          value_regex: "PHP.8.([0-9]{1})$"
+          value_type: integer
+          op: gt
+          value: 1
