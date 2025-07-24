@@ -20,7 +20,7 @@ resource "azurerm_linux_web_app" "this" {
   tags = var.tags
 
   provisioner "local-exec" {
-    command = "az webapp config set -g $resourceGroup  -n $resourceName --linux-fx-version 'PHP|8.3'"
+    command = "az webapp config set -g $resourceGroup  -n $resourceName --linux-fx-version 'PHP|8.4'"
 
     environment = {
       resourceGroup = azurerm_resource_group.this.name

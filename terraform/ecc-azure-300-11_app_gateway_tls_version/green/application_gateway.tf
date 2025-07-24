@@ -27,7 +27,7 @@ resource "azurerm_application_gateway" "network" {
       "TLS_RSA_WITH_AES_128_CBC_SHA256",
       "TLS_RSA_WITH_AES_256_CBC_SHA",
     "TLS_RSA_WITH_AES_128_CBC_SHA"]
-    min_protocol_version = "TLSv1_2"
+    min_protocol_version = "TLSv1_3"
   }
 
   gateway_ip_configuration {
