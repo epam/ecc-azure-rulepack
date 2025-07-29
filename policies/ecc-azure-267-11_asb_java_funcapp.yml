@@ -19,7 +19,7 @@ policies:
         - or:
             - type: configuration
               key: linuxFxVersion
-              value: "JAVA|17"
+              value: "JAVA|21"
             - type: configuration
               key: javaVersion
-              value: "17"
+              value: "21"
