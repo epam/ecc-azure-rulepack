@@ -18,4 +18,4 @@ policies:
       - not:
           - type: configuration
             key: linuxFxVersion
-            value: PYTHON|3.12
+            value: PYTHON|3.13
