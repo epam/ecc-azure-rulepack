@@ -24,6 +24,7 @@ resource "azurerm_storage_account" "this" {
   location                 = azurerm_resource_group.this.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
+  allow_nested_items_to_be_public = false
 
   tags = var.tags
 }
@@ -38,7 +39,7 @@ resource "azurerm_linux_function_app" "this" {
 
   site_config {
     application_stack {
-      java_version = "17"
+      java_version = "21"
     }
   }
 
@@ -55,7 +56,7 @@ resource "azurerm_windows_function_app" "this" {
 
   site_config {
     application_stack {
-      java_version = "17"
+      java_version = "21"
     }
   }
 
