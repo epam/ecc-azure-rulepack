@@ -1,0 +1,19 @@
+{
+    "properties": {
+        "roleName": "Custodian-ecc-azure-512-cis_file_share_soft_delete",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/{subscription_id}"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Storage/storageAccounts/read"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}
