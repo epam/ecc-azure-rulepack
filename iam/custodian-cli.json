@@ -71,6 +71,7 @@
         "Microsoft.Network/networkWatchers/flowLogs/read",
         "Microsoft.Network/virtualNetworks/read",
         "Microsoft.RecoveryServices/Locations/backupStatus/action",
+        "Microsoft.RecoveryServices/Vaults/read",
         "Microsoft.Resources/subscriptions/read",
         "Microsoft.Search/searchServices/read",
         "Microsoft.Search/searchServices/diagnosticSettings/read",
