@@ -1,0 +1,20 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-514-cis_file_share_channel_encryption
+    comment: '020044043800'
+    description: |
+      File Share that uses unsecure SMB channel encryption
+    resource: azure.storage
+    filters:
+      - type: file-services
+        attrs:
+          - not:
+            - type: value
+              key: properties.protocolSettings.smb.channelEncryption
+              op: regex
+              value: "^AES-256-GCM;?$"
