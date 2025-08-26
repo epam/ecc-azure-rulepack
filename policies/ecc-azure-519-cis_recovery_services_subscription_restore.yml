@@ -1,0 +1,17 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-519-cis_recovery_services_subscription_restore
+    comment: '020050043700'
+    description: |
+      Recivery Services vault with Cross Subscription Restore enabled
+    resource: azure.recovery-services
+    filters:
+      - type: value
+        key: properties.restoreSettings.crossSubscriptionRestoreSettings.crossSubscriptionRestoreState
+        value: Enabled
+      

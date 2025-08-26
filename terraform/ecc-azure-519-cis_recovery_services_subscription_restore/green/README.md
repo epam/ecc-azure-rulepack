@@ -1,0 +1,1 @@
+The deployment of green infrastructure is currently blocked due to a lack of complete guidance for enabling Cross-Subscription Restore (CSR) on Azure Recovery Services vaults via Terraform.
