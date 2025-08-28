@@ -1,0 +1,18 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-517-cis_recovery_service_infrastructure_encryption
+    comment: '020043043700'
+    description: |
+      Recivery Services vault does not use infrastructure encryption
+    resource: azure.recovery-services
+    filters:
+      - not:
+        - type: value
+          key: properties.encryption.infrastructureEncryption
+          value: Enabled
+        
