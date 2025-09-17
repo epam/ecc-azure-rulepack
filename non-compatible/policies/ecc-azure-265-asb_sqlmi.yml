@@ -15,5 +15,7 @@ policies:
         key: properties.state
         value: Ready
       - type: vulnerability-assessments
-        key: recurring_scans.is_enabled
-        value: false
+        attrs:
+          - type: value
+            key: properties.recurringScans.isEnabled
+            value: False

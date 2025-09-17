@@ -11,7 +11,11 @@ policies:
       Disk without recent snapshots taken in the last 14 days
     resource: azure.disk
     filters:
-      - not:
-          - type: snapshots
-            exist: true
-            max-age: 14
+      - type: snapshots
+        attrs:
+          - type: value
+            key: properties.timeCreated
+            value_type: age
+            value: 14
+            op: le
+        count: 0
