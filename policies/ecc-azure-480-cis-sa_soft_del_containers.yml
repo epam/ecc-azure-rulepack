@@ -11,10 +11,6 @@ policies:
       Soft delete for Azure Storage Blobs and Containers is disabled
     resource: azure.storage
     filters:
-      - type: value
-        key: tags."ms-resource-usage"
-        value: azure-cloud-shell
-        op: ne
       - not:
         - type: blob-services
           key: deleteRetentionPolicy.enabled

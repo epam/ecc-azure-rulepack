@@ -14,7 +14,3 @@ policies:
       - type: value
         key: properties.supportsHttpsTrafficOnly
         value: false
-      - type: value
-        key: tags."ms-resource-usage"
-        value: azure-cloud-shell
-        op: ne
