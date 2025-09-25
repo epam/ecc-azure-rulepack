@@ -11,10 +11,6 @@ policies:
       Soft delete for Azure Storage Blobs is disabled
     resource: azure.storage
     filters:
-      - type: value
-        key: tags."ms-resource-usage"
-        value: azure-cloud-shell
-        op: ne
       - type: storage-diagnostic-settings
         storage-type: blob
         key: delete_retention_policy.enabled

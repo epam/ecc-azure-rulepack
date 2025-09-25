@@ -11,10 +11,6 @@ policies:
       Storage Accounts outside Europe
     resource: azure.storage
     filters:
-      - type: value
-        key: tags."ms-resource-usage"
-        value: azure-cloud-shell
-        op: ne
       - not:
           - or:
               - type: value

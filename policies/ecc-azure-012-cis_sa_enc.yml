@@ -12,10 +12,6 @@ policies:
     resource: azure.storage
     filters:
       - type: value
-        key: tags."ms-resource-usage"
-        value: azure-cloud-shell
-        op: ne
-      - type: value
         key: properties.encryption.keySource
         op: eq
         value: Microsoft.Storage
