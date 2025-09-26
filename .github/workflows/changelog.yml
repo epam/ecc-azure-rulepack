@@ -20,6 +20,8 @@ on:
   pull_request_review:
     types: 
       - submitted
+  schedule:
+    - cron: "10 14 * * 1"
 
 env:
   ECC_BRANCH: develop
@@ -52,7 +54,7 @@ jobs:
   ruleset_release_qa:
     name: ruleset_release_qa
     runs-on: ubuntu-latest
-    if: (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main') && github.event_name != 'schedule'
+    if:  github.ref == 'refs/heads/main' && github.event_name == 'schedule' && github.event.schedule == '10 14 * * 1'
     steps:
       - name: Checkout ecc-actions
         run: git clone -b ${{ inputs.ECC_ACTIONS_BRANCH || env.ECC_ACTIONS_BRANCH }} "https://git:$PROJECT_TOKEN@git.epam.com/epmc-sec/cloudlab/cloud_custodian/ecc-actions.git" ecc-actions
