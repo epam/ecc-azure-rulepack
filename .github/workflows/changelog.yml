@@ -56,18 +56,23 @@ jobs:
     runs-on: ubuntu-latest
     if:  github.ref == 'refs/heads/main' && github.event_name == 'schedule' && github.event.schedule == '10 14 * * 1'
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Checkout ecc-actions
         run: git clone -b ${{ inputs.ECC_ACTIONS_BRANCH || env.ECC_ACTIONS_BRANCH }} "https://git:$PROJECT_TOKEN@git.epam.com/epmc-sec/cloudlab/cloud_custodian/ecc-actions.git" ecc-actions
         env:
           PROJECT_TOKEN: ${{ secrets.ECC_CHANGELOG_ACTION }}
+      - name: Extract version from file
+        id: version_qa
+        run: echo "VERSION=$(head -n 1 version | sed 's/^v//')" >> $GITHUB_OUTPUT
       - name: Release ruleset on QA
         uses: ./ecc-actions/release-ruleset-action
-        if: github.ref == 'refs/heads/main'
         env:
           C7N_CREDS: ${{ secrets.C7N_CREDS }}
           C7N_ENV: QA
         with:
           ecc_branch: ${{ inputs.ECC_BRANCH || env.ECC_BRANCH }}
+          tag: ${{ steps.version_qa.outputs.VERSION }}
 
 
   ruleset_release_prod:
