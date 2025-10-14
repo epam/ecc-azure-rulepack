@@ -32,7 +32,6 @@
         "Microsoft.DataLakeAnalytics/accounts/providers/Microsoft.Insights/diagnosticSettings/read",
         "Microsoft.DataLakeStore/accounts/read",
         "Microsoft.DataLakeStore/accounts/providers/Microsoft.Insights/diagnosticSettings/read",
-        "Microsoft.DataProtection/backupVaults/read",
         "Microsoft.DBforPostgreSQL/servers/read",
         "Microsoft.DBforPostgreSQL/servers/configurations/read",
         "Microsoft.DBforPostgreSQL/servers/securityAlertPolicies/read",
