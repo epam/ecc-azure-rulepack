@@ -1,0 +1,20 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-467-cis_subscription_activity_logs
+    comment: '020019013800'
+    description: |
+      Subscription with logging disabled
+    resource: azure.subscription
+    filters:      
+      - or:
+        - type: diagnostic-settings
+          key: properties.logs
+          value: absent
+        - type: diagnostic-settings
+          key: properties.logs!=`null` && length(properties.logs[?category == 'Administrative' && enabled == `true` || category == 'Security' && enabled == `true` || category == 'Alert' && enabled == `true` || category == 'Policy' && enabled == `true`])!=`4`
+          value: true

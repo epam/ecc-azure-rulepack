@@ -1,0 +1,20 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-500-cis_reslogs_eventhub
+    comment: '020019023800'
+    description: |
+      Azure Eventhub with logging disabled
+    resource: azure.eventhub
+    filters:      
+      - or:
+        - type: diagnostic-settings
+          key: logs
+          value: absent
+        - type: diagnostic-settings
+          key: contains(keys(@),'logs') && logs!=`null` && length(logs[?category == 'ApplicationMetricsLogs' && enabled == `true` || category == 'ArchiveLogs' && enabled == `true` || category == 'AutoScaleLogs' && enabled == `true` || category == 'CustomerManagedKeyUserLogs' && enabled == `true` || category == 'DataDRLogs' && enabled == `true` || category == 'DiagnosticErrorLogs' && enabled == `true` || category == 'EventHubVNetConnectionEvent' && enabled == `true` || category == 'KafkaCoordinatorLogs' && enabled == `true` || category == 'KafkaUserErrorLogs' && enabled == `true` || category == 'OperationalLogs' && enabled == `true` || category == 'RuntimeAuditLogs' && enabled == `true`])!=`11`
+          value: true

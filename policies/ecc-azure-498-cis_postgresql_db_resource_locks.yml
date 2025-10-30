@@ -1,0 +1,15 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-498-cis_postgresql_db_resource_locks
+    comment: '020047063800'
+    description: |
+      PostgreSQL Flexible Server without ReadOnly or Delete lock
+    resource: azure.postgresql-flexibleserver
+    filters:
+      - type: resource-lock
+        lock-type: Absent

@@ -1,0 +1,21 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-481-cis_sa_public_network_access
+    comment: '020040043800'
+    description: |
+      Storage Account with enabled public network access
+    resource: azure.storage
+    filters:
+      - type: value
+        key: tags."ms-resource-usage"
+        value: azure-cloud-shell
+        op: ne
+      - type: value
+        key: properties.publicNetworkAccess
+        value: Enabled
+      

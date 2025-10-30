@@ -6,15 +6,11 @@
 
 policies:
   - name: ecc-azure-305-11_cis_storage_account_minimum_tls
-    comment: '020021043400'
+    comment: '020021043800'
     description: |
       Storage account with vulnerable and outdated TLS version
     resource: azure.storage
     filters:
-      - type: value
-        key: tags."ms-resource-usage"
-        value: azure-cloud-shell
-        op: ne
       - not:
           - type: value
             key: properties.minimumTlsVersion

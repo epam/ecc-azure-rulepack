@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-072-cis-app-keyvaults
-    comment: '020048173400'
+    comment: '020048174000'
     description: Azure Web App without Key Vault reference configured
     resource: azure.webapp
     filters:

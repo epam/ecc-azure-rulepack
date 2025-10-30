@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-419-cis_app_deprecated_php
-    comment: '020056173400'
+    comment: '020056174000'
     description: |
       App Service with deprecated PHP version
     resource: azure.webapp
@@ -24,5 +24,5 @@ policies:
           key: linuxFxVersion
           value_regex: ".*PHP.8.([0-9]{1})$"
           value_type: integer
-          op: lte
+          op: lt
           value: 1

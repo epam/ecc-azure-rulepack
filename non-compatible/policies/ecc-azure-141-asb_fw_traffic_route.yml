@@ -15,9 +15,11 @@ policies:
         key: properties.subnets[].properties.ipConfigurations[].id
         value: \/.+\/networkInterfaces\/.+
         op: regex
-      - type: network-interface-assignment
-        key: virtual_machine
-        value: present
+      - type: network-interface
+        attrs:
+          - type: value
+            key: properties.virtualMachine
+            value: present
       - type: value
         key: properties.subnets[].properties.routeTable.id
         value: empty

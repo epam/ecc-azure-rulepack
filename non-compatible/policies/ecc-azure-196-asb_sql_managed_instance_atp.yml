@@ -14,6 +14,8 @@ policies:
       - type: value
         key: properties.state
         value: Ready
-      - type: managed-server-security-alert-policies
-        key: state
-        value: Disabled
+      - type: security-alert-policies
+        attrs:
+          - type: value
+            key: properties.state
+            value: Disabled

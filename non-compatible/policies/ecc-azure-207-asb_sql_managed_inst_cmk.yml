@@ -14,6 +14,8 @@ policies:
       - type: value
         key: properties.state
         value: Ready
-      - type: encryption-protector
-        key: kind
-        value: servicemanaged
+      - type: encryption-protectors
+        attrs:
+          - type: value
+            key: properties.serverKeyType
+            value: ServiceManaged

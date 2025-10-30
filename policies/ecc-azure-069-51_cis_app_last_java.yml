@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-069-51_cis_app_last_java
-    comment: '020056173400'
+    comment: '020056174000'
     description: |
       App Service with outdated Java version
     resource: azure.webapp
@@ -16,42 +16,54 @@ policies:
         value: app*
         op: regex
       - or:
+        - type: configuration
+          key: linuxFxVersion
+          value: .*-jre8
+          op: regex
+        - type: configuration
+          key: linuxFxVersion
+          value: .*-java8
+          op: regex
+        - type: configuration
+          key: javaVersion
+          value: 8.*
+          op: regex
         - and:
           - type: configuration
             key: linuxFxVersion
             value_regex: ".*-jre([0-9]{2}|[0-9]{1})$"
             value_type: integer
-            op: lt
+            op: lte
             value: 17
           - type: configuration
             key: linuxFxVersion
             value_regex: ".*-jre([0-9]{2}|[0-9]{1})$"
             value_type: integer
-            op: gte
-            value: 8
+            op: gt
+            value: 11
         - and:
           - type: configuration
             key: linuxFxVersion
             value_regex: ".*-java([0-9]{2}|[0-9]{1})$"
             value_type: integer
-            op: lt
+            op: lte
             value: 17
           - type: configuration
             key: linuxFxVersion
             value_regex: ".*-java([0-9]{2}|[0-9]{1})$"
             value_type: integer
-            op: gte
-            value: 8
+            op: gt
+            value: 11
         - and:
           - type: configuration
             key: javaVersion
             value_regex: "([0-9]{2}|[0-9]{1}).*"
             value_type: integer
-            op: lt
+            op: lte
             value: 17
           - type: configuration
             key: javaVersion
             value_regex: "([0-9]{2}|[0-9]{1}).*"
             value_type: integer
-            op: gte
-            value: 8
+            op: gt
+            value: 11

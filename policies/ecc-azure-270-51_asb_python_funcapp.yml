@@ -22,23 +22,23 @@ policies:
             value_regex: "PYTHON.3.([0-9]{2}|[0-9]{1})$"
             value_type: integer
             op: lt
-            value: 11
+            value: 12
           - type: configuration
             key: linuxFxVersion
             value_regex: "PYTHON.3.([0-9]{2}|[0-9]{1})$"
             value_type: integer
             op: gt
-            value: 8
+            value: 9
         - and:
           - type: configuration
             key: pythonVersion
             value_regex: "3.([0-9]{2}|[0-9]{1})$"
             value_type: integer
             op: lt
-            value: 11
+            value: 12
           - type: configuration
             key: pythonVersion
             value_regex: "3.([0-9]{2}|[0-9]{1})$"
             value_type: integer
             op: gt
-            value: 8
+            value: 9
