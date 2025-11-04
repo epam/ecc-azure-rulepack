@@ -8,6 +8,7 @@ resource "azurerm_key_vault" "this" {
   sku_name                   = "standard"
   soft_delete_retention_days = 7
   purge_protection_enabled   = true
+  rbac_authorization_enabled = true
 
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
@@ -60,6 +61,15 @@ resource "azurerm_key_vault_key" "this" {
     "verify",
     "wrapKey",
   ]
+
+  rotation_policy {
+    automatic {
+      time_before_expiry = "P30D"
+    }
+
+    expire_after         = "P90D"
+    notify_before_expiry = "P29D"
+  }
 
   tags = module.naming.default_tags
 }

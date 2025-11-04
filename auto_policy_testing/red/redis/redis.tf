@@ -6,9 +6,9 @@ resource "azurerm_redis_cache" "this" {
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   capacity            = 1
   family              = "P"
-  sku_name            = "Premium"
-  enable_non_ssl_port = true
-  minimum_tls_version = "1.2"
+  sku_name            = "Basic"
+  non_ssl_port_enabled = true
+  minimum_tls_version = "1.1"
 
   redis_configuration {
   }

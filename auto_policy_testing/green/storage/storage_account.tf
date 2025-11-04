@@ -8,6 +8,10 @@ resource "azurerm_storage_account" "this" {
   account_replication_type = "GRS"
   allow_nested_items_to_be_public = false
   infrastructure_encryption_enabled = true
+  min_tls_version = "TLS1_2"
+  shared_access_key_enabled = false
+  default_to_oauth_authentication = true
+  public_network_access_enabled = false
 
   network_rules {
     default_action = "Deny"
@@ -18,6 +22,20 @@ resource "azurerm_storage_account" "this" {
   blob_properties {
     delete_retention_policy {
       days = 5
+    }
+    container_delete_retention_policy {
+      days = 7
+    }
+    versioning_enabled = true
+  }
+
+  share_properties {
+    retention_policy {
+      days = 14
+    }
+    smb {
+      versions = ["SMB3.1.1"]
+      channel_encryption_type = ["AES-256-GCM"] 
     }
   }
 
@@ -50,6 +68,15 @@ resource "azurerm_storage_account" "this" {
     }
   }
 
+  provisioner "local-exec" {
+    command = "az storage account update --name $storageName --resource-group $resourceGroup --key-exp-days 90 && az storage account update --resource-group $resourceGroup --name $resourceName --allow-shared-key-access false"
+
+    environment = {
+      resourceGroup = data.terraform_remote_state.common.outputs.resource_group
+      storageName = azurerm_storage_account.this.name
+    }
+  }
+
   tags = module.naming.default_tags
 }
 
@@ -75,4 +102,10 @@ resource "azurerm_storage_account_customer_managed_key" "this" {
     azurerm_storage_account.this,
     azurerm_key_vault_access_policy.storage
   ]
+}
+
+resource "azurerm_storage_share" "this" {
+  name               = "fileshare${random_integer.this.result}green"
+  storage_account_id = azurerm_storage_account.this.id
+  quota              = 10
 }

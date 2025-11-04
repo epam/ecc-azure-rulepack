@@ -6,7 +6,7 @@ resource "random_integer" "this" {
 resource "random_password" "this" {
   length  = 13
   special = true
-  number  = true
+  numeric  = true
   override_special = "_%@"
 }
 
