@@ -6,7 +6,7 @@
 
 policies:
   - name: ecc-azure-418-cis_app_deprecated_python
-    comment: '020056173400'
+    comment: '020056174000'
     description: |
       App Service with deprecated Python version
     resource: azure.webapp
@@ -25,4 +25,4 @@ policies:
           value_regex: ".*PYTHON.3.([0-9]{1})$"
           value_type: integer
           op: lt
-          value: 8
+          value: 9

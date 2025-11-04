@@ -14,4 +14,4 @@ policies:
       - not:
           - type: value
             key: properties.sslPolicy.minProtocolVersion
-            value: TLSv1_2
+            value: TLSv1_3
