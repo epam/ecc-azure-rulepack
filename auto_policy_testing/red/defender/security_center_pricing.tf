@@ -58,3 +58,8 @@ resource "azurerm_security_center_subscription_pricing" "cosmodb" {
   resource_type = "CosmosDbs"
 }
 
+resource "azurerm_security_center_subscription_pricing" "agentless" {
+  tier          = "Free"
+  resource_type = "CloudPosture"
+}
+

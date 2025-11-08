@@ -58,3 +58,14 @@ resource "azurerm_security_center_subscription_pricing" "cosmodb" {
   resource_type = "CosmosDbs"
 }
 
+resource "azurerm_security_center_subscription_pricing" "agentless" {
+  tier          = "Standard"
+  resource_type = "CloudPosture"
+
+  extension {
+    name = "AgentlessVmScanning"
+    additional_extension_properties = {
+      ExclusionTags = "[]"
+    }
+  }
+}
