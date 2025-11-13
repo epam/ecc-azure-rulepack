@@ -12,5 +12,5 @@ policies:
     resource: azure.keyvault-key
     filters:
       - type: value
-        key: attributes.expires
+        key: attributes.data.exp
         value: null

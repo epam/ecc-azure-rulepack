@@ -6,4 +6,20 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   enabled_log {
     category = "OperationalLogs"
   }
+
+  enabled_log {
+    category = "VNetAndIPFilteringLogs"
+  }
+
+  enabled_log {
+    category = "RuntimeAuditLogs"
+  }
+
+  enabled_log {
+    category = "DiagnosticErrorLogs"
+  }
+
+  enabled_log {
+    category = "ApplicationMetricsLogs"
+  }
 }
