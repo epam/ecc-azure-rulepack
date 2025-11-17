@@ -7,6 +7,7 @@ resource "azurerm_key_vault" "this" {
   tenant_id                  = data.azurerm_client_config.current.tenant_id
   sku_name                   = "standard"
   purge_protection_enabled   = false
+  rbac_authorization_enabled = false
 
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id

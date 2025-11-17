@@ -9,15 +9,6 @@ resource "azurerm_storage_account" "this" {
   allow_nested_items_to_be_public = false
   infrastructure_encryption_enabled = true
   min_tls_version = "TLS1_2"
-  shared_access_key_enabled = false
-  default_to_oauth_authentication = true
-  public_network_access_enabled = false
-
-  network_rules {
-    default_action = "Deny"
-    ip_rules                   = [data.terraform_remote_state.common.outputs.public_ip]
-    virtual_network_subnet_ids = [data.terraform_remote_state.common.outputs.subnet_id]
-  }
 
   blob_properties {
     delete_retention_policy {
@@ -69,7 +60,7 @@ resource "azurerm_storage_account" "this" {
   }
 
   provisioner "local-exec" {
-    command = "az storage account update --name $storageName --resource-group $resourceGroup --key-exp-days 90 && az storage account update --resource-group $resourceGroup --name $resourceName --allow-shared-key-access false"
+    command = "az storage account update --name $storageName --resource-group $resourceGroup --key-exp-days 90"
 
     environment = {
       resourceGroup = data.terraform_remote_state.common.outputs.resource_group
@@ -108,4 +99,28 @@ resource "azurerm_storage_share" "this" {
   name               = "fileshare${random_integer.this.result}green"
   storage_account_id = azurerm_storage_account.this.id
   quota              = 10
+}
+
+
+resource "azurerm_storage_account" "this1" {
+  name                     = "${module.naming.resource_prefix.storage}storage1${random_integer.this.result}"
+  location                 = data.terraform_remote_state.common.outputs.location
+  resource_group_name      = data.terraform_remote_state.common.outputs.resource_group
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  allow_nested_items_to_be_public = false
+  default_to_oauth_authentication = true
+  public_network_access_enabled = false
+
+  network_rules {
+    default_action = "Deny"
+    ip_rules                   = [data.terraform_remote_state.common.outputs.public_ip]
+    virtual_network_subnet_ids = [data.terraform_remote_state.common.outputs.subnet_id]
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  tags = module.naming.default_tags
 }
