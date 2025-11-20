@@ -8,8 +8,8 @@ resource "azurerm_service_plan" "this" {
   tags = module.naming.default_tags
 }
 
-resource "azurerm_linux_web_app" "this" {
-  name                = "${module.naming.resource_prefix.webapp}-linux"
+resource "azurerm_linux_web_app" "python1" {
+  name                = "${module.naming.resource_prefix.webapp}-linux-python1"
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   service_plan_id     = azurerm_service_plan.this.id
@@ -28,7 +28,7 @@ resource "azurerm_linux_web_app" "this" {
     http2_enabled = true
     remote_debugging_enabled = false
     application_stack {
-      python_version = "3.12"
+      python_version = "3.13"
     }
     cors {
       allowed_origins = ["google.com"]
@@ -49,16 +49,15 @@ resource "azurerm_linux_web_app" "this" {
 
     environment = {
       resourceGroup = "${data.terraform_remote_state.common.outputs.resource_group}"
-      resourceName  = "autotest-webapp-webapp-green-linux"
+      resourceName  = "autotest-webapp-webapp-green-linux-python1"
     }
   }
 
   tags = module.naming.default_tags
 }
 
-
-resource "azurerm_linux_web_app" "this2" {
-  name                = "${module.naming.resource_prefix.webapp}-linux2"
+resource "azurerm_linux_web_app" "java1" {
+  name                = "${module.naming.resource_prefix.webapp}-linux-java1"
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   service_plan_id     = azurerm_service_plan.this.id
@@ -71,15 +70,16 @@ resource "azurerm_linux_web_app" "this2" {
 
     environment = {
       resourceGroup = "${data.terraform_remote_state.common.outputs.resource_group}"
-      resourceName  = "autotest-webapp-webapp-green-linux2"
+      resourceName  = "autotest-webapp-webapp-green-linux-java1"
     }
   }
 
   tags = module.naming.default_tags
 }
 
-resource "azurerm_linux_web_app" "this3" {
-  name                = "${module.naming.resource_prefix.webapp}-linux3"
+
+resource "azurerm_linux_web_app" "php1" {
+  name                = "${module.naming.resource_prefix.webapp}-linux-php1"
   location            = data.terraform_remote_state.common.outputs.location
   resource_group_name = data.terraform_remote_state.common.outputs.resource_group
   service_plan_id     = azurerm_service_plan.this.id
@@ -89,11 +89,11 @@ resource "azurerm_linux_web_app" "this3" {
 
   provisioner "local-exec" {
     
-    command = "az webapp config set -g $resourceGroup  -n $resourceName --linux-fx-version 'PHP|8.3'"
+    command = "az webapp config set -g $resourceGroup  -n $resourceName --linux-fx-version 'PHP|8.4'"
     
     environment = {
       resourceGroup = "${data.terraform_remote_state.common.outputs.resource_group}"
-      resourceName  = "autotest-webapp-webapp-green-linux3"
+      resourceName  = "autotest-webapp-webapp-green-linux-php1"
     }
   }
 
