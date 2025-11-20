@@ -7,7 +7,7 @@ resource "azurerm_storage_account" "this" {
   https_traffic_only_enabled = false
   allow_nested_items_to_be_public = false
   cross_tenant_replication_enabled = true
-  public_network_access_enabled = true
+  public_network_access_enabled = false
 
   network_rules {
     default_action = "Allow"
