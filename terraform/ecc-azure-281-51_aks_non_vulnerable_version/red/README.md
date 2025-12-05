@@ -1,0 +1,1 @@
+We are unable to deploy the red (non-compliant) state for this rule because Azure no longer allows creating AKS clusters with the required vulnerable or significantly outdated Kubernetes versions in our environment. As a result, we cannot intentionally provision an AKS cluster with unsupported versions to simulate a non-compliant configuration.

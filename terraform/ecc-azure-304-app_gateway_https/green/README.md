@@ -1,0 +1,1 @@
+We are unable to deploy the green (compliant) state for this rule because configuring HTTPS on Application Gateway requires a valid custom domain and SSL certificate. Issuing and managing these certificates is outside the scope of this environment, so we cannot automatically provision a fully compliant HTTPS configuration.
