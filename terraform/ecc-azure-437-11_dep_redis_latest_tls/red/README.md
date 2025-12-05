@@ -1,0 +1,1 @@
+We are unable to deploy the red (non-compliant) state for this rule because Azure currently restricts the use of TLS 1.0 and TLS 1.1 for Azure Cache for Redis. As a result, we cannot intentionally provision a Redis instance with outdated TLS protocols to simulate a non-compliant configuration.

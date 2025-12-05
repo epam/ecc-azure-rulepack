@@ -1,0 +1,1 @@
+We are unable to deploy the red (non-compliant) state for this rule because Azure no longer supports creating virtual machines with the required outdated SKU. As a result, we cannot intentionally provision a VM using this deprecated SKU to simulate a non-compliant configuration.
