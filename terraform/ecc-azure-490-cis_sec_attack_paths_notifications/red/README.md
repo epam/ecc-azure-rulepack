@@ -1,0 +1,1 @@
+Currently, configuration of email notifications for attack paths in Microsoft Defender for Cloud is not exposed as a Terraform resource or attribute. This setting can only be managed manually through the Azure Portal or automated using other methods like ARM templates, PowerShell, or REST API.
