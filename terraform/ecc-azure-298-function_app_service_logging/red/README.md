@@ -1,0 +1,1 @@
+We are unable to deploy the red (non-compliant) state for this rule because altering Function App service logging settings to create a deliberately misconfigured state also requires manual changes in the Azure portal. Since we avoid introducing intentional misconfigurations through the portal, we cannot provision a reproducible non-compliant logging configuration.

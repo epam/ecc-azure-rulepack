@@ -1,0 +1,1 @@
+We are unable to deploy the green (compliant) state for this rule because enabling and configuring Function App service logging can only be done manually through the Azure portal in our current setup. As a result, we cannot provision a Function App with fully compliant logging settings using code.
