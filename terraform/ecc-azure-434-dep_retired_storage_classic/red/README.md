@@ -1,0 +1,1 @@
+We are unable to deploy a classic storage account for this rule because Azure no longer allows creating classic storage resources. As a result, we cannot provision a non-compliant classic storage configuration for testing purposes.
