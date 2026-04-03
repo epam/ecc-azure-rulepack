@@ -1,0 +1,19 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-528_aks_latest_version
+    comment: '020021072000'
+    description: |
+      Kubernetes cluster that does not use latest version
+    resource: azure.aks
+    filters:
+      - not:
+          - type: value
+            key: properties.kubernetesVersion
+            value: 1\.33\..+
+            op: regex
+          
