@@ -1,0 +1,16 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-520-cis_backup_immutability
+    comment: '020047043700'
+    description: |
+      Backup vault without enabled immutability
+    resource: azure.backup-vault
+    filters:
+      - type: value
+        key: properties.securitySettings.immutabilitySettings.state
+        value: "Disabled"
