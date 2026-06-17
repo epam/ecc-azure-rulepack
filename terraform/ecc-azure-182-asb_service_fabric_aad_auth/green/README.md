@@ -1,0 +1,1 @@
+We are unable to deploy the green (compliant) state for this rule because Azure Service Fabric AAD authentication is not currently configurable via Terraform. Since this setting can only be managed outside of Terraform, we cannot provision a fully compliant AAD-enabled Service Fabric configuration using code.
