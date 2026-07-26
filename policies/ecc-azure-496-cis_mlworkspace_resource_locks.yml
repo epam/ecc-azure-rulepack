@@ -1,0 +1,15 @@
+# Copyright (c) 2025 EPAM Systems, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+policies:
+  - name: ecc-azure-496-cis_mlworkspace_resource_locks
+    comment: '020047113800'
+    description: |
+      Machine Learning Workspace without ReadOnly or Delete lock
+    resource: azure.machine-learning-workspace
+    filters:
+      - type: resource-lock
+        lock-type: Absent
