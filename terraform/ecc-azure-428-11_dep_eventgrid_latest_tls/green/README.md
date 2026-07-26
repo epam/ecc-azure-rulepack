@@ -1,0 +1,1 @@
+We are unable to deploy the green (compliant) state for this rule because Terraform does not currently expose an argument to configure the minimum TLS version for Event Grid. This setting can only be adjusted manually via the Azure portal, so we cannot provision a fully compliant Event Grid configuration using code.

@@ -1,0 +1,1 @@
+We are unable to deploy the green (compliant) state for the policy because enabling table logging on a Storage Account is not currently supported via Terraform in our setup. As a result, we cannot provision a fully compliant configuration with table logging enabled using code.

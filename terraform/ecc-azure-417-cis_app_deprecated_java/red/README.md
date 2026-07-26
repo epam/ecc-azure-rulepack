@@ -1,0 +1,1 @@
+We are unable to deploy the red (non-compliant) state for this rule because Azure no longer supports creating Web Apps with the required deprecated runtime version. As a result, we cannot intentionally provision a Web App using this unsupported version to simulate a non-compliant configuration.
